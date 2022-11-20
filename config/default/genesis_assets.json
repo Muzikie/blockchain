@@ -1,0 +1,2201 @@
+{
+	"assets": [
+		{
+			"module": "token",
+			"data": {
+				"userSubstore": [
+					{
+						"address": "lskzc2rmaztwrova3xohsctzdmfaardyxqhgrx43k",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskzpgqryh9cug79kx3p7xp6nswn4sf79nxgpfjdu",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskzmxjqshzv75cf3ejhvowku9d9zxok3auaq79tb",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskxmb4y4b79yjb5ee5sh78ba4ohee8szgsy3vh3c",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskxdbvvmxxtng7mg5ghvjcets8qcvgtsfwnhzxq3",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskxdsaccqxy7r6w5dmumnqwe74pzwzc395j79sm6",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskvu7mmq95cxoww94vs8qx47joz2gf453dn3kfeo",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskc6epqwoapgrgjspnyspao3faaeb2ysr4mq2o3g",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskcr5x6fykj3349vtnhort5fnjxonpqtdxvmdffs",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskcet7jmymtv6eff939sgh5m3ttorbd8m7a2kgdc",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskcjooqqmv2pvndu74d7uetotsss29vgzu75fkmp",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskp8hv2m8zv997x8j4nqqwbw5mtz9q3mbzzcwoe2",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskpejn7pdy2ndb823be73k7wrs8vevva8fwrmnvt",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskpdqcyjammgedrdd9k2ow5v49kw6np448j7k9je",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskph5vgyt7rpanqdjzu28rkf4dea8u3wftz7qbku",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskmv4nxdh8cbysrwm4fav7gbrk3k4ktrwwcxzhed",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskmc3u7oxxpnbq9xtdbzycv5x7ojmopg7juq8wfe",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskbmzmzvjxxdb7x9qppmjs5hde5hecfnyz32m8zy",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskbn22yrez9562wrvtrcfwwkffghy5juft6ke5sb",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lsknvt6yf7k3ze9oy2rn83azy259mz4nmfu2b6d97",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskn3xkbeoguowsb6s5fbo8eekt3dt8uwhgtow38q",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lsknsa3onqto73ugm8whq5ohutvza6vz68wda4978",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskngtofktdr75cjt5uu82xg5rrcr6g6nstsc8seh",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lsk3pz2ac574d637wv35mvs8gn2ptazdf4st2rngf",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lsk3pdk4af48cufaczwzd2h7og2227hk5xghvyhx4",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lsk39eqar95p9mqabbvhxhb5mfd9429uuem4qkhu5",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lsk32ozhxr8fnpfnsw34fdvovn4sxcmy33t6ss2kq",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lsk4z2tfj5v3zfo7zap34qr4mdvfw6cht5johaqpe",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lsk429ph39fg7u7ofvx5t26x7odx8osqtgufkoxb5",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lsk4jqra2n6nvh36hsdnkowzhxqgw9w8f2y9v58dv",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lsk6xxr83mn327ff9qbunbp8hgqtfn2not5ynwmya",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lsk642djjqmd77ywrfmd8mxa2zkrfgnn2bnh6rn79",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lsk69khqogqyavao59q7wo8zueb49z9xrxtks3ec2",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lsk6w9eaaeh35uo2ra6jcy4hptkcurm3x9sncf3y3",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lsk6dv4qeh43rcb8mzbpvyuy9zrwdkjsa9ozatxd7",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lsk6jx32hh7pua5wmogms2zxqzejaaa5gr9ozz8xd",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lsk57k87m688xvrnz3ystrpnxev7eo9qwnbc8no7m",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lsk5emmgupfkaohxzwz8guzqhjwadvndpwc6tcx9e",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lsk5safx93no74yzhhdns4bh4wnwxkfrmydx2dmtu",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lsk5g3msmbgzyda5zabywhygsfqj7bro7bmpk53u8",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskoyzr6qgkbrak3ex9w9o2zaez4wvfgoznndzqt3",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskoga3um37oywdeza6cus3z7mjqhp9ovquk5sw4j",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lsk9bd2zhh23ruaa7yfyjs656m5c2oeqqn89jhtxz",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lsk975yx4zzw5dtgg27qhnfuzhzp7p6pcmatoa8ka",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lsk9qc8ouzwhupz3wg2k5xd8x3y3h5poanjsbhqgw",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lsk9weq9uqtw3pksbfbd2rhky7jefbdt3v52bhr2j",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lsk9gkspeg888k2zcz9267wz3hpukeqk7ekhwjmcc",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lsk9gg8wmrh8kbbdmqcjk5xffe3d8nudbdcuxp8yq",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lsk7pmghqeto7qvt926qya2za29qonkvuv3gdpwx4",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lsk7354nvyfr9oqmhy57vnuwknb7k6k8wao4m8kj8",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lsk73shrbwt6m4owo5ksgsj8tpny6chufsp5f799n",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lsk7t37omwar7wfkygzrrbj4ky598d2jtaawenrum",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lsk8x32x2cfng74g7mzdj3drbr8sa5wyv4m4krytz",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lsk8patjbjpga4eyfc3g6gj6jt7w8m47od822kbxt",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lsk8bdztqyqa38av3kykwwneyfaow4vyoqq3f6kbs",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lsk8fmdfpsbmc2zgnnw6ybn9m5fy752djwqch3b45",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskuu2tjzu7enervpzmycjw9zuev6of736kjtzqnn",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskuk8oyqx4tthqzwbg4ty8fd9jw27okvfaha9mvf",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lsky3p9u59gteujd5cmntaz75hutgdsd8rtyzksrq",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lsky4bmyg8rvqt4qdqzwhvfa5v39aura7hsptyhpq",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskyoh6ngfw9kmgge8fuxy5twzd3vqt3qca8adn6x",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskyhzzkujvmfk99v47sa8trutubecejbf6zbr4r6",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskryvycvaxtn8dsb5a8wtmb2y6ruj48wzyhh8pcc",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskrgzcea53dsxuwk84oq5fm92ktrmsux6t5u9eux",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lsktmsyvc5j9dcm5ycuds9dpjtqaafmcvzkv3ygf8",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskt6gszqobmmfgwp8xhoqe2zwernzdvy4pwqyp57",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lsktoanxng6sk9hon36g8v6aopdg83ybavk5h7wtu",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskt9kgt5hy2rczg6yojt5f6ng8mpfedz9o3vnvhu",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskkxz7qohs9xh2j25dg72genhgqobgwr8oq4e2gv",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskkbkzx9ab22qveboayxugaz2zqsogk3x67rru5g",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskk7nuvhyft73qr7vhafqs8586rqcjyzyjrrf69j",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskk2oebgxwch7xkcykvaty5kkybpmx75tumzxx6v",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskqbpbk97qu38pvpc2jktw5oza4anamt6brpsktu",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskq64rrufozjav6ygcscktgfovq72zt95tw75h8z",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskqs2see6tyesp73w57nbw3kd942zfwr5hz48xvk",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskex92hfxke37na5sw7f7oj2sp3gdkxuv3jzceo2",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lske46hdyow3aycaxv2xj25qczav4xb3zh7mkjnnj",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lske6kzfppmqoezo4u2s29xvt6ckgmdjw4793uv6c",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskewcb5vbceya5nwnopkyhnwdstv6oddc42mnu66",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskessfnaadorbxhf4nmxd57drrjcdabuv363bo9w",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskej6s44cvms2n8sdusv3ktmpphkezs495je65jx",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskwz9foos3ah75xytm8s8wkp3db9m8zvg569x7fk",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskw5pjg42nhxfvzt24nmy8eqykh9x47pvku7zp2z",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskw2zwd3czjtq9hfur8k8memzx8zcxqjysbj9q7x",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lsk2z3mm75yurx6wdh6cc63o9rw6h8xtz4t3934rm",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskachz7xez5sevwbmvrsckuz6pvam3uxo9x8grzd",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskah7tzb6488wd3kw39w7z3cofyko88nfutah48f",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskdb5n7v6ttjhuexzaeww2ccq7mdegsgf8apwqoa",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskd2vftheo44ghatgznos6eqhrks5qzo2ev5gtq3",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lsksqaexpt67u6esah3v4sk2v8bnj7remqznahv3t",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskseds68hp3z4eabyogvtj2jnqrd8br6xgr3nxfs",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lsksjdyoc3cwrc9exvfkvb57yhe622nftbjhjjc9d",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskjz4jvcnkyunqwokbmek86shf3q82vtarbpvfur",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskjz9zps5bhmgqxs78hpqvovjs2wd6djc43gm9f6",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskjzrmc58otgv2fyxrzuwakvzfyh2et3jv8f9ege",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskj5zqgkdy4pkhm85fbqwphxgzwcopax3h9mt4xh",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskjufeymh3dnzqdrjqp6ccfjtfk79gmvouso699s",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskjug2tv3canhoschu72nqfd5qujfhhcv69kby2a",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskhewforxrtrcjjp5dnjv4tmufbf5r7d9j2a47z8",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskhhp5anuvprwsx82td4re9eo8m5moaaeyh4kyvc",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskfg2zckwns7ucs7wbd9tmst5d4ma5weotb4ab5p",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskgp4hun77s48ymkw2xnfcp564szfvf9vng6y25t",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					},
+					{
+						"address": "lskg33axfd6tayp3a2xzv36757oh97twnhqfo3cun",
+						"tokenID": "0000000000000000",
+						"availableBalance": "100000000000000",
+						"lockedBalances": []
+					}
+				],
+				"supplySubstore": [
+					{
+						"tokenID": "0000000000000000",
+						"totalSupply": "10300000000000000"
+					}
+				],
+				"escrowSubstore": [],
+				"supportedTokensSubstore": []
+			},
+			"schema": {
+				"$id": "/token/module/genesis",
+				"type": "object",
+				"required": ["userSubstore", "supplySubstore", "escrowSubstore", "supportedTokensSubstore"],
+				"properties": {
+					"userSubstore": {
+						"type": "array",
+						"fieldNumber": 1,
+						"items": {
+							"type": "object",
+							"required": ["address", "tokenID", "availableBalance", "lockedBalances"],
+							"properties": {
+								"address": {
+									"dataType": "bytes",
+									"format": "lisk32",
+									"fieldNumber": 1
+								},
+								"tokenID": {
+									"dataType": "bytes",
+									"fieldNumber": 2,
+									"minLength": 8,
+									"maxLength": 8
+								},
+								"availableBalance": {
+									"dataType": "uint64",
+									"fieldNumber": 3
+								},
+								"lockedBalances": {
+									"type": "array",
+									"fieldNumber": 4,
+									"items": {
+										"type": "object",
+										"required": ["module", "amount"],
+										"properties": {
+											"module": {
+												"dataType": "string",
+												"minLength": 1,
+												"maxLength": 32,
+												"fieldNumber": 1
+											},
+											"amount": {
+												"dataType": "uint64",
+												"fieldNumber": 2
+											}
+										}
+									}
+								}
+							}
+						}
+					},
+					"supplySubstore": {
+						"type": "array",
+						"fieldNumber": 2,
+						"items": {
+							"type": "object",
+							"required": ["tokenID", "totalSupply"],
+							"properties": {
+								"tokenID": {
+									"dataType": "bytes",
+									"fieldNumber": 1,
+									"minLength": 8,
+									"maxLength": 8
+								},
+								"totalSupply": {
+									"dataType": "uint64",
+									"fieldNumber": 2
+								}
+							}
+						}
+					},
+					"escrowSubstore": {
+						"type": "array",
+						"fieldNumber": 3,
+						"items": {
+							"type": "object",
+							"required": ["escrowChainID", "tokenID", "amount"],
+							"properties": {
+								"escrowChainID": {
+									"dataType": "bytes",
+									"minLength": 4,
+									"maxLength": 4,
+									"fieldNumber": 1
+								},
+								"tokenID": {
+									"dataType": "bytes",
+									"fieldNumber": 2,
+									"minLength": 8,
+									"maxLength": 8
+								},
+								"amount": {
+									"dataType": "uint64",
+									"fieldNumber": 3
+								}
+							}
+						}
+					},
+					"supportedTokensSubstore": {
+						"type": "array",
+						"fieldNumber": 4,
+						"items": {
+							"type": "object",
+							"required": ["chainID", "supportedTokenIDs"],
+							"properties": {
+								"chainID": {
+									"dataType": "bytes",
+									"minLength": 4,
+									"maxLength": 4,
+									"fieldNumber": 1
+								},
+								"supportedTokenIDs": {
+									"type": "array",
+									"fieldNumber": 2,
+									"items": {
+										"dataType": "bytes",
+										"minLength": 8,
+										"maxLength": 8
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		{
+			"module": "dpos",
+			"data": {
+				"validators": [
+					{
+						"address": "lskzc2rmaztwrova3xohsctzdmfaardyxqhgrx43k",
+						"name": "genesis_0",
+						"blsKey": "b642d544fb9a251f28b526fef26c1b57890a4382296e4515b0e18f29f4a3528e1c685203d95e543d8b23847494edaf80",
+						"proofOfPossession": "ab4b34ff8af102bb36e78baa5f2b3451003d29098185a3b1fcfa1c25a5e9d7000a4b1c971d1cb2edd4694b867b47347411dd7648643dbbabc96ec6e3aaa20667da7c575385dde515cca1b8591adb745a50638b607ac41418595626fb834bf6fb",
+						"generatorKey": "8a274f7eb42ded808b0c39f09d8c7b58b5479a3693fb817bfe6faae438d363e9",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskzpgqryh9cug79kx3p7xp6nswn4sf79nxgpfjdu",
+						"name": "genesis_1",
+						"blsKey": "b494c1a96116700b72053f92ea5ff739b1505a1c2c337a9264d3f3f7a3ecf0bdc133f814754de2cba1994265c10fbb72",
+						"proofOfPossession": "8d3bccd4ac115268e315c15b7701f59fdf73fbc95a70036272bd13d82bb03f37da7e4c1a570a8258cf4fa97f519e91a50800abc19c8ebc8bace72f5447f33ec48a087864ed0f05d4b81f34491c965ed8cadf64319896417846563a463345b516",
+						"generatorKey": "a4bb230b7a6a4af4b76a345e99edf8cd4a15e6533ebc9f49462995d874a895ad",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskzmxjqshzv75cf3ejhvowku9d9zxok3auaq79tb",
+						"name": "genesis_2",
+						"blsKey": "add2e657e355cb89efefccfaae508a389238a820627a93dec2632cab52ca0fafcbdb0e71fab59095e00140ab4d68efc6",
+						"proofOfPossession": "a5de11beddd169ffb9a0a261d1e2ac956f73d9656a32edde1bd3bdc92e3b059ca87c0247d95188e976adcae0a52b220019480982613b5ca09fa95445deca2aa36a8d64999dd94597f36482f90a68a1a1accec5cccb296c3f21e157066c93a732",
+						"generatorKey": "d668c6ab3151df41a772b2fc44ba45d41ec394079963d512fd631d243fcba124",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskxmb4y4b79yjb5ee5sh78ba4ohee8szgsy3vh3c",
+						"name": "genesis_3",
+						"blsKey": "aaa876b99a32745b750c749bd5589bdc8100e554aa0f3ad284f8586e25e067a616115010881592ce5b898445c5d23be9",
+						"proofOfPossession": "b105c08f2120eb351e759ccd3480a54586aba19b3e706430456487542b038fe127fff9fd10f4f0bce22a3461c4bf20fd09aa045927e4885d2ae026a260fefbae2c0ebd01aaf4e547522f5b0eec57c232c297ce8776910e8034ae8d565448b545",
+						"generatorKey": "1e3ceccbe6464834f6d23a8f498eaf47653a9d27a45a0fcf950aadd985a55d80",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskxdbvvmxxtng7mg5ghvjcets8qcvgtsfwnhzxq3",
+						"name": "genesis_4",
+						"blsKey": "8bbfdabe96cf8b720d5c09e4b324bb7c557fea263309b18e2f06605c254e938fa3909e6b0ca68d3c3a8608d4adaf844d",
+						"proofOfPossession": "b35245d4a461ea5776a78af0f8d4f824c0003bfce380bbca794c6999eb605b1688bc1f9975ea4cb389e34ad743fed937198b426eb4c617dfa5bae554df0ce463b9a1d62f82f93ee2f1cbb83c4fbc5073658007cb7aac8ebda158bf2bc2e1d2bf",
+						"generatorKey": "be68ad5caca2b1dfcef3105d12e5b5f20fbf0c1c10ff6526008a1661c7fa0871",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskxdsaccqxy7r6w5dmumnqwe74pzwzc395j79sm6",
+						"name": "genesis_5",
+						"blsKey": "a123344f0c00d8430b604ad83b49bdbc036603c3acbd64dee62bb436e6e6fe2efe63749470a2ffb109dd78c16f0847f6",
+						"proofOfPossession": "a299666370e53ed7231cf368d69389d2fc3d105f3342536692ea9289b92768fffc641e6602d89c174c25eb333939d8ff0bb76c8bf83cdd150ae36570dcc372e26803fb40e5ac3a6acfabe3f804157f022033b8f17145f0c6e2ccf221b86661d6",
+						"generatorKey": "8f714752c260d402d98a6b2ee0b943f2ad695d9c229046cb754f7ccf35eaa9cd",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskvu7mmq95cxoww94vs8qx47joz2gf453dn3kfeo",
+						"name": "genesis_6",
+						"blsKey": "a26da932f55570ec390e4321cc73790be5e1cfd03ce566ae724230daa50a43e69522e03df28b3eca9808be2d11eb78c9",
+						"proofOfPossession": "93fd7212e155bd7921aa6aa886d90d04f394574b7016f8c1d28c80bba22a28647e0d7361996a5e490f8c9d88110821250fd22cb09d7798802edd4525d7a9c2bb90251f72e54d1bdf2a0439d46776fa59efb2fd3a463a1779a95b11bd801ae0a8",
+						"generatorKey": "1d4a8f829d8a7cc16ad848678dbc3ac4c647a5f91bb526e766494253969cbe09",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskc6epqwoapgrgjspnyspao3faaeb2ysr4mq2o3g",
+						"name": "genesis_7",
+						"blsKey": "a68ed68b639380b898e9c068b4febad7b398aaa5ed85b5d8a0b0471d126e7c54d0d1023e3f34ae650f797acca34e61f2",
+						"proofOfPossession": "9002af51f02448e2ba0a925e461d263ddefcf58f95f5c07e79f7f108a9594bda8704e250ada8bc4c44c21c25d8a58d2b08a5ca2507910c331956f36c190d51f367fbc366b311563aec272a500311c213021e3037956690f434df2879efea3f20",
+						"generatorKey": "34d7d555d7e7cd30bf16bffe2807214390def64ce5acc511db7f2d7e39adf491",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskcr5x6fykj3349vtnhort5fnjxonpqtdxvmdffs",
+						"name": "genesis_8",
+						"blsKey": "a4a4e6850d5687b1923365d6f9e0ac86fdeb8992384a0f1f11c5e6c9ca9daa87de74ee6da56935c5ea26fe499f179836",
+						"proofOfPossession": "9999b0e4a92c16c47daadda2bc7f6784f2fdfa438dca5800273627219efa67f0980ef6131f33bd6912bf5179bd750e0c0632afff7c0e1384caf2db666c4fe81f3973e5b4592e9581ca39018f84d28c7c11e863abf57d1e7d798e8374df5ac9fc",
+						"generatorKey": "6c4267cec342ef52ca978504275a5f68f8e78080e153916bb3d9652d5f0b257c",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskcet7jmymtv6eff939sgh5m3ttorbd8m7a2kgdc",
+						"name": "genesis_9",
+						"blsKey": "937a9288b0cc8c07ed1bc8f6554593481b5ebf8b29fc1b7abcb335610fb612691d03a1316b7dfb85e57b27626a2ed5a5",
+						"proofOfPossession": "a04001f1d23cc4415e594b186c40d4cca7bd008fc658fb2988cfbfc7a8c98cc93310c6870405ca3301d5dec6e7cd370006ea5f6a1ab09877e4122ee379e714ec8fc05198ab72c59b489841fe62727dd0e05390dced1cb5fd65429d08dc7760cb",
+						"generatorKey": "f4cf3a605ee683c0ba3c7d76a8052d4e34ca15f52be7cb33f26929e91693bc52",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskcjooqqmv2pvndu74d7uetotsss29vgzu75fkmp",
+						"name": "genesis_10",
+						"blsKey": "8b9d1e5a523800bcb12e04c2b9930c9c3c1710b1c297a748d37cbd61160dfefb508b787bab59cd47186585978f1794da",
+						"proofOfPossession": "b2d9519988ea0efb20ab309490c0124842d4015e56db3f45f0b7f6bac67e1e0dbc458bab830dd1df37495bbdee947b701542f49e8cb039f0dfc39db7b29515e386051e1bacb7fef210ab1673f947aed64ea5996ca532772d9c4f4b670a3e974d",
+						"generatorKey": "dd669e3253caef10211c4a34a72095127297a647837ec5a8710ee1a8f6899c4d",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskp8hv2m8zv997x8j4nqqwbw5mtz9q3mbzzcwoe2",
+						"name": "genesis_11",
+						"blsKey": "b3ed310f87bbe6966e5174bfdfe1ef404ba091fc7a0c3ac1bfda77c2efae9349e0c25d1ff95ca03060e56fd08593aa77",
+						"proofOfPossession": "b2711ad64d85e1a4180f853e7c0083a6c671e507c48a5f136697c6b5479c46dea213007af213e39d081d2c2b36b3a07a127038f513af773e4093ab3862abc6cb96e650fb177f747bcaf5fd622b3650558b4b11d926bcd5d3845fc4c2ec03d36e",
+						"generatorKey": "319376b9cb97b158bf4e39a781bbf97382a1ce3a7bc6a1999f76fd6c3446f449",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskpejn7pdy2ndb823be73k7wrs8vevva8fwrmnvt",
+						"name": "genesis_12",
+						"blsKey": "aca382e3b9e06a91002fcf7559ba7e11e42759cff147bd8d48a8db920072b24a456cd550e5aa761b45e683f30c4b4114",
+						"proofOfPossession": "97db2bf74880f1b5e4233447f8388722e0b234099bef7a06894297592ac96a3053f076dd23b2b79af379ea8a00faa7f7067a30c8fd126fe29708da83eb8e60a7fb1568cdd6575f44e6025930b7f53e3d9410760d18c7f30655f8bfbdbd99a477",
+						"generatorKey": "b55733871d856be89ad11e807dc24e014945099c8e29055adf48a957832612da",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskpdqcyjammgedrdd9k2ow5v49kw6np448j7k9je",
+						"name": "genesis_13",
+						"blsKey": "90111a8c66c0dcd23328a24bc339ca315544615b7461df311b2ab237da6753e15808170e6e220a0356e43307df0bd36f",
+						"proofOfPossession": "945071b36e4b9ef60a6e44a27c7cdc245576c0841a4f4a0290bb8c73a9e18524e30b2a00ed07efa8552c330488255c720d68483980a7d46ac05bf7535574bf981c7433f20eae7a495ca9d4ff27792c285d78f750935e64d8a37e5972257ae592",
+						"generatorKey": "75ccaab50026558c3d72e7041ef9726db2518b2d15806da33f10ce29513fb574",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskph5vgyt7rpanqdjzu28rkf4dea8u3wftz7qbku",
+						"name": "genesis_14",
+						"blsKey": "82f820e868b72f63a599b4e74a656ab15baaa9e223b239b52e11b390713b952a09c3af41c6d4ba1f03aa38331dc99844",
+						"proofOfPossession": "87f77ee10c398f8a0fa191623d31bbca95a82ed1aca89b3f7af982f39daf8540dfb13f0550eb2650b1f6c32632834020152943faebc271f2ed09631392c023222e569be325f6296a0639e3e618b285d6381ccfb54f12e9cc586c04e7ca44df8d",
+						"generatorKey": "c71c5ab2266572cfb179457fcc9bc0ce934da1485a8c5ac88bcbad9f5346e9b8",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskmv4nxdh8cbysrwm4fav7gbrk3k4ktrwwcxzhed",
+						"name": "genesis_15",
+						"blsKey": "ac714081b886645730a8382c2aa3fe5dfa1fd02194a526b94584d0710e9683581495b92e1289cde8d090601d5bb86eae",
+						"proofOfPossession": "819f66a6dc040aace7d55de9343d9d04ac0aa37018b7b049578135afcbc1839ebd997f74b26bd0c1854e6962626f99b8173fe5201db34895550f72471f63c18d3489f3392312612c16eb932930d575f65d47f90e01aacfd6f4c8535767971241",
+						"generatorKey": "0c5aef2148a47d4d7fc30844927a22b75a8e4691f4438ab14a20b2bf6b8d3f92",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskmc3u7oxxpnbq9xtdbzycv5x7ojmopg7juq8wfe",
+						"name": "genesis_16",
+						"blsKey": "80b807fdefc66839edaa9172ecc1605e55e2190a4a5bd81f311f8c8082426c567234e77c6c489b4c2407b62c16c10e72",
+						"proofOfPossession": "98def17ee2d3f3fdd1badad4eab0237c291886ae401465d4a7e293f7bd9527195a008a82c74fb4b19b559fa2617f19a51944d8c8262697ab03d573b55bd5c3f2b87d193c62b5408699769be46bc58007530e6cfa1fd7b701c1f0bdefdd4b902c",
+						"generatorKey": "3aa7701e2daa07774daf61da9d008140277af4a05877ff975d729cba3f13e890",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskbmzmzvjxxdb7x9qppmjs5hde5hecfnyz32m8zy",
+						"name": "genesis_17",
+						"blsKey": "88898e50d7db2e27b3f54f465a971501c11985e73fb68a6e6129512d8526cf2b8aa94209982e69fd7d7a5914c0481d55",
+						"proofOfPossession": "92afca6de41b0df061f4de509c147717854cb3814a3fc29b9ee5bd7558609e88c859ad4882eedc3b88009a15dec2b306069a4007cd0d7c4d74a5b483c4d636b3633007a39dabcf20ecb323b363aaaf5f5a620785be7c3ede4bbd9819b7f63709",
+						"generatorKey": "8a7ac0c679350abd53cccbcd9a46d2a16c2bf7d1031a7b14dbc6c7866c7d8735",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskbn22yrez9562wrvtrcfwwkffghy5juft6ke5sb",
+						"name": "genesis_18",
+						"blsKey": "8f8c10591c3ec6284d8419c160cf5ed3e969562d9b8a9913acd700a9ceb5309706458e735d15a0ae74a1d70b6a6a8fb1",
+						"proofOfPossession": "b68c734d33712e2b5d63bb44c4c6e5fd18d9d739994c9e977577c05c5880b1d73e5a3b0bbb4bd623b07b1a3fc81ddbe90196848512f9794ee98ef6a3c6331710b35fe6fd66e8228dd43c16f4126270855396e1ce19b17a3642aa0af17a44225f",
+						"generatorKey": "095d05a11f80e8a804c4922bebc28f0faceee1969918d71b0725ac38607cbafc",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lsknvt6yf7k3ze9oy2rn83azy259mz4nmfu2b6d97",
+						"name": "genesis_19",
+						"blsKey": "94bd812c24d2c2b320028eaeab318d55cddf18f4b814b6ef0d8c3af2718543b646e72584e166aced36eca87f3bf87c1a",
+						"proofOfPossession": "9624ace28864361711f6c201035f43f026972ba1f961207eb1fceaa8998a0ffb149e72325d3801968a31d0abd4bbe6ef1947703340ca56dda52ed2ef4bdf666d6d002f947a496bfdc5378231a303f11502684f27219f00fbbe0c08a51d279175",
+						"generatorKey": "e083e62685038b314e3fdbab304c2e902d132ce51fe54fdea314adb0d7945721",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskn3xkbeoguowsb6s5fbo8eekt3dt8uwhgtow38q",
+						"name": "genesis_20",
+						"blsKey": "aa579607459b725cb3b7300c9f05a7d8c5752e8dfe82de9ad9ffd693f756011c4e7befff989d6c916dd63a4ecdd34fc0",
+						"proofOfPossession": "833114bdc531796c650a235ed6b4c2d5b219c1cc4bbe9aa40e6ce9374aaebb19aef28c3541002f441ae2e7f2714776a1188ebcd040223f7a7c9553006cbaccdf41880c1635a466f17adabb476740159b0443c0708816d79d91ef3dc806feb3a5",
+						"generatorKey": "ce2966457fcc45f370fba328b480018f07e78f80d86711923fe93b042fa0d93c",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lsknsa3onqto73ugm8whq5ohutvza6vz68wda4978",
+						"name": "genesis_21",
+						"blsKey": "a0fb5b48abaa1d04303d9db679ff8284994bdd1c2f2d532d21ad232e06a35a684db532d4d58f0c748537322f055006a7",
+						"proofOfPossession": "af70e824d81886190eee9600c9f0262d55712b7293f05c1e3803b0b964f31f5756c795bbf685be78887789808da714580ea18bbd35bddb84f0211a1ee97aa5116e9704b7ee063dda6f8ea3ebdfc923b9c525d8d39f30f1871fe9c2b78b38f259",
+						"generatorKey": "9ebbc7b9002601f51e21aea7118b4ef53ae8d48a6d2735bf381155ab791bf723",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskngtofktdr75cjt5uu82xg5rrcr6g6nstsc8seh",
+						"name": "genesis_22",
+						"blsKey": "a42eefef1d0649f383d977cad5a53fa54d5fd1bf3b602545cb2b701be8474e06d35cd4b4efb5225aff09fd2f5ed6cb56",
+						"proofOfPossession": "ab5312ab05d833cdcd63c6bbef9701de7324accc53865d937666f5f428c63c2984701eaaad7d3b3bd1092a1275a72c5c0a8cf96fd930e0d16ff305672ce88420f221c96f2ba955c17ef44fdc2345992f78ca9c50604873b7c2a5cf0ecb095429",
+						"generatorKey": "e2b9b34124619feddf4eb682374a281bdf76daf2fce326dbfbff180a3eb13d63",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lsk3pz2ac574d637wv35mvs8gn2ptazdf4st2rngf",
+						"name": "genesis_23",
+						"blsKey": "a404ff758cdea97b786765230c86dba30f0a83247d8039cc5a3e2bd1e08ea11377860735f467b06e664777fdeb748bc9",
+						"proofOfPossession": "aa69bdbd1beb76074f4e39db28b5efc634e3eb4d8850f0c0bf18d1c3e3a3d84fbd1e650211a799b904bcf8df45d49de410075bfe37d76f233a5346f1405c51cac208512ab0696ab2377eb445480999a4047ee97fc43aa751acb1e87a8b461669",
+						"generatorKey": "42ff817d81b08ba6c81ca24d06a5f0aec502eed1331b485c25d9e8afada13abe",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lsk3pdk4af48cufaczwzd2h7og2227hk5xghvyhx4",
+						"name": "genesis_24",
+						"blsKey": "978f2d693aab8be54b1ee5207cdf5082b905f80e525614cfd3e434271fcb9f1032eb27ddd005caea74528f241505d033",
+						"proofOfPossession": "a1530120bfe49973c4aef7acfa5fa4096384752201c5a7864333bbadb3ccc94fa4769091eece3b0d9c27905ab5a29f9f15582509d2dce48e16637761470a6fe98377d8669af0dd512650c2c0e62fb9abcadb66f1a292f15c95dfa7c628aad67b",
+						"generatorKey": "e1df08f03d9a00e3c710fff27071558f85e529de96f2a86ab87ea0379ad2b9b1",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lsk39eqar95p9mqabbvhxhb5mfd9429uuem4qkhu5",
+						"name": "genesis_25",
+						"blsKey": "91eb2564b2fa9e7d8c65c4ff98a5cc51ce874ab39ac66afca329a2e8e8aed54b2d116537789c83edcb1e1a0146b664f5",
+						"proofOfPossession": "8ccda3643c3b80a1be1d060d26f069caa749baf168519d1ea2df1a1b5829a6e9c180d79e3215c46040e72b341535c64c070009100eaf45451f32e94d7f17b6406ee7c0033ac9774761a9e754476e929512e919496113906aae74bbdfdffd8dc6",
+						"generatorKey": "50b64420558a6e55074bded6d80a9fedf263c3e327b77bba70b143aedac3694b",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lsk32ozhxr8fnpfnsw34fdvovn4sxcmy33t6ss2kq",
+						"name": "genesis_26",
+						"blsKey": "946c32f1aee7c4a3fa1bba2918f75698eb68dcf6e3a20627a3213a91965120aee045b5cc0d4038aba924646893c3062f",
+						"proofOfPossession": "af94a8bc5eb30a9e254e1699f2edbeb60993901db1370b646eb4529a3ca68861dfa7a6e5574c50f3fd137681452435680a1a8cd275cce1011f33917d8b01058e4623d16072f70680a8e25c090a2494c15a4cbb460acfb0b924a36afb212774f7",
+						"generatorKey": "c9853feedfa00c5a1780fea636059ea6210218d1923ea33cd47141f5e06fba36",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lsk4z2tfj5v3zfo7zap34qr4mdvfw6cht5johaqpe",
+						"name": "genesis_27",
+						"blsKey": "a4cbbfd8d5a97d092df4b3fb9c3cb65380a0661c79e60ef9d2c416442dbd6465ea1bdf7b3b0698a024dd8e00c85c54c4",
+						"proofOfPossession": "88232e6b2de53000fbaf9976ad9bfda97e268d1b1c530bcafbf753065ff3db3bd548522282fb4675cafac4ac6fee2d210097a79122fbfebf8d4e4aff694b620eab99fdc1c734ecf301cb235997b75014656ff90c885a191586e4eb9225a28fb8",
+						"generatorKey": "00fb4c549bd58231dab1834d0ce1e7730a3616b61a99099020a72d6d6b960a75",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lsk429ph39fg7u7ofvx5t26x7odx8osqtgufkoxb5",
+						"name": "genesis_28",
+						"blsKey": "9975aca22e8c01c69d744e497ef6370957872bab3fb470a78c377b5ec15db3fb2f01500ce089ad460e67df9cf953364a",
+						"proofOfPossession": "88180089e75bc71fc81450bda9e9840f851027305789f4917df9acc594fbf3f61845dc4463c224f6cd6064198bf4e7f911f131b40713955bfdfd54d9a14d0d31a60a024b42cd538d573de07632ce778b9da5b327b6a3a4492a58cb94ef765e20",
+						"generatorKey": "d955b58d3a69db596788f6b06366325716aa5ee1d5440ca64bd99cb9429b31c1",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lsk4jqra2n6nvh36hsdnkowzhxqgw9w8f2y9v58dv",
+						"name": "genesis_29",
+						"blsKey": "b90c5a455fff25c2f99b0874737ab090255454e0328b44b5682245d497edfee1e1f564dad7b1defa193b312dad8c2e89",
+						"proofOfPossession": "909505c8c11ef48abbc5e8970f7d86a384cfdbd851cd427f970e3abe3552031f743f14506ffa75667048809ed6d1edb9113e67329a459808541d9458b08113bf3ac42efd59e8f254652520751cda174ee414652a0e95718d5a9a40fc494c7a38",
+						"generatorKey": "a80a7a987996885689268e92e7848ce8f7da23b0732c8af6cde5199b26ec093d",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lsk6xxr83mn327ff9qbunbp8hgqtfn2not5ynwmya",
+						"name": "genesis_30",
+						"blsKey": "af2fe2fe24aab89f1f663546b39e2f3e05e9ea0f40797c6be70801e467203f8372431b0dec2df799754311d062d0ad08",
+						"proofOfPossession": "ab36b3cbf9ced36e6644f99b09790d8bd07ec71795a6d7b21b0278b285219c767ad13232b7ab6a5f2ed2b126f4c9576f168c3b3269c21ac5a0b7b6ef4a516b0ed14f442b501243d0b3fc392305e34f5796adef0ba8c486a35e9b756a9b6ce6c7",
+						"generatorKey": "285cccb712305371d1d61207f989b4ac08416d25d44664e8d52ee6bdb0e04a52",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lsk642djjqmd77ywrfmd8mxa2zkrfgnn2bnh6rn79",
+						"name": "genesis_31",
+						"blsKey": "8ed292118df2cc2ba5cf2d1349e0cf6f58a2ac84e21f52be626a2bd3d75b72c0d70d9d4a6c0f9495bd1b5c9d97987cc1",
+						"proofOfPossession": "aff2db52f9dc1a97987b5b5c413bfd8313a8526fce01460989e65d651a81caaf4f48ada057e62f21501013c729d3378002489f178cb2e0197208ff894fbab8fb41a006e2a5c00faa354b62d6702dfa4315257ebbc7824d4a7cf0e1dae255c41f",
+						"generatorKey": "069366c7db6768ca9a7d4106c653018bd40d12ea5fdef775894264c154f14448",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lsk69khqogqyavao59q7wo8zueb49z9xrxtks3ec2",
+						"name": "genesis_32",
+						"blsKey": "a89a36b8f9213304e9eecd9529e10673c1051fe7f11dc13005fc1269c73a9f862897955e86e5f5c3511641432b7a6c03",
+						"proofOfPossession": "88d23377f22e75d38ecd08bbb3d5351924b8fcdb9750242846fcc1fb1301ddf824d1f7ed3a90d6998e1f6333e38c228113c1d7e64e39784b81b8a1c10af9ec1ff05d9c41a4a3b747fde793b0fb6dfecf237a9b047e6f36aadec7612bf3508ef8",
+						"generatorKey": "7cd1f0b756cb902f44f04cc44ef8814089049d5159cee037cf8302a096ccc8ae",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lsk6w9eaaeh35uo2ra6jcy4hptkcurm3x9sncf3y3",
+						"name": "genesis_33",
+						"blsKey": "aa66bfa51c18571e3a6191aa2426e7b1faaec3b23c7f4e62145bd15e9d5a5a2723baffb2283311e12e0c619f62b1a2f3",
+						"proofOfPossession": "807e9a6bb927fca73a3088eed9da2e51662cd2318f382d2d4ac522e8c78f449b9b924f4fc8f609db475a5b3912976ab418ce3292a671581c1714cb307d191715ef8d2ae338d329d6c117142b4c783e23f2d84370fa4cdcd19a4c825e7c92c465",
+						"generatorKey": "78919d5390100c3e707c41c3a111cc758be6d5352184463f81b838ee62d63699",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lsk6dv4qeh43rcb8mzbpvyuy9zrwdkjsa9ozatxd7",
+						"name": "genesis_34",
+						"blsKey": "82f705c54f76c7db65302459ae6e4d78ca13c707ba6798264ea19012a496c3ec31b3ad0b9ec197f2f2d6ece31fc521db",
+						"proofOfPossession": "aefee49cae7b5c0746b6423f5f868a120f73843ab0940dd9ebe8252f21a25cd09199360badb993e54c97d8a360796bf319af0e34b892a27b29505b430495aceb2fa0506471ef1abdda345397abf48f7dcb34527e7ba26b5e8ed2d595e4325ec4",
+						"generatorKey": "906aaeb1ff68324af4ded3e4942505a2b64cbe466f187683d355949f53312cf3",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lsk6jx32hh7pua5wmogms2zxqzejaaa5gr9ozz8xd",
+						"name": "genesis_35",
+						"blsKey": "92630e50f0cca39c678fd5c0ab31ac0bf552386585a4b4cd0d3d6e30cabcae2beb75dde3ce455a0d1c1ce7b93898739e",
+						"proofOfPossession": "8447a0ecdc9e8d72f4bcf584ad04d146bc5d4bf91f6e2298909c1656cea8bb608799fd615fe1ec84417e03784dfbcad118646504f0ddf86abcb02f1f0689c9597f714f371bf8124ac38eba148b5c6d0df328983d5b07e917a11cf295a5e0288d",
+						"generatorKey": "212ae51f06a4057a6a54e573c5be625814e7f280be0696578b2543739700d919",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lsk57k87m688xvrnz3ystrpnxev7eo9qwnbc8no7m",
+						"name": "genesis_36",
+						"blsKey": "b2ed62733de1620c2d79df9034bf3f76594df2bc1e125c287288f37ff77c53c408a8739286ed7fa04ad908bd4aa276fc",
+						"proofOfPossession": "a37171c8d88d7269487f24ee7607d53e95c05bc5067a745b9dbba6778a3b81f65024f5f6bf000c7c2faaa926f1d1583802f7ac90989685deee306a6d4fa56da599e5e4a79538c0ede2948234468eed38b711997f4d44761da3a93fffca6d963a",
+						"generatorKey": "f6dcdf1c6e995f97cddc675d2c27db8b13c80b031a37cc1471ca10dabf327914",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lsk5emmgupfkaohxzwz8guzqhjwadvndpwc6tcx9e",
+						"name": "genesis_37",
+						"blsKey": "97d2984345cdbd32145e41ae01d69acd152cbe8b63e49d3d3f8476bebfa03cfc212e3ced952a73ae94f7f3a917c20356",
+						"proofOfPossession": "95732770c3d805953bba56fe361624a6ea2f2d6b0863aefa3f350295d403dfbd9d3a84eabfc950c5081d2738744aee1319a65f92f3aa654bbc917b40f0b6b7475d02c8163584beb120f0c8936e9e3c18099ac81d2a3be14043288d4b0ced2227",
+						"generatorKey": "90ca47467bd016b307659e175b5d9290cab3d0bed58c54445046c0f3e70fa699",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lsk5safx93no74yzhhdns4bh4wnwxkfrmydx2dmtu",
+						"name": "genesis_38",
+						"blsKey": "9653376a4cc5678e450328f18a1c433c5848038cc2365cd8ef78e0b15d8e826bdbc548571b1dc6e52dcb08c863d867e7",
+						"proofOfPossession": "af5964b907cf75dd7e39f7e87a7422ae9e9d9f71547aeb4f116b0fbc42ea7eab1883b5b166b2dd08dd5a6f72d578df2b109a6429c6577e800c3d488db05843112dbc42bb7136f4dd819c8fa9aba44132c88385a95d277b11f29166379b7d36bb",
+						"generatorKey": "21dbdad2d58d06d2976059d26684902d23690447c6b16fdc9e2d4ab037899d1d",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lsk5g3msmbgzyda5zabywhygsfqj7bro7bmpk53u8",
+						"name": "genesis_39",
+						"blsKey": "93371aba1eab27497a2ea410689d91392fac21e463a6070dad820502fc77f8b5b3a35d0b5924759b701a6ecec132be84",
+						"proofOfPossession": "929e8ee981b71abc7827cc6fdc1c0810fd050743d2f52a2d25edd6c4a55d793b45c8e3a4f47ff2038256924eccd1e5860aa45f0564c8ac8f92730146da1be33045dbf893122fd7e10247710e36c6134353858e0a99b50b447c63d7dacc672797",
+						"generatorKey": "bdb37dcf83036d14497bd401052a0cb0cc8b7b3b1a1de2eb4192b67e0c06984e",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskoyzr6qgkbrak3ex9w9o2zaez4wvfgoznndzqt3",
+						"name": "genesis_40",
+						"blsKey": "93474a0ceaad114c0c21549c1e452af36806f1e0cab9c073c5e7f300272b2a50a7780ec7efb4446cb1a07cb5947c800f",
+						"proofOfPossession": "b3cfb96837e6ec93b4eab0679b9c273f1c1195631605af68e9c1fb1189a9c1d51e17e0d862b8853056829472e466e4b40646176776f88c48987f2cedf0287fbbf314119404cfb82871051473a38e43052bdf835f4a422233e06c2f439d24b3d6",
+						"generatorKey": "59efc019b698d7783a0e9fc0bcc7395319e396a0979ebbd3df85650319ba9fa6",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskoga3um37oywdeza6cus3z7mjqhp9ovquk5sw4j",
+						"name": "genesis_41",
+						"blsKey": "88e40ccd8ebafa1782a861a0402c42ea87a2f41fe020002d6115dc1ceb5c76b84653e27ce27fc5b70c8fc71bd8b785c3",
+						"proofOfPossession": "b070012ede37a096383a192849f6cb1eaf8349c1e44437f2b3b06a0d5070f35b7c438b058fd7a89c558a638e60c1190408ac8f54c25f33a29d2fd2f76ad656f6bb377c90e816c29ff2b554196a6779dc6d2ce30084b234ffa9105022a952b08f",
+						"generatorKey": "a42ed358830ef1f7243a232c6520e9885f247b77a1a464cdc2d18611c7f025aa",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lsk9bd2zhh23ruaa7yfyjs656m5c2oeqqn89jhtxz",
+						"name": "genesis_42",
+						"blsKey": "a8166056d3c575536706e2179718d794979c2ca85b422f6847ba9263d53b7ea9f1cb5b9f0d122d6c2ba2359df7ce15c9",
+						"proofOfPossession": "a9c69dda370bbd402f26a4b99edcc34c43bea912a888292b1152aa60ab8634940f33b1ab381206d9ad1a86280f90a0210d580170aac41883c17d7359c8ed989161c8287bdabb1eedbaa14ef04d1ab51eaae705cde34979b566e3d9871d25b9d1",
+						"generatorKey": "f79c0c98e13400828a25dc27cc07c4c286e5b5cf354b63312694a5bd8be7d095",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lsk975yx4zzw5dtgg27qhnfuzhzp7p6pcmatoa8ka",
+						"name": "genesis_43",
+						"blsKey": "aa25d72b668da421b917bdc942ea2b9a038dc25bf58ec491591de6bcb9dd50a0670a27658a137cf1a9cc326003b7d704",
+						"proofOfPossession": "97f82ac0e119be5851cc96aa9223485f3efeb2603ded4883e124aa19e5550de10eb899a217203d3b08f6aa7768331e5203a41261b936f3b7272407ba7fdd45c38cc940ab6f1e710f7f5bafc5624ef0c5b2a91c25a6222b87df7b4ccd856e22a1",
+						"generatorKey": "447a39d6135213ca0a875244ef0eb0eb1d7e3cea0bccba15108117e5bac440b0",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lsk9qc8ouzwhupz3wg2k5xd8x3y3h5poanjsbhqgw",
+						"name": "genesis_44",
+						"blsKey": "85770bf20f12e2525241165535b6630fb33d8ecb0451143d9af35f9dc034b5daca16dc1d117d31e57c50a6985e494fd6",
+						"proofOfPossession": "951d37db83820ee102409c865a228dd5ad5f829e464f2cf2917221185ce0e4d7e300d03e19be8ba3cd8b8c29f6871fcc19790fdf456a2e76aad4de237a960cecc3713459e75716d375fb7c9594d4bd98541b3c1fc20145b919091ea474378359",
+						"generatorKey": "13367231b715652ac0af9f4f6e15cf338f17284241281165aef6506c7c18bd7e",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lsk9weq9uqtw3pksbfbd2rhky7jefbdt3v52bhr2j",
+						"name": "genesis_45",
+						"blsKey": "8f514b271d7eb154ee035e04b681bcb27bb5ac7781732a82bb1b9aade2d40a15c5c5b1b8d408aa3cebb27cd2fdc9683e",
+						"proofOfPossession": "852277ed1dc391abb7f281d002f0ca25ce164de06ea87b158cfb6351175e2a58632df1f72bcb39ab68b35c0bc15bad071796a19f7ae195a94e97217c9edc7c9ef729c34f51efd96640160eeaf3f05b972bdf03b13ec231a0cf62803521f4fb1e",
+						"generatorKey": "5246cef00c294efe6e854a55de3e8a4a5c40dd82764a3c60c51fb305144b82c7",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lsk9gkspeg888k2zcz9267wz3hpukeqk7ekhwjmcc",
+						"name": "genesis_46",
+						"blsKey": "98c8a9139e2f791d3f0edf870d824b7d1baa77c692dc2a4391a30f16aec676a60507bb3da894a7bd8054fef3562926b0",
+						"proofOfPossession": "a9a16769f314c0bd59fa949a445f1198d2bbe958a6ffd86168d9a912cd210b10ec7f4135050217319b225c25abe740b90828f35a4c508644ce0a7c3671fa4595d8efc6086844cdbb58417a18ebf0c174de74e9c642d2f3e0980d8c8272670b3e",
+						"generatorKey": "7b95ed8dac41632eddd9033f1a1e26230b426f787f0eb3f32c9b6e112f3dad98",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lsk9gg8wmrh8kbbdmqcjk5xffe3d8nudbdcuxp8yq",
+						"name": "genesis_47",
+						"blsKey": "8b266cbb95ce243f91bd84c01e54970b558ec42990ab047a5d516253c4a2050efac14750a26f81f9188cae04fae9461d",
+						"proofOfPossession": "9488e77f1bc0505ffbc24cf810ad01182ca4d1235de4338cbdd3965df18deed5211eb474abd8cf2e56ea83b76b2b7142033d5360e81e11481ed1bff1c8e0afad78919d1fd004cdee7372b99d28d5240eaf827560c0c5a4fefd2daa916b70099e",
+						"generatorKey": "21c58770d0f8ab06bfffd2f163442afde896023b6ec88475cf1550427dff2dba",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lsk7pmghqeto7qvt926qya2za29qonkvuv3gdpwx4",
+						"name": "genesis_48",
+						"blsKey": "8fd5b9afc31dd8772ce33d48137845ba97f7b9cadf47acc0d3aa12b5ee61f70bf5bb34dc68c7c2b95938ff34aac794c1",
+						"proofOfPossession": "83987f31e69a846fdac4b6a122b25848a59845b18c332144cbc6315c3be63d56255a3a45bd1526090a1f0014723774c7003a9642c2ffb4feb361090aec32c19ec968a8069d3919b2b8c590ed4192ebac72e786fbe5f0549f32cb60c6af429720",
+						"generatorKey": "cce5529427ee7d525d7bdc4cb596a3b114d9166c003c0061e00925ec646a0b29",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lsk7354nvyfr9oqmhy57vnuwknb7k6k8wao4m8kj8",
+						"name": "genesis_49",
+						"blsKey": "935d038db7b2f2c7bc804dbd3daf8bb4800029d6e43119cace2ef560d9a57e7ce61140a3889739a0c1bce289a7489081",
+						"proofOfPossession": "931c933cf70f1cfa9458a78e14d21880f34dc204393b060a692cfcb4f7765e6a2dca4c483681c1f6528bd5c3d9bb56270bb61f81687d0a49f5e6e44e5cf5d1a56ffcb693e5bd675f68f7dad51636774f94b6d629542da2070291abf433e135bd",
+						"generatorKey": "2415b6c85cf436dd3f2a68109fc76f0e25f4b9111f186f010e78179edc4ee5ec",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lsk73shrbwt6m4owo5ksgsj8tpny6chufsp5f799n",
+						"name": "genesis_50",
+						"blsKey": "b60de46ddaef14bc9fa5d80d1632bd150b83f8c9e1306d70960aa71e9fcbd65e56a20544a2e4a61144373cff493d81aa",
+						"proofOfPossession": "9150e9397e1dbac94cb4d621870a5ba878157cd21f41b0dd3106b534f1e27445fe70c23754d2a099470930ffc25c4f8f06c3276b3121e77c8425a64a00284eb7aada27bc52c8e5b81824daf99fdde677ae308a905ca11cb58214d81f805c2a43",
+						"generatorKey": "66ce20bac353ba9fd16d88b7211db3e32ca13407b58d0f3c2c6e9d596beb0005",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lsk7t37omwar7wfkygzrrbj4ky598d2jtaawenrum",
+						"name": "genesis_51",
+						"blsKey": "8753b1d83cbcb3fc37b14fdf19a6d69e90b8697a2adbcbad1a28c68cb21fbb10993688c2797a97d64c332b5c979c912e",
+						"proofOfPossession": "917d32bb7f05556a83c7ad7c10d46a47d66498013fa908b87cdba76035353ebee036b60e478ccc5f9c23236e9c4575cd103617499c81e6882d1a5399e54172d1f6070ad58e1d33586cb9e1fbc5195f7a5aaad427cee6913eb8276fc5f9a0ab6d",
+						"generatorKey": "609b5d317d6397766099f8987f01205c8ee63024f5956be959e7388ac905a19b",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lsk8x32x2cfng74g7mzdj3drbr8sa5wyv4m4krytz",
+						"name": "genesis_52",
+						"blsKey": "859c6bbaa84e6b2fbdb8d8ab63860edb3981f19a5016e9647f8e9f8481ec97128dcb23a40ffed29586ce78b3d5cde971",
+						"proofOfPossession": "87d38085dc2a5fdff0fbe4b90bf9559a1eb4cb22bcc5569ab141175f406f1225a2a7951737453f4de4211014129a2bf204c700fbad511320a9f489c58a76805d7fd46720217e45fc1427581aad83d0cd804ffbe5dde638c2f57c8f20a2fc808d",
+						"generatorKey": "b2d206a265b2408faa4e2e27fbca249a77ba1899adf467aeb4c15a2cb4359c7c",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lsk8patjbjpga4eyfc3g6gj6jt7w8m47od822kbxt",
+						"name": "genesis_53",
+						"blsKey": "acecd0fee1f8e9ff2e1f6a3c6ab33c76e27c7d44e02ba69dcfe8fed0a207417358182d0664fff487f56005668eba6fd9",
+						"proofOfPossession": "903e3c4aee7a7e14b906359e6f52a9ddc6e675e10218708b5fa4c0f1d57f602e23c13299e16f0bae9ce79722c295052e03e709b1cf5caa9da48e96c691cd3bf0f6af1dbe544aa4450d8f03ef7d57a2b6d5a3b61830069a432da1f120cfb8f1fb",
+						"generatorKey": "5d50647fceb63698214259b0dc68f52361fb742d98dbb3498cba9e1faf53db6e",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lsk8bdztqyqa38av3kykwwneyfaow4vyoqq3f6kbs",
+						"name": "genesis_54",
+						"blsKey": "afc2ea838e1af9496704ac49284753e8639371b4599618e2695fc2902230681597dcea9b8e6ed02cc12f1ce7e3fa1077",
+						"proofOfPossession": "8602e8eebf8214b71e7ad6fb587c735339852b6f068135df304128d31255a6a681ea758e5bc5bfd7c3e2c4c6ccf0ee0f05b646246b781ce105bfe2fe262cc363c828203dcab07c76797b733cfe109860647f31fd1fc66f928e3cb28bffa9e345",
+						"generatorKey": "6502b210a87b944cfc69b8eea5adc142c65e7f1078e72f8962c3f3133a8612a5",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lsk8fmdfpsbmc2zgnnw6ybn9m5fy752djwqch3b45",
+						"name": "genesis_55",
+						"blsKey": "99f419934438b9614fa432674adc6d17053bdbed43490a7317938d43077febe0cc35cff4c0ce82a5889c85512ae27157",
+						"proofOfPossession": "8bfa1bf2ea88d677a387b1f910dd88342fc5eebf204a6350d2d042fdf0a97477722d5821d17d7e845707c9cd3046904705e9e97e188f1d4261559682cf3b965a05775c15b3f2f3c2826c8793f9eb7f48fe1c61fa11724653620eb9fe3728a0d7",
+						"generatorKey": "68048301b944b9d461fdbe7d8c2f0c5fe0aa7eb0470a1f9af0c9ee884a3a2fab",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskuu2tjzu7enervpzmycjw9zuev6of736kjtzqnn",
+						"name": "genesis_56",
+						"blsKey": "8d0eb94c56534aa27428f289cbe2c213281c2ae6afcf3342ff77c1b385bbe2e21f6b815ab008b545d0cdad9a40652013",
+						"proofOfPossession": "9260acd37e9fc84197286ea310f7b2f1ce766e4946d702a13c040fbb248727f3f77526b7bd805c978e7be651633a6ee602595262c43f5a7706f0911307c7afc95d43bd0d68c040138a2d8c6bf7cc4a85cab865f6603f52cdb22bfd8b3ccc0392",
+						"generatorKey": "e9b2852ab3d80581246f6c7b2904e32e271e3b466ccd9f40409c39254e298f55",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskuk8oyqx4tthqzwbg4ty8fd9jw27okvfaha9mvf",
+						"name": "genesis_57",
+						"blsKey": "b699eb71d1f9d6a315e6e72bfe5dfa54e55be030c2f7d9825fa69fc17b2234b07b52679913f3511a9be3314b1c0b1d9a",
+						"proofOfPossession": "923fb1cde5fb507643273537ffc722b8e4fa09453c64e79a919bce5a562eca2bb6b930faa9f3936a1209fd4e4fb8ee171271a5dc34e491f7f5bbb4826fdf35efd828f64c0ee253206ae3c6a809af4f44c08afe72074b7b8c4832ff31ba72958e",
+						"generatorKey": "a9377855981b081f0212e434dca7a7f321d86e254007ca020eaefc1396ec5302",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lsky3p9u59gteujd5cmntaz75hutgdsd8rtyzksrq",
+						"name": "genesis_58",
+						"blsKey": "af53760054df4d95cf5fa459da2623b1237cb091214b5a9c22b443f79e2490a0e99be4965d45377818fbc30bb785311d",
+						"proofOfPossession": "804aaa47210b8aa5097aaae5c7cc33c16b0506dc68d7b0991a23b1a9ae73d348b7efcc54b0ddca65d77920ce57ec17a513b3b49685a566c325302a1f5d7bae3a3fb0857f0367404d654c6865fb5651486a6da9d2fcc62007fed37505cdef4ad3",
+						"generatorKey": "d132d6b62dee2a5b866c40dd2bc628c3405e8c3203ab75f38088c6f33a999594",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lsky4bmyg8rvqt4qdqzwhvfa5v39aura7hsptyhpq",
+						"name": "genesis_59",
+						"blsKey": "b94bdd4dafa589d79771491222e9e3c8701de7c3221219fdb3229a8ca4428c5149541131f506c1409817704fc95ea3f0",
+						"proofOfPossession": "9847657d94f5512df48765e5070d15d3266ee51068bda25e8c52551620e52b22f0066790d6a9c8a43ed4b670104311b20ea4debd53a741365339ec3b2788ce1a6365fe8910826b35c3f2d7b231d2dc2ea0e5adbf4ddb9a94cf26efba58b07b6e",
+						"generatorKey": "9be19aa2c9418204d2933aba4fb71d80071646c31e6cd9caf5326c7012383414",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskyoh6ngfw9kmgge8fuxy5twzd3vqt3qca8adn6x",
+						"name": "genesis_60",
+						"blsKey": "97641e8c210bcd3ebdee71e29f6e74022fb94bfa17b8f6b9bfa1b1c63ba20d40c2896fe7bc10ac194b0de7338b6db128",
+						"proofOfPossession": "8961aa1ec1538f738e9e9312b65fa1b502e8ae1226a02bd79a9243d29eabae38f9900e5da47010a2765d0ae687f34e8516794efc63aefc1ad98f0d7111b489f10a21712173a217902f0f92980d4f2740b3a53d907fc1d3171a8a5c35499a1d3c",
+						"generatorKey": "76312cc48b8c66f43f685a169d80dfa51a9476148b79cef0179d83cfce66aee2",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskyhzzkujvmfk99v47sa8trutubecejbf6zbr4r6",
+						"name": "genesis_61",
+						"blsKey": "a2e68dc88efeae300a89c9800be0f25b5c60f8269b61ff57ab6741ac183c047ea034891b46104ccb2723786ad0d1f623",
+						"proofOfPossession": "a249278081e625bdf833c6478c6afdff77e64a61365b7ea167fb86cf13f2727e3482eccb516060eabd186f65664922ce15f00aa8925d5aa4a9f1348aeaaf5de27b95730c784e7d0cb8b7346f1827fe43888a80fc452017ad6296699777e9d079",
+						"generatorKey": "0c0978f22717bc4d43628f5428d9f085e9ec71f0739963cbcfb41e89141619a4",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskryvycvaxtn8dsb5a8wtmb2y6ruj48wzyhh8pcc",
+						"name": "genesis_62",
+						"blsKey": "822ca9ace4c8bbb7ae09b352f7b6bdd71052a60a11927c87901722703f87d4bcc63e1f8c3f86d3db176e9414b26404aa",
+						"proofOfPossession": "900b13f1fac39a72733f7aeb3bb4ec6414ed95c1cc8ce6aed664ec8fbf1112775353ee5b0d18724e2647fad5093e1658138eac3f93c77836823a487df0731bf7f89348400d38094cb14c657825a7d973d152b6d4a3e9a28cdecf3fb2d4298b0d",
+						"generatorKey": "70abf45ec0f0832b0724c87e3d57d852ccbea3a99f842b8991b2fd19d2d5cb61",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskrgzcea53dsxuwk84oq5fm92ktrmsux6t5u9eux",
+						"name": "genesis_63",
+						"blsKey": "a6fad922f1d85c1c1b52cad7a32c7779c7221769630033f54d4b91f70961def3d04c25da670c3c38e002219711ca1892",
+						"proofOfPossession": "88a48512f511bcee81735469d21d7f469249c7aed71b15e193fc05857cbff1bb8bc91f0eacc68dbba91355ab4caa44f519b0ea0e29de46e145d8b5edc045b6c2b32367ca3c1f10cb661a1c699e6b5e2e2c1ec6662ed27c4ff79b80d094dc642b",
+						"generatorKey": "59f7fca75a750af20d722c089c66313eca37f0d44a08b2a657b492d61371e6be",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lsktmsyvc5j9dcm5ycuds9dpjtqaafmcvzkv3ygf8",
+						"name": "genesis_64",
+						"blsKey": "a71010630efeaf901e16a324910f738ad22cebc021b2dfd45543f2d211c350dc250e2602e6be476aaedfd20d897d0fd9",
+						"proofOfPossession": "998f249db5f8f12b8e1911d381db014fc9503bf77a9305b4afe7899c9d99488800a2885a64bc8a60042a058b0b35cf9716abb51864495a277b162bd67683e46f06b932bc2a078fdb3d25c29545b686bd34cf2460200223dddb7ef674489c974c",
+						"generatorKey": "a6f191ea623fe055ae946c3f28bfa2b9d5586fba721aecb7e5058b045bd53981",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskt6gszqobmmfgwp8xhoqe2zwernzdvy4pwqyp57",
+						"name": "genesis_65",
+						"blsKey": "a58be4855626a14aab2b52d4013e2f4e8fb09af282fef1bae7134185951672726eeb42fcb6be80b44e868ccfe9a352f3",
+						"proofOfPossession": "90928228e339972e19ee943340be35ff1f58e8de04f7970edfa4a1f1a82b923c48ce794ab1c10503e92c33c67960bf030ae44742ac01d72e369ccd7b650f845f981bf262be7de264a2f73b97bb49505167d3b4447734b7ccf4c228b75543abb8",
+						"generatorKey": "b40bcd30beb454c859f764e158abf564d988ddbf6298d54cefd6bbfa029165fc",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lsktoanxng6sk9hon36g8v6aopdg83ybavk5h7wtu",
+						"name": "genesis_66",
+						"blsKey": "906bc3344af2cc5687ea07644eac499246bda4ccd0cd8896dd6e24ee5dbc3f0550ae6f25a1b5747f46055f774726510a",
+						"proofOfPossession": "b479a73d09ea2ce718725a9c7f106dca321ef27d07830193e809ad7bb13f8972959298992e29deabbe5802a10b94806f08d03c4f4d32e89680ac4821937d29c0e639901f1c8322dc798558e4e451ffb29de94cebc33c13ebc132efb282a0007f",
+						"generatorKey": "5b1bb3c3be484f434748a8faf37f404f5eebd62db378c8d94ebf466599d83671",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskt9kgt5hy2rczg6yojt5f6ng8mpfedz9o3vnvhu",
+						"name": "genesis_67",
+						"blsKey": "a71d14c9dbb33ec624eda6347c4ce31447808d279bdc500be9a3355e92e62ac7543c43b8e335dcdeb013c699e0e6f670",
+						"proofOfPossession": "93de0cd431426d97f8fff6af87c426eaecb85daacb29a2328c7fdb06f18af65c1f22c47768fc7acba7d416c956f983de13e2db7cd802c955cc584d6ef1b6063b629fb2c8ea637679e15f9c455890ad47057afcfe30f4f6e69a4973de4b126ac6",
+						"generatorKey": "7d073e424518093b7caa2c924b7e27e1fe72d18ba68518f09c79e21306941cde",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskkxz7qohs9xh2j25dg72genhgqobgwr8oq4e2gv",
+						"name": "genesis_68",
+						"blsKey": "a87c667c56ca55b4fdf3e1535939ded7d4bccadbc1eff58280676129edbc3d092cf356ecff2c1de7d8a557e658ba57d7",
+						"proofOfPossession": "97dc63c330e12e82a0625c79bdee691e93bc437fd8847337ef8c7afce99dbc50d22a38e93ad066dbe979c27c1b52119913acb2b1331112fca8e28f7d041a6491be13bf47e09edbbf9d6ec5a013c9fbd4386a861f9b6d457cb36db586aacd9185",
+						"generatorKey": "aea3e2f78a6ceef5f2d1a04d099e11b2b71ab3ff2fde4aadaa761750bb2879e3",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskkbkzx9ab22qveboayxugaz2zqsogk3x67rru5g",
+						"name": "genesis_69",
+						"blsKey": "8a8efb648f56781f38b2bb605b47b4fa9acd6d96148f625ca02241ce6d2757a8cef99cad7aaf0859591fecc1663d9949",
+						"proofOfPossession": "a5bdda33589e4952262651e3861bda565f289f39d2b4b810b68dff8a865ca23b944b6c04234ea5860d143eea736a41ad0f6cb959e332f16e2bd09b3987d05802445516347f279028b0c010a393164b1dc331346d26021019636dcca0a83b6690",
+						"generatorKey": "0084c848f777e1ca8bd0e42f679c6a62957cb49ab131efda2bd76dacd93a7985",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskk7nuvhyft73qr7vhafqs8586rqcjyzyjrrf69j",
+						"name": "genesis_70",
+						"blsKey": "a761a03e1064ab561459d084f1742bb990f5210b55a1f74d6c314be442dbe786cc6b326da83ad84be902d28042632bc5",
+						"proofOfPossession": "a711688d15585d3e6f840b3275acaf62f7026d16f67377584a65474019c89e33cce71d37f38b4ce1c5d792c30e4c3cfb01886de001bba14a18814de5ab213156b1a879de28ef29366faa05f6530439dcba4da11b4226db0287d110c80f1d8a1e",
+						"generatorKey": "1a0ef29bda29e9ebed67344c5a30bd659730ada201c2696ee4d89526cfe23a29",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskk2oebgxwch7xkcykvaty5kkybpmx75tumzxx6v",
+						"name": "genesis_71",
+						"blsKey": "92c091ba757e56a18564a542cdf2c3cfc2ac93627b10123022f9dad735483095cca8357b2dc834bc205cbf7b0688af63",
+						"proofOfPossession": "b4955bf8ffda3bfbac6cb853564a0d9ac1bfb97f8aadc67de0a00e314e1fd14997a64fa427ecc0a3cddf535dbffb84e20a5895ec9a3a727dd524cad66bc1fbb1365f46c63c2a80a84ac5d003f6f607b9d0b52f998cb80ef0392c5c2205abf188",
+						"generatorKey": "dbf57c1d0a34d2fa0840aa449896d72fa923064c0c400021ef6567fd59514766",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskqbpbk97qu38pvpc2jktw5oza4anamt6brpsktu",
+						"name": "genesis_72",
+						"blsKey": "88e4a24623b9fecb7685668ca630534d52fe70ca4879ce897788707212e7597d1b60aeb74cadbd29140066efa03a6a12",
+						"proofOfPossession": "b46d01eefa0a78b9180c353cec10c98c2fe42b60cb35cbe7a373dc5808f22144311ec3e806fdf0ef2b0ecb80e5aa49b6109d57171dcee0f27903edab6365ed6e4a4124ce90e3fcca7e1014a33e12f5e31a7b7da28f6f5c5dac875f7c2ad4eb57",
+						"generatorKey": "b25a8fd6f6a42502ddd8c6b2f34c553a4b6a26f0592482a246f81021f64da2bd",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskq64rrufozjav6ygcscktgfovq72zt95tw75h8z",
+						"name": "genesis_73",
+						"blsKey": "a456d763e297b1a15f48d7cd6a568c67bdcfb42dcaba8987222b2844c09dd20e35600c7bc95aa18564680a9ef92c71d3",
+						"proofOfPossession": "85decb8102d548f04f061c0e29fed342b918c38b51bcf0b57cb5747f71ab2f0aef034cfe5640a45302a9acb3fb2cf30016ef03ea716232fafc7ba5d234d782b981185c1e08258556c88f0a0b1f52d954a96985108e994c733cbae1041adf9018",
+						"generatorKey": "32006b9bdf89651ad2d26b5844827b0f5ea7ce3ccf71647c7cb34821d1ffb058",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskqs2see6tyesp73w57nbw3kd942zfwr5hz48xvk",
+						"name": "genesis_74",
+						"blsKey": "b0424a7c484727ea1d9182db3c0b10ebc5cd8fd11f836890ccfac1636d4c5743df61ed9d00df21d70deb0f257d2c8190",
+						"proofOfPossession": "b3aad179ad59993622b9284084db23d2de12253678b35574ef81d706219ed2421eef2a8b93ceffcda69708832bcaed4b047a018aaf388a4a1a6a9182079c0eed68cf61899ac91b30c9d33b185235a6a2219b9ab27edf0c519b5409d459f69e49",
+						"generatorKey": "a0ed2e2d0a0213ceb4cdeec14e9fc55664f24fd441d00cccbb82762a423223b6",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskex92hfxke37na5sw7f7oj2sp3gdkxuv3jzceo2",
+						"name": "genesis_75",
+						"blsKey": "83c25cd21ffa634162c71e9ef9ffe2f866b6f0d6c0b6b7e5b4c85de7ab204f14859d0c27b47186e9ddc6d5194fba41ff",
+						"proofOfPossession": "83cefc2b0c0c7f45c18c1c7f75a70551dffbd207a3002ecee337a192ee0212e289e1104f3ed5cd0758ad47710c642ea3140ae09adcbdb0dfbdcde55213715972986df94a254baa73dddda8ede0f0e58be969bac836269796c6c2bbbd5ccb3d3c",
+						"generatorKey": "e7306c712aae29fc350c3202b551d41a34567f51317c2da93a81f3bff3283a5c",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lske46hdyow3aycaxv2xj25qczav4xb3zh7mkjnnj",
+						"name": "genesis_76",
+						"blsKey": "9931aeb5d6f99c84ca5e9c76c9bd1d531e41609446382b64cdcf3d799c1fb258859a996771999222836693fa58ce4130",
+						"proofOfPossession": "ac557a90afbd50c0f7b2e2708f3b026f45efa17f5c6f63f20b009c844c38c0d5d1a2a81d1e22cf90785040e836c179690ec54c61d99682b99d7b309ea4b44ff4a6bfe203220038598979dec5fca9b6278591d06653494b915044c5d2a55ca022",
+						"generatorKey": "9eea65a1dfcd678793b03f07850b0a0fca1f1e54a3ea36715566674b6325f363",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lske6kzfppmqoezo4u2s29xvt6ckgmdjw4793uv6c",
+						"name": "genesis_77",
+						"blsKey": "b406f1d866ebd5b4ae763a6b01e67fc4bbb84f17227f843d654bbd1333b0035d13c61bbf2f8eab4a15a5eeef5027793f",
+						"proofOfPossession": "b3922152450ea4debe6911fd33ebbd599ddf2e55be05d5fe39d378bde9a563cc67597634597fa637056d3a8777ec238811afddf8adf6613f79377f001635f225bdae121cd1c1776789dfcc1cfb9d0ce4a5b39f7743efed215feee491ec69d290",
+						"generatorKey": "3f5222a215492ab634989aa044bf9a30a794d6c48b325796c31d173c30aafb85",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskewcb5vbceya5nwnopkyhnwdstv6oddc42mnu66",
+						"name": "genesis_78",
+						"blsKey": "87b7736ff44e0572fc123629055607920e7f76bc728cf42e3e0821c1f2b022cbc27334a27c77e1862310a39e97551967",
+						"proofOfPossession": "8ad36a4541b2b3c5c3bc8317059dc10df51a3dd9296dab4c81948f3e8aaa9fa2970bf4a91523efba3e5768937d46bfb9142c5ca9a96d5c89a12f3723a1deea8e64c900348ef870edcebf4692d44b166d7360e6941b31298354ea81a732992d7d",
+						"generatorKey": "0c8f24c751e912a769169a616833f0577883f841efbf67abaa38bf17ec760595",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskessfnaadorbxhf4nmxd57drrjcdabuv363bo9w",
+						"name": "genesis_79",
+						"blsKey": "af00c11ab297b7ad830a51402dbfe7a97fcbd74034fbe12a869f36b6a2302161d2d1683d64a30c6c49e46308d09f41a8",
+						"proofOfPossession": "876d8e66f76b33ebc2f6a9019d7a711861a3769f030db80f0b6ab76e0d8428385ddaa5c7744de6522b637c123de1061a06e0ef9f81d3d161da0ddd1f431577fdfc9b58a3d41d52d151f0581001280ceb643bd655c5d2098aeea61b22ed11abc0",
+						"generatorKey": "01d2ea9419454c9fabdf362b798d30787b66e786556c3839337ba29c09626db0",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskej6s44cvms2n8sdusv3ktmpphkezs495je65jx",
+						"name": "genesis_80",
+						"blsKey": "b363e9edfa99771f7dc85254f409ee84689e6c24606ed4d889f92d2e62584a7f997f7f4b025d7641d5b826cd95f63ed0",
+						"proofOfPossession": "987b09ed516ba3a602f6701a7d3483f5220228e3943be55c892fb172ed224d1c53c84396dbf94c45661621de01560fb613998f0dc3ff767d35b551b9f1de04dc4f626e8d09e140e57cede81322fe64cc64fe25c77e96b82046028a294520232d",
+						"generatorKey": "19c4dc30f311692f254cad202117e34f0333ce77fcb21407935c8b2062ea8da3",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskwz9foos3ah75xytm8s8wkp3db9m8zvg569x7fk",
+						"name": "genesis_81",
+						"blsKey": "88fc13640eba31cdc10ac273aa78e106f21c48d0d5d8b899f88264b089a3c81468f815824d6fa9b4159cf2e343ea23cd",
+						"proofOfPossession": "92e45dce01402c79cb873bbfd5def79c1a42778d0ec9cb76740f50c7d72b15e2fe73e1473fe06f3ebd253ee996c5d02d0125ef41c2508c266ebf3cbb4afa312fca0085d55ac1c527de8d15b5f24f123517f907ab82469fa0bb5182e7921b313b",
+						"generatorKey": "775b43b65adde12179c5d2ba5834f3269589d0f1ebd5379ea4e273c2db739999",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskw5pjg42nhxfvzt24nmy8eqykh9x47pvku7zp2z",
+						"name": "genesis_82",
+						"blsKey": "af6b2af7e639f9cd2610655c447539761ab26da40ff4147933770d52bfcdd5ce49eeebcb6bc03d7f0fcc78f174c54f68",
+						"proofOfPossession": "8952ca5c1d6669c0968679cfb852a5cfdd5d08f1487b12c1103ae16de705fad059cf450d5061f5fc64eafc9c35aaf246138a3fdc4bf7291abe1fb54ef439c0f8145b281b7e011acd25e4718532e009ba903f892a3a19e92d4dd5f9ed57f9bdf9",
+						"generatorKey": "54bcaaf5b0be5683bc73466d82fe376c07e9990866142dca79c462ae39a2d80c",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskw2zwd3czjtq9hfur8k8memzx8zcxqjysbj9q7x",
+						"name": "genesis_83",
+						"blsKey": "a20e8777df1d939e28ef4c98eae5d65663a85a785ba03cda3bc63a953969bdc600589f0f0dc773cde7aa673f7ccf68e1",
+						"proofOfPossession": "97f3a90c2c3f4245bc4d9dea527573155d147b2fb0398eadcb9672bbcfe527db93fb546c89b5a8e316c1f99dc18537ae0caeca1ca6c5f2a23cfe09ab122b016bd458a23978fedb288606ae927de5d4760e039e8e207eee24ad1ea44aa166089f",
+						"generatorKey": "e21c3438cf415450677e21c7c2c8f8627d5a53c2bee9f06922b4cfd361c9a40c",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lsk2z3mm75yurx6wdh6cc63o9rw6h8xtz4t3934rm",
+						"name": "genesis_84",
+						"blsKey": "a487f8a5392ec96b371948281c4bc70be34c52f79f4790a712a07fd221979b1dcb5219f7e833b9fc57cd40479c0c65ec",
+						"proofOfPossession": "a89b8cccd817a02e13e6db2caf48bd727656e42a8cd715da4cc94eb5f17a8dfaa7409dba73896d4c8daeecd3d1343b7f12f27e95f36c13d2b41d82bfe6175fd30c998826218f53abe80fc07c6ba00cc11314436e4306ce18480865338cb40336",
+						"generatorKey": "c8e52d48f9ec8cf5c969669141bfee088c4ffeeec22f2700161479485f832aef",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskachz7xez5sevwbmvrsckuz6pvam3uxo9x8grzd",
+						"name": "genesis_85",
+						"blsKey": "b44bfdafb5a78d00286ce06c39f89ffd5e871fdc4a0aebbccb2b10888c644cc90ef334bda5e62d8f3a27b1c183adb231",
+						"proofOfPossession": "ad73542d4e32184f3faeff46b765179513c8be1b93fe86c1966a49d90fd35174d3b03f9fcc973644716fd8592dd1e3d406de315a31800b2c4c28f7a2e417e960c52cac2e131082fda5e6ddcd0e69a84f5670dc56695fe45587648c13fe8d4cac",
+						"generatorKey": "d6a5e1b7300fb7cc7c4e642e1333c8846c1ea0c7affc6b6e615679ffe01352be",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskah7tzb6488wd3kw39w7z3cofyko88nfutah48f",
+						"name": "genesis_86",
+						"blsKey": "ab11439c5bb82f8a34732851a02a7357ccb37df87479063798cfc71af074a186242d8bb23efa527b2b120b90d8626314",
+						"proofOfPossession": "b328412e119831962cc8b41e2a96a93ec2a27dcbadf2d76380580551041a56b1cdb4407220c1c2158686873016227a1b19abed36e407ecca425f781c5374b6e5660da6f46574f5ff6d2d1ba21b612a56840fe4ccf41ef9f9322b8823dfcfbd90",
+						"generatorKey": "c64421849165579744c6b19443d6c45b7d70c4d491a29ae3b80ec0b98c323b05",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskdb5n7v6ttjhuexzaeww2ccq7mdegsgf8apwqoa",
+						"name": "genesis_87",
+						"blsKey": "823fa8d94719868e6934de4c8224a7eff1d47758babe94fc0cc5b7fcd6d5596877531414f0707de4f5c5a4c3f00453d3",
+						"proofOfPossession": "a8fc94093ae28a2772fc0cbaf08e72eced1d05c11140d815d53f4682376bc42f44813fa8c13631f20a0f8b9ddf6323fa12a304e0d993268bc7eb96085d1c412c80b9ae23b28bc6ff46c1976cc96fce5c087d16267ddbb4ac5384c7cf19d3c4d6",
+						"generatorKey": "87132b0a9695384edec4adcb3927efdd1c0cd0856d895e25c243df2908a03057",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskd2vftheo44ghatgznos6eqhrks5qzo2ev5gtq3",
+						"name": "genesis_88",
+						"blsKey": "854ddc6b87b20bf683c0343bb248a382b1e308f7b6bc6363db84d35873231f0f62061d547a7aaf7ce0624bcd2a96e64e",
+						"proofOfPossession": "a55586cb8744042602939a8c3f4143dd3b24477e0a0df436f84347e543bacf384094820d178c1242c7bcd37686ac51120a7330c606e65eeb5acf1274fb90afc96f7f57139be17dd86d3c95c9a17d8487b5c0b7ef9c5e7927241cac4e936a2443",
+						"generatorKey": "f9e90b833a68fdf76eda2908200ad30daffa0945aa63861901db5ecf3929a398",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lsksqaexpt67u6esah3v4sk2v8bnj7remqznahv3t",
+						"name": "genesis_89",
+						"blsKey": "9685635df5cffb377474bf34bdd0784b6ce821aa400d882197838913c12131063c82c25118436871a1b3ef1f10969020",
+						"proofOfPossession": "82f3da2548bd610853bc8d4016260002b713156075d986e46bce63f9320321ef28cf1c4908ada5501b66cb405e89dfbd02d6c1d102255120a098354e49e5a244f09ffde3deec0d7ac18646e75d3742b36713e9f6ff2b4153be6d3631678afc49",
+						"generatorKey": "c32d0d1ce11b901f3c7c51801406ffbac5f563a1176d3c0cf7d27b09ba86fb62",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskseds68hp3z4eabyogvtj2jnqrd8br6xgr3nxfs",
+						"name": "genesis_90",
+						"blsKey": "957026ec2120b71570d165a67655688045e023cdf3d43647f5191a9a1fa949323f6ea77329a5529ad7cc68b516fbcaa8",
+						"proofOfPossession": "b7d1584cb786e18ae01d90cb00f3f8a4256b1974dbc7340dd9c0c9917676602c98c9508f817e5be0c2056271549e7c40129c8c80ab53e188bc7e62340441514318bdd235c91aa755958e0ccbec96304b99dba9be95832aebcc4a0a76a0d597d1",
+						"generatorKey": "6ff4b619a189bee81b06d985268feb7d2f76a3e06b45b206e260027c2bba6a31",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lsksjdyoc3cwrc9exvfkvb57yhe622nftbjhjjc9d",
+						"name": "genesis_91",
+						"blsKey": "b7035e8adff882bb2f266a58f4540aedcb22b27e4d5d479a3b2adc1fe846f63a5e54783f8a6d2c0e96f5c483d224c6f8",
+						"proofOfPossession": "b423f296b14202a3cc81c00a91a945b2cd2b9d42578ca252bf23758288570e2407bee8b26dc87522d380aa3cd86223a705e0d758e0e8a430b9b61cdd25b8a826743c2ca6e89a28fc108224e754288fe83f47a5bc43b9a764bb99084b50e7e921",
+						"generatorKey": "29e39910f6cda130ac5a5af3c6effab752e430f3dbd2785d43b4fbc7734388d5",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskjz4jvcnkyunqwokbmek86shf3q82vtarbpvfur",
+						"name": "genesis_92",
+						"blsKey": "a4278be5ff4004eef11552f27e830d1e6fc01cf8bbbabfef15b9e8beb043aa01baae877201098374e1b31a9cfcbf0e5e",
+						"proofOfPossession": "a9db08bd09739c4abe4dc15d3dc63127e187f5fb12173e26e68550a72978dc7a6fa9e76abf7412ff6ce042bbf3b569c311eee68b8182116030038f4ba9db2063b7700d6c1c0ff3a1fa4429884fe33821ce8627de66510ef705495e208df91d8e",
+						"generatorKey": "7ef43e003244eaa5733328a3fa271785bd976a0c850543ed8de5dc61eb4d792a",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskjz9zps5bhmgqxs78hpqvovjs2wd6djc43gm9f6",
+						"name": "genesis_93",
+						"blsKey": "a456c4a3fd1674900e69b651d2c7599b404df95f60da63c33371383ae98cd95c46ae7de53e4ae8502ff45afab06c5b47",
+						"proofOfPossession": "abb5c45379674672a57a659667b0c2f838cb063976c4db913e9f781f9742bcb7677d49646d481531788b457a3ad231c51471f2161edbf3f7555ed87226cb1ce2f0284451517d35549aadf589f306b8c042a0a22028433b8f3d13846ce1e70c8e",
+						"generatorKey": "314a5c64d421e8c6d0ed0e47230b2c8780aa1aa4acc98fc8b72c659a2c4dc6a9",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskjzrmc58otgv2fyxrzuwakvzfyh2et3jv8f9ege",
+						"name": "genesis_94",
+						"blsKey": "81c218ae63131b717fe00789b766c180bc803e3e896a4a05ac3d6a8b8bd0ed496112519c356e1130169feadafd131b12",
+						"proofOfPossession": "95f0ca6054e83d5731c7294bff4b2957f89ee415036033f38b5d9a193cca44b4f4186870d6e7d554f6a46b7a6e19b0d6005c1c1ed546b0b22bad60677838d5b4b299d6dc3eb02c939b394bac14686e15a6bdc4f867a7ea3d211789f01c3afe05",
+						"generatorKey": "30e30e32b0020455746a888edfbaaa53fb6bf4a06536cc0bd6088b01ceb580ca",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskj5zqgkdy4pkhm85fbqwphxgzwcopax3h9mt4xh",
+						"name": "genesis_95",
+						"blsKey": "83582ef1e79eb83e0383458d58814bf32486d01823b1e3ee59f6134f33af2551389097c7e08a80cf8bdaa8a9a7badd54",
+						"proofOfPossession": "90ddf8e87063fb916a8cc42d50612897564a8ff88dc904edbd029931ab5489c60a78a5092b7cf2c28190e87f55d3471e046598dd426d48c65b45239fb36defeb9624fdd9b98e1f1c87b6e60a2fda3ecb2a9491b7dbb40702c865f1f893362601",
+						"generatorKey": "77c6e82bbeabfff4ece0bb8a9b9e8b803f55b1c5f480ab297da4dff3bdbb8df4",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskjufeymh3dnzqdrjqp6ccfjtfk79gmvouso699s",
+						"name": "genesis_96",
+						"blsKey": "a13bcf0e5776b17719d2c0f7619d147136b3a943c63cd71f5a64f60f20707617ec55077cb300cfb58d60434c098ca04a",
+						"proofOfPossession": "8a40dac335bafda4da4bda265c85e7481487d4158989dde7573f9d2589bcddc1cb35ce6e2f611444f91d803656412deb0a570d9eb537c34c84427e916ed3560d848e21f23bf2a932009885db25c6de3481375be2ef75fd9320400e5a8fca682d",
+						"generatorKey": "dc426c40362dd7b0dc29b4c453f3ebcce6c127efec65a222e057b473d9f0da10",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskjug2tv3canhoschu72nqfd5qujfhhcv69kby2a",
+						"name": "genesis_97",
+						"blsKey": "a7dae895dc7e977633a30f3b65cc271c1163a289b1c1ae0c2f50a394efc944c5391b333ce97c51ceee66b8c109e88442",
+						"proofOfPossession": "b7d7c7f816afa4eab80edef2cf480cb0ca97c319e8f680cc319a9eaa902c07bf8c110aafeada62b990f474b9a3a6c7c71836b78eb58d92f8b5b05098834888942c93b2407cdfe23163ccb0cee4cf63b499039852c6f26ee91b28e02fcb57df5d",
+						"generatorKey": "cc43dba5765150be9e92df36d0ed363aa1a544c9ace21e0502ed61640f879380",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskhewforxrtrcjjp5dnjv4tmufbf5r7d9j2a47z8",
+						"name": "genesis_98",
+						"blsKey": "89d2b417e45cc1139edfbff2b704a71d92e88fdfa7f42a160b06b8b7b1b4342032c75355ec19eb7bb8c76f65ae407a82",
+						"proofOfPossession": "b32999b16827842c295694413e95697addcb6909cc93f413460ce811150a49e3213ae08915eb887f8c1c6384f53dd8131336875138fe487bd6c8152e8208f7b8f9a79b9a1360ba3b5630425ab2233403cc87ecf49386b38109c20af75eeade9f",
+						"generatorKey": "8d9c4b5d4788b11c200cf8d4deaa380c652e5ce390b84178f458346f84980dc0",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskhhp5anuvprwsx82td4re9eo8m5moaaeyh4kyvc",
+						"name": "genesis_99",
+						"blsKey": "af7c9653b45dccd082d8c7e864a6209c9b04bf26edae528f12011b7bf9b54ae55c35636815df490d62db2c0860d15064",
+						"proofOfPossession": "b14dfd49b1019b2d2e99e6ebac6a2a22b1b102c3f718e0376aac0ffd459c9363270c54d4493c1d0073e54025bfc3d766052d9fdd39ec45d10f697723e1339d66ff3c8dbf7115451a3aa7820663841910f530baa5e76263faadfcf337525ae840",
+						"generatorKey": "c250adf4347b07a558fd5964c3db7fd0160416c3d9bc4687fc560a86721884a2",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskfg2zckwns7ucs7wbd9tmst5d4ma5weotb4ab5p",
+						"name": "genesis_100",
+						"blsKey": "a3487f58512db5d09b52d652deaca57a8e56d6495eea6638408a2ceee7ec9afc357312e7c70d564719a296a52af109e8",
+						"proofOfPossession": "b0e98d5c524410e9c2a080e1fd55e2c703c8ce53d71b859e7230313ad5e26bc908aa6023683f4476215efa30840d089c10e61391d185cdb7a17e38f0b2e450bad0e42048e80aec83dce665cd6303a12214773a97d3b33693d71ca71428972c66",
+						"generatorKey": "e5f7c91e43d26b52f5a5384621efcf844e0956f2f7ea0154d99dc05438ff744a",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskgp4hun77s48ymkw2xnfcp564szfvf9vng6y25t",
+						"name": "genesis_101",
+						"blsKey": "a275134c55d2828fc7eec7c8024ca8fb44840c68988239295bcbed4ed6c6652883b622ffa6bd1bd79a6e59af3e8f613d",
+						"proofOfPossession": "8d198fff34de82e7790d272f0a2d4e28266ef409bf32429e1c22672cb7015286bfcf2d4a24a39c1113500c8d874d189e08d9eb1f943f61535ba9d1ebefd6e9c26e51c106110e60a7c839db109251c6bb5d44b3ed45a2e095dc1449337bdc7456",
+						"generatorKey": "eeb510c4e9e22f163393a68674e668ffc6031d2eeaf826ae4ae796274b64b6d7",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					},
+					{
+						"address": "lskg33axfd6tayp3a2xzv36757oh97twnhqfo3cun",
+						"name": "genesis_102",
+						"blsKey": "933220ee1679b721a2ab0ef09cf815ee83d11de497f28a77d726b645bb424fc8039f7add88976c5e8196a18019154d73",
+						"proofOfPossession": "b5f5c47e8dbab9b67537810f549f2d6cfa1216d6e8f9df7829a381f8ac6e79784e5bb9e8c36e428001b24a72bc2e69d2071bfbb07ddc7a313bdf2cd1d31c589290f188a76fc801b1e14f9e2e71ef92a656d9e308897ad7bd70180676ddc92c08",
+						"generatorKey": "35bf45f2f59def43d3c02d74c6af007104d9ed7acd3f7dcbd0839c609a94d12a",
+						"lastGeneratedHeight": 0,
+						"isBanned": false,
+						"pomHeights": [],
+						"consecutiveMissedBlocks": 0
+					}
+				],
+				"voters": [],
+				"snapshots": [],
+				"genesisData": {
+					"initRounds": 3,
+					"initDelegates": [
+						"lskzc2rmaztwrova3xohsctzdmfaardyxqhgrx43k",
+						"lskzpgqryh9cug79kx3p7xp6nswn4sf79nxgpfjdu",
+						"lskzmxjqshzv75cf3ejhvowku9d9zxok3auaq79tb",
+						"lskxmb4y4b79yjb5ee5sh78ba4ohee8szgsy3vh3c",
+						"lskxdbvvmxxtng7mg5ghvjcets8qcvgtsfwnhzxq3",
+						"lskxdsaccqxy7r6w5dmumnqwe74pzwzc395j79sm6",
+						"lskvu7mmq95cxoww94vs8qx47joz2gf453dn3kfeo",
+						"lskc6epqwoapgrgjspnyspao3faaeb2ysr4mq2o3g",
+						"lskcr5x6fykj3349vtnhort5fnjxonpqtdxvmdffs",
+						"lskcet7jmymtv6eff939sgh5m3ttorbd8m7a2kgdc",
+						"lskcjooqqmv2pvndu74d7uetotsss29vgzu75fkmp",
+						"lskp8hv2m8zv997x8j4nqqwbw5mtz9q3mbzzcwoe2",
+						"lskpejn7pdy2ndb823be73k7wrs8vevva8fwrmnvt",
+						"lskpdqcyjammgedrdd9k2ow5v49kw6np448j7k9je",
+						"lskph5vgyt7rpanqdjzu28rkf4dea8u3wftz7qbku",
+						"lskmv4nxdh8cbysrwm4fav7gbrk3k4ktrwwcxzhed",
+						"lskmc3u7oxxpnbq9xtdbzycv5x7ojmopg7juq8wfe",
+						"lskbmzmzvjxxdb7x9qppmjs5hde5hecfnyz32m8zy",
+						"lskbn22yrez9562wrvtrcfwwkffghy5juft6ke5sb",
+						"lsknvt6yf7k3ze9oy2rn83azy259mz4nmfu2b6d97",
+						"lskn3xkbeoguowsb6s5fbo8eekt3dt8uwhgtow38q",
+						"lsknsa3onqto73ugm8whq5ohutvza6vz68wda4978",
+						"lskngtofktdr75cjt5uu82xg5rrcr6g6nstsc8seh",
+						"lsk3pz2ac574d637wv35mvs8gn2ptazdf4st2rngf",
+						"lsk3pdk4af48cufaczwzd2h7og2227hk5xghvyhx4",
+						"lsk39eqar95p9mqabbvhxhb5mfd9429uuem4qkhu5",
+						"lsk32ozhxr8fnpfnsw34fdvovn4sxcmy33t6ss2kq",
+						"lsk4z2tfj5v3zfo7zap34qr4mdvfw6cht5johaqpe",
+						"lsk429ph39fg7u7ofvx5t26x7odx8osqtgufkoxb5",
+						"lsk4jqra2n6nvh36hsdnkowzhxqgw9w8f2y9v58dv",
+						"lsk6xxr83mn327ff9qbunbp8hgqtfn2not5ynwmya",
+						"lsk642djjqmd77ywrfmd8mxa2zkrfgnn2bnh6rn79",
+						"lsk69khqogqyavao59q7wo8zueb49z9xrxtks3ec2",
+						"lsk6w9eaaeh35uo2ra6jcy4hptkcurm3x9sncf3y3",
+						"lsk6dv4qeh43rcb8mzbpvyuy9zrwdkjsa9ozatxd7",
+						"lsk6jx32hh7pua5wmogms2zxqzejaaa5gr9ozz8xd",
+						"lsk57k87m688xvrnz3ystrpnxev7eo9qwnbc8no7m",
+						"lsk5emmgupfkaohxzwz8guzqhjwadvndpwc6tcx9e",
+						"lsk5safx93no74yzhhdns4bh4wnwxkfrmydx2dmtu",
+						"lsk5g3msmbgzyda5zabywhygsfqj7bro7bmpk53u8",
+						"lskoyzr6qgkbrak3ex9w9o2zaez4wvfgoznndzqt3",
+						"lskoga3um37oywdeza6cus3z7mjqhp9ovquk5sw4j",
+						"lsk9bd2zhh23ruaa7yfyjs656m5c2oeqqn89jhtxz",
+						"lsk975yx4zzw5dtgg27qhnfuzhzp7p6pcmatoa8ka",
+						"lsk9qc8ouzwhupz3wg2k5xd8x3y3h5poanjsbhqgw",
+						"lsk9weq9uqtw3pksbfbd2rhky7jefbdt3v52bhr2j",
+						"lsk9gkspeg888k2zcz9267wz3hpukeqk7ekhwjmcc",
+						"lsk9gg8wmrh8kbbdmqcjk5xffe3d8nudbdcuxp8yq",
+						"lsk7pmghqeto7qvt926qya2za29qonkvuv3gdpwx4",
+						"lsk7354nvyfr9oqmhy57vnuwknb7k6k8wao4m8kj8",
+						"lsk73shrbwt6m4owo5ksgsj8tpny6chufsp5f799n",
+						"lsk7t37omwar7wfkygzrrbj4ky598d2jtaawenrum",
+						"lsk8x32x2cfng74g7mzdj3drbr8sa5wyv4m4krytz",
+						"lsk8patjbjpga4eyfc3g6gj6jt7w8m47od822kbxt",
+						"lsk8bdztqyqa38av3kykwwneyfaow4vyoqq3f6kbs",
+						"lsk8fmdfpsbmc2zgnnw6ybn9m5fy752djwqch3b45",
+						"lskuu2tjzu7enervpzmycjw9zuev6of736kjtzqnn",
+						"lskuk8oyqx4tthqzwbg4ty8fd9jw27okvfaha9mvf",
+						"lsky3p9u59gteujd5cmntaz75hutgdsd8rtyzksrq",
+						"lsky4bmyg8rvqt4qdqzwhvfa5v39aura7hsptyhpq",
+						"lskyoh6ngfw9kmgge8fuxy5twzd3vqt3qca8adn6x",
+						"lskyhzzkujvmfk99v47sa8trutubecejbf6zbr4r6",
+						"lskryvycvaxtn8dsb5a8wtmb2y6ruj48wzyhh8pcc",
+						"lskrgzcea53dsxuwk84oq5fm92ktrmsux6t5u9eux",
+						"lsktmsyvc5j9dcm5ycuds9dpjtqaafmcvzkv3ygf8",
+						"lskt6gszqobmmfgwp8xhoqe2zwernzdvy4pwqyp57",
+						"lsktoanxng6sk9hon36g8v6aopdg83ybavk5h7wtu",
+						"lskt9kgt5hy2rczg6yojt5f6ng8mpfedz9o3vnvhu",
+						"lskkxz7qohs9xh2j25dg72genhgqobgwr8oq4e2gv",
+						"lskkbkzx9ab22qveboayxugaz2zqsogk3x67rru5g",
+						"lskk7nuvhyft73qr7vhafqs8586rqcjyzyjrrf69j",
+						"lskk2oebgxwch7xkcykvaty5kkybpmx75tumzxx6v",
+						"lskqbpbk97qu38pvpc2jktw5oza4anamt6brpsktu",
+						"lskq64rrufozjav6ygcscktgfovq72zt95tw75h8z",
+						"lskqs2see6tyesp73w57nbw3kd942zfwr5hz48xvk",
+						"lskex92hfxke37na5sw7f7oj2sp3gdkxuv3jzceo2",
+						"lske46hdyow3aycaxv2xj25qczav4xb3zh7mkjnnj",
+						"lske6kzfppmqoezo4u2s29xvt6ckgmdjw4793uv6c",
+						"lskewcb5vbceya5nwnopkyhnwdstv6oddc42mnu66",
+						"lskessfnaadorbxhf4nmxd57drrjcdabuv363bo9w",
+						"lskej6s44cvms2n8sdusv3ktmpphkezs495je65jx",
+						"lskwz9foos3ah75xytm8s8wkp3db9m8zvg569x7fk",
+						"lskw5pjg42nhxfvzt24nmy8eqykh9x47pvku7zp2z",
+						"lskw2zwd3czjtq9hfur8k8memzx8zcxqjysbj9q7x",
+						"lsk2z3mm75yurx6wdh6cc63o9rw6h8xtz4t3934rm",
+						"lskachz7xez5sevwbmvrsckuz6pvam3uxo9x8grzd",
+						"lskah7tzb6488wd3kw39w7z3cofyko88nfutah48f",
+						"lskdb5n7v6ttjhuexzaeww2ccq7mdegsgf8apwqoa",
+						"lskd2vftheo44ghatgznos6eqhrks5qzo2ev5gtq3",
+						"lsksqaexpt67u6esah3v4sk2v8bnj7remqznahv3t",
+						"lskseds68hp3z4eabyogvtj2jnqrd8br6xgr3nxfs",
+						"lsksjdyoc3cwrc9exvfkvb57yhe622nftbjhjjc9d",
+						"lskjz4jvcnkyunqwokbmek86shf3q82vtarbpvfur",
+						"lskjz9zps5bhmgqxs78hpqvovjs2wd6djc43gm9f6",
+						"lskjzrmc58otgv2fyxrzuwakvzfyh2et3jv8f9ege",
+						"lskj5zqgkdy4pkhm85fbqwphxgzwcopax3h9mt4xh",
+						"lskjufeymh3dnzqdrjqp6ccfjtfk79gmvouso699s",
+						"lskjug2tv3canhoschu72nqfd5qujfhhcv69kby2a",
+						"lskhewforxrtrcjjp5dnjv4tmufbf5r7d9j2a47z8",
+						"lskhhp5anuvprwsx82td4re9eo8m5moaaeyh4kyvc",
+						"lskfg2zckwns7ucs7wbd9tmst5d4ma5weotb4ab5p"
+					]
+				}
+			},
+			"schema": {
+				"$id": "/dpos/module/genesis",
+				"type": "object",
+				"required": ["validators", "voters", "snapshots", "genesisData"],
+				"properties": {
+					"validators": {
+						"type": "array",
+						"fieldNumber": 1,
+						"items": {
+							"type": "object",
+							"required": [
+								"address",
+								"name",
+								"blsKey",
+								"proofOfPossession",
+								"generatorKey",
+								"lastGeneratedHeight",
+								"isBanned",
+								"pomHeights",
+								"consecutiveMissedBlocks"
+							],
+							"properties": {
+								"address": {
+									"dataType": "bytes",
+									"format": "lisk32",
+									"fieldNumber": 1
+								},
+								"name": {
+									"dataType": "string",
+									"fieldNumber": 2,
+									"minLength": 1,
+									"maxLength": 20
+								},
+								"blsKey": {
+									"dataType": "bytes",
+									"fieldNumber": 3,
+									"minLength": 48,
+									"maxLength": 48
+								},
+								"proofOfPossession": {
+									"dataType": "bytes",
+									"fieldNumber": 4,
+									"minLength": 96,
+									"maxLength": 96
+								},
+								"generatorKey": {
+									"dataType": "bytes",
+									"fieldNumber": 5,
+									"minLength": 32,
+									"maxLength": 32
+								},
+								"lastGeneratedHeight": {
+									"dataType": "uint32",
+									"fieldNumber": 6
+								},
+								"isBanned": {
+									"dataType": "boolean",
+									"fieldNumber": 7
+								},
+								"pomHeights": {
+									"type": "array",
+									"fieldNumber": 8,
+									"items": {
+										"dataType": "uint32"
+									}
+								},
+								"consecutiveMissedBlocks": {
+									"dataType": "uint32",
+									"fieldNumber": 9
+								}
+							}
+						}
+					},
+					"voters": {
+						"type": "array",
+						"fieldNumber": 2,
+						"items": {
+							"type": "object",
+							"required": ["address", "sentVotes", "pendingUnlocks"],
+							"properties": {
+								"address": {
+									"dataType": "bytes",
+									"format": "lisk32",
+									"fieldNumber": 1
+								},
+								"sentVotes": {
+									"type": "array",
+									"fieldNumber": 2,
+									"items": {
+										"type": "object",
+										"required": ["delegateAddress", "amount"],
+										"properties": {
+											"delegateAddress": {
+												"dataType": "bytes",
+												"format": "lisk32",
+												"fieldNumber": 1
+											},
+											"amount": {
+												"dataType": "uint64",
+												"fieldNumber": 2
+											}
+										}
+									}
+								},
+								"pendingUnlocks": {
+									"type": "array",
+									"fieldNumber": 3,
+									"items": {
+										"type": "object",
+										"required": ["delegateAddress", "amount", "unvoteHeight"],
+										"properties": {
+											"delegateAddress": {
+												"dataType": "bytes",
+												"fieldNumber": 1,
+												"format": "lisk32"
+											},
+											"amount": {
+												"dataType": "uint64",
+												"fieldNumber": 2
+											},
+											"unvoteHeight": {
+												"dataType": "uint32",
+												"fieldNumber": 3
+											}
+										}
+									}
+								}
+							}
+						}
+					},
+					"snapshots": {
+						"type": "array",
+						"fieldNumber": 3,
+						"maxLength": 3,
+						"items": {
+							"type": "object",
+							"required": ["roundNumber", "activeDelegates", "delegateWeightSnapshot"],
+							"properties": {
+								"roundNumber": {
+									"dataType": "uint32",
+									"fieldNumber": 1
+								},
+								"activeDelegates": {
+									"type": "array",
+									"fieldNumber": 2,
+									"items": {
+										"dataType": "bytes",
+										"format": "lisk32"
+									}
+								},
+								"delegateWeightSnapshot": {
+									"type": "array",
+									"fieldNumber": 3,
+									"items": {
+										"type": "object",
+										"required": ["delegateAddress", "delegateWeight"],
+										"properties": {
+											"delegateAddress": {
+												"dataType": "bytes",
+												"fieldNumber": 1,
+												"format": "lisk32"
+											},
+											"delegateWeight": {
+												"dataType": "uint64",
+												"fieldNumber": 2
+											}
+										}
+									}
+								}
+							}
+						}
+					},
+					"genesisData": {
+						"type": "object",
+						"fieldNumber": 4,
+						"required": ["initRounds", "initDelegates"],
+						"properties": {
+							"initRounds": {
+								"dataType": "uint32",
+								"fieldNumber": 1
+							},
+							"initDelegates": {
+								"type": "array",
+								"fieldNumber": 2,
+								"items": {
+									"dataType": "bytes",
+									"format": "lisk32"
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	]
+}
