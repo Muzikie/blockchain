@@ -19,9 +19,9 @@ jobs:
       uses: browniebroke/read-nvmrc-action@v1
 
     - uses: actions/setup-node@v3
-    with:
-        # use the output from the action
-        node-version: '${{ steps.nvmrc.outputs.node_version }}'
+      with:
+            # use the output from the action
+            node-version: '${{ steps.nvmrc.outputs.node_version }}'
 
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
