@@ -29,5 +29,6 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci --registry https://npm.lisk.com
+    - run: npm run lint
     - run: npm run build
     - run: npm test
