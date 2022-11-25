@@ -13,6 +13,8 @@ import {
   // BlockExecuteContext,
   // BlockAfterExecuteContext,
 } from 'lisk-sdk';
+import { VerifyStatus } from 'lisk-framework';
+import { CreateCommand } from "./commands/create_command";
 import { AudioEndpoint } from './endpoint';
 import { AudioMethod } from './method';
 import { AudioAccountStore } from './stores/audioAccount';
@@ -21,7 +23,9 @@ import { AudioStore } from './stores/audio';
 export class AudioModule extends BaseModule {
     public endpoint = new AudioEndpoint(this.stores, this.offchainStores);
     public method = new AudioMethod(this.stores, this.events);
-    public commands = [];
+    public commands = [
+      new CreateCommand(this.stores, this.events),
+    ];
 
     public constructor() {
       super();
@@ -61,6 +65,9 @@ export class AudioModule extends BaseModule {
     // Lifecycle hooks
     public async verifyTransaction(_context: TransactionVerifyContext): Promise<VerificationResult> {
       // verify transaction will be called multiple times in the transaction pool
+      return {
+        status: VerifyStatus.OK,
+      };
     }
 
   // public async beforeCommandExecute(_context: TransactionExecuteContext): Promise<void> {}
