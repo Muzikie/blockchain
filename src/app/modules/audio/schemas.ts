@@ -5,26 +5,26 @@ export const audioStoreSchema = {
   fieldNumber: 1,
   properties: {
     name: {
-      type: 'string',
+      dataType: 'string',
       fieldNumber: 1,
     },
     releaseYear: {
-      type: 'unit32',
+      dataType: 'uint32',
       fieldNumber: 2,
     },
     artistName: {
-      type: 'string',
+      dataType: 'string',
       fieldNumber: 3,
     },
     genre: {
       type: 'array',
       fieldNumber: 4,
       items: {
-        type: 'unit32',
+        dataType: 'uint32',
       },
     },
     ownerAddress: {
-      type: 'bytes',
+      dataType: 'bytes',
       fieldNumber: 5,
     },
   },
@@ -47,23 +47,23 @@ export const accountStoreSchema = {
 };
 
 export const createCommandParamsSchema = {
-  $id: 'audio/create-command',
+  $id: 'audio/CreateCommand',
   title: 'CreateAsset transaction asset for audio module',
   type: 'object',
   required: ['name', 'releaseYear', 'artistName', 'genre'],
   properties: {
     name: {
-      type: 'string',
+      dataType: 'string',
       fieldNumber: 1,
       minLength: 3,
       maxLength: 40,
     },
     releaseYear: {
-      type: 'unit32',
+      dataType: 'uint32',
       fieldNumber: 2,
     },
     artistName: {
-      type: 'string',
+      dataType: 'string',
       fieldNumber: 3,
       minLength: 3,
       maxLength: 40,
@@ -72,7 +72,7 @@ export const createCommandParamsSchema = {
       type: 'array',
       fieldNumber: 4,
       items: {
-        type: 'unit32',
+        dataType: 'uint32',
       },
     },
   },
