@@ -7,15 +7,16 @@ import {
   BlockVerifyContext,
   TransactionVerifyContext,
   VerificationResult,
-  TransactionExecuteContext,
-  GenesisBlockExecuteContext,
   ModuleMetadata,
-  BlockExecuteContext,
-  BlockAfterExecuteContext,
+  // TransactionExecuteContext,
+  // GenesisBlockExecuteContext,
+  // BlockExecuteContext,
+  // BlockAfterExecuteContext,
 } from 'lisk-sdk';
 import { AudioEndpoint } from './endpoint';
 import { AudioMethod } from './method';
 import { AudioAccountStore } from './stores/audioAccount';
+import { AudioStore } from './stores/audio';
 
 export class AudioModule extends BaseModule {
     public endpoint = new AudioEndpoint(this.stores, this.offchainStores);
@@ -25,6 +26,7 @@ export class AudioModule extends BaseModule {
     public constructor() {
       super();
       this.stores.register(AudioAccountStore, new AudioAccountStore(this.name));
+      this.stores.register(AudioStore, new AudioStore(this.name));
     }
 
     public metadata(): ModuleMetadata {
@@ -61,15 +63,15 @@ export class AudioModule extends BaseModule {
       // verify transaction will be called multiple times in the transaction pool
     }
 
-    public async beforeCommandExecute(_context: TransactionExecuteContext): Promise<void> {}
+  // public async beforeCommandExecute(_context: TransactionExecuteContext): Promise<void> {}
 
-    public async afterCommandExecute(_context: TransactionExecuteContext): Promise<void> {}
+  // public async afterCommandExecute(_context: TransactionExecuteContext): Promise<void> {}
 
-    public async initGenesisState(_context: GenesisBlockExecuteContext): Promise<void> {}
+  // public async initGenesisState(_context: GenesisBlockExecuteContext): Promise<void> {}
 
-    public async finalizeGenesisState(_context: GenesisBlockExecuteContext): Promise<void> {}
+  // public async finalizeGenesisState(_context: GenesisBlockExecuteContext): Promise<void> {}
 
-    public async beforeTransactionsExecute(_context: BlockExecuteContext): Promise<void> {}
+  // public async beforeTransactionsExecute(_context: BlockExecuteContext): Promise<void> {}
 
-    public async afterTransactionsExecute(_context: BlockAfterExecuteContext): Promise<void> {}
+  // public async afterTransactionsExecute(_context: BlockAfterExecuteContext): Promise<void> {}
 }
