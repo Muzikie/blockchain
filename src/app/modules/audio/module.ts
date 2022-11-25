@@ -60,25 +60,15 @@ export class AudioModule extends BaseModule {
       // verify transaction will be called multiple times in the transaction pool
     }
 
-    public async beforeCommandExecute(_context: TransactionExecuteContext): Promise<void> {
-    }
+    public async beforeCommandExecute(_context: TransactionExecuteContext): Promise<void> {}
 
-    public async afterCommandExecute(_context: TransactionExecuteContext): Promise<void> {
+    public async afterCommandExecute(_context: TransactionExecuteContext): Promise<void> {}
 
-    }
-    public async initGenesisState(_context: GenesisBlockExecuteContext): Promise<void> {
+    public async initGenesisState(_context: GenesisBlockExecuteContext): Promise<void> {}
 
-    }
+    public async finalizeGenesisState(_context: GenesisBlockExecuteContext): Promise<void> {}
 
-    public async finalizeGenesisState(_context: GenesisBlockExecuteContext): Promise<void> {
+    public async beforeTransactionsExecute(_context: BlockExecuteContext): Promise<void> {}
 
-    }
-
-    public async beforeTransactionsExecute(_context: BlockExecuteContext): Promise<void> {
-
-    }
-
-    public async afterTransactionsExecute(_context: BlockAfterExecuteContext): Promise<void> {
-
-    }
+    public async afterTransactionsExecute(_context: BlockAfterExecuteContext): Promise<void> {}
 }
