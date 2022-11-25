@@ -15,6 +15,7 @@ import {
 } from 'lisk-sdk';
 import { AudioEndpoint } from './endpoint';
 import { AudioMethod } from './method';
+import { AudioAccountStore } from './stores/audioAccount';
 
 export class AudioModule extends BaseModule {
     public endpoint = new AudioEndpoint(this.stores, this.offchainStores);
@@ -23,7 +24,7 @@ export class AudioModule extends BaseModule {
 
     public constructor() {
       super();
-      // registeration of stores and events
+      this.stores.register(AudioAccountStore, new AudioAccountStore(this.name));
     }
 
     public metadata(): ModuleMetadata {
