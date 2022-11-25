@@ -5,4 +5,7 @@ module.exports = {
 		tsconfigRootDir: __dirname,
 	},
 	extends: ['lisk-base/ts'],
+	rules: {
+		indent: ['error', 2],
+	},
 };
