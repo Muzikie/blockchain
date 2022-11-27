@@ -82,3 +82,16 @@ export const createCommandParamsSchema = {
     },
   },
 };
+
+export const destroyCommandParamsSchema = {
+  $id: 'audio/DestroyCommand',
+  title: 'DestroyAsset transaction asset for audio module',
+  type: 'object',
+  required: ['audioID'],
+  properties: {
+    audioID: {
+      dataType: 'bytes',
+      fieldNumber: 1,
+    },
+  },
+};

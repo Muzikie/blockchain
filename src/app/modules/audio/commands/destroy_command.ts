@@ -1,0 +1,59 @@
+/* eslint-disable class-methods-use-this */
+
+import {
+  BaseCommand,
+  CommandVerifyContext,
+  CommandExecuteContext,
+  VerificationResult,
+  VerifyStatus,
+} from 'lisk-sdk';
+import { destroyCommandParamsSchema } from '../schemas';
+import { DestroyCommandParams } from '../types';
+import { AudioAccountStore } from '../stores/audioAccount';
+import { AudioStore } from '../stores/audio';
+
+export class DestroyCommand extends BaseCommand {
+  public schema = destroyCommandParamsSchema;
+
+  // eslint-disable-next-line @typescript-eslint/require-await
+  public async verify(context: CommandVerifyContext<DestroyCommandParams>): Promise<VerificationResult> {
+    if (!Buffer.isBuffer(context.params.audioID)) {
+      return {
+        status: VerifyStatus.FAIL,
+        error: new Error('Audio ID must be a buffer'),
+      }
+    }
+    return { status: VerifyStatus.OK };
+  }
+
+  public async execute(context: CommandExecuteContext<DestroyCommandParams>): Promise<void> {
+    const {
+      params,
+      transaction,
+    } = context;
+    const audioAccountSubStore = this.stores.get(AudioAccountStore);
+    const audioSubStore = this.stores.get(AudioStore);
+
+    // Get the audio object from the blockchain
+    const audioExists = await audioSubStore.has(context, params.audioID);
+    if (!audioExists) {
+      throw new Error('Audio does not exist.');
+    }
+
+    const audio = await audioSubStore.get(context, params.audioID);
+
+    // Check if the sender owns the audio
+    if (!audio.ownerAddress.equals(transaction.senderAddress)) {
+      throw new Error('You cannot destroy an audio that you do not own.');
+    }
+
+    // Delete the audio object from the blockchain
+    await audioSubStore.del(context, params.audioID);
+
+    // Delete the audio ID from the sender account
+    const audioAccount = await audioAccountSubStore.get(context, transaction.senderAddress);
+    const audioIndex = audioAccount.audio.audios.findIndex((id) => id.equals(params.audioID));
+    audioAccount.audio.audios.splice(audioIndex, 1);
+    await audioAccountSubStore.set(context, transaction.senderAddress, audioAccount);
+  }
+}
