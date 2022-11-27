@@ -44,7 +44,7 @@ export class AudioEndpoint extends BaseEndpoint {
     const audioSubStore = this.stores.get(AudioStore);
     const { audioID } = context.params;
 
-    let query: Buffer = Buffer.alloc(0)
+    let query: Buffer;
 
     if (Buffer.isBuffer(audioID)) {
       query = audioID;
