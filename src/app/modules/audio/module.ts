@@ -16,6 +16,7 @@ import {
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { VerifyStatus } from 'lisk-framework';
 import { CreateCommand } from "./commands/create_command";
+import { DestroyCommand } from "./commands/destroy_command";
 import { AudioEndpoint } from './endpoint';
 import { AudioMethod } from './method';
 import { AudioAccountStore } from './stores/audioAccount';
@@ -26,6 +27,7 @@ export class AudioModule extends BaseModule {
     public method = new AudioMethod(this.stores, this.events);
     public commands = [
       new CreateCommand(this.stores, this.events),
+      new DestroyCommand(this.stores, this.events),
     ];
 
     public constructor() {

@@ -32,3 +32,7 @@ export interface CreateCommandParams {
 	artistName: string;
 	genre: number[];
 }
+
+export interface DestroyCommandParams {
+	audioID: Buffer;
+}
