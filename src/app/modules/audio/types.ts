@@ -1,22 +1,25 @@
 export interface Audio {
-	ownerAddress: Buffer;
 	name: string;
-	releaseYear: number;
+	releaseYear: string;
 	artistName: string;
-	genre: number[];
+	ownerAddress: Buffer;
 }
 
 export interface AudioAccount {
-	audios: Buffer[];
+	audio: {
+		audios: Buffer[];
+	};
 }
 
 export interface AudioAccountJSON {
-	audios: string[];
+	audio: {
+		audios: string[];
+	};
 }
 
 export interface CreateCommandParams {
 	name: string;
-	releaseYear: number;
+	releaseYear: string;
 	artistName: string;
 	genre: number[];
 }
