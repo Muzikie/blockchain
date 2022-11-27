@@ -2,12 +2,12 @@ import { BaseEndpoint, codec } from 'lisk-sdk';
 import { ModuleEndpointContext } from 'lisk-framework';
 import { address as cryptoAddress } from '@liskhq/lisk-cryptography';
 // import { getAllAudios, getAudio, createAudio } from './controller';
-import { AudioJSON } from './types';
+import { AudioAccountJSON } from './types';
 import { accountStoreSchema } from './schemas';
 import { AudioAccountStore } from './stores/audioAccount';
 
 export class AudioEndpoint extends BaseEndpoint {
-  public async getAccount(context: ModuleEndpointContext): Promise<AudioJSON> {
+  public async getAccount(context: ModuleEndpointContext): Promise<AudioAccountJSON> {
     // const accountSubStore = this.stores.get(LNSAccountStore);
     const audioAccountSubStore = this.stores.get(AudioAccountStore);
     const { address } = context.params;
@@ -36,7 +36,7 @@ export class AudioEndpoint extends BaseEndpoint {
       context,
       addressBuffer,
     );
-    const accountJSON: AudioJSON = codec.toJSON(accountStoreSchema, accountData);
+    const accountJSON: AudioAccountJSON = codec.toJSON(accountStoreSchema, accountData);
     return accountJSON;
   }
 }

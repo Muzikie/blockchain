@@ -10,6 +10,10 @@ export interface AudioAccount {
 	audios: Buffer[];
 }
 
+export interface AudioAccountJSON {
+	audios: string[];
+}
+
 export interface CreateCommandParams {
 	name: string;
 	releaseYear: number;
