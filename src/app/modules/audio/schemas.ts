@@ -1,15 +1,14 @@
 export const audioStoreSchema = {
   $id: 'audio/audio',
   type: 'object',
-  required: ['name', 'releaseYear', 'artistName', 'genre'],
-  fieldNumber: 1,
+  required: ['name', 'releaseYear', 'artistName', 'genre', 'ownerAddress'],
   properties: {
     name: {
       dataType: 'string',
       fieldNumber: 1,
     },
     releaseYear: {
-      dataType: 'uint32',
+      dataType: 'string',
       fieldNumber: 2,
     },
     artistName: {
@@ -31,16 +30,22 @@ export const audioStoreSchema = {
 };
 
 export const accountStoreSchema = {
-  $id: 'audio/accounts',
+  $id: 'audio/account',
   type: 'object',
-  required: ['audios'],
-  fieldNumber: 1,
+  required: ['audio'],
   properties: {
-    audios: {
-      type: 'array',
+    audio: {
+      type: 'object',
+      required: ['audios'],
       fieldNumber: 1,
-      items: {
-        dataType: 'bytes',
+      properties: {
+        audios: {
+          type: 'array',
+          fieldNumber: 1,
+          items: {
+            dataType: 'bytes',
+          },
+        },
       },
     },
   },
@@ -59,7 +64,7 @@ export const createCommandParamsSchema = {
       maxLength: 40,
     },
     releaseYear: {
-      dataType: 'uint32',
+      dataType: 'string',
       fieldNumber: 2,
     },
     artistName: {

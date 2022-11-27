@@ -13,6 +13,7 @@ import {
   // BlockExecuteContext,
   // BlockAfterExecuteContext,
 } from 'lisk-sdk';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { VerifyStatus } from 'lisk-framework';
 import { CreateCommand } from "./commands/create_command";
 import { AudioEndpoint } from './endpoint';
@@ -63,6 +64,7 @@ export class AudioModule extends BaseModule {
     }
 
     // Lifecycle hooks
+    // eslint-disable-next-line @typescript-eslint/require-await
     public async verifyTransaction(_context: TransactionVerifyContext): Promise<VerificationResult> {
       // verify transaction will be called multiple times in the transaction pool
       return {
