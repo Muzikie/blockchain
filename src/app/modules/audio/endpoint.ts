@@ -1,14 +1,13 @@
 import { BaseEndpoint, codec } from 'lisk-sdk';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { ModuleEndpointContext } from 'lisk-framework';
 import { address as cryptoAddress } from '@liskhq/lisk-cryptography';
-// import { getAllAudios, getAudio, createAudio } from './controller';
 import { AudioAccountJSON } from './types';
 import { accountStoreSchema } from './schemas';
 import { AudioAccountStore } from './stores/audioAccount';
 
 export class AudioEndpoint extends BaseEndpoint {
   public async getAccount(context: ModuleEndpointContext): Promise<AudioAccountJSON> {
-    // const accountSubStore = this.stores.get(LNSAccountStore);
     const audioAccountSubStore = this.stores.get(AudioAccountStore);
     const { address } = context.params;
 
