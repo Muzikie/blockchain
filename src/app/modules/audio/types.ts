@@ -2,7 +2,16 @@ export interface Audio {
 	name: string;
 	releaseYear: string;
 	artistName: string;
+	genre: number[];
 	ownerAddress: Buffer;
+}
+
+export interface AudioJSON {
+	ownerAddress: string;
+	name: string;
+	releaseYear: number;
+	artistName: string;
+	genre: number[];
 }
 
 export interface AudioAccount {
