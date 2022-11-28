@@ -50,3 +50,35 @@ export const accountStoreSchema = {
     },
   },
 };
+
+export const createCommandParamsSchema = {
+  $id: 'collection/create',
+  title: 'CreateAsset transaction asset for collection module',
+  type: 'object',
+  required: ['name', 'releaseYear', 'artistName', 'coArtists'],
+  properties: {
+    name: {
+      dataType: 'string',
+      fieldNumber: 1,
+      minLength: 3,
+      maxLength: 40,
+    },
+    releaseYear: {
+      dataType: 'string',
+      fieldNumber: 2,
+    },
+    artistName: {
+      dataType: 'string',
+      fieldNumber: 3,
+      minLength: 3,
+      maxLength: 40,
+    },
+    coArtists: {
+      type: 'array',
+      fieldNumber: 4,
+      items: {
+        dataType: 'string',
+      },
+    },
+  },
+};

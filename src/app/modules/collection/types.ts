@@ -11,3 +11,10 @@ export interface CollectionAccount {
     collections: Buffer[];
   };
 }
+
+export interface CreateCommandParams {
+  name: string;
+  releaseYear: string;
+  artistName: string;
+  coArtists: string[];
+}
