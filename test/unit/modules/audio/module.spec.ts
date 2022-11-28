@@ -1,4 +1,4 @@
-// import * as modules from '../../../src/app/modules/audio'
+// import { AudioModule } from '../../../../src/app/modules/audio/module'
 
 describe('AudioModule', () => {
 	describe('constructor', () => {

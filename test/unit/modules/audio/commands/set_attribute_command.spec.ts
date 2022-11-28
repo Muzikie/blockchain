@@ -1,10 +1,12 @@
 import { SetAttributeCommand } from '../../../../../src/app/modules/audio/commands/set_attribute_command';
+import { AudioModule } from '../../../../../src/app/modules/audio/module'
 
 describe('SetAttributeCommand', () => {
   let command: SetAttributeCommand;
+	const module = new AudioModule()
 
 	beforeEach(() => {
-		// command = new SetAttributeCommand();
+		command = new SetAttributeCommand(module.stores, module.events);
 	});
 
 	describe('constructor', () => {

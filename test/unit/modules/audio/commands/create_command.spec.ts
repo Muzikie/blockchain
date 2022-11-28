@@ -1,10 +1,12 @@
 import { CreateCommand } from '../../../../../src/app/modules/audio/commands/create_command';
+import { AudioModule } from '../../../../../src/app/modules/audio/module'
 
 describe('CreateCommand', () => {
   let command: CreateCommand;
+	const module = new AudioModule()
 
 	beforeEach(() => {
-		// command = new CreateCommand();
+		command = new CreateCommand(module.stores, module.events);
 	});
 
 	describe('constructor', () => {

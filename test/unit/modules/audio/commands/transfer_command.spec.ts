@@ -1,10 +1,12 @@
 import { TransferCommand } from '../../../../../src/app/modules/audio/commands/transfer_command';
+import { AudioModule } from '../../../../../src/app/modules/audio/module'
 
 describe('TransferCommand', () => {
   let command: TransferCommand;
+  const module = new AudioModule()
 
   beforeEach(() => {
-    // command = new TransferCommand();
+    command = new TransferCommand(module.stores, module.events);
   });
 
   describe('constructor', () => {
