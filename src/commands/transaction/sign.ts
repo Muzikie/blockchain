@@ -8,13 +8,13 @@ type SignFlags = typeof TransactionSignCommand.flags & { [key: string]: Record<s
 
 export class SignCommand extends TransactionSignCommand {
 	static flags: SignFlags = {
-		...TransactionSignCommand.flags,
+	  ...TransactionSignCommand.flags,
 	};
 
 	static args = [...TransactionSignCommand.args];
 
 	public getApplication(config: PartialApplicationConfig): Application {
-		const app = getApplication(config);
-		return app;
+	  const app = getApplication(config);
+	  return app;
 	}
 }
