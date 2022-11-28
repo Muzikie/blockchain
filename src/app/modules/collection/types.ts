@@ -24,3 +24,8 @@ export interface CreateCommandParams {
 export interface DestroyCommandParams {
   collectionID: Buffer;
 }
+
+export interface TransferCommandParams {
+  collectionID: Buffer;
+  address: Buffer;
+}
