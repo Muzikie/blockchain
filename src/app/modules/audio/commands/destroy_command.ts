@@ -16,21 +16,12 @@ export class DestroyCommand extends BaseCommand {
   public schema = destroyCommandParamsSchema;
 
   // eslint-disable-next-line @typescript-eslint/require-await
-  public async verify(context: CommandVerifyContext<DestroyCommandParams>): Promise<VerificationResult> {
-    if (!Buffer.isBuffer(context.params.audioID)) {
-      return {
-        status: VerifyStatus.FAIL,
-        error: new Error('Audio ID must be a buffer'),
-      }
-    }
+  public async verify(_context: CommandVerifyContext<DestroyCommandParams>): Promise<VerificationResult> {
     return { status: VerifyStatus.OK };
   }
 
   public async execute(context: CommandExecuteContext<DestroyCommandParams>): Promise<void> {
-    const {
-      params,
-      transaction,
-    } = context;
+    const { params, transaction } = context;
     const audioAccountSubStore = this.stores.get(AudioAccountStore);
     const audioSubStore = this.stores.get(AudioStore);
 
