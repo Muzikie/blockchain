@@ -20,3 +20,7 @@ export interface CreateCommandParams {
   coArtists: string[];
   type: number;
 }
+
+export interface DestroyCommandParams {
+  collectionID: Buffer;
+}

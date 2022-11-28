@@ -1,17 +1,17 @@
-import { CreateCommand } from '../../../../../src/app/modules/collection/commands/create_command';
+import { DestroyCommand } from '../../../../../src/app/modules/collection/commands/destroy_command';
 import { CollectionModule } from '../../../../../src/app/modules/collection/module'
 
-describe('CreateCommand', () => {
-  let command: CreateCommand;
-	const module = new CollectionModule();
+describe('DestroyCommand', () => {
+  let command: DestroyCommand;
+	const module = new CollectionModule()
 
 	beforeEach(() => {
-		command = new CreateCommand(module.stores, module.events);
+		command = new DestroyCommand(module.stores, module.events);
 	});
 
 	describe('constructor', () => {
 		it('should have valid name', () => {
-			expect(command.name).toEqual('create');
+			expect(command.name).toEqual('destroy');
 		});
 
 		it('should have valid schema', () => {

@@ -90,3 +90,16 @@ export const createCommandParamsSchema = {
     },
   },
 };
+
+export const destroyCommandParamsSchema = {
+  $id: 'collection/destroy',
+  title: 'DestroyAsset transaction asset for collection module',
+  type: 'object',
+  required: ['collectionID'],
+  properties: {
+    collectionID: {
+      dataType: 'bytes',
+      fieldNumber: 1,
+    },
+  },
+};
