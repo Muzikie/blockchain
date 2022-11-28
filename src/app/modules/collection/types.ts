@@ -29,3 +29,12 @@ export interface TransferCommandParams {
   collectionID: Buffer;
   address: Buffer;
 }
+
+export interface SetAttributesCommandParams {
+  name: string;
+  releaseYear: string;
+  artistName: string;
+  coArtists: string[];
+  type: number;
+  collectionID: Buffer;
+}

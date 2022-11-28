@@ -121,3 +121,44 @@ export const transferCommandParamsSchema = {
     },
   },
 };
+
+export const setAttributesCommandParamsSchema = {
+  $id: 'collection/setAttributes',
+  title: 'SetAttributesAsset transaction asset for collection module',
+  type: 'object',
+  required: ['name', 'releaseYear', 'artistName', 'coArtists', 'type', 'collectionID'],
+  properties: {
+    name: {
+      dataType: 'string',
+      fieldNumber: 1,
+      minLength: 3,
+      maxLength: 40,
+    },
+    releaseYear: {
+      dataType: 'string',
+      fieldNumber: 2,
+    },
+    artistName: {
+      dataType: 'string',
+      fieldNumber: 3,
+      minLength: 3,
+      maxLength: 40,
+    },
+    coArtists: {
+      type: 'array',
+      fieldNumber: 4,
+      items: {
+        dataType: 'string',
+      },
+    },
+    type: {
+      dataType: 'uint32',
+      fieldNumber: 2,
+    },
+    collectionID: {
+      dataType: 'bytes',
+      fieldNumber: 6,
+    },
+  },
+};
+
