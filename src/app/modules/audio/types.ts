@@ -42,7 +42,7 @@ export interface TransferCommandParams {
   address: Buffer;
 }
 
-export interface SetAttributeCommandParams {
+export interface SetAttributesCommandParams {
   name: string;
   releaseYear: string;
   artistName: string;

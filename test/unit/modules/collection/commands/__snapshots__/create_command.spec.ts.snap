@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CreateCommand constructor should have valid schema 1`] = `
+Object {
+  "$id": "collection/create",
+  "properties": Object {
+    "artistName": Object {
+      "dataType": "string",
+      "fieldNumber": 3,
+      "maxLength": 40,
+      "minLength": 3,
+    },
+    "coArtists": Object {
+      "fieldNumber": 4,
+      "items": Object {
+        "dataType": "string",
+      },
+      "type": "array",
+    },
+    "name": Object {
+      "dataType": "string",
+      "fieldNumber": 1,
+      "maxLength": 40,
+      "minLength": 3,
+    },
+    "releaseYear": Object {
+      "dataType": "string",
+      "fieldNumber": 2,
+    },
+    "type": Object {
+      "dataType": "number",
+      "fieldNumber": 5,
+    },
+  },
+  "required": Array [
+    "name",
+    "releaseYear",
+    "artistName",
+    "coArtists",
+  ],
+  "title": "CreateAsset transaction asset for collection module",
+  "type": "object",
+}
+`;

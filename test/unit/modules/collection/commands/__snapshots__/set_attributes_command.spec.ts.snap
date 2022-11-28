@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SetAttributesCommand constructor should have valid schema 1`] = `
+Object {
+  "$id": "collection/setAttributes",
+  "properties": Object {
+    "artistName": Object {
+      "dataType": "string",
+      "fieldNumber": 3,
+      "maxLength": 40,
+      "minLength": 3,
+    },
+    "coArtists": Object {
+      "fieldNumber": 4,
+      "items": Object {
+        "dataType": "string",
+      },
+      "type": "array",
+    },
+    "collectionID": Object {
+      "dataType": "bytes",
+      "fieldNumber": 6,
+    },
+    "name": Object {
+      "dataType": "string",
+      "fieldNumber": 1,
+      "maxLength": 40,
+      "minLength": 3,
+    },
+    "releaseYear": Object {
+      "dataType": "string",
+      "fieldNumber": 2,
+    },
+    "type": Object {
+      "dataType": "uint32",
+      "fieldNumber": 2,
+    },
+  },
+  "required": Array [
+    "name",
+    "releaseYear",
+    "artistName",
+    "coArtists",
+    "type",
+    "collectionID",
+  ],
+  "title": "SetAttributesAsset transaction asset for collection module",
+  "type": "object",
+}
+`;
