@@ -114,9 +114,9 @@ export const transferCommandParamsSchema = {
   },
 };
 
-export const setAttributeCommandParamsSchema = {
-  $id: 'audio/setAttribute',
-  title: 'SetAttributeAsset transaction asset for audio module',
+export const setAttributesCommandParamsSchema = {
+  $id: 'audio/setAttributes',
+  title: 'SetAttributesAsset transaction asset for audio module',
   type: 'object',
   required: ['name', 'releaseYear', 'artistName', 'genre', 'audioID'],
   properties: {
