@@ -1,17 +1,17 @@
-import { CreateCommand } from '../../../../../src/app/modules/collection/commands/create_command';
+import { TransferCommand } from '../../../../../src/app/modules/collection/commands/transfer_command';
 import { CollectionModule } from '../../../../../src/app/modules/collection/module';
 
-describe('CreateCommand', () => {
-  let command: CreateCommand;
-	const module = new CollectionModule();
+describe('TransferCommand', () => {
+  let command: TransferCommand;
+	const module = new CollectionModule()
 
 	beforeEach(() => {
-		command = new CreateCommand(module.stores, module.events);
+		command = new TransferCommand(module.stores, module.events);
 	});
 
 	describe('constructor', () => {
 		it('should have valid name', () => {
-			expect(command.name).toEqual('create');
+			expect(command.name).toEqual('transfer');
 		});
 
 		it('should have valid schema', () => {

@@ -1,9 +1,9 @@
 import { DestroyCommand } from '../../../../../src/app/modules/collection/commands/destroy_command';
-import { CollectionModule } from '../../../../../src/app/modules/collection/module'
+import { CollectionModule } from '../../../../../src/app/modules/collection/module';
 
 describe('DestroyCommand', () => {
   let command: DestroyCommand;
-	const module = new CollectionModule()
+	const module = new CollectionModule();
 
 	beforeEach(() => {
 		command = new DestroyCommand(module.stores, module.events);

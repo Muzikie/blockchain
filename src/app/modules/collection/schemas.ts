@@ -103,3 +103,21 @@ export const destroyCommandParamsSchema = {
     },
   },
 };
+
+export const transferCommandParamsSchema = {
+  $id: 'collection/transfer',
+  title: 'TransferAsset transaction asset for collection module',
+  type: 'object',
+  required: ['collectionID', 'address'],
+  properties: {
+    collectionID: {
+      dataType: 'bytes',
+      fieldNumber: 1,
+    },
+    address: {
+      dataType: 'bytes',
+      format: 'lisk32',
+      fieldNumber: 2,
+    },
+  },
+};

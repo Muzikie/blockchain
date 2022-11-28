@@ -19,6 +19,7 @@ import { CollectionEndpoint } from './endpoint';
 import { CollectionMethod } from './method';
 import { CollectionAccountStore } from './stores/collectionAccount';
 import { DestroyCommand } from "./commands/destroy_command";
+import { TransferCommand } from "./commands/transfer_command";
 import { CollectionStore } from './stores/collection';
 import { CreateCommand } from "./commands/create_command";
 
@@ -28,6 +29,7 @@ export class CollectionModule extends BaseModule {
     public commands = [
       new CreateCommand(this.stores, this.events),
       new DestroyCommand(this.stores, this.events),
+      new TransferCommand(this.stores, this.events),
     ];
 
     public constructor() {
