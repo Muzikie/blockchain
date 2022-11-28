@@ -15,22 +15,7 @@ export class TransferCommand extends BaseCommand {
   public schema = transferCommandParamsSchema;
 
   // eslint-disable-next-line @typescript-eslint/require-await
-  public async verify(context: CommandVerifyContext<TransferCommandParams>): Promise<VerificationResult> {
-    const { address, audioID } = context.params;
-    if (!Buffer.isBuffer(address)) {
-      return {
-        status: VerifyStatus.FAIL,
-        error: new Error('Parameter recipientAddress must be a buffer.')
-      }
-    }
-
-    if (!Buffer.isBuffer(audioID)) {
-      return {
-        status: VerifyStatus.FAIL,
-        error: new Error('Parameter audioID must be a buffer.')
-      }
-    }
-
+  public async verify(_context: CommandVerifyContext<TransferCommandParams>): Promise<VerificationResult> {
     return { status: VerifyStatus.OK };
   }
 

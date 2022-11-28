@@ -1,5 +1,5 @@
 import { CreateCommand } from '../../../../../src/app/modules/collection/commands/create_command';
-import { CollectionModule } from '../../../../../src/app/modules/collection/module'
+import { CollectionModule } from '../../../../../src/app/modules/collection/module';
 
 describe('CreateCommand', () => {
   let command: CreateCommand;
