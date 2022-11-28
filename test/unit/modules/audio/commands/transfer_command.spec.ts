@@ -4,7 +4,7 @@ describe('TransferCommand', () => {
   let command: TransferCommand;
 
   beforeEach(() => {
-    command = new TransferCommand();
+    // command = new TransferCommand();
   });
 
   describe('constructor', () => {

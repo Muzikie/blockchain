@@ -4,7 +4,7 @@ describe('CreateCommand', () => {
   let command: CreateCommand;
 
 	beforeEach(() => {
-		command = new CreateCommand();
+		// command = new CreateCommand();
 	});
 
 	describe('constructor', () => {

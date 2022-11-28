@@ -4,7 +4,7 @@ describe('SetAttributeCommand', () => {
   let command: SetAttributeCommand;
 
 	beforeEach(() => {
-		command = new SetAttributeCommand();
+		// command = new SetAttributeCommand();
 	});
 
 	describe('constructor', () => {
