@@ -22,9 +22,13 @@ export const collectionStoreSchema = {
         dataType: 'string',
       },
     },
+    type: {
+      dataType: 'number',
+      fieldNumber: 5,
+    },
     ownerAddress: {
       dataType: 'bytes',
-      fieldNumber: 5,
+      fieldNumber: 6,
     },
   },
 };
@@ -79,6 +83,10 @@ export const createCommandParamsSchema = {
       items: {
         dataType: 'string',
       },
+    },
+    type: {
+      dataType: 'number',
+      fieldNumber: 5,
     },
   },
 };

@@ -3,6 +3,7 @@ export interface Collection {
   releaseYear: string;
   artistName: string;
   coArtists: string[];
+  type: number;
   ownerAddress: Buffer;
 }
 
@@ -17,4 +18,5 @@ export interface CreateCommandParams {
   releaseYear: string;
   artistName: string;
   coArtists: string[];
+  type: number;
 }
