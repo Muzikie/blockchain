@@ -41,3 +41,11 @@ export interface TransferCommandParams {
   audioID: Buffer;
   address: Buffer;
 }
+
+export interface SetAttributeCommandParams {
+  name: string;
+  releaseYear: string;
+  artistName: string;
+  genre: number[];
+  audioID: Buffer;
+}

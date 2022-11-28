@@ -18,6 +18,7 @@ import { VerifyStatus } from 'lisk-framework';
 import { CreateCommand } from "./commands/create_command";
 import { DestroyCommand } from "./commands/destroy_command";
 import { TransferCommand } from "./commands/transfer_command";
+import { SetAttributeCommand } from "./commands/set_attribute_command";
 import { AudioEndpoint } from './endpoint';
 import { AudioMethod } from './method';
 import { AudioAccountStore } from './stores/audioAccount';
@@ -30,6 +31,7 @@ export class AudioModule extends BaseModule {
       new CreateCommand(this.stores, this.events),
       new DestroyCommand(this.stores, this.events),
       new TransferCommand(this.stores, this.events),
+      new SetAttributeCommand(this.stores, this.events),
     ];
 
     public constructor() {

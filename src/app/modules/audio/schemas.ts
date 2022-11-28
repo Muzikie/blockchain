@@ -113,3 +113,39 @@ export const transferCommandParamsSchema = {
     },
   },
 };
+
+export const setAttributeCommandParamsSchema = {
+  $id: 'audio/setAttribute',
+  title: 'SetAttributeAsset transaction asset for audio module',
+  type: 'object',
+  required: ['name', 'releaseYear', 'artistName', 'genre', 'audioID'],
+  properties: {
+    name: {
+      dataType: 'string',
+      fieldNumber: 1,
+      minLength: 3,
+      maxLength: 40,
+    },
+    releaseYear: {
+      dataType: 'string',
+      fieldNumber: 2,
+    },
+    artistName: {
+      dataType: 'string',
+      fieldNumber: 3,
+      minLength: 3,
+      maxLength: 40,
+    },
+    genre: {
+      type: 'array',
+      fieldNumber: 4,
+      items: {
+        dataType: 'uint32',
+      },
+    },
+    audioID: {
+      dataType: 'bytes',
+      fieldNumber: 5,
+    },
+  },
+};
