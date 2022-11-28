@@ -17,10 +17,10 @@ describe('CollectionModule', () => {
 	describe('afterCommandExecute', () => {
 		it.todo('should execute after transaction execute');
 	});
-	describe('beforeTransactionsExecute', () => {
+	describe('beforeTransactionsExecute genesis', () => {
 		it.todo('should execute after genesis execute');
 	});
-	describe('afterTransactionsExecute', () => {
+	describe('afterTransactionsExecute genesis', () => {
 		it.todo('should execute after genesis execute');
 	});
 });
