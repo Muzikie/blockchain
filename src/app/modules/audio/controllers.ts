@@ -2,10 +2,19 @@ import { codec } from 'lisk-sdk';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ModuleEndpointContext } from 'lisk-framework';
 import { address as cryptoAddress } from '@liskhq/lisk-cryptography';
-import { AudioAccountJSON, AudioJSON, Audio, Store, AudioAccount } from './types';
+import {
+  AudioAccountJSON,
+  AudioJSON,
+  Audio,
+  Store,
+  AudioAccount,
+} from './types';
 import { accountStoreSchema, audioStoreSchema } from './schemas';
 
-export const getAccount = async (context: ModuleEndpointContext, audioAccountSubStore: Store<AudioAccount>): Promise<AudioAccountJSON> => {
+export const getAccount = async (
+  context: ModuleEndpointContext,
+  audioAccountSubStore: Store<AudioAccount>,
+): Promise<AudioAccountJSON> => {
   const { address } = context.params;
 
   if (typeof address !== 'string') {
@@ -36,7 +45,10 @@ export const getAccount = async (context: ModuleEndpointContext, audioAccountSub
   return accountJSON;
 }
 
-export const getAudio = async (context: ModuleEndpointContext, audioSubStore: Store<Audio>): Promise<AudioJSON> => {
+export const getAudio = async (
+  context: ModuleEndpointContext,
+  audioSubStore: Store<Audio>,
+): Promise<AudioJSON> => {
   const { audioID } = context.params;
 
   let query: Buffer;
