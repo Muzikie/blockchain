@@ -10,7 +10,7 @@ import { AudioStore } from '../stores/audio';
 import { AudioAccountStore } from '../stores/audioAccount';
 import { CreateCommandParams, Audio, AudioAccount } from '../types';
 import { createCommandParamsSchema } from '../schemas';
-import { validGenres } from '../constants';
+import { validGenres, MIN_RELEASE_YEAR } from '../constants';
 import { getNodeForName } from '../utils';
 
 export class CreateCommand extends BaseCommand {
@@ -20,10 +20,10 @@ export class CreateCommand extends BaseCommand {
   public async verify(context: CommandVerifyContext<CreateCommandParams>): Promise<VerificationResult> {
     const thisYear = new Date().getFullYear();
     const numericYear = Number(context.params.releaseYear);
-    if (numericYear < 1900 || numericYear > thisYear) {
+    if (numericYear < MIN_RELEASE_YEAR || numericYear > thisYear) {
       return {
         status: VerifyStatus.FAIL,
-        error: new Error(`Release year must be a number between 1900 and ${thisYear}`)
+        error: new Error(`Release year must be a number between ${MIN_RELEASE_YEAR} and ${thisYear}`)
       }
     }
     if (context.params.genre.some(item => item > validGenres.length)) {

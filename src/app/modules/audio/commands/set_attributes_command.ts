@@ -9,7 +9,7 @@ import {
 import { AudioStore } from '../stores/audio';
 import { setAttributesCommandParamsSchema } from '../schemas';
 import { SetAttributesCommandParams, Audio } from '../types';
-import { validGenres } from '../constants';
+import { validGenres, MIN_RELEASE_YEAR } from '../constants';
 
 export class SetAttributesCommand extends BaseCommand {
   public schema = setAttributesCommandParamsSchema;
@@ -18,10 +18,10 @@ export class SetAttributesCommand extends BaseCommand {
   public async verify(context: CommandVerifyContext<SetAttributesCommandParams>): Promise<VerificationResult> {
     const thisYear = new Date().getFullYear();
     const numericYear = Number(context.params.releaseYear);
-    if (numericYear < 1900 || numericYear > thisYear) {
+    if (numericYear < MIN_RELEASE_YEAR || numericYear > thisYear) {
       return {
         status: VerifyStatus.FAIL,
-        error: new Error(`Release year must be a number between 1900 and ${thisYear}`)
+        error: new Error(`Release year must be a number between ${MIN_RELEASE_YEAR} and ${thisYear}`)
       }
     }
     if (context.params.genre.some(item => item > validGenres.length)) {

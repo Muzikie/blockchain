@@ -10,7 +10,7 @@ import {
 import { CollectionStore } from '../stores/collection';
 import { setAttributesCommandParamsSchema } from '../schemas';
 import { SetAttributesCommandParams, Collection } from '../types';
-import { validCollectionTypes } from '../constants';
+import { validCollectionTypes, MIN_RELEASE_YEAR } from '../constants';
 
 export class SetAttributesCommand extends BaseCommand {
   public schema = setAttributesCommandParamsSchema;
@@ -19,10 +19,10 @@ export class SetAttributesCommand extends BaseCommand {
   public async verify(context: CommandVerifyContext<SetAttributesCommandParams>): Promise<VerificationResult> {
     const thisYear = new Date().getFullYear();
     const numericYear = Number(context.params.releaseYear);
-    if (numericYear < 1900 || numericYear > thisYear) {
+    if (numericYear < MIN_RELEASE_YEAR || numericYear > thisYear) {
       return {
         status: VerifyStatus.FAIL,
-        error: new Error(`Release year must be a number between 1900 and ${thisYear}`)
+        error: new Error(`Release year must be a number between ${MIN_RELEASE_YEAR} and ${thisYear}`)
       }
     }
     if (!validCollectionTypes.includes(context.params.collectionType)) {
