@@ -161,3 +161,20 @@ export const setAttributesCommandParamsSchema = {
     },
   },
 };
+
+export const creationEventSchema = {
+  $id: '/audio/events/creation',
+  type: 'object',
+  required: ['senderAddress', 'audioID'],
+  properties: {
+    senderAddress: {
+      dataType: 'bytes',
+      format: 'lisk32',
+      fieldNumber: 1,
+    },
+    audioID: {
+      dataType: 'bytes',
+      fieldNumber: 3,
+    },
+  },
+};

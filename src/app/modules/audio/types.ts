@@ -61,3 +61,13 @@ export interface Store<Entity> {
   get:  (context: ModuleEndpointContext, key: Buffer) => Promise<Entity>;
   has: (context: ModuleEndpointContext, key: Buffer) => Promise<boolean>;
 }
+
+export enum CreateEventResult {
+  SUCCESSFUL = 'successful',
+  FAILED = 'failed',
+}
+
+export interface CreateEventData {
+  senderAddress: Buffer;
+  audioID: Buffer;
+}

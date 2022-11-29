@@ -19,6 +19,7 @@ import { CreateCommand } from "./commands/create_command";
 import { DestroyCommand } from "./commands/destroy_command";
 import { TransferCommand } from "./commands/transfer_command";
 import { SetAttributesCommand } from "./commands/set_attributes_command";
+import { CreateEvent } from "./events/create";
 import { AudioEndpoint } from './endpoint';
 import { AudioMethod } from './method';
 import { AudioAccountStore } from './stores/audioAccount';
@@ -38,6 +39,7 @@ export class AudioModule extends BaseModule {
       super();
       this.stores.register(AudioAccountStore, new AudioAccountStore(this.name));
       this.stores.register(AudioStore, new AudioStore(this.name));
+      this.events.register(CreateEvent, new CreateEvent(this.name));
     }
 
     public metadata(): ModuleMetadata {
