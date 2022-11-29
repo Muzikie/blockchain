@@ -2,11 +2,9 @@ import { BaseEndpoint, codec } from 'lisk-sdk';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ModuleEndpointContext } from 'lisk-framework';
 import { address as cryptoAddress } from '@liskhq/lisk-cryptography';
-import { CollectionAccountJSON, CollectionJSON } from './types';
-import { accountStoreSchema, collectionStoreSchema } from './schemas';
+import { CollectionAccountJSON } from './types';
+import { accountStoreSchema } from './schemas';
 import { CollectionAccountStore } from './stores/collectionAccount';
-import { CollectionStore } from './stores/collection';
-
 
 export class CollectionEndpoint extends BaseEndpoint {
   public async getAccount(context: ModuleEndpointContext): Promise<CollectionAccountJSON> {
