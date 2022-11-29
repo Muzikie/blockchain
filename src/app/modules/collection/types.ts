@@ -7,9 +7,24 @@ export interface Collection {
   ownerAddress: Buffer;
 }
 
+export interface CollectionJSON {
+  name: string;
+  releaseYear: string;
+  artistName: string;
+  coArtists: string[];
+  type: number;
+  ownerAddress: string;
+}
+
 export interface CollectionAccount {
   collection: {
     collections: Buffer[];
+  };
+}
+
+export interface CollectionAccountJSON {
+  collection: {
+    collections: string[];
   };
 }
 
