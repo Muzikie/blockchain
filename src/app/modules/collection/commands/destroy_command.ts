@@ -33,6 +33,11 @@ export class DestroyCommand extends BaseCommand {
 
     const collection = await collectionSubStore.get(context, params.collectionID);
 
+    // No orphan audios left behind
+    if (collection.audios.length) {
+      throw new Error('Remove the audios first.');
+    }
+
     // Check if the sender owns the collection
     if (!collection.ownerAddress.equals(transaction.senderAddress)) {
       throw new Error('You cannot destroy an collection that you do not own.');
