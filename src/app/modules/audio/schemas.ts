@@ -1,7 +1,7 @@
 export const audioStoreSchema = {
   $id: 'audio/audio',
   type: 'object',
-  required: ['name', 'releaseYear', 'artistName', 'genre', 'ownerAddress'],
+  required: ['name', 'releaseYear', 'artistName', 'genre', 'collectionID', 'ownerAddress'],
   properties: {
     name: {
       dataType: 'string',
@@ -22,9 +22,13 @@ export const audioStoreSchema = {
         dataType: 'uint32',
       },
     },
-    ownerAddress: {
+    collectionID: {
       dataType: 'bytes',
       fieldNumber: 5,
+    },
+    ownerAddress: {
+      dataType: 'bytes',
+      fieldNumber: 6,
     },
   },
 };
@@ -55,7 +59,7 @@ export const createCommandParamsSchema = {
   $id: 'audio/create',
   title: 'CreateAsset transaction asset for audio module',
   type: 'object',
-  required: ['name', 'releaseYear', 'artistName', 'genre'],
+  required: ['name', 'releaseYear', 'artistName', 'genre', 'collectionID'],
   properties: {
     name: {
       dataType: 'string',
@@ -80,6 +84,10 @@ export const createCommandParamsSchema = {
         dataType: 'uint32',
       },
     },
+    collectionID: {
+      dataType: 'bytes',
+      fieldNumber: 5,
+    }
   },
 };
 
@@ -118,7 +126,7 @@ export const setAttributesCommandParamsSchema = {
   $id: 'audio/setAttributes',
   title: 'SetAttributesAsset transaction asset for audio module',
   type: 'object',
-  required: ['name', 'releaseYear', 'artistName', 'genre', 'audioID'],
+  required: ['name', 'releaseYear', 'artistName', 'genre', 'collectionID', 'audioID'],
   properties: {
     name: {
       dataType: 'string',
@@ -143,9 +151,13 @@ export const setAttributesCommandParamsSchema = {
         dataType: 'uint32',
       },
     },
-    audioID: {
+    collectionID: {
       dataType: 'bytes',
       fieldNumber: 5,
+    },
+    audioID: {
+      dataType: 'bytes',
+      fieldNumber: 6,
     },
   },
 };

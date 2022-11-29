@@ -6,6 +6,7 @@ export interface Audio {
   releaseYear: string;
   artistName: string;
   genre: number[];
+  collectionID: Buffer;
   ownerAddress: Buffer;
 }
 
@@ -15,6 +16,7 @@ export interface AudioJSON {
   releaseYear: number;
   artistName: string;
   genre: number[];
+  collectionID: string;
 }
 
 export interface AudioAccount {
@@ -34,6 +36,7 @@ export interface CreateCommandParams {
   releaseYear: string;
   artistName: string;
   genre: number[];
+  collectionID: Buffer;
 }
 
 export interface DestroyCommandParams {
@@ -50,6 +53,7 @@ export interface SetAttributesCommandParams {
   releaseYear: string;
   artistName: string;
   genre: number[];
+  collectionID: Buffer;
   audioID: Buffer;
 }
 
