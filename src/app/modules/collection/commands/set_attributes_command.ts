@@ -54,8 +54,11 @@ export class SetAttributesCommand extends BaseCommand {
     }
 
     // Create the Collection object and save it on the blockchain
+    // Note: You can not change the list of audios using this method
+    // Audios of a collection can be changes from the audio module
     const updatedObject: Collection = {
       ...params,
+      audios: collectionNFT.audios,
       ownerAddress: collectionNFT.ownerAddress,
     };
     await collectionSubStore.set(context,  params.collectionID, updatedObject);

@@ -50,8 +50,10 @@ export class CreateCommand extends BaseCommand {
     }
 
     // Create the Collection object and save it on the blockchain
+    // Note: The audios list is initially empty
     const audioObject: Collection = {
       ...params,
+      audios: [],
       ownerAddress: transaction.senderAddress,
     };
 

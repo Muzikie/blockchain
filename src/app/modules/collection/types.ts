@@ -7,6 +7,7 @@ export interface Collection {
   artistName: string;
   coArtists: string[];
   collectionType: number;
+  audios: Buffer[];
   ownerAddress: Buffer;
 }
 
@@ -16,6 +17,7 @@ export interface CollectionJSON {
   artistName: string;
   coArtists: string[];
   collectionType: number;
+  audios: string[];
   ownerAddress: string;
 }
 

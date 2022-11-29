@@ -1,7 +1,15 @@
 export const collectionStoreSchema = {
   $id: 'collection/collection',
   type: 'object',
-  required: ['name', 'releaseYear', 'artistName', 'coArtists', 'collectionType', 'ownerAddress'],
+  required: [
+    'name',
+    'releaseYear',
+    'artistName',
+    'coArtists',
+    'collectionType',
+    'audios',
+    'ownerAddress',
+  ],
   properties: {
     name: {
       dataType: 'string',
@@ -26,9 +34,16 @@ export const collectionStoreSchema = {
       dataType: 'uint32',
       fieldNumber: 5,
     },
+    audios: {
+      type: 'array',
+      fieldNumber: 6,
+      items: {
+        dataType: 'bytes',
+      },
+    },
     ownerAddress: {
       dataType: 'bytes',
-      fieldNumber: 6,
+      fieldNumber: 7,
     },
   },
 };
