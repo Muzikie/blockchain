@@ -6,7 +6,7 @@ export interface Collection {
   releaseYear: string;
   artistName: string;
   coArtists: string[];
-  type: number;
+  collectionType: number;
   ownerAddress: Buffer;
 }
 
@@ -15,7 +15,7 @@ export interface CollectionJSON {
   releaseYear: string;
   artistName: string;
   coArtists: string[];
-  type: number;
+  collectionType: number;
   ownerAddress: string;
 }
 
@@ -36,7 +36,7 @@ export interface CreateCommandParams {
   releaseYear: string;
   artistName: string;
   coArtists: string[];
-  type: number;
+  collectionType: number;
 }
 
 export interface DestroyCommandParams {
@@ -53,7 +53,7 @@ export interface SetAttributesCommandParams {
   releaseYear: string;
   artistName: string;
   coArtists: string[];
-  type: number;
+  collectionType: number;
   collectionID: Buffer;
 }
 

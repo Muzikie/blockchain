@@ -25,7 +25,7 @@ export class SetAttributesCommand extends BaseCommand {
         error: new Error(`Release year must be a number between 1900 and ${thisYear}`)
       }
     }
-    if (!validCollectionTypes.includes(context.params.type)) {
+    if (!validCollectionTypes.includes(context.params.collectionType)) {
       return {
         status: VerifyStatus.FAIL,
         error: new Error('Type should be selected from the list of valid types')

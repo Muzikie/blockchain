@@ -1,7 +1,7 @@
 export const collectionStoreSchema = {
   $id: 'collection/collection',
   type: 'object',
-  required: ['name', 'releaseYear', 'artistName', 'coArtists', 'ownerAddress'],
+  required: ['name', 'releaseYear', 'artistName', 'coArtists', 'collectionType', 'ownerAddress'],
   properties: {
     name: {
       dataType: 'string',
@@ -22,8 +22,8 @@ export const collectionStoreSchema = {
         dataType: 'string',
       },
     },
-    type: {
-      dataType: 'number',
+    collectionType: {
+      dataType: 'uint32',
       fieldNumber: 5,
     },
     ownerAddress: {
@@ -59,7 +59,7 @@ export const createCommandParamsSchema = {
   $id: 'collection/create',
   title: 'CreateAsset transaction asset for collection module',
   type: 'object',
-  required: ['name', 'releaseYear', 'artistName', 'coArtists'],
+  required: ['name', 'releaseYear', 'artistName', 'coArtists', 'collectionType'],
   properties: {
     name: {
       dataType: 'string',
@@ -84,8 +84,8 @@ export const createCommandParamsSchema = {
         dataType: 'string',
       },
     },
-    type: {
-      dataType: 'number',
+    collectionType: {
+      dataType: 'uint32',
       fieldNumber: 5,
     },
   },
@@ -126,7 +126,7 @@ export const setAttributesCommandParamsSchema = {
   $id: 'collection/setAttributes',
   title: 'SetAttributesAsset transaction asset for collection module',
   type: 'object',
-  required: ['name', 'releaseYear', 'artistName', 'coArtists', 'type', 'collectionID'],
+  required: ['name', 'releaseYear', 'artistName', 'coArtists', 'collectionType', 'collectionID'],
   properties: {
     name: {
       dataType: 'string',
@@ -151,9 +151,9 @@ export const setAttributesCommandParamsSchema = {
         dataType: 'string',
       },
     },
-    type: {
+    collectionType: {
       dataType: 'uint32',
-      fieldNumber: 2,
+      fieldNumber: 5,
     },
     collectionID: {
       dataType: 'bytes',
