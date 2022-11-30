@@ -25,6 +25,7 @@ import { AudioMethod } from './method';
 import { AudioAccountStore } from './stores/audioAccount';
 import { AudioStore } from './stores/audio';
 import { CollectionMethod } from '../collection/method';
+import { COMMANDS, MODULES } from '../../constants';
 
 export class AudioModule extends BaseModule {
     public endpoint = new AudioEndpoint(this.stores, this.offchainStores);
@@ -86,19 +87,41 @@ export class AudioModule extends BaseModule {
       };
     }
 
-    // public async beforeCommandExecute(_context: TransactionExecuteContext): Promise<void> {}
-    public async afterCommandExecute(context: TransactionExecuteContext): Promise<void> {
-      const account = await this.stores.get(AudioAccountStore).get(context, context.transaction.senderAddress);
-      const audioID = account.audio.audios[account.audio.audios.length -1];
-      const { collectionID } = await this.stores.get(AudioStore).get(context, audioID);
+    public async beforeCommandExecute(context: TransactionExecuteContext): Promise<void> {
+      const audioAccountSubStore = this.stores.get(AudioAccountStore);
+      const audioSubStore = this.stores.get(AudioStore);
 
-      if (context.transaction.command === 'create') {
-        await this._collectionMethod.addAudio(
-          context.getMethodContext(),
-          audioID,
-          collectionID,
-          context.transaction.senderAddress,
-        );
+      if (context.transaction.command === COMMANDS.DESTROY && context.transaction.module === MODULES.AUDIO) {
+        const account = await audioAccountSubStore.get(context, context.transaction.senderAddress);
+        const audioID = account.audio.audios[account.audio.audios.length -1];
+        if (audioID) {
+          const { collectionID } = await audioSubStore.get(context, audioID);
+          await this._collectionMethod.removeAudio(
+            context.getMethodContext(),
+            audioID,
+            collectionID,
+            context.transaction.senderAddress,
+          );
+        }
+      }
+    }
+
+    public async afterCommandExecute(context: TransactionExecuteContext): Promise<void> {
+      const audioAccountSubStore = this.stores.get(AudioAccountStore);
+      const audioSubStore = this.stores.get(AudioStore);
+
+      if (context.transaction.command === COMMANDS.CREATE && context.transaction.module === MODULES.AUDIO) {
+        const account = await audioAccountSubStore.get(context, context.transaction.senderAddress);
+        const audioID = account.audio.audios[account.audio.audios.length -1];
+        if (audioID) {
+          const { collectionID } = await audioSubStore.get(context, audioID);
+          await this._collectionMethod.addAudio(
+            context.getMethodContext(),
+            audioID,
+            collectionID,
+            context.transaction.senderAddress,
+          );
+        }
       }
     }
 
