@@ -1,5 +1,5 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { ModuleEndpointContext } from 'lisk-framework';
+import { ModuleEndpointContext, StoreGetter } from 'lisk-framework';
 
 export interface Collection {
   name: string;

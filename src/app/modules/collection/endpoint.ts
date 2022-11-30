@@ -16,12 +16,12 @@ export class CollectionEndpoint extends BaseEndpoint {
   // Get account by address
   public async getAccount(context: ModuleEndpointContext): Promise<CollectionAccountJSON> {
     const collectionAccountSubStore = this.stores.get(CollectionAccountStore);
-    return getAccount(context, collectionAccountSubStore as Store<CollectionAccount>)
+    return getAccount(context, collectionAccountSubStore)
   }
 
   // Get Collection by collectionID
   public async getCollection(context: ModuleEndpointContext): Promise<CollectionJSON> {
     const collectionSubStore = this.stores.get(CollectionStore);
-    return getCollection(context, collectionSubStore as Store<Collection>);
+    return getCollection(context, collectionSubStore);
   }
 }
