@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CreateCommand constructor should have valid schema 1`] = `
+exports[`SetAttributesCommand constructor should have valid schema 1`] = `
 Object {
-  "$id": "audio/create",
+  "$id": "collection/setAttributes",
   "properties": Object {
     "artistName": Object {
       "dataType": "string",
@@ -10,16 +10,20 @@ Object {
       "maxLength": 40,
       "minLength": 3,
     },
-    "collectionID": Object {
-      "dataType": "bytes",
-      "fieldNumber": 5,
-    },
-    "genre": Object {
+    "coArtists": Object {
       "fieldNumber": 4,
       "items": Object {
-        "dataType": "uint32",
+        "dataType": "string",
       },
       "type": "array",
+    },
+    "collectionID": Object {
+      "dataType": "bytes",
+      "fieldNumber": 6,
+    },
+    "collectionType": Object {
+      "dataType": "uint32",
+      "fieldNumber": 5,
     },
     "name": Object {
       "dataType": "string",
@@ -36,10 +40,11 @@ Object {
     "name",
     "releaseYear",
     "artistName",
-    "genre",
+    "coArtists",
+    "collectionType",
     "collectionID",
   ],
-  "title": "CreateAsset transaction asset for audio module",
+  "title": "SetAttributesAsset transaction asset for collection module",
   "type": "object",
 }
 `;

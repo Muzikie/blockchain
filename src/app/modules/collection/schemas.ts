@@ -1,7 +1,15 @@
-export const audioStoreSchema = {
-  $id: 'audio/audio',
+export const collectionStoreSchema = {
+  $id: 'collection/collection',
   type: 'object',
-  required: ['name', 'releaseYear', 'artistName', 'genre', 'collectionID', 'ownerAddress'],
+  required: [
+    'name',
+    'releaseYear',
+    'artistName',
+    'coArtists',
+    'collectionType',
+    'audios',
+    'ownerAddress',
+  ],
   properties: {
     name: {
       dataType: 'string',
@@ -15,35 +23,42 @@ export const audioStoreSchema = {
       dataType: 'string',
       fieldNumber: 3,
     },
-    genre: {
+    coArtists: {
       type: 'array',
       fieldNumber: 4,
       items: {
-        dataType: 'uint32',
+        dataType: 'string',
       },
     },
-    collectionID: {
-      dataType: 'bytes',
+    collectionType: {
+      dataType: 'uint32',
       fieldNumber: 5,
+    },
+    audios: {
+      type: 'array',
+      fieldNumber: 6,
+      items: {
+        dataType: 'bytes',
+      },
     },
     ownerAddress: {
       dataType: 'bytes',
-      fieldNumber: 6,
+      fieldNumber: 7,
     },
   },
 };
 
 export const accountStoreSchema = {
-  $id: 'audio/account',
+  $id: 'collection/account',
   type: 'object',
-  required: ['audio'],
+  required: ['collection'],
   properties: {
-    audio: {
+    collection: {
       type: 'object',
-      required: ['audios'],
+      required: ['collections'],
       fieldNumber: 1,
       properties: {
-        audios: {
+        collections: {
           type: 'array',
           fieldNumber: 1,
           items: {
@@ -56,10 +71,10 @@ export const accountStoreSchema = {
 };
 
 export const createCommandParamsSchema = {
-  $id: 'audio/create',
-  title: 'CreateAsset transaction asset for audio module',
+  $id: 'collection/create',
+  title: 'CreateAsset transaction asset for collection module',
   type: 'object',
-  required: ['name', 'releaseYear', 'artistName', 'genre', 'collectionID'],
+  required: ['name', 'releaseYear', 'artistName', 'coArtists', 'collectionType'],
   properties: {
     name: {
       dataType: 'string',
@@ -77,27 +92,27 @@ export const createCommandParamsSchema = {
       minLength: 3,
       maxLength: 40,
     },
-    genre: {
+    coArtists: {
       type: 'array',
       fieldNumber: 4,
       items: {
-        dataType: 'uint32',
+        dataType: 'string',
       },
     },
-    collectionID: {
-      dataType: 'bytes',
+    collectionType: {
+      dataType: 'uint32',
       fieldNumber: 5,
-    }
+    },
   },
 };
 
 export const destroyCommandParamsSchema = {
-  $id: 'audio/destroy',
-  title: 'DestroyAsset transaction asset for audio module',
+  $id: 'collection/destroy',
+  title: 'DestroyAsset transaction asset for collection module',
   type: 'object',
-  required: ['audioID'],
+  required: ['collectionID'],
   properties: {
-    audioID: {
+    collectionID: {
       dataType: 'bytes',
       fieldNumber: 1,
     },
@@ -105,12 +120,12 @@ export const destroyCommandParamsSchema = {
 };
 
 export const transferCommandParamsSchema = {
-  $id: 'audio/transfer',
-  title: 'TransferAsset transaction asset for audio module',
+  $id: 'collection/transfer',
+  title: 'TransferAsset transaction asset for collection module',
   type: 'object',
-  required: ['audioID', 'address'],
+  required: ['collectionID', 'address'],
   properties: {
-    audioID: {
+    collectionID: {
       dataType: 'bytes',
       fieldNumber: 1,
     },
@@ -123,10 +138,10 @@ export const transferCommandParamsSchema = {
 };
 
 export const setAttributesCommandParamsSchema = {
-  $id: 'audio/setAttributes',
-  title: 'SetAttributesAsset transaction asset for audio module',
+  $id: 'collection/setAttributes',
+  title: 'SetAttributesAsset transaction asset for collection module',
   type: 'object',
-  required: ['name', 'releaseYear', 'artistName', 'genre', 'collectionID', 'audioID'],
+  required: ['name', 'releaseYear', 'artistName', 'coArtists', 'collectionType', 'collectionID'],
   properties: {
     name: {
       dataType: 'string',
@@ -144,37 +159,21 @@ export const setAttributesCommandParamsSchema = {
       minLength: 3,
       maxLength: 40,
     },
-    genre: {
+    coArtists: {
       type: 'array',
       fieldNumber: 4,
       items: {
-        dataType: 'uint32',
+        dataType: 'string',
       },
     },
-    collectionID: {
-      dataType: 'bytes',
+    collectionType: {
+      dataType: 'uint32',
       fieldNumber: 5,
     },
-    audioID: {
+    collectionID: {
       dataType: 'bytes',
       fieldNumber: 6,
     },
   },
 };
 
-export const creationEventSchema = {
-  $id: '/audio/events/creation',
-  type: 'object',
-  required: ['senderAddress', 'audioID'],
-  properties: {
-    senderAddress: {
-      dataType: 'bytes',
-      format: 'lisk32',
-      fieldNumber: 1,
-    },
-    audioID: {
-      dataType: 'bytes',
-      fieldNumber: 3,
-    },
-  },
-};

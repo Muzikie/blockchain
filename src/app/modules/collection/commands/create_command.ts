@@ -6,11 +6,11 @@ import {
   VerificationResult,
   VerifyStatus,
 } from 'lisk-sdk';
-import { AudioStore } from '../stores/audio';
-import { AudioAccountStore } from '../stores/audioAccount';
-import { CreateCommandParams, Audio, AudioAccount } from '../types';
+import { CollectionStore } from '../stores/collection';
+import { CollectionAccountStore } from '../stores/collectionAccount';
+import { CreateCommandParams, Collection, CollectionAccount } from '../types';
 import { createCommandParamsSchema } from '../schemas';
-import { validGenres, MIN_RELEASE_YEAR } from '../constants';
+import { validCollectionTypes, MIN_RELEASE_YEAR } from '../constants';
 import { getNodeForName } from '../utils';
 
 export class CreateCommand extends BaseCommand {
@@ -26,10 +26,10 @@ export class CreateCommand extends BaseCommand {
         error: new Error(`Release year must be a number between ${MIN_RELEASE_YEAR} and ${thisYear}`)
       }
     }
-    if (context.params.genre.some(item => item > validGenres.length)) {
+    if (!validCollectionTypes.includes(context.params.collectionType)) {
       return {
         status: VerifyStatus.FAIL,
-        error: new Error('Genres should be selected from the list of valid genres')
+        error: new Error('Collection type should be selected from the list of valid types')
       }
     }
     return { status: VerifyStatus.OK };
@@ -40,37 +40,38 @@ export class CreateCommand extends BaseCommand {
     // Get namehash output of the audio file
     const key = getNodeForName(params);
 
-    const audioAccountSubStore = this.stores.get(AudioAccountStore);
-    const audioSubStore = this.stores.get(AudioStore);
+    const collectionAccountSubStore = this.stores.get(CollectionAccountStore);
+    const collectionSubStore = this.stores.get(CollectionStore);
 
     // Check uniqueness of the NFT
-    const audioExists = await audioSubStore.has(context, key);
-    if (audioExists) {
+    const collectionExists = await collectionSubStore.has(context, key);
+    if (collectionExists) {
       throw new Error('You have already created this audio.');
     }
 
-    // Create the Audio object and save it on the blockchain
-    const audioObject: Audio = {
+    // Create the Collection object and save it on the blockchain
+    // Note: The audios list is initially empty
+    const audioObject: Collection = {
       ...params,
+      audios: [],
       ownerAddress: transaction.senderAddress,
     };
 
     // Store the hash of the audio object in the sender account
-    const accountExists = await audioAccountSubStore.has(context, transaction.senderAddress);
+    const accountExists = await collectionAccountSubStore.has(context, transaction.senderAddress);
     if (accountExists) {
-      const senderAccount: AudioAccount = await audioAccountSubStore.get(context, transaction.senderAddress);
-      senderAccount.audio.audios = [...senderAccount.audio.audios, key];
-      await audioAccountSubStore.set(context, transaction.senderAddress, senderAccount);
+      const senderAccount: CollectionAccount = await collectionAccountSubStore.get(context, transaction.senderAddress);
+      senderAccount.collection.collections = [...senderAccount.collection.collections, key];
+      await collectionAccountSubStore.set(context, transaction.senderAddress, senderAccount);
     } else {
-      await audioAccountSubStore.set(context, context.transaction.senderAddress, {
-        audio: {
-          audios: [key],
+      await collectionAccountSubStore.set(context, context.transaction.senderAddress, {
+        collection: {
+          collections: [key],
         }
       });
     }
 
-    // @todo Here we should check if the Audio is already uploaded using steganography methods
-    // Store the audio object in the blockchain
-    await audioSubStore.set(context, key, audioObject);
+    // Store the collection object in the blockchain
+    await collectionSubStore.set(context, key, audioObject);
   }
 }

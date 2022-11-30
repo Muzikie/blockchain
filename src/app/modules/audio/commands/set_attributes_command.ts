@@ -7,21 +7,21 @@ import {
   VerifyStatus,
 } from 'lisk-sdk';
 import { AudioStore } from '../stores/audio';
-import { setAttributeCommandParamsSchema } from '../schemas';
-import { SetAttributeCommandParams, Audio } from '../types';
-import { validGenres } from '../constants';
+import { setAttributesCommandParamsSchema } from '../schemas';
+import { SetAttributesCommandParams, Audio } from '../types';
+import { validGenres, MIN_RELEASE_YEAR } from '../constants';
 
-export class SetAttributeCommand extends BaseCommand {
-  public schema = setAttributeCommandParamsSchema;
+export class SetAttributesCommand extends BaseCommand {
+  public schema = setAttributesCommandParamsSchema;
 
   // eslint-disable-next-line @typescript-eslint/require-await
-  public async verify(context: CommandVerifyContext<SetAttributeCommandParams>): Promise<VerificationResult> {
+  public async verify(context: CommandVerifyContext<SetAttributesCommandParams>): Promise<VerificationResult> {
     const thisYear = new Date().getFullYear();
     const numericYear = Number(context.params.releaseYear);
-    if (numericYear < 1900 || numericYear > thisYear) {
+    if (numericYear < MIN_RELEASE_YEAR || numericYear > thisYear) {
       return {
         status: VerifyStatus.FAIL,
-        error: new Error(`Release year must be a number between 1900 and ${thisYear}`)
+        error: new Error(`Release year must be a number between ${MIN_RELEASE_YEAR} and ${thisYear}`)
       }
     }
     if (context.params.genre.some(item => item > validGenres.length)) {
@@ -33,7 +33,7 @@ export class SetAttributeCommand extends BaseCommand {
     return { status: VerifyStatus.OK };
   }
 
-  public async execute(context: CommandExecuteContext<SetAttributeCommandParams>): Promise<void> {
+  public async execute(context: CommandExecuteContext<SetAttributesCommandParams>): Promise<void> {
     const { params, transaction } = context;
     // Get namehash output of the audio file
 

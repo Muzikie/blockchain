@@ -2,7 +2,7 @@
 
 exports[`CreateCommand constructor should have valid schema 1`] = `
 Object {
-  "$id": "audio/create",
+  "$id": "collection/create",
   "properties": Object {
     "artistName": Object {
       "dataType": "string",
@@ -10,16 +10,16 @@ Object {
       "maxLength": 40,
       "minLength": 3,
     },
-    "collectionID": Object {
-      "dataType": "bytes",
-      "fieldNumber": 5,
-    },
-    "genre": Object {
+    "coArtists": Object {
       "fieldNumber": 4,
       "items": Object {
-        "dataType": "uint32",
+        "dataType": "string",
       },
       "type": "array",
+    },
+    "collectionType": Object {
+      "dataType": "uint32",
+      "fieldNumber": 5,
     },
     "name": Object {
       "dataType": "string",
@@ -36,10 +36,10 @@ Object {
     "name",
     "releaseYear",
     "artistName",
-    "genre",
-    "collectionID",
+    "coArtists",
+    "collectionType",
   ],
-  "title": "CreateAsset transaction asset for audio module",
+  "title": "CreateAsset transaction asset for collection module",
   "type": "object",
 }
 `;

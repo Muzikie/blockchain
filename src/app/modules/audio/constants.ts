@@ -60,3 +60,5 @@ export const validGenres = [
     name: 'Punk',
   }
 ];
+
+export const MIN_RELEASE_YEAR = 1900;

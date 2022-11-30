@@ -1,17 +1,17 @@
-import { SetAttributeCommand } from '../../../../../src/app/modules/audio/commands/set_attribute_command';
-import { AudioModule } from '../../../../../src/app/modules/audio/module'
+import { SetAttributesCommand } from '../../../../../src/app/modules/collection/commands/set_attributes_command';
+import { CollectionModule } from '../../../../../src/app/modules/collection/module';
 
-describe('SetAttributeCommand', () => {
-  let command: SetAttributeCommand;
-	const module = new AudioModule()
+describe('SetAttributesCommand', () => {
+  let command: SetAttributesCommand;
+	const module = new CollectionModule();
 
 	beforeEach(() => {
-		command = new SetAttributeCommand(module.stores, module.events);
+		command = new SetAttributesCommand(module.stores, module.events);
 	});
 
 	describe('constructor', () => {
 		it('should have valid name', () => {
-			expect(command.name).toEqual('setAttribute');
+			expect(command.name).toEqual('setAttributes');
 		});
 
 		it('should have valid schema', () => {

@@ -1,33 +1,35 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ModuleEndpointContext } from 'lisk-framework';
 
-export interface Audio {
+export interface Collection {
   name: string;
   releaseYear: string;
   artistName: string;
-  genre: number[];
-  collectionID: Buffer;
+  coArtists: string[];
+  collectionType: number;
+  audios: Buffer[];
   ownerAddress: Buffer;
 }
 
-export interface AudioJSON {
-  ownerAddress: string;
+export interface CollectionJSON {
   name: string;
-  releaseYear: number;
+  releaseYear: string;
   artistName: string;
-  genre: number[];
-  collectionID: string;
+  coArtists: string[];
+  collectionType: number;
+  audios: string[];
+  ownerAddress: string;
 }
 
-export interface AudioAccount {
-  audio: {
-    audios: Buffer[];
+export interface CollectionAccount {
+  collection: {
+    collections: Buffer[];
   };
 }
 
-export interface AudioAccountJSON {
-  audio: {
-    audios: string[];
+export interface CollectionAccountJSON {
+  collection: {
+    collections: string[];
   };
 }
 
@@ -35,16 +37,16 @@ export interface CreateCommandParams {
   name: string;
   releaseYear: string;
   artistName: string;
-  genre: number[];
-  collectionID: Buffer;
+  coArtists: string[];
+  collectionType: number;
 }
 
 export interface DestroyCommandParams {
-  audioID: Buffer;
+  collectionID: Buffer;
 }
 
 export interface TransferCommandParams {
-  audioID: Buffer;
+  collectionID: Buffer;
   address: Buffer;
 }
 
@@ -52,22 +54,12 @@ export interface SetAttributesCommandParams {
   name: string;
   releaseYear: string;
   artistName: string;
-  genre: number[];
+  coArtists: string[];
+  collectionType: number;
   collectionID: Buffer;
-  audioID: Buffer;
 }
 
 export interface Store<Entity> {
   get:  (context: ModuleEndpointContext, key: Buffer) => Promise<Entity>;
   has: (context: ModuleEndpointContext, key: Buffer) => Promise<boolean>;
-}
-
-export enum CreateEventResult {
-  SUCCESSFUL = 'successful',
-  FAILED = 'failed',
-}
-
-export interface CreateEventData {
-  senderAddress: Buffer;
-  audioID: Buffer;
 }

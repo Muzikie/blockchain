@@ -2,7 +2,7 @@
 
 exports[`SetAttributeCommand constructor should have valid schema 1`] = `
 Object {
-  "$id": "audio/setAttribute",
+  "$id": "audio/setAttributes",
   "properties": Object {
     "artistName": Object {
       "dataType": "string",
@@ -11,6 +11,10 @@ Object {
       "minLength": 3,
     },
     "audioID": Object {
+      "dataType": "bytes",
+      "fieldNumber": 6,
+    },
+    "collectionID": Object {
       "dataType": "bytes",
       "fieldNumber": 5,
     },
@@ -37,9 +41,10 @@ Object {
     "releaseYear",
     "artistName",
     "genre",
+    "collectionID",
     "audioID",
   ],
-  "title": "SetAttributeAsset transaction asset for audio module",
+  "title": "SetAttributesAsset transaction asset for audio module",
   "type": "object",
 }
 `;
