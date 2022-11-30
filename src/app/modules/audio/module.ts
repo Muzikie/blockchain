@@ -8,7 +8,7 @@ import {
   TransactionVerifyContext,
   VerificationResult,
   ModuleMetadata,
-  // TransactionExecuteContext,
+  TransactionExecuteContext,
   // GenesisBlockExecuteContext,
   // BlockExecuteContext,
   // BlockAfterExecuteContext,
@@ -80,9 +80,15 @@ export class AudioModule extends BaseModule {
       };
     }
 
-  // public async beforeCommandExecute(_context: TransactionExecuteContext): Promise<void> {}
+    // public async beforeCommandExecute(_context: TransactionExecuteContext): Promise<void> {}
 
-  // public async afterCommandExecute(_context: TransactionExecuteContext): Promise<void> {}
+    public async afterCommandExecute(context: TransactionExecuteContext): Promise<void> {
+      const account = await this.stores.get(AudioAccountStore).get(context, context.transaction.senderAddress);
+      const audioID = account.audio.audios[account.audio.audios.length -1];
+      const { collectionID } = await this.stores.get(AudioStore).get(context, audioID);
+      context.logger.info('INFO :: :: audioID', audioID.toString('hex'));
+      context.logger.info('INFO :: :: collectionID', collectionID.toString('hex'));
+    }
 
   // public async initGenesisState(_context: GenesisBlockExecuteContext): Promise<void> {}
 
