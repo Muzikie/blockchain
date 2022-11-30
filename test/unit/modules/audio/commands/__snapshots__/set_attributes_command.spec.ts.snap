@@ -12,6 +12,10 @@ Object {
     },
     "audioID": Object {
       "dataType": "bytes",
+      "fieldNumber": 6,
+    },
+    "collectionID": Object {
+      "dataType": "bytes",
       "fieldNumber": 5,
     },
     "genre": Object {
@@ -37,6 +41,7 @@ Object {
     "releaseYear",
     "artistName",
     "genre",
+    "collectionID",
     "audioID",
   ],
   "title": "SetAttributesAsset transaction asset for audio module",

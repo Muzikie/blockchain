@@ -17,6 +17,10 @@ Object {
       },
       "type": "array",
     },
+    "collectionType": Object {
+      "dataType": "uint32",
+      "fieldNumber": 5,
+    },
     "name": Object {
       "dataType": "string",
       "fieldNumber": 1,
@@ -27,16 +31,13 @@ Object {
       "dataType": "string",
       "fieldNumber": 2,
     },
-    "type": Object {
-      "dataType": "number",
-      "fieldNumber": 5,
-    },
   },
   "required": Array [
     "name",
     "releaseYear",
     "artistName",
     "coArtists",
+    "collectionType",
   ],
   "title": "CreateAsset transaction asset for collection module",
   "type": "object",
