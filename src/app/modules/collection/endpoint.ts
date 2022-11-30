@@ -4,9 +4,6 @@ import { ModuleEndpointContext } from 'lisk-framework';
 import {
   CollectionAccountJSON,
   CollectionJSON,
-  CollectionAccount,
-  Store,
-  Collection,
 } from './types';
 import { CollectionAccountStore } from './stores/collectionAccount';
 import { CollectionStore } from './stores/collection';
