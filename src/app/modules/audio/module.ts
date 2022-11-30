@@ -8,7 +8,7 @@ import {
   TransactionVerifyContext,
   VerificationResult,
   ModuleMetadata,
-  // TransactionExecuteContext,
+  TransactionExecuteContext,
   // GenesisBlockExecuteContext,
   // BlockExecuteContext,
   // BlockAfterExecuteContext,
@@ -19,10 +19,13 @@ import { CreateCommand } from "./commands/create_command";
 import { DestroyCommand } from "./commands/destroy_command";
 import { TransferCommand } from "./commands/transfer_command";
 import { SetAttributesCommand } from "./commands/set_attributes_command";
+import { CreateEvent } from "./events/create";
 import { AudioEndpoint } from './endpoint';
 import { AudioMethod } from './method';
 import { AudioAccountStore } from './stores/audioAccount';
 import { AudioStore } from './stores/audio';
+import { CollectionMethod } from '../collection/method';
+import { COMMANDS, MODULES } from '../../constants';
 
 export class AudioModule extends BaseModule {
     public endpoint = new AudioEndpoint(this.stores, this.offchainStores);
@@ -33,11 +36,17 @@ export class AudioModule extends BaseModule {
       new TransferCommand(this.stores, this.events),
       new SetAttributesCommand(this.stores, this.events),
     ];
+    private _collectionMethod!: CollectionMethod;
 
     public constructor() {
       super();
       this.stores.register(AudioAccountStore, new AudioAccountStore(this.name));
       this.stores.register(AudioStore, new AudioStore(this.name));
+      this.events.register(CreateEvent, new CreateEvent(this.name));
+    }
+
+    public addDependencies(collectionMethod: CollectionMethod) {
+      this._collectionMethod = collectionMethod;
     }
 
     public metadata(): ModuleMetadata {
@@ -78,9 +87,43 @@ export class AudioModule extends BaseModule {
       };
     }
 
-  // public async beforeCommandExecute(_context: TransactionExecuteContext): Promise<void> {}
+    public async beforeCommandExecute(context: TransactionExecuteContext): Promise<void> {
+      const audioAccountSubStore = this.stores.get(AudioAccountStore);
+      const audioSubStore = this.stores.get(AudioStore);
 
-  // public async afterCommandExecute(_context: TransactionExecuteContext): Promise<void> {}
+      if (context.transaction.command === COMMANDS.DESTROY && context.transaction.module === MODULES.AUDIO) {
+        const account = await audioAccountSubStore.get(context, context.transaction.senderAddress);
+        const audioID = account.audio.audios[account.audio.audios.length -1];
+        if (audioID) {
+          const { collectionID } = await audioSubStore.get(context, audioID);
+          await this._collectionMethod.removeAudio(
+            context.getMethodContext(),
+            audioID,
+            collectionID,
+            context.transaction.senderAddress,
+          );
+        }
+      }
+    }
+
+    public async afterCommandExecute(context: TransactionExecuteContext): Promise<void> {
+      const audioAccountSubStore = this.stores.get(AudioAccountStore);
+      const audioSubStore = this.stores.get(AudioStore);
+
+      if (context.transaction.command === COMMANDS.CREATE && context.transaction.module === MODULES.AUDIO) {
+        const account = await audioAccountSubStore.get(context, context.transaction.senderAddress);
+        const audioID = account.audio.audios[account.audio.audios.length -1];
+        if (audioID) {
+          const { collectionID } = await audioSubStore.get(context, audioID);
+          await this._collectionMethod.addAudio(
+            context.getMethodContext(),
+            audioID,
+            collectionID,
+            context.transaction.senderAddress,
+          );
+        }
+      }
+    }
 
   // public async initGenesisState(_context: GenesisBlockExecuteContext): Promise<void> {}
 

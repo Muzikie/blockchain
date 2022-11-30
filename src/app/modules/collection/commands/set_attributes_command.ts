@@ -10,7 +10,7 @@ import {
 import { CollectionStore } from '../stores/collection';
 import { setAttributesCommandParamsSchema } from '../schemas';
 import { SetAttributesCommandParams, Collection } from '../types';
-import { validCollectionTypes } from '../constants';
+import { validCollectionTypes, MIN_RELEASE_YEAR } from '../constants';
 
 export class SetAttributesCommand extends BaseCommand {
   public schema = setAttributesCommandParamsSchema;
@@ -19,13 +19,13 @@ export class SetAttributesCommand extends BaseCommand {
   public async verify(context: CommandVerifyContext<SetAttributesCommandParams>): Promise<VerificationResult> {
     const thisYear = new Date().getFullYear();
     const numericYear = Number(context.params.releaseYear);
-    if (numericYear < 1900 || numericYear > thisYear) {
+    if (numericYear < MIN_RELEASE_YEAR || numericYear > thisYear) {
       return {
         status: VerifyStatus.FAIL,
-        error: new Error(`Release year must be a number between 1900 and ${thisYear}`)
+        error: new Error(`Release year must be a number between ${MIN_RELEASE_YEAR} and ${thisYear}`)
       }
     }
-    if (!validCollectionTypes.includes(context.params.type)) {
+    if (!validCollectionTypes.includes(context.params.collectionType)) {
       return {
         status: VerifyStatus.FAIL,
         error: new Error('Type should be selected from the list of valid types')
@@ -54,8 +54,11 @@ export class SetAttributesCommand extends BaseCommand {
     }
 
     // Create the Collection object and save it on the blockchain
+    // Note: You can not change the list of audios using this method
+    // Audios of a collection can be changes from the audio module
     const updatedObject: Collection = {
       ...params,
+      audios: collectionNFT.audios,
       ownerAddress: collectionNFT.ownerAddress,
     };
     await collectionSubStore.set(context,  params.collectionID, updatedObject);

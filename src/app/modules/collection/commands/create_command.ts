@@ -10,7 +10,7 @@ import { CollectionStore } from '../stores/collection';
 import { CollectionAccountStore } from '../stores/collectionAccount';
 import { CreateCommandParams, Collection, CollectionAccount } from '../types';
 import { createCommandParamsSchema } from '../schemas';
-import { validCollectionTypes } from '../constants';
+import { validCollectionTypes, MIN_RELEASE_YEAR } from '../constants';
 import { getNodeForName } from '../utils';
 
 export class CreateCommand extends BaseCommand {
@@ -20,13 +20,13 @@ export class CreateCommand extends BaseCommand {
   public async verify(context: CommandVerifyContext<CreateCommandParams>): Promise<VerificationResult> {
     const thisYear = new Date().getFullYear();
     const numericYear = Number(context.params.releaseYear);
-    if (numericYear < 1900 || numericYear > thisYear) {
+    if (numericYear < MIN_RELEASE_YEAR || numericYear > thisYear) {
       return {
         status: VerifyStatus.FAIL,
-        error: new Error(`Release year must be a number between 1900 and ${thisYear}`)
+        error: new Error(`Release year must be a number between ${MIN_RELEASE_YEAR} and ${thisYear}`)
       }
     }
-    if (!validCollectionTypes.includes(context.params.type)) {
+    if (!validCollectionTypes.includes(context.params.collectionType)) {
       return {
         status: VerifyStatus.FAIL,
         error: new Error('Collection type should be selected from the list of valid types')
@@ -50,8 +50,10 @@ export class CreateCommand extends BaseCommand {
     }
 
     // Create the Collection object and save it on the blockchain
+    // Note: The audios list is initially empty
     const audioObject: Collection = {
       ...params,
+      audios: [],
       ownerAddress: transaction.senderAddress,
     };
 

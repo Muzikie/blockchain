@@ -46,7 +46,7 @@ export const getAccount = async (
 };
 
 // Get Collection by collectionID
-export const getAudio = async (
+export const getCollection = async (
   context: ModuleEndpointContext,
   collectionSubStore: Store<Collection>,
 ): Promise<CollectionJSON> => {

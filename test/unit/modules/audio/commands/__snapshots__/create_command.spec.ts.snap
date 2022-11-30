@@ -10,6 +10,10 @@ Object {
       "maxLength": 40,
       "minLength": 3,
     },
+    "collectionID": Object {
+      "dataType": "bytes",
+      "fieldNumber": 5,
+    },
     "genre": Object {
       "fieldNumber": 4,
       "items": Object {
@@ -33,6 +37,7 @@ Object {
     "releaseYear",
     "artistName",
     "genre",
+    "collectionID",
   ],
   "title": "CreateAsset transaction asset for audio module",
   "type": "object",
