@@ -39,7 +39,7 @@ export class DestroyCommand extends BaseCommand {
     }
 
     // Check if the sender owns the collection
-    if (!collection.ownerAddress.equals(transaction.senderAddress)) {
+    if (!collection.creatorAddress.equals(transaction.senderAddress)) {
       throw new Error('You cannot destroy an collection that you do not own.');
     }
 

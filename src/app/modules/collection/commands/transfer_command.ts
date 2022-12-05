@@ -34,11 +34,11 @@ export class TransferCommand extends BaseCommand {
 
     const collectionNFT = await collectionSubStore.get(context, collectionID);
 
-    if (!collectionNFT.ownerAddress.equals(context.transaction.senderAddress)) {
+    if (!collectionNFT.creatorAddress.equals(context.transaction.senderAddress)) {
       throw new Error('You are not the owner of this collection.');
     }
 
-    const collectionAccount = await collectionAccountSubStore.get(context, collectionNFT.ownerAddress);
+    const collectionAccount = await collectionAccountSubStore.get(context, collectionNFT.creatorAddress);
     const recipientExists = await collectionAccountSubStore.has(context, address);
 
     // Find and remove the collectionID from the owner account
@@ -49,7 +49,7 @@ export class TransferCommand extends BaseCommand {
     collectionAccount.collection.collections.splice(collectionIndex, 1);
 
     // Add the collectionID to the recipient account
-    collectionNFT.ownerAddress = address;
+    collectionNFT.creatorAddress = address;
     if (recipientExists) {
       const recipientAccount = await collectionAccountSubStore.get(context, address);
       recipientAccount.collection.collections.push(collectionID);
