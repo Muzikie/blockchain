@@ -28,3 +28,25 @@ export const subscriptionStoreSchema =  {
     },
   },
 };
+
+export const accountStoreSchema = {
+  $id: 'subscription/account',
+  type: 'object',
+  required: ['subscription'],
+  properties: {
+    subscription: {
+      type: 'object',
+      required: ['owned', 'shared'],
+      properties: {
+        owned: {
+          fieldNumber: 1,
+          dataType: 'bytes',
+        },
+        shared: {
+          fieldNumber: 2,
+          dataType: 'bytes',
+        }
+      }
+    },
+  },
+};

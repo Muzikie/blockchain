@@ -5,3 +5,10 @@ export interface Subscription {
   members: Buffer[];
   creatorAddress: Buffer;
 }
+
+export interface SubscriptionAccount {
+  subscription: {
+    owned: Buffer;
+    shared: Buffer;
+  };
+}
