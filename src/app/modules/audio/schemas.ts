@@ -174,6 +174,10 @@ export const transferCommandParamsSchema = {
       format: 'lisk32',
       fieldNumber: 2,
     },
+    shares: {
+      dataType: 'uint32',
+      fieldNumber: 3,
+    },
   },
 };
 
