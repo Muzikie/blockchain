@@ -8,7 +8,7 @@ export interface Collection {
   coArtists: string[];
   collectionType: number;
   audios: Buffer[];
-  ownerAddress: Buffer;
+  creatorAddress: Buffer;
 }
 
 export interface CollectionJSON {
@@ -18,7 +18,7 @@ export interface CollectionJSON {
   coArtists: string[];
   collectionType: number;
   audios: string[];
-  ownerAddress: string;
+  creatorAddress: string;
 }
 
 export interface CollectionAccount {

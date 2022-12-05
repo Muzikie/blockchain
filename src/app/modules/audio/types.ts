@@ -1,22 +1,34 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ModuleEndpointContext } from 'lisk-framework';
 
+interface LoyaltyOwner {
+  address: Buffer;
+  shares: number;
+}
+
+interface LoyaltyOwnerJSON {
+  address: string;
+  shares: number;
+}
+
 export interface Audio {
   name: string;
   releaseYear: string;
   artistName: string;
   genre: number[];
   collectionID: Buffer;
-  ownerAddress: Buffer;
+  creatorAddress: Buffer;
+  owners: LoyaltyOwner[];
 }
 
 export interface AudioJSON {
-  ownerAddress: string;
+  creatorAddress: string;
   name: string;
   releaseYear: number;
   artistName: string;
   genre: number[];
   collectionID: string;
+  owners: LoyaltyOwnerJSON[];
 }
 
 export interface AudioAccount {
@@ -37,6 +49,7 @@ export interface CreateCommandParams {
   artistName: string;
   genre: number[];
   collectionID: Buffer;
+  owners: LoyaltyOwner[];
 }
 
 export interface DestroyCommandParams {
@@ -46,6 +59,7 @@ export interface DestroyCommandParams {
 export interface TransferCommandParams {
   audioID: Buffer;
   address: Buffer;
+  shares: number;
 }
 
 export interface SetAttributesCommandParams {

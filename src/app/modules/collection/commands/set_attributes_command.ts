@@ -49,7 +49,7 @@ export class SetAttributesCommand extends BaseCommand {
     const collectionNFT: Collection = await collectionSubStore.get(context, params.collectionID);
 
     // Check if the sender owns the collection
-    if (!collectionNFT.ownerAddress.equals(transaction.senderAddress)) {
+    if (!collectionNFT.creatorAddress.equals(transaction.senderAddress)) {
       throw new Error('You cannot update an collection that you do not own.');
     }
 
@@ -59,7 +59,7 @@ export class SetAttributesCommand extends BaseCommand {
     const updatedObject: Collection = {
       ...params,
       audios: collectionNFT.audios,
-      ownerAddress: collectionNFT.ownerAddress,
+      creatorAddress: collectionNFT.creatorAddress,
     };
     await collectionSubStore.set(context,  params.collectionID, updatedObject);
   }

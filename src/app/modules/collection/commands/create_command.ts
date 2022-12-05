@@ -54,7 +54,7 @@ export class CreateCommand extends BaseCommand {
     const audioObject: Collection = {
       ...params,
       audios: [],
-      ownerAddress: transaction.senderAddress,
+      creatorAddress: transaction.senderAddress,
     };
 
     // Store the hash of the audio object in the sender account
