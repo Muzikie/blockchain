@@ -34,7 +34,7 @@ export class DestroyCommand extends BaseCommand {
     const audio = await audioSubStore.get(context, params.audioID);
 
     // Check if the sender owns the audio
-    if (!audio.ownerAddress.equals(transaction.senderAddress)) {
+    if (!audio.creatorAddress.equals(transaction.senderAddress)) {
       throw new Error('You cannot destroy an audio that you do not own.');
     }
 

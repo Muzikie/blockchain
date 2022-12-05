@@ -32,6 +32,14 @@ export class CreateCommand extends BaseCommand {
         error: new Error('Genres should be selected from the list of valid genres')
       }
     }
+    if (context.params.owners.length === 0
+      || context.params.owners.some(item => item.shares < 1)
+      || context.params.owners.reduce((acc, item) =>  acc + item.shares, 0) !== 100) {
+      return {
+        status: VerifyStatus.FAIL,
+        error: new Error('Owners should have a total of 100 shares. Each owner should have a positive number of shares.')
+      }
+    }
     return { status: VerifyStatus.OK };
   }
 
@@ -52,7 +60,7 @@ export class CreateCommand extends BaseCommand {
     // Create the Audio object and save it on the blockchain
     const audioObject: Audio = {
       ...params,
-      ownerAddress: transaction.senderAddress,
+      creatorAddress: transaction.senderAddress,
     };
 
     // Store the hash of the audio object in the sender account

@@ -1,7 +1,15 @@
 export const audioStoreSchema = {
   $id: 'audio/audio',
   type: 'object',
-  required: ['name', 'releaseYear', 'artistName', 'genre', 'collectionID', 'ownerAddress'],
+  required: [
+    'name',
+    'releaseYear',
+    'artistName',
+    'genre',
+    'collectionID',
+    'owners',
+    'creatorAddress',
+  ],
   properties: {
     name: {
       dataType: 'string',
@@ -26,9 +34,29 @@ export const audioStoreSchema = {
       dataType: 'bytes',
       fieldNumber: 5,
     },
-    ownerAddress: {
-      dataType: 'bytes',
+    owners: {
+      type: 'array',
       fieldNumber: 6,
+      items: {
+        $id: 'audio/audio/owners',
+        type: 'object',
+        required: ['address', 'shares'],
+        properties: {
+          address: {
+            dataType: 'bytes',
+            format: 'lisk32',
+            fieldNumber: 1,
+          },
+          shares: {
+            dataType: 'uint32',
+            fieldNumber: 2,
+          },
+        },
+      },
+    },
+    creatorAddress: {
+      dataType: 'bytes',
+      fieldNumber: 7,
     },
   },
 };
@@ -59,7 +87,14 @@ export const createCommandParamsSchema = {
   $id: 'audio/create',
   title: 'CreateAsset transaction asset for audio module',
   type: 'object',
-  required: ['name', 'releaseYear', 'artistName', 'genre', 'collectionID'],
+  required: [
+    'name',
+    'releaseYear',
+    'artistName',
+    'genre',
+    'collectionID',
+    'owners',
+  ],
   properties: {
     name: {
       dataType: 'string',
@@ -87,7 +122,27 @@ export const createCommandParamsSchema = {
     collectionID: {
       dataType: 'bytes',
       fieldNumber: 5,
-    }
+    },
+    owners: {
+      type: 'array',
+      fieldNumber: 6,
+      items: {
+        $id: 'audio/create/owners',
+        type: 'object',
+        required: ['address', 'shares'],
+        properties: {
+          address: {
+            dataType: 'bytes',
+            format: 'lisk32',
+            fieldNumber: 1,
+          },
+          shares: {
+            dataType: 'uint32',
+            fieldNumber: 2,
+          },
+        },
+      },
+    },
   },
 };
 

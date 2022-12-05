@@ -33,11 +33,11 @@ export class TransferCommand extends BaseCommand {
 
     const audioNFT = await audioSubStore.get(context, audioID);
 
-    if (!audioNFT.ownerAddress.equals(context.transaction.senderAddress)) {
+    if (!audioNFT.creatorAddress.equals(context.transaction.senderAddress)) {
       throw new Error('You are not the owner of this audio.');
     }
 
-    const audioAccount = await audioAccountSubStore.get(context, audioNFT.ownerAddress);
+    const audioAccount = await audioAccountSubStore.get(context, audioNFT.creatorAddress);
     const recipientExists = await audioAccountSubStore.has(context, address);
 
     // Find and remove the audioID from the owner account
@@ -48,7 +48,7 @@ export class TransferCommand extends BaseCommand {
     audioAccount.audio.audios.splice(audioIndex, 1);
 
     // Add the audioID to the recipient account
-    audioNFT.ownerAddress = address;
+    audioNFT.creatorAddress = address;
     if (recipientExists) {
       const recipientAccount = await audioAccountSubStore.get(context, address);
       recipientAccount.audio.audios.push(audioID);
