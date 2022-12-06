@@ -17,15 +17,20 @@ import {
 import { VerifyStatus } from 'lisk-framework';
 import { SubscriptionEndpoint } from './endpoint';
 import { SubscriptionMethod } from './method';
+import { SubscriptionStore } from './stores/subscription';
+import { SubscriptionAccountStore } from './stores/subscriptionAccount';
+import { PurchaseCommand } from './commands/purchase_command';
+
 
 export class SubscriptionModule extends BaseModule {
     public endpoint = new SubscriptionEndpoint(this.stores, this.offchainStores);
     public method = new SubscriptionMethod(this.stores, this.events);
-    public commands = [];
+    public commands = [new PurchaseCommand(this.stores, this.events)];
 
     public constructor() {
       super();
-      // registeration of stores and events
+      this.stores.register(SubscriptionAccountStore, new SubscriptionAccountStore(this.name));
+      this.stores.register(SubscriptionStore, new SubscriptionStore(this.name));
     }
 
     public metadata(): ModuleMetadata {

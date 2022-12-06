@@ -1,17 +1,17 @@
-import { TransferCommand } from '../../../../../src/app/modules/collection/commands/transfer_command';
-import { CollectionModule } from '../../../../../src/app/modules/collection/module';
+import { PurchaseCommand } from '../../../../../src/app/modules/subscription/commands/purchase_command';
+import { SubscriptionModule } from '../../../../../src/app/modules/subscription/module';
 
-describe('TransferCommand', () => {
-  let command: TransferCommand;
-  const module = new CollectionModule();
+describe('PurchaseCommand', () => {
+  let command: PurchaseCommand;
+  const module = new SubscriptionModule();
 
   beforeEach(() => {
-    command = new TransferCommand(module.stores, module.events);
+    command = new PurchaseCommand(module.stores, module.events);
   });
 
   describe('constructor', () => {
     it('should have valid name', () => {
-      expect(command.name).toEqual('transfer');
+      expect(command.name).toEqual('purchase');
     });
 
     it('should have valid schema', () => {
