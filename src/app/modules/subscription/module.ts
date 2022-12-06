@@ -21,6 +21,7 @@ import { SubscriptionStore } from './stores/subscription';
 import { SubscriptionAccountStore } from './stores/subscriptionAccount';
 import { CreateCommand } from "./commands/create_command";
 import { PurchaseCommand } from './commands/purchase_command';
+import { UpdateMembersCommand } from "./commands/update_members_command";
 
 export class SubscriptionModule extends BaseModule {
     public endpoint = new SubscriptionEndpoint(this.stores, this.offchainStores);
@@ -28,6 +29,7 @@ export class SubscriptionModule extends BaseModule {
     public commands = [
       new CreateCommand(this.stores, this.events),
       new PurchaseCommand(this.stores, this.events),
+      new UpdateMembersCommand(this.stores, this.events),
     ];
 
     public constructor() {
