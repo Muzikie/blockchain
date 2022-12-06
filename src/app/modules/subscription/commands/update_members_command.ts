@@ -11,7 +11,6 @@ import { SubscriptionStore } from '../stores/subscription';
 import { SubscriptionAccountStore } from '../stores/subscriptionAccount';
 import { UpdateMembersCommandParams, SubscriptionAccount } from '../types';
 import { updateMembersCommandParamsSchema } from '../schemas';
-import { DEV_ADDRESS } from '../constants';
 
 export class UpdateMembersCommand extends BaseCommand {
   public schema = updateMembersCommandParamsSchema;
