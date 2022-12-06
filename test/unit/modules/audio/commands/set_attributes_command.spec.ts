@@ -1,9 +1,9 @@
 import { SetAttributesCommand } from '../../../../../src/app/modules/audio/commands/set_attributes_command';
-import { AudioModule } from '../../../../../src/app/modules/audio/module'
+import { AudioModule } from '../../../../../src/app/modules/audio/module';
 
 describe('SetAttributeCommand', () => {
   let command: SetAttributesCommand;
-  const module = new AudioModule()
+  const module = new AudioModule();
 
   beforeEach(() => {
     command = new SetAttributesCommand(module.stores, module.events);
