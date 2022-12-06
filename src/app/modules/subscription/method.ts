@@ -1,6 +1,6 @@
 import { BaseMethod } from 'lisk-sdk';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { ModuleEndpointContext, MethodContext } from 'lisk-framework';
+import { ModuleEndpointContext } from 'lisk-framework';
 import {
   SubscriptionAccountJSON,
   SubscriptionJSON,
