@@ -1,7 +1,7 @@
 export const subscriptionStoreSchema =  {
   $id: 'subscription/subscription',
   type: 'object',
-  required: ['price', 'consumable', 'streams', 'members', 'creatorAddress'],
+  required: ['price', 'consumable', 'streams', 'members', 'maxMembers', 'creatorAddress'],
   properties: {
     price: {
       dataType: 'uint64',
@@ -43,14 +43,37 @@ export const accountStoreSchema = {
       required: ['owned', 'shared'],
       properties: {
         owned: {
+          type: 'array',
           fieldNumber: 1,
-          dataType: 'bytes',
+          items: {
+            dataType: 'bytes',
+          },
         },
         shared: {
           fieldNumber: 2,
           dataType: 'bytes',
         }
       }
+    },
+  },
+};
+
+export const createCommandParamsSchema = {
+  $id: 'subscription/create',
+  title: 'CreateAsset transaction asset for subscription module',
+  type: 'object',
+  required: [
+    'maxMembers',
+    'price',
+  ],
+  properties: {
+    maxMembers: {
+      dataType: 'uint32',
+      fieldNumber: 1,
+    },
+    price: {
+      dataType: 'uint64',
+      fieldNumber: 2,
     },
   },
 };

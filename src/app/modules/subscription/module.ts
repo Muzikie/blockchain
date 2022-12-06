@@ -19,13 +19,16 @@ import { SubscriptionEndpoint } from './endpoint';
 import { SubscriptionMethod } from './method';
 import { SubscriptionStore } from './stores/subscription';
 import { SubscriptionAccountStore } from './stores/subscriptionAccount';
+import { CreateCommand } from "./commands/create_command";
 import { PurchaseCommand } from './commands/purchase_command';
-
 
 export class SubscriptionModule extends BaseModule {
     public endpoint = new SubscriptionEndpoint(this.stores, this.offchainStores);
     public method = new SubscriptionMethod(this.stores, this.events);
-    public commands = [new PurchaseCommand(this.stores, this.events)];
+    public commands = [
+      new CreateCommand(this.stores, this.events),
+      new PurchaseCommand(this.stores, this.events),
+    ];
 
     public constructor() {
       super();

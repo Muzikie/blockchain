@@ -9,9 +9,14 @@ export interface Subscription {
 
 export interface SubscriptionAccount {
   subscription: {
-    owned: Buffer;
+    owned: Buffer[];
     shared: Buffer;
   };
+}
+
+export interface CreateCommandParams {
+  maxMembers: number;
+  price: bigint;
 }
 
 export interface PurchaseCommandParams {
