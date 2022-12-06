@@ -22,9 +22,13 @@ export const subscriptionStoreSchema =  {
         dataType: 'bytes',
       }
     },
+    maxMembers: {
+      dataType: 'uint32',
+      fieldNumber: 5,
+    },
     creatorAddress: {
       dataType: 'bytes',
-      fieldNumber: 5,
+      fieldNumber: 6,
     },
   },
 };
@@ -47,6 +51,29 @@ export const accountStoreSchema = {
           dataType: 'bytes',
         }
       }
+    },
+  },
+};
+
+export const purchaseCommandParamsSchema = {
+  $id: 'subscription/purchase',
+  title: 'PurchaseAsset transaction asset for subscription module',
+  type: 'object',
+  required: [
+    'subscriptionID',
+    'members',
+  ],
+  properties: {
+    subscriptionID: {
+      dataType: 'bytes',
+      fieldNumber: 1,
+    },
+    members: {
+      type: 'array',
+      fieldNumber: 2,
+      items: {
+        dataType: 'bytes',
+      },
     },
   },
 };

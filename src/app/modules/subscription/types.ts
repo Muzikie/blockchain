@@ -3,6 +3,7 @@ export interface Subscription {
   consumable: bigint;
   streams: bigint;
   members: Buffer[];
+  maxMembers: number;
   creatorAddress: Buffer;
 }
 
@@ -11,4 +12,9 @@ export interface SubscriptionAccount {
     owned: Buffer;
     shared: Buffer;
   };
+}
+
+export interface PurchaseCommandParams {
+  subscriptionID: Buffer;
+  members: Buffer[];
 }
