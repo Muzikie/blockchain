@@ -101,3 +101,26 @@ export const purchaseCommandParamsSchema = {
     },
   },
 };
+
+export const updateMembersCommandParamsSchema = {
+  $id: 'subscription/updateMembers',
+  title: 'UpdateMembersAsset transaction asset for subscription module',
+  type: 'object',
+  required: [
+    'subscriptionID',
+    'members',
+  ],
+  properties: {
+    subscriptionID: {
+      dataType: 'bytes',
+      fieldNumber: 1,
+    },
+    members: {
+      type: 'array',
+      fieldNumber: 2,
+      items: {
+        dataType: 'bytes',
+      },
+    },
+  },
+};
