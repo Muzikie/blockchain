@@ -97,6 +97,7 @@ export const purchaseCommandParamsSchema = {
       fieldNumber: 2,
       items: {
         dataType: 'bytes',
+        format: 'lisk32',
       },
     },
   },
@@ -120,6 +121,7 @@ export const updateMembersCommandParamsSchema = {
       fieldNumber: 2,
       items: {
         dataType: 'bytes',
+        format: 'lisk32',
       },
     },
   },
