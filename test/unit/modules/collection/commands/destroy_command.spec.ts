@@ -3,30 +3,30 @@ import { CollectionModule } from '../../../../../src/app/modules/collection/modu
 
 describe('DestroyCommand', () => {
   let command: DestroyCommand;
-	const module = new CollectionModule();
+  const module = new CollectionModule();
 
-	beforeEach(() => {
-		command = new DestroyCommand(module.stores, module.events);
-	});
+  beforeEach(() => {
+    command = new DestroyCommand(module.stores, module.events);
+  });
 
-	describe('constructor', () => {
-		it('should have valid name', () => {
-			expect(command.name).toEqual('destroy');
-		});
+  describe('constructor', () => {
+    it('should have valid name', () => {
+      expect(command.name).toEqual('destroy');
+    });
 
-		it('should have valid schema', () => {
-			expect(command.schema).toMatchSnapshot();
-		});
-	});
+    it('should have valid schema', () => {
+      expect(command.schema).toMatchSnapshot();
+    });
+  });
 
-	describe('verify', () => {
-		describe('schema validation', () => {
+  describe('verify', () => {
+    describe('schema validation', () => {
       it.todo('should throw errors for invalid schema');
       it.todo('should be ok for valid schema');
     });
-	});
+  });
 
-	describe('execute', () => {
+  describe('execute', () => {
     describe('valid cases', () => {
       it.todo('should update the state store');
     });
@@ -34,5 +34,5 @@ describe('DestroyCommand', () => {
     describe('invalid cases', () => {
       it.todo('should throw error');
     });
-	});
+  });
 });
