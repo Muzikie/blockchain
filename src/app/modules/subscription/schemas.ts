@@ -18,7 +18,7 @@ export const subscriptionStoreSchema =  {
     members: {
       type: 'array',
       fieldNumber: 4,
-      members: {
+      items: {
         dataType: 'bytes',
       }
     },
@@ -41,6 +41,7 @@ export const accountStoreSchema = {
     subscription: {
       type: 'object',
       required: ['owned', 'shared'],
+      fieldNumber: 1,
       properties: {
         owned: {
           type: 'array',
