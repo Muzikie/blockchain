@@ -61,11 +61,11 @@ export class PurchaseCommand extends BaseCommand {
 	  let senderAccount: SubscriptionAccount;
 	  if (senderExist) {
 	    senderAccount = await subscriptionAccountStore.get(context, senderAddress);
-	    senderAccount.subscription.owned = subscriptionID;
+	    senderAccount.subscription.owned = [...senderAccount.subscription.owned, subscriptionID];
 	  } else {
 	    senderAccount = {
 	      subscription: {
-	        owned: subscriptionID,
+	        owned: [subscriptionID],
 	        shared: Buffer.alloc(0),
 	      },
 	    };
@@ -82,7 +82,7 @@ export class PurchaseCommand extends BaseCommand {
 	    } else {
 	      memberAccount = {
 	        subscription: {
-	          owned: Buffer.alloc(0),
+	          owned: [Buffer.alloc(0)],
 	          shared: subscriptionID,
 	        },
 	      };

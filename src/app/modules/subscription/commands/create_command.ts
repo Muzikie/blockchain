@@ -8,7 +8,7 @@ import {
 } from 'lisk-sdk';
 import { SubscriptionStore } from '../stores/subscription';
 import { SubscriptionAccountStore } from '../stores/subscriptionAccount';
-import { CreateCommandParams, Subscription } from '../types';
+import { CreateCommandParams, Subscription, SubscriptionAccount } from '../types';
 import { createCommandParamsSchema } from '../schemas';
 import { DEV_ADDRESS } from '../constants';
 
@@ -53,15 +53,19 @@ export class CreateCommand extends BaseCommand {
     };
     // Get the sender account from the blockchain
     const senderExists = await subscriptionAccountStore.has(context, DEV_ADDRESS);
+    let senderAccount: SubscriptionAccount;
     if (!senderExists) {
-      const senderAccount = {
+      senderAccount = {
         subscription: {
-          owned: Buffer.alloc(0),
+          owned: [id],
           shared: Buffer.alloc(0),
         },
       };
-      await subscriptionAccountStore.set(context, DEV_ADDRESS, senderAccount);
+    } else {
+      senderAccount = await subscriptionAccountStore.get(context, DEV_ADDRESS);
+      senderAccount.subscription.owned.push(id);
     }
+    await subscriptionAccountStore.set(context, DEV_ADDRESS, senderAccount);
     // Store the subscription object in the blockchain
     await subscriptionStore.set(context, id, subscription);
   }
