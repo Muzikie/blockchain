@@ -55,6 +55,26 @@ export const accountStoreSchema = {
   },
 };
 
+export const createCommandParamsSchema = {
+  $id: 'subscription/create',
+  title: 'CreateAsset transaction asset for subscription module',
+  type: 'object',
+  required: [
+    'maxMembers',
+    'price',
+  ],
+  properties: {
+    maxMembers: {
+      dataType: 'uint32',
+      fieldNumber: 1,
+    },
+    price: {
+      dataType: 'uint64',
+      fieldNumber: 2,
+    },
+  },
+};
+
 export const purchaseCommandParamsSchema = {
   $id: 'subscription/purchase',
   title: 'PurchaseAsset transaction asset for subscription module',

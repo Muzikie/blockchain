@@ -14,6 +14,11 @@ export interface SubscriptionAccount {
   };
 }
 
+export interface CreateCommandParams {
+  maxMembers: number;
+  price: bigint;
+}
+
 export interface PurchaseCommandParams {
   subscriptionID: Buffer;
   members: Buffer[];
