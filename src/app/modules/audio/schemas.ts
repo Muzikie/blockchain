@@ -51,6 +51,10 @@ export const audioStoreSchema = {
             dataType: 'uint32',
             fieldNumber: 2,
           },
+          income: {
+            dataType: 'uint64',
+            fieldNumber: 3,
+          },
         },
       },
     },
