@@ -6,15 +6,21 @@ import {
   CommandExecuteContext,
   VerificationResult,
   VerifyStatus,
+  TokenMethod,
 } from 'lisk-sdk';
 import { SubscriptionStore } from '../stores/subscription';
 import { SubscriptionAccountStore } from '../stores/subscriptionAccount';
 import { PurchaseCommandParams, SubscriptionAccount } from '../types';
 import { purchaseCommandParamsSchema } from '../schemas';
-import { DEV_ADDRESS } from '../constants';
+import { DEV_ADDRESS, TREASURY_ADDRESS } from '../constants';
 
 export class PurchaseCommand extends BaseCommand {
   public schema = purchaseCommandParamsSchema;
+  private _tokenMethod!: TokenMethod;
+
+  public addDependencies(tokenMethod: TokenMethod) {
+    this._tokenMethod = tokenMethod;
+  }
 
   // eslint-disable-next-line @typescript-eslint/require-await
   public async verify(context: CommandVerifyContext<PurchaseCommandParams>): Promise<VerificationResult> {
@@ -28,8 +34,13 @@ export class PurchaseCommand extends BaseCommand {
   }
 
   public async execute(context: CommandExecuteContext<PurchaseCommandParams>): Promise<void> {
-    const { members, subscriptionID } = context.params;
-    const { senderAddress } = context.transaction;
+    const {
+      params: { members, subscriptionID },
+      transaction: { senderAddress },
+      chainID,
+    } = context;
+    const tokenID = Buffer.concat([chainID, Buffer.alloc(4)]);
+    const methodContext = context.getMethodContext();
     const subscriptionAccountStore = this.stores.get(SubscriptionAccountStore);
     const subscriptionStore = this.stores.get(SubscriptionStore);
 
@@ -52,10 +63,29 @@ export class PurchaseCommand extends BaseCommand {
     // throw an error if the sender does not have enough tokens
     // Deduct the price from the sender account
     // Add 20% of the price to the creator account
+    const devCosts = subscriptionNFT.price * BigInt(2) / BigInt(10);
+    const consumable = subscriptionNFT.price - devCosts;
+
+    await this._tokenMethod.transfer(
+      methodContext,
+      senderAddress,
+      DEV_ADDRESS,
+      tokenID,
+      subscriptionNFT.price,
+    );
+
+    await this._tokenMethod.transfer(
+      methodContext,
+      DEV_ADDRESS,
+      TREASURY_ADDRESS,
+      tokenID,
+      consumable,
+    );
 
     // Create subscription object
     const subscription = {
       ...subscriptionNFT,
+      consumable,
       members,
       creatorAddress: senderAddress,
     };
