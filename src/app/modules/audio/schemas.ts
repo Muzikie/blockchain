@@ -54,6 +54,7 @@ export const audioStoreSchema = {
         },
       },
     },
+    // Add income value as uint64
     creatorAddress: {
       dataType: 'bytes',
       fieldNumber: 7,
@@ -217,6 +218,19 @@ export const setAttributesCommandParamsSchema = {
     audioID: {
       dataType: 'bytes',
       fieldNumber: 6,
+    },
+  },
+};
+
+export const streamCommandParamsSchema = {
+  $id: 'audio/stream',
+  title: 'StreamAsset transaction asset for audio module',
+  type: 'object',
+  required: ['audioID'],
+  properties: {
+    audioID: {
+      dataType: 'bytes',
+      fieldNumber: 1,
     },
   },
 };

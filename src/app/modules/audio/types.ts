@@ -19,6 +19,7 @@ export interface Audio {
   collectionID: Buffer;
   creatorAddress: Buffer;
   owners: LoyaltyOwner[];
+  // Add income value as BigInt
 }
 
 export interface AudioJSON {
@@ -29,6 +30,7 @@ export interface AudioJSON {
   genre: number[];
   collectionID: string;
   owners: LoyaltyOwnerJSON[];
+  // Add income value as string
 }
 
 export interface AudioAccount {
@@ -68,6 +70,10 @@ export interface SetAttributesCommandParams {
   artistName: string;
   genre: number[];
   collectionID: Buffer;
+  audioID: Buffer;
+}
+
+export interface StreamCommandParams {
   audioID: Buffer;
 }
 

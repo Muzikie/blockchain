@@ -52,7 +52,7 @@ export class TransferCommand extends BaseCommand {
         if (item.address.equals(senderAddress)) {
           return {
             ...item,
-            shares: item.shares - shares,
+            shares: item.shares - shares, // divide the profit too.
           };
         }
         return item;

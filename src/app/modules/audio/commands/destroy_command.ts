@@ -39,6 +39,8 @@ export class DestroyCommand extends BaseCommand {
       throw new Error('You can only destroy an audio if you own 100% of the shares.');
     }
 
+    // Throw an error if the audio has non-zero income
+
     // Delete the audio object from the blockchain
     await audioSubStore.del(context, params.audioID);
 

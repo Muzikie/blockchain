@@ -18,6 +18,7 @@ import { VerifyStatus } from 'lisk-framework';
 import { CreateCommand } from "./commands/create_command";
 import { DestroyCommand } from "./commands/destroy_command";
 import { TransferCommand } from "./commands/transfer_command";
+import { StreamCommand } from "./commands/stream_command";
 import { SetAttributesCommand } from "./commands/set_attributes_command";
 import { CreateEvent } from "./events/create";
 import { AudioEndpoint } from './endpoint';
@@ -35,6 +36,7 @@ export class AudioModule extends BaseModule {
       new DestroyCommand(this.stores, this.events),
       new TransferCommand(this.stores, this.events),
       new SetAttributesCommand(this.stores, this.events),
+      new StreamCommand(this.stores, this.events),
     ];
     private _collectionMethod!: CollectionMethod;
 
@@ -42,6 +44,7 @@ export class AudioModule extends BaseModule {
       super();
       this.stores.register(AudioAccountStore, new AudioAccountStore(this.name));
       this.stores.register(AudioStore, new AudioStore(this.name));
+      // Create and register the stream store
       this.events.register(CreateEvent, new CreateEvent(this.name));
     }
 

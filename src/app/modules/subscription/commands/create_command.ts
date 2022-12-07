@@ -45,7 +45,7 @@ export class CreateCommand extends BaseCommand {
     // Create subscription object
     const subscription: Subscription = {
       price,
-      consumable: price,
+      consumable: price, // Define the consumable equal to 80% of the price
       streams: BigInt(0),
       members: [],
       maxMembers,

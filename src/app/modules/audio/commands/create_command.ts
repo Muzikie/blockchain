@@ -60,6 +60,7 @@ export class CreateCommand extends BaseCommand {
     // Create the Audio object and save it on the blockchain
     const audioObject: Audio = {
       ...params,
+      // Add income equal to zero for each owner
       creatorAddress: transaction.senderAddress,
     };
 
