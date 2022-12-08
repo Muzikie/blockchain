@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PurchaseCommand constructor should have valid schema 1`] = `
+exports[`UpdateMembersCommand constructor should have valid schema 1`] = `
 Object {
-  "$id": "subscription/purchase",
+  "$id": "subscription/updateMembers",
   "properties": Object {
     "members": Object {
       "fieldNumber": 2,
@@ -21,7 +21,7 @@ Object {
     "subscriptionID",
     "members",
   ],
-  "title": "PurchaseAsset transaction asset for subscription module",
+  "title": "UpdateMembersAsset transaction asset for subscription module",
   "type": "object",
 }
 `;
