@@ -47,7 +47,7 @@ export class SubscriptionModule extends BaseModule {
       this.stores.register(SubscriptionStore, new SubscriptionStore(this.name));
     }
 
-    public addDependencies(tokenMethod: TokenMethod) {
+    public addDependencies(tokenMethod: TokenMethod): void {
       this._tokenMethod = tokenMethod;
 
       this._purchaseCommand.addDependencies(this._tokenMethod);
