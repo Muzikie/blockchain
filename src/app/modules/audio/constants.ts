@@ -62,3 +62,4 @@ export const validGenres = [
 ];
 
 export const MIN_RELEASE_YEAR = 1900;
+export const STREAM_COST = BigInt(28500000);
