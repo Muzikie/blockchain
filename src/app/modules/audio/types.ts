@@ -4,7 +4,7 @@ import { ModuleEndpointContext } from 'lisk-framework';
 interface LoyaltyOwner {
   address: Buffer;
   shares: number;
-  income: BigInt;
+  income: bigint;
 }
 
 interface LoyaltyOwnerJSON {
