@@ -71,12 +71,12 @@ export class PurchaseCommand extends BaseCommand {
       senderAddress,
       DEV_ADDRESS,
       tokenID,
-      subscriptionNFT.price,
+      devCosts,
     );
 
     await this._tokenMethod.transfer(
       methodContext,
-      DEV_ADDRESS,
+      senderAddress,
       TREASURY_ADDRESS,
       tokenID,
       consumable,
@@ -91,6 +91,7 @@ export class PurchaseCommand extends BaseCommand {
     };
     // Save subscription object on the blockchain
     await subscriptionStore.set(context, subscriptionID, subscription);
+
     // Add owned subscription and save the subscription on the sender account
     const senderExist = await subscriptionAccountStore.has(context, senderAddress);
     let senderAccount: SubscriptionAccount;
@@ -107,6 +108,20 @@ export class PurchaseCommand extends BaseCommand {
     }
 
     await subscriptionAccountStore.set(context, senderAddress, senderAccount);
+
+    // Remove subscription from the dev account
+    const devAccount = await subscriptionAccountStore.get(context, DEV_ADDRESS);
+    await subscriptionAccountStore.set(
+      context,
+      DEV_ADDRESS,
+      {
+        subscription: {
+          owned: devAccount.subscription.owned.filter(item => !item.equals(subscriptionID)),
+          shared: Buffer.alloc(0),
+        }
+      },
+    );
+
     // Save the subscription on the members accounts
     for (const member of members) {
       const memberExist = await subscriptionAccountStore.has(context, member);
