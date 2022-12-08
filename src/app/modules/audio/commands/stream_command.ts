@@ -9,25 +9,64 @@ import {
 } from 'lisk-sdk';
 import { AudioStore } from '../stores/audio';
 import { streamCommandParamsSchema } from '../schemas';
-import { StreamCommandParams, Audio } from '../types';
-import { validGenres, MIN_RELEASE_YEAR } from '../constants';
+import { StreamCommandParams } from '../types';
+import { STREAM_COST } from '../constants';
+import { SubscriptionMethod } from '../../subscription/method';
 
 export class StreamCommand extends BaseCommand {
   public schema = streamCommandParamsSchema;
+  private _subscriptionMethod!: SubscriptionMethod;
+
+  public addDependencies(subscriptionMethod: SubscriptionMethod) {
+    this._subscriptionMethod = subscriptionMethod;
+  }
 
   // eslint-disable-next-line @typescript-eslint/require-await
   public async verify(_context: CommandVerifyContext<StreamCommandParams>): Promise<VerificationResult> {
     return { status: VerifyStatus.OK };
   }
 
-  public async execute(_context: CommandExecuteContext<StreamCommandParams>): Promise<void> {
+  public async execute(context: CommandExecuteContext<StreamCommandParams>): Promise<void> {
+    const {
+      params: { audioID },
+      transaction: { senderAddress },
+    } = context;
+    const methodContext = context.getMethodContext();
+    const audioSubStore = this.stores.get(AudioStore);
+
     // Throw an error if audio does not exist
+    const audioExists = await audioSubStore.has(context, audioID);
+    if (!audioExists) {
+      throw new Error(`Audio with ID ${audioID.toString('hex')} does not exist.`);
+    }
+    const audio = await audioSubStore.get(context, audioID);
+
     // Throw an error if the sender is not a member of an existing subscription
-    // Throw error if the corresponding subscription consumable is zero
+    context.logger.info(':: subscriptionID ::  ... ');
+    const {
+      data: subscription,
+      subscriptionID,
+    } = await this._subscriptionMethod.getByAddress(methodContext, senderAddress);
+
     // Increment the corresponding subscription streams count
+    subscription.streams += BigInt(1);
     // Decrement the corresponding subscription consumable
-    // Increment the corresponding audio streams count
-    // Increment the corresponding audio income value
+    subscription.consumable -= STREAM_COST; // @todo include fee
+
+    // @todo Increment the corresponding audio streams count
+    // audio.streams += BigInt(1);
+
+    // Increment the corresponding audio income value for each owner based on their shares %
+    audio.owners = audio.owners.map((owner, index) => ({
+      address: owner.address,
+      shares: owner.shares,
+      income: audio.owners[index].income + (STREAM_COST * BigInt(owner.shares) / BigInt(100)),
+    }));
+
     // Store stream object in the streams store
+    await audioSubStore.set(context, audioID, audio);
+
+    // Store subscription object in the subscriptions store
+    await this._subscriptionMethod.consume(methodContext, subscriptionID, senderAddress);
   }
 }
