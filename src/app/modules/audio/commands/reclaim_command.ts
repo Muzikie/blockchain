@@ -6,12 +6,20 @@ import {
   CommandExecuteContext,
   VerificationResult,
   VerifyStatus,
+  TokenMethod,
 } from 'lisk-sdk';
+import { TREASURY_ADDRESS } from '../../subscription/constants';
 import { AudioStore } from '../stores/audio';
 import { AudioAccountStore } from '../stores/audioAccount';
-import { AudioAccount, Audio, LoyaltyOwner } from '../types';
+import { LoyaltyOwner } from '../types';
 
 export class ReclaimCommand extends BaseCommand {
+  private _tokenMethod!: TokenMethod;
+
+  public addDependencies(tokenMethod: TokenMethod) {
+    this._tokenMethod = tokenMethod;
+  }
+
   // eslint-disable-next-line @typescript-eslint/require-await
   public async verify(context: CommandVerifyContext): Promise<VerificationResult> {
     const { transaction } = context;
@@ -29,8 +37,11 @@ export class ReclaimCommand extends BaseCommand {
   public async execute(context: CommandExecuteContext): Promise<void> {
     const {
       transaction: { senderAddress },
+      chainID,
       getMethodContext,
     } = context;
+    const tokenID = Buffer.concat([chainID, Buffer.alloc(4)]);
+    const methodContext = getMethodContext();
     const audioStore = this.stores.get(AudioStore);
     const audioAccountStore = this.stores.get(AudioAccountStore);
 
@@ -63,5 +74,13 @@ export class ReclaimCommand extends BaseCommand {
     }
     // @todo Transfer the total income from treasury account to the senderAddress
     context.logger.info(':: ReclaimCommand: totalIncome: ', totalIncome.toString());
+    await this._tokenMethod.transfer(
+      methodContext,
+      TREASURY_ADDRESS,
+      senderAddress,
+      tokenID,
+      totalIncome,
+    );
+    context.logger.info(':: ReclaimCommand: DONE: ');
   }
 }
