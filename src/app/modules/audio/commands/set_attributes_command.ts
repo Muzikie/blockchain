@@ -55,6 +55,7 @@ export class SetAttributesCommand extends BaseCommand {
     // Create the Audio object and save it on the blockchain
     const updatedObject: Audio = {
       ...params,
+      // set income back
       owners: audioNFT.owners,
       creatorAddress: audioNFT.creatorAddress,
     };

@@ -58,8 +58,14 @@ export class CreateCommand extends BaseCommand {
     }
 
     // Create the Audio object and save it on the blockchain
+    const owners = params.owners.map((owner) => ({
+      address: owner.address,
+      shares: owner.shares,
+      income: BigInt(0),
+    }));
     const audioObject: Audio = {
       ...params,
+      owners,
       creatorAddress: transaction.senderAddress,
     };
 

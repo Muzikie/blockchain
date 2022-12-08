@@ -18,6 +18,7 @@ import { VerifyStatus } from 'lisk-framework';
 import { CreateCommand } from "./commands/create_command";
 import { DestroyCommand } from "./commands/destroy_command";
 import { TransferCommand } from "./commands/transfer_command";
+import { StreamCommand } from "./commands/stream_command";
 import { SetAttributesCommand } from "./commands/set_attributes_command";
 import { CreateEvent } from "./events/create";
 import { AudioEndpoint } from './endpoint';
@@ -25,18 +26,30 @@ import { AudioMethod } from './method';
 import { AudioAccountStore } from './stores/audioAccount';
 import { AudioStore } from './stores/audio';
 import { CollectionMethod } from '../collection/method';
+import { SubscriptionMethod } from '../subscription/method';
 import { COMMANDS, MODULES } from '../../constants';
 
 export class AudioModule extends BaseModule {
     public endpoint = new AudioEndpoint(this.stores, this.offchainStores);
     public method = new AudioMethod(this.stores, this.events);
+
+    private readonly _createCommand = new CreateCommand(this.stores, this.events);
+    private readonly _destroyCommand = new DestroyCommand(this.stores, this.events);
+    private readonly _transferCommand = new TransferCommand(this.stores, this.events);
+    private readonly _setAttributesCommand = new SetAttributesCommand(this.stores, this.events);
+    private readonly _streamCommands = new StreamCommand(this.stores, this.events);
+
+    // eslint-disable-next-line @typescript-eslint/member-ordering
     public commands = [
-      new CreateCommand(this.stores, this.events),
-      new DestroyCommand(this.stores, this.events),
-      new TransferCommand(this.stores, this.events),
-      new SetAttributesCommand(this.stores, this.events),
+      this._createCommand,
+      this._destroyCommand,
+      this._transferCommand,
+      this._setAttributesCommand,
+      this._streamCommands,
     ];
+
     private _collectionMethod!: CollectionMethod;
+    private _subscriptionMethod!: SubscriptionMethod;
 
     public constructor() {
       super();
@@ -45,8 +58,14 @@ export class AudioModule extends BaseModule {
       this.events.register(CreateEvent, new CreateEvent(this.name));
     }
 
-    public addDependencies(collectionMethod: CollectionMethod) {
+    public addDependencies(
+      collectionMethod: CollectionMethod,
+      subscriptionMethod: SubscriptionMethod,
+    ): void {
       this._collectionMethod = collectionMethod;
+      this._subscriptionMethod = subscriptionMethod;
+
+      this._streamCommands.addDependencies(this._subscriptionMethod);
     }
 
     public metadata(): ModuleMetadata {

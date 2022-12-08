@@ -1,9 +1,9 @@
 import { DestroyCommand } from '../../../../../src/app/modules/audio/commands/destroy_command';
-import { AudioModule } from '../../../../../src/app/modules/audio/module'
+import { AudioModule } from '../../../../../src/app/modules/audio/module';
 
 describe('DestroyCommand', () => {
   let command: DestroyCommand;
-  const module = new AudioModule()
+  const module = new AudioModule();
 
   beforeEach(() => {
     command = new DestroyCommand(module.stores, module.events);

@@ -8,6 +8,7 @@ import {
   TransactionVerifyContext,
   VerificationResult,
   ModuleMetadata,
+  TokenMethod,
   // TransactionExecuteContext,
   // GenesisBlockExecuteContext,
   // BlockExecuteContext,
@@ -26,16 +27,30 @@ import { UpdateMembersCommand } from "./commands/update_members_command";
 export class SubscriptionModule extends BaseModule {
     public endpoint = new SubscriptionEndpoint(this.stores, this.offchainStores);
     public method = new SubscriptionMethod(this.stores, this.events);
+
+    private readonly _createCommand = new CreateCommand(this.stores, this.events)
+    private readonly _purchaseCommand = new PurchaseCommand(this.stores, this.events)
+    private readonly _updateMembersCommand = new UpdateMembersCommand(this.stores, this.events)
+
+    // eslint-disable-next-line @typescript-eslint/member-ordering
     public commands = [
-      new CreateCommand(this.stores, this.events),
-      new PurchaseCommand(this.stores, this.events),
-      new UpdateMembersCommand(this.stores, this.events),
+      this._createCommand,
+      this._purchaseCommand,
+      this._updateMembersCommand,
     ];
+
+    private _tokenMethod!: TokenMethod;
 
     public constructor() {
       super();
       this.stores.register(SubscriptionAccountStore, new SubscriptionAccountStore(this.name));
       this.stores.register(SubscriptionStore, new SubscriptionStore(this.name));
+    }
+
+    public addDependencies(tokenMethod: TokenMethod): void {
+      this._tokenMethod = tokenMethod;
+
+      this._purchaseCommand.addDependencies(this._tokenMethod);
     }
 
     public metadata(): ModuleMetadata {

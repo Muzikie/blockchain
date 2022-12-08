@@ -4,11 +4,13 @@ import { ModuleEndpointContext } from 'lisk-framework';
 interface LoyaltyOwner {
   address: Buffer;
   shares: number;
+  income: bigint;
 }
 
 interface LoyaltyOwnerJSON {
   address: string;
   shares: number;
+  income: string;
 }
 
 export interface Audio {
@@ -49,7 +51,7 @@ export interface CreateCommandParams {
   artistName: string;
   genre: number[];
   collectionID: Buffer;
-  owners: LoyaltyOwner[];
+  owners: Omit<LoyaltyOwner, 'income'>[];
 }
 
 export interface DestroyCommandParams {
@@ -68,6 +70,10 @@ export interface SetAttributesCommandParams {
   artistName: string;
   genre: number[];
   collectionID: Buffer;
+  audioID: Buffer;
+}
+
+export interface StreamCommandParams {
   audioID: Buffer;
 }
 

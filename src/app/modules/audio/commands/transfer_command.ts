@@ -45,11 +45,13 @@ export class TransferCommand extends BaseCommand {
 
     const audioCreator = await audioAccountSubStore.get(context, audioNFT.creatorAddress);
     const recipientExists = await audioAccountSubStore.has(context, address);
+    let oldIncome = BigInt(0);
 
     // set old owner shares = old shares - context.params.shares
     audioNFT.owners = audioNFT.owners
-      .map(item => {
+      .map((item) => {
         if (item.address.equals(senderAddress)) {
+          oldIncome = item.income;
           return {
             ...item,
             shares: item.shares - shares,
@@ -86,6 +88,7 @@ export class TransferCommand extends BaseCommand {
       audioNFT.owners.push({
         address,
         shares,
+        income: senderShare.shares === shares ? BigInt(0) : oldIncome, // income is 0 for new owners
       });
     } else {
       // if recipient exists, add new owner shares to recipient shares
