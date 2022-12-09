@@ -239,6 +239,19 @@ export const streamCommandParamsSchema = {
   },
 };
 
+export const reclaimCommandParamsSchema = {
+  $id: 'audio/reclaim',
+  title: 'ReclaimAsset transaction asset for audio module',
+  type: 'object',
+  required: ['id'],
+  properties: {
+    id: {
+      dataType: 'bytes',
+      fieldNumber: 1,
+    },
+  },
+};
+
 export const creationEventSchema = {
   $id: '/audio/events/creation',
   type: 'object',

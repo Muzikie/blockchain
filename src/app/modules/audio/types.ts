@@ -77,6 +77,10 @@ export interface StreamCommandParams {
   audioID: Buffer;
 }
 
+export interface ReclaimCommandParams {
+  id: Buffer;
+}
+
 export interface Store<Entity> {
   get:  (context: ModuleEndpointContext, key: Buffer) => Promise<Entity>;
   has: (context: ModuleEndpointContext, key: Buffer) => Promise<boolean>;

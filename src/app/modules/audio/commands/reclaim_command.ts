@@ -11,9 +11,11 @@ import {
 import { TREASURY_ADDRESS } from '../../subscription/constants';
 import { AudioStore } from '../stores/audio';
 import { AudioAccountStore } from '../stores/audioAccount';
-import { LoyaltyOwner } from '../types';
+import { reclaimCommandParamsSchema } from '../schemas';
+import { LoyaltyOwner, ReclaimCommandParams } from '../types';
 
 export class ReclaimCommand extends BaseCommand {
+  public schema = reclaimCommandParamsSchema;
   private _tokenMethod!: TokenMethod;
 
   public addDependencies(tokenMethod: TokenMethod) {
@@ -21,20 +23,21 @@ export class ReclaimCommand extends BaseCommand {
   }
 
   // eslint-disable-next-line @typescript-eslint/require-await
-  public async verify(context: CommandVerifyContext): Promise<VerificationResult> {
-    const { transaction } = context;
+  public async verify(_context: CommandVerifyContext<ReclaimCommandParams>): Promise<VerificationResult> {
+    // const { transaction } = context;
 
-    if (transaction.params.length !== 0) {
-      return {
-        status: VerifyStatus.FAIL,
-        error: new Error('Reclaim transaction params must be empty.'),
-      };
-    }
+    // if (transaction.params.length !== 0) {
+    //   return {
+    //     status: VerifyStatus.FAIL,
+    //     error: new Error('Reclaim transaction params must be empty.'),
+    //   };
+    // }
 
     return { status: VerifyStatus.OK };
   }
 
-  public async execute(context: CommandExecuteContext): Promise<void> {
+  public async execute(context: CommandExecuteContext<ReclaimCommandParams>): Promise<void> {
+    context.logger.info(' :: EXE :: ', context.params.id.toString(''))
     const {
       transaction: { senderAddress },
       chainID,
@@ -46,6 +49,7 @@ export class ReclaimCommand extends BaseCommand {
     const audioAccountStore = this.stores.get(AudioAccountStore);
 
     let totalIncome = BigInt(0);
+    context.logger.info(' :: EXE :: INCOME 0', totalIncome.toString())
 
     // Get account
     const senderAccount = await audioAccountStore.get(context, senderAddress);
@@ -54,8 +58,10 @@ export class ReclaimCommand extends BaseCommand {
     }
 
     const collectIncome =  (item: LoyaltyOwner) => {
+      context.logger.info(' :: EXE :: OWNER');
       if (item.address.equals(senderAddress)) {
         totalIncome += item.income;
+        context.logger.info(' :: EXE :: NEW INCOME', totalIncome.toString());
         return {
           ...item,
           income: BigInt(0),
@@ -64,10 +70,13 @@ export class ReclaimCommand extends BaseCommand {
       return item;
     };
 
+    context.logger.info(' :: EXE :: COLLECTING ...')
+
     // For each audio, add the income to the total income,
     // and set the income to 0 for the owner = senderAddress
     for (const audioID of senderAccount.audio.audios) {
       const audioNFT = await audioStore.get(context, audioID);
+      context.logger.info(' :: EXE :: AUDIO');
       audioNFT.owners = audioNFT.owners.map(collectIncome);
       // Update audio on the blockchain
       await audioStore.set(context, audioID, audioNFT);
