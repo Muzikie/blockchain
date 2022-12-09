@@ -5,10 +5,17 @@ import {
   SubscriptionAccountJSON,
   SubscriptionJSON,
   GetByAddressResult,
+  hasSubscriptionResponse,
+  SubscriptionAccount,
+  Store,
 } from './types';
 import { SubscriptionAccountStore } from './stores/subscriptionAccount';
 import { SubscriptionStore } from './stores/subscription';
-import { getAccount, getSubscription } from './controllers';
+import {
+  getAccount,
+  getSubscription,
+  hasSubscription,
+} from './controllers';
 import { STREAM_COST } from '../audio/constants';
 
 export class SubscriptionMethod extends BaseMethod {
@@ -22,6 +29,11 @@ export class SubscriptionMethod extends BaseMethod {
   public async getSubscription(context: ModuleEndpointContext): Promise<SubscriptionJSON> {
     const subscriptionStore = this.stores.get(SubscriptionStore);
     return getSubscription(context, subscriptionStore);
+  }
+
+  public async hasSubscription(context: ModuleEndpointContext): Promise<hasSubscriptionResponse> {
+    const subscriptionAccountStore = this.stores.get(SubscriptionAccountStore);
+    return hasSubscription(context, subscriptionAccountStore as Store<SubscriptionAccount>)
   }
 
   public async getByAddress(context: MethodContext, address: Buffer): Promise<GetByAddressResult> {
