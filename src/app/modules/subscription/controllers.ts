@@ -47,7 +47,7 @@ export const getAccount = async (
 
 export const getSubscription = async (
   context: ModuleEndpointContext,
-  SubscriptionStore: Store<Subscription>,
+  subscriptionStore: Store<Subscription>,
 ): Promise<SubscriptionJSON> => {
   const { subscriptionID } = context.params;
 
@@ -61,7 +61,7 @@ export const getSubscription = async (
     throw new Error('Parameter subscriptionID must be a string or a buffer.');
   }
 
-  const subscriptionExists = await SubscriptionStore.has(
+  const subscriptionExists = await subscriptionStore.has(
     context,
     query,
   );
@@ -70,10 +70,44 @@ export const getSubscription = async (
     throw new Error(`No subscription with id ${query.toString('hex')} found.`);
   }
 
-  const subscriptionData = await SubscriptionStore.get(
+  const subscriptionData = await subscriptionStore.get(
     context,
     query,
   );
   const subscriptionJSON: SubscriptionJSON = codec.toJSON(subscriptionStoreSchema, subscriptionData);
   return subscriptionJSON;
 }
+
+export const hasSubscription = async (
+  context: ModuleEndpointContext,
+  subscriptionAccountStore: Store<SubscriptionAccount>,
+) => {
+  if (typeof context.params.address !== 'string') {
+    return {
+      success: false,
+      message: 'Parameter address must be a string.',
+    };
+  }
+
+  const queryAddress = cryptoAddress.getAddressFromLisk32Address(context.params.address);
+  const accountExists = await subscriptionAccountStore.has(context, queryAddress);
+
+  if (!accountExists) {
+    return {
+      success: false,
+      message: 'Account has no valid subscription.',
+    };
+  }
+
+  const account = await subscriptionAccountStore.get(context, queryAddress);
+  if (!account.subscription.shared) {
+    return {
+      success: false,
+      message: 'Account has no valid subscription.',
+    };
+  }
+
+  return {
+    success: true,
+  }
+};

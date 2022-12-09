@@ -57,3 +57,8 @@ export interface GetByAddressResult {
   subscriptionID: Buffer;
   data: Subscription;
 }
+
+export interface hasSubscriptionResponse {
+  success: boolean;
+  message?: string;
+}
