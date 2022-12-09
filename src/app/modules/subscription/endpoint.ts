@@ -1,7 +1,9 @@
 import { BaseEndpoint } from 'lisk-sdk';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { ModuleEndpointContext } from 'lisk-framework';
+import { ModuleEndpointContext, MethodContext } from 'lisk-framework';
+import { address as cryptoAddress } from '@liskhq/lisk-cryptography';
 import {
+  hasSubscriptionResponse,
   SubscriptionAccountJSON,
   SubscriptionJSON,
   Subscription,
@@ -10,7 +12,11 @@ import {
 } from './types';
 import { SubscriptionAccountStore } from './stores/subscriptionAccount';
 import { SubscriptionStore } from './stores/subscription';
-import { getAccount, getSubscription } from './controllers';
+import {
+  getAccount,
+  getSubscription,
+  hasSubscription,
+} from './controllers';
 
 export class SubscriptionEndpoint extends BaseEndpoint {
   public async getAccount(context: ModuleEndpointContext): Promise<SubscriptionAccountJSON> {
@@ -21,5 +27,10 @@ export class SubscriptionEndpoint extends BaseEndpoint {
   public async getSubscription(context: ModuleEndpointContext): Promise<SubscriptionJSON> {
     const subscriptionStore = this.stores.get(SubscriptionStore);
     return getSubscription(context, subscriptionStore as Store<Subscription>);
+  }
+
+  public async hasSubscription(context: ModuleEndpointContext): Promise<hasSubscriptionResponse> {
+    const subscriptionAccountStore = this.stores.get(SubscriptionAccountStore);
+    return hasSubscription(context, subscriptionAccountStore as Store<SubscriptionAccount>)
   }
 }
