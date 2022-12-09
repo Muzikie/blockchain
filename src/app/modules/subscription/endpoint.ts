@@ -1,7 +1,6 @@
 import { BaseEndpoint } from 'lisk-sdk';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { ModuleEndpointContext, MethodContext } from 'lisk-framework';
-import { address as cryptoAddress } from '@liskhq/lisk-cryptography';
+import { ModuleEndpointContext } from 'lisk-framework';
 import {
   hasSubscriptionResponse,
   SubscriptionAccountJSON,
