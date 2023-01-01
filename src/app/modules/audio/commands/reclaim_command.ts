@@ -37,7 +37,6 @@ export class ReclaimCommand extends BaseCommand {
   }
 
   public async execute(context: CommandExecuteContext<ReclaimCommandParams>): Promise<void> {
-    context.logger.info(' :: EXE :: ', context.params.id.toString(''))
     const {
       transaction: { senderAddress },
       chainID,
@@ -49,7 +48,6 @@ export class ReclaimCommand extends BaseCommand {
     const audioAccountStore = this.stores.get(AudioAccountStore);
 
     let totalIncome = BigInt(0);
-    context.logger.info(' :: EXE :: INCOME 0', totalIncome.toString())
 
     // Get account
     const senderAccount = await audioAccountStore.get(context, senderAddress);
@@ -58,10 +56,8 @@ export class ReclaimCommand extends BaseCommand {
     }
 
     const collectIncome =  (item: LoyaltyOwner) => {
-      context.logger.info(' :: EXE :: OWNER');
       if (item.address.equals(senderAddress)) {
         totalIncome += item.income;
-        context.logger.info(' :: EXE :: NEW INCOME', totalIncome.toString());
         return {
           ...item,
           income: BigInt(0),
@@ -70,19 +66,16 @@ export class ReclaimCommand extends BaseCommand {
       return item;
     };
 
-    context.logger.info(' :: EXE :: COLLECTING ...')
 
     // For each audio, add the income to the total income,
     // and set the income to 0 for the owner = senderAddress
     for (const audioID of senderAccount.audio.audios) {
       const audioNFT = await audioStore.get(context, audioID);
-      context.logger.info(' :: EXE :: AUDIO');
       audioNFT.owners = audioNFT.owners.map(collectIncome);
       // Update audio on the blockchain
       await audioStore.set(context, audioID, audioNFT);
     }
     // @todo Transfer the total income from treasury account to the senderAddress
-    context.logger.info(':: ReclaimCommand: totalIncome: ', totalIncome.toString());
     await this._tokenMethod.transfer(
       methodContext,
       TREASURY_ADDRESS,
@@ -90,6 +83,5 @@ export class ReclaimCommand extends BaseCommand {
       tokenID,
       totalIncome,
     );
-    context.logger.info(':: ReclaimCommand: DONE: ');
   }
 }
