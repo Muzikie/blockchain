@@ -10,7 +10,7 @@ import {
 } from './types';
 import { AudioAccountStore } from './stores/audioAccount';
 import { AudioStore } from './stores/audio';
-import { getAccount, getAudio } from './controllers';
+import { getAccount, getAudio } from './controllers/query';
 
 export class AudioEndpoint extends BaseEndpoint {
   public async getAccount(context: ModuleEndpointContext): Promise<AudioAccountJSON> {
