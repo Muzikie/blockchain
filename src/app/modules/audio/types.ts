@@ -1,13 +1,13 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ModuleEndpointContext } from 'lisk-framework';
 
-interface LoyaltyOwner {
+export interface LoyaltyOwner {
   address: Buffer;
   shares: number;
   income: bigint;
 }
 
-interface LoyaltyOwnerJSON {
+export interface LoyaltyOwnerJSON {
   address: string;
   shares: number;
   income: string;
@@ -90,4 +90,13 @@ export enum CreateEventResult {
 export interface CreateEventData {
   senderAddress: Buffer;
   audioID: Buffer;
+}
+
+export interface Genre {
+  name: string;
+  id: number;
+}
+
+export interface Success {
+  success: boolean;
 }
