@@ -10,12 +10,12 @@ import {
 } from './types';
 import { AudioAccountStore } from './stores/audioAccount';
 import { AudioStore } from './stores/audio';
-import { getAccount, getAudio } from './controllers';
+import { getAccount, getAudio } from './controllers/query';
 
 export class AudioMethod extends BaseMethod {
   public async getAccount(context: ModuleEndpointContext): Promise<AudioAccountJSON> {
-    const audioAccountSubStore = this.stores.get(AudioAccountStore);
-    return getAccount(context, audioAccountSubStore as Store<AudioAccount>)
+    const audioAccountStore = this.stores.get(AudioAccountStore);
+    return getAccount(context, audioAccountStore as Store<AudioAccount>)
   }
 
   public async getAudio(context: ModuleEndpointContext): Promise<AudioJSON> {
