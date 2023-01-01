@@ -35,7 +35,6 @@ Object {
           "address": Object {
             "dataType": "bytes",
             "fieldNumber": 1,
-            "format": "lisk32",
           },
           "shares": Object {
             "dataType": "uint32",

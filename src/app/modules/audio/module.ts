@@ -14,11 +14,12 @@ import {
   // BlockAfterExecuteContext,
 } from 'lisk-sdk';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { VerifyStatus } from 'lisk-framework';
+import { TokenMethod, VerifyStatus } from 'lisk-framework';
 import { CreateCommand } from "./commands/create_command";
 import { DestroyCommand } from "./commands/destroy_command";
 import { TransferCommand } from "./commands/transfer_command";
 import { StreamCommand } from "./commands/stream_command";
+import { ReclaimCommand } from "./commands/reclaim_command";
 import { SetAttributesCommand } from "./commands/set_attributes_command";
 import { CreateEvent } from "./events/create";
 import { AudioEndpoint } from './endpoint';
@@ -38,6 +39,7 @@ export class AudioModule extends BaseModule {
     private readonly _transferCommand = new TransferCommand(this.stores, this.events);
     private readonly _setAttributesCommand = new SetAttributesCommand(this.stores, this.events);
     private readonly _streamCommands = new StreamCommand(this.stores, this.events);
+    private readonly _reclaimCommands = new ReclaimCommand(this.stores, this.events);
 
     // eslint-disable-next-line @typescript-eslint/member-ordering
     public commands = [
@@ -46,10 +48,12 @@ export class AudioModule extends BaseModule {
       this._transferCommand,
       this._setAttributesCommand,
       this._streamCommands,
+      this._reclaimCommands,
     ];
 
     private _collectionMethod!: CollectionMethod;
     private _subscriptionMethod!: SubscriptionMethod;
+    private _tokenMethod!: TokenMethod;
 
     public constructor() {
       super();
@@ -61,11 +65,14 @@ export class AudioModule extends BaseModule {
     public addDependencies(
       collectionMethod: CollectionMethod,
       subscriptionMethod: SubscriptionMethod,
+      tokenMethod: TokenMethod,
     ): void {
       this._collectionMethod = collectionMethod;
       this._subscriptionMethod = subscriptionMethod;
+      this._tokenMethod = tokenMethod;
 
       this._streamCommands.addDependencies(this._subscriptionMethod);
+      this._reclaimCommands.addDependencies(this._tokenMethod);
     }
 
     public metadata(): ModuleMetadata {

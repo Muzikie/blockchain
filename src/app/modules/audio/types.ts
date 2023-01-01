@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ModuleEndpointContext } from 'lisk-framework';
 
-interface LoyaltyOwner {
+export interface LoyaltyOwner {
   address: Buffer;
   shares: number;
   income: bigint;
@@ -75,6 +75,10 @@ export interface SetAttributesCommandParams {
 
 export interface StreamCommandParams {
   audioID: Buffer;
+}
+
+export interface ReclaimCommandParams {
+  id: Buffer;
 }
 
 export interface Store<Entity> {

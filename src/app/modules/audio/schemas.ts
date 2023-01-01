@@ -44,7 +44,6 @@ export const audioStoreSchema = {
         properties: {
           address: {
             dataType: 'bytes',
-            format: 'lisk32',
             fieldNumber: 1,
           },
           shares: {
@@ -138,7 +137,6 @@ export const createCommandParamsSchema = {
         properties: {
           address: {
             dataType: 'bytes',
-            format: 'lisk32',
             fieldNumber: 1,
           },
           shares: {
@@ -233,6 +231,19 @@ export const streamCommandParamsSchema = {
   required: ['audioID'],
   properties: {
     audioID: {
+      dataType: 'bytes',
+      fieldNumber: 1,
+    },
+  },
+};
+
+export const reclaimCommandParamsSchema = {
+  $id: 'audio/reclaim',
+  title: 'ReclaimAsset transaction asset for audio module',
+  type: 'object',
+  required: ['id'],
+  properties: {
+    id: {
       dataType: 'bytes',
       fieldNumber: 1,
     },

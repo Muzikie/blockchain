@@ -12,7 +12,11 @@ export const registerModules = (app: Application): void => {
   const subscriptionModule = new SubscriptionModule();
   const tokenModule = new TokenModule();
 
-  audioModule.addDependencies(collectionModule.method, subscriptionModule.method);
+  audioModule.addDependencies(
+    collectionModule.method,
+    subscriptionModule.method,
+    tokenModule.method,
+  );
   subscriptionModule.addDependencies(tokenModule.method);
 
   app.registerModule(audioModule);
