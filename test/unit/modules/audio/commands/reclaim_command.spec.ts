@@ -15,7 +15,7 @@ describe('ReclaimCommand', () => {
     });
 
     it('should have valid schema', () => {
-      expect(command.schema).toBeFalsy();
+      expect(command.schema).toMatchSnapshot();
     });
   });
 
