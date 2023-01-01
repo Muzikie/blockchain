@@ -8,8 +8,10 @@ import {
   Audio,
   Store,
   AudioAccount,
-} from './types';
-import { accountStoreSchema, audioStoreSchema } from './schemas';
+  Genre,
+} from '../types';
+import { accountStoreSchema, audioStoreSchema } from '../schemas';
+import { VALID_GENRES } from '../constants';
 
 export const getAccount = async (
   context: ModuleEndpointContext,
@@ -77,3 +79,5 @@ export const getAudio = async (
   const audioJSON: AudioJSON = codec.toJSON(audioStoreSchema, audioData);
   return audioJSON;
 }
+
+export const getGenres = (): Genre[] => VALID_GENRES;
