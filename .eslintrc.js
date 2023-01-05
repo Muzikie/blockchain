@@ -1,11 +1,11 @@
 module.exports = {
-	root: true,
-	parserOptions: {
-		project: './tsconfig.json',
-		tsconfigRootDir: __dirname,
-	},
-	extends: ['lisk-base/ts'],
-	rules: {
-		indent: ['error', 2],
-	},
+  root: true,
+  parserOptions: {
+    project: './tsconfig.json',
+    tsconfigRootDir: __dirname,
+  },
+  extends: ['lisk-base/ts'],
+  rules: {
+    indent: ['error', 2],
+  },
 };

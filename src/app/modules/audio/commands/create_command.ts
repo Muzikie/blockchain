@@ -10,7 +10,7 @@ import { AudioStore } from '../stores/audio';
 import { AudioAccountStore } from '../stores/audioAccount';
 import { CreateCommandParams, Audio, AudioAccount } from '../types';
 import { createCommandParamsSchema } from '../schemas';
-import { validGenres, MIN_RELEASE_YEAR } from '../constants';
+import { VALID_GENRES, MIN_RELEASE_YEAR } from '../constants';
 import { getNodeForName } from '../utils';
 
 export class CreateCommand extends BaseCommand {
@@ -26,10 +26,18 @@ export class CreateCommand extends BaseCommand {
         error: new Error(`Release year must be a number between ${MIN_RELEASE_YEAR} and ${thisYear}`)
       }
     }
-    if (context.params.genre.some(item => item > validGenres.length)) {
+    if (context.params.genre.some(item => item > VALID_GENRES.length)) {
       return {
         status: VerifyStatus.FAIL,
         error: new Error('Genres should be selected from the list of valid genres')
+      }
+    }
+    if (context.params.owners.length === 0
+      || context.params.owners.some(item => item.shares < 1)
+      || context.params.owners.reduce((acc, item) =>  acc + item.shares, 0) !== 100) {
+      return {
+        status: VerifyStatus.FAIL,
+        error: new Error('Owners should have a total of 100 shares. Each owner should have a positive number of shares.')
       }
     }
     return { status: VerifyStatus.OK };
@@ -50,9 +58,15 @@ export class CreateCommand extends BaseCommand {
     }
 
     // Create the Audio object and save it on the blockchain
+    const owners = params.owners.map((owner) => ({
+      address: owner.address,
+      shares: owner.shares,
+      income: BigInt(0),
+    }));
     const audioObject: Audio = {
       ...params,
-      ownerAddress: transaction.senderAddress,
+      owners,
+      creatorAddress: transaction.senderAddress,
     };
 
     // Store the hash of the audio object in the sender account

@@ -49,8 +49,8 @@ export class CollectionMethod extends BaseMethod {
       collectionID,
     );
   
-    if (!collectionData.ownerAddress.equals(senderAddress)) {
-      throw new Error('Parameter audioID must be a buffer.');
+    if (!collectionData.creatorAddress.equals(senderAddress)) {
+      throw new Error('You can add audios only to your own collections.');
     }
   
     collectionData.audios.push(audioID);
@@ -88,7 +88,7 @@ export class CollectionMethod extends BaseMethod {
       collectionID,
     );
   
-    if (!collectionData.ownerAddress.equals(senderAddress)) {
+    if (!collectionData.creatorAddress.equals(senderAddress)) {
       throw new Error('Parameter audioID must be a buffer.');
     }
   

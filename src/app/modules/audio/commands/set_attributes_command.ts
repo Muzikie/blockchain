@@ -9,7 +9,7 @@ import {
 import { AudioStore } from '../stores/audio';
 import { setAttributesCommandParamsSchema } from '../schemas';
 import { SetAttributesCommandParams, Audio } from '../types';
-import { validGenres, MIN_RELEASE_YEAR } from '../constants';
+import { VALID_GENRES, MIN_RELEASE_YEAR } from '../constants';
 
 export class SetAttributesCommand extends BaseCommand {
   public schema = setAttributesCommandParamsSchema;
@@ -24,7 +24,7 @@ export class SetAttributesCommand extends BaseCommand {
         error: new Error(`Release year must be a number between ${MIN_RELEASE_YEAR} and ${thisYear}`)
       }
     }
-    if (context.params.genre.some(item => item > validGenres.length)) {
+    if (context.params.genre.some(item => item > VALID_GENRES.length)) {
       return {
         status: VerifyStatus.FAIL,
         error: new Error('Genres should be selected from the list of valid genres')
@@ -48,14 +48,16 @@ export class SetAttributesCommand extends BaseCommand {
     const audioNFT: Audio = await audioSubStore.get(context, params.audioID);
 
     // Check if the sender owns the audio
-    if (!audioNFT.ownerAddress.equals(transaction.senderAddress)) {
+    if (!audioNFT.creatorAddress.equals(transaction.senderAddress)) {
       throw new Error('You cannot update an audio that you do not own.');
     }
 
     // Create the Audio object and save it on the blockchain
     const updatedObject: Audio = {
       ...params,
-      ownerAddress: audioNFT.ownerAddress,
+      // set income back
+      owners: audioNFT.owners,
+      creatorAddress: audioNFT.creatorAddress,
     };
     await audioSubStore.set(context,  params.audioID, updatedObject);
   }

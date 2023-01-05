@@ -8,7 +8,7 @@ export const collectionStoreSchema = {
     'coArtists',
     'collectionType',
     'audios',
-    'ownerAddress',
+    'creatorAddress',
   ],
   properties: {
     name: {
@@ -41,7 +41,7 @@ export const collectionStoreSchema = {
         dataType: 'bytes',
       },
     },
-    ownerAddress: {
+    creatorAddress: {
       dataType: 'bytes',
       fieldNumber: 7,
     },

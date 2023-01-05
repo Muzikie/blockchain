@@ -13,6 +13,10 @@ Object {
       "dataType": "bytes",
       "fieldNumber": 1,
     },
+    "shares": Object {
+      "dataType": "uint32",
+      "fieldNumber": 3,
+    },
   },
   "required": Array [
     "audioID",

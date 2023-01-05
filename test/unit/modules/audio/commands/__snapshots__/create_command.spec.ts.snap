@@ -27,6 +27,28 @@ Object {
       "maxLength": 40,
       "minLength": 3,
     },
+    "owners": Object {
+      "fieldNumber": 6,
+      "items": Object {
+        "$id": "audio/create/owners",
+        "properties": Object {
+          "address": Object {
+            "dataType": "bytes",
+            "fieldNumber": 1,
+          },
+          "shares": Object {
+            "dataType": "uint32",
+            "fieldNumber": 2,
+          },
+        },
+        "required": Array [
+          "address",
+          "shares",
+        ],
+        "type": "object",
+      },
+      "type": "array",
+    },
     "releaseYear": Object {
       "dataType": "string",
       "fieldNumber": 2,
@@ -38,6 +60,7 @@ Object {
     "artistName",
     "genre",
     "collectionID",
+    "owners",
   ],
   "title": "CreateAsset transaction asset for audio module",
   "type": "object",
