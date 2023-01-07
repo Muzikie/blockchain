@@ -8,6 +8,8 @@ export const audioStoreSchema = {
     'genre',
     'collectionID',
     'owners',
+    'hash',
+    'meta',
     'creatorAddress',
   ],
   properties: {
@@ -57,10 +59,17 @@ export const audioStoreSchema = {
         },
       },
     },
-    // Add income value as uint64
-    creatorAddress: {
+    hash: {
       dataType: 'bytes',
       fieldNumber: 7,
+    },
+    meta: {
+      dataType: 'bytes',
+      fieldNumber: 8,
+    },
+    creatorAddress: {
+      dataType: 'bytes',
+      fieldNumber: 9,
     },
   },
 };
@@ -98,6 +107,8 @@ export const createCommandParamsSchema = {
     'genre',
     'collectionID',
     'owners',
+    'hash',
+    'meta',
   ],
   properties: {
     name: {
@@ -145,6 +156,14 @@ export const createCommandParamsSchema = {
           },
         },
       },
+    },
+    hash: {
+      dataType: 'bytes',
+      fieldNumber: 7,
+    },
+    meta: {
+      dataType: 'bytes',
+      fieldNumber: 8,
     },
   },
 };

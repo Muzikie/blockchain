@@ -21,6 +21,14 @@ Object {
       },
       "type": "array",
     },
+    "hash": Object {
+      "dataType": "bytes",
+      "fieldNumber": 7,
+    },
+    "meta": Object {
+      "dataType": "bytes",
+      "fieldNumber": 8,
+    },
     "name": Object {
       "dataType": "string",
       "fieldNumber": 1,
@@ -61,6 +69,8 @@ Object {
     "genre",
     "collectionID",
     "owners",
+    "hash",
+    "meta",
   ],
   "title": "CreateAsset transaction asset for audio module",
   "type": "object",
