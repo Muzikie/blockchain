@@ -8,6 +8,8 @@ export const collectionStoreSchema = {
     'coArtists',
     'collectionType',
     'audios',
+    'hash',
+    'meta',
     'creatorAddress',
   ],
   properties: {
@@ -41,9 +43,17 @@ export const collectionStoreSchema = {
         dataType: 'bytes',
       },
     },
-    creatorAddress: {
+    hash: {
       dataType: 'bytes',
       fieldNumber: 7,
+    },
+    meta: {
+      dataType: 'bytes',
+      fieldNumber: 8,
+    },
+    creatorAddress: {
+      dataType: 'bytes',
+      fieldNumber: 9,
     },
   },
 };
@@ -74,7 +84,15 @@ export const createCommandParamsSchema = {
   $id: 'collection/create',
   title: 'CreateAsset transaction asset for collection module',
   type: 'object',
-  required: ['name', 'releaseYear', 'artistName', 'coArtists', 'collectionType'],
+  required: [
+    'name',
+    'releaseYear',
+    'artistName',
+    'coArtists',
+    'collectionType',
+    'hash',
+    'meta'
+  ],
   properties: {
     name: {
       dataType: 'string',
@@ -102,6 +120,14 @@ export const createCommandParamsSchema = {
     collectionType: {
       dataType: 'uint32',
       fieldNumber: 5,
+    },
+    hash: {
+      dataType: 'bytes',
+      fieldNumber: 6,
+    },
+    meta: {
+      dataType: 'bytes',
+      fieldNumber: 7,
     },
   },
 };
