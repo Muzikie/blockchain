@@ -58,6 +58,8 @@ export class SetAttributesCommand extends BaseCommand {
     // Audios of a collection can be changes from the audio module
     const updatedObject: Collection = {
       ...params,
+      hash: collectionNFT.hash,
+      meta: collectionNFT.meta,
       audios: collectionNFT.audios,
       creatorAddress: collectionNFT.creatorAddress,
     };
