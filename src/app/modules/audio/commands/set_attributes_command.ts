@@ -56,6 +56,8 @@ export class SetAttributesCommand extends BaseCommand {
     const updatedObject: Audio = {
       ...params,
       // set income back
+      hash: audioNFT.hash,
+      meta: audioNFT.meta,
       owners: audioNFT.owners,
       creatorAddress: audioNFT.creatorAddress,
     };
