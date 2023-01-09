@@ -11,16 +11,12 @@ import {
 } from './types';
 import { SubscriptionAccountStore } from './stores/subscriptionAccount';
 import { SubscriptionStore } from './stores/subscription';
-import {
-  getAccount,
-  getSubscription,
-  hasSubscription,
-} from './controllers';
+import { getAccount, getSubscription, hasSubscription } from './controllers';
 
 export class SubscriptionEndpoint extends BaseEndpoint {
   public async getAccount(context: ModuleEndpointContext): Promise<SubscriptionAccountJSON> {
     const subscriptionAccountStore = this.stores.get(SubscriptionAccountStore);
-    return getAccount(context, subscriptionAccountStore as Store<SubscriptionAccount>)
+    return getAccount(context, subscriptionAccountStore as Store<SubscriptionAccount>);
   }
 
   public async getSubscription(context: ModuleEndpointContext): Promise<SubscriptionJSON> {
@@ -30,6 +26,6 @@ export class SubscriptionEndpoint extends BaseEndpoint {
 
   public async hasSubscription(context: ModuleEndpointContext): Promise<hasSubscriptionResponse> {
     const subscriptionAccountStore = this.stores.get(SubscriptionAccountStore);
-    return hasSubscription(context, subscriptionAccountStore as Store<SubscriptionAccount>)
+    return hasSubscription(context, subscriptionAccountStore as Store<SubscriptionAccount>);
   }
 }

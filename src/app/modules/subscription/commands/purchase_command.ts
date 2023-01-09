@@ -23,12 +23,14 @@ export class PurchaseCommand extends BaseCommand {
   }
 
   // eslint-disable-next-line @typescript-eslint/require-await
-  public async verify(context: CommandVerifyContext<PurchaseCommandParams>): Promise<VerificationResult> {
+  public async verify(
+    context: CommandVerifyContext<PurchaseCommandParams>,
+  ): Promise<VerificationResult> {
     if (context.params.members?.length === 0) {
       return {
         status: VerifyStatus.FAIL,
-        error: new Error('Define at least one member')
-      }
+        error: new Error('Define at least one member'),
+      };
     }
     return { status: VerifyStatus.OK };
   }
@@ -63,16 +65,10 @@ export class PurchaseCommand extends BaseCommand {
     // throw an error if the sender does not have enough tokens
     // Deduct the price from the sender account
     // Add 20% of the price to the creator account
-    const devCosts = subscriptionNFT.price * BigInt(2) / BigInt(10);
+    const devCosts = (subscriptionNFT.price * BigInt(2)) / BigInt(10);
     const consumable = subscriptionNFT.price - devCosts;
 
-    await this._tokenMethod.transfer(
-      methodContext,
-      senderAddress,
-      DEV_ADDRESS,
-      tokenID,
-      devCosts,
-    );
+    await this._tokenMethod.transfer(methodContext, senderAddress, DEV_ADDRESS, tokenID, devCosts);
 
     await this._tokenMethod.transfer(
       methodContext,
@@ -111,16 +107,12 @@ export class PurchaseCommand extends BaseCommand {
 
     // Remove subscription from the dev account
     const devAccount = await subscriptionAccountStore.get(context, DEV_ADDRESS);
-    await subscriptionAccountStore.set(
-      context,
-      DEV_ADDRESS,
-      {
-        subscription: {
-          owned: devAccount.subscription.owned.filter(item => !item.equals(subscriptionID)),
-          shared: Buffer.alloc(0),
-        }
+    await subscriptionAccountStore.set(context, DEV_ADDRESS, {
+      subscription: {
+        owned: devAccount.subscription.owned.filter(item => !item.equals(subscriptionID)),
+        shared: Buffer.alloc(0),
       },
-    );
+    });
 
     // Save the subscription on the members accounts
     for (const member of members) {

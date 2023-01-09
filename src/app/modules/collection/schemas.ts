@@ -84,15 +84,7 @@ export const createCommandParamsSchema = {
   $id: 'collection/create',
   title: 'CreateAsset transaction asset for collection module',
   type: 'object',
-  required: [
-    'name',
-    'releaseYear',
-    'artistName',
-    'coArtists',
-    'collectionType',
-    'hash',
-    'meta'
-  ],
+  required: ['name', 'releaseYear', 'artistName', 'coArtists', 'collectionType', 'hash', 'meta'],
   properties: {
     name: {
       dataType: 'string',
@@ -202,4 +194,3 @@ export const setAttributesCommandParamsSchema = {
     },
   },
 };
-

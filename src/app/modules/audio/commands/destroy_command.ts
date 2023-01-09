@@ -16,7 +16,9 @@ export class DestroyCommand extends BaseCommand {
   public schema = destroyCommandParamsSchema;
 
   // eslint-disable-next-line @typescript-eslint/require-await
-  public async verify(_context: CommandVerifyContext<DestroyCommandParams>): Promise<VerificationResult> {
+  public async verify(
+    _context: CommandVerifyContext<DestroyCommandParams>,
+  ): Promise<VerificationResult> {
     return { status: VerifyStatus.OK };
   }
 
@@ -46,7 +48,7 @@ export class DestroyCommand extends BaseCommand {
 
     // Delete the audio ID from the sender account
     const audioAccount = await audioAccountSubStore.get(context, transaction.senderAddress);
-    const audioIndex = audioAccount.audio.audios.findIndex((id) => id.equals(params.audioID));
+    const audioIndex = audioAccount.audio.audios.findIndex(id => id.equals(params.audioID));
     audioAccount.audio.audios.splice(audioIndex, 1);
     await audioAccountSubStore.set(context, transaction.senderAddress, audioAccount);
   }

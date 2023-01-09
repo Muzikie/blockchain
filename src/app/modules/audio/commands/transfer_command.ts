@@ -15,7 +15,9 @@ export class TransferCommand extends BaseCommand {
   public schema = transferCommandParamsSchema;
 
   // eslint-disable-next-line @typescript-eslint/require-await
-  public async verify(_context: CommandVerifyContext<TransferCommandParams>): Promise<VerificationResult> {
+  public async verify(
+    _context: CommandVerifyContext<TransferCommandParams>,
+  ): Promise<VerificationResult> {
     return { status: VerifyStatus.OK };
   }
 
@@ -49,7 +51,7 @@ export class TransferCommand extends BaseCommand {
 
     // set old owner shares = old shares - context.params.shares
     audioNFT.owners = audioNFT.owners
-      .map((item) => {
+      .map(item => {
         if (item.address.equals(senderAddress)) {
           oldIncome = item.income;
           return {
@@ -61,7 +63,7 @@ export class TransferCommand extends BaseCommand {
       })
       // if old owner shares = 0, remove old owner from owners array
       .filter(item => item.shares > 0);
-    
+
     // if old owner shares = 0, remove audio ID from old owner's ownedAudio array
     if (senderShare.shares === shares) {
       audioCreator.audio.audios = audioCreator.audio.audios.filter(item => !item.equals(audioID));

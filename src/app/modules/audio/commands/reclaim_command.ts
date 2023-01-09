@@ -23,7 +23,9 @@ export class ReclaimCommand extends BaseCommand {
   }
 
   // eslint-disable-next-line @typescript-eslint/require-await
-  public async verify(_context: CommandVerifyContext<ReclaimCommandParams>): Promise<VerificationResult> {
+  public async verify(
+    _context: CommandVerifyContext<ReclaimCommandParams>,
+  ): Promise<VerificationResult> {
     // const { transaction } = context;
 
     // if (transaction.params.length !== 0) {
@@ -55,7 +57,7 @@ export class ReclaimCommand extends BaseCommand {
       throw new Error('You do not own any audio.');
     }
 
-    const collectIncome =  (item: LoyaltyOwner) => {
+    const collectIncome = (item: LoyaltyOwner) => {
       if (item.address.equals(senderAddress)) {
         totalIncome += item.income;
         return {
@@ -65,7 +67,6 @@ export class ReclaimCommand extends BaseCommand {
       }
       return item;
     };
-
 
     // For each audio, add the income to the total income,
     // and set the income to 0 for the owner = senderAddress

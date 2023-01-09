@@ -49,7 +49,7 @@ export interface UpdateMembersCommandParams {
 }
 
 export interface Store<Entity> {
-  get:  (context: ModuleEndpointContext, key: Buffer) => Promise<Entity>;
+  get: (context: ModuleEndpointContext, key: Buffer) => Promise<Entity>;
   has: (context: ModuleEndpointContext, key: Buffer) => Promise<boolean>;
 }
 

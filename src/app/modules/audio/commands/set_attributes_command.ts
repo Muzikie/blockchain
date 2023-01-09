@@ -15,20 +15,24 @@ export class SetAttributesCommand extends BaseCommand {
   public schema = setAttributesCommandParamsSchema;
 
   // eslint-disable-next-line @typescript-eslint/require-await
-  public async verify(context: CommandVerifyContext<SetAttributesCommandParams>): Promise<VerificationResult> {
+  public async verify(
+    context: CommandVerifyContext<SetAttributesCommandParams>,
+  ): Promise<VerificationResult> {
     const thisYear = new Date().getFullYear();
     const numericYear = Number(context.params.releaseYear);
     if (numericYear < MIN_RELEASE_YEAR || numericYear > thisYear) {
       return {
         status: VerifyStatus.FAIL,
-        error: new Error(`Release year must be a number between ${MIN_RELEASE_YEAR} and ${thisYear}`)
-      }
+        error: new Error(
+          `Release year must be a number between ${MIN_RELEASE_YEAR} and ${thisYear}`,
+        ),
+      };
     }
     if (context.params.genre.some(item => item > VALID_GENRES.length)) {
       return {
         status: VerifyStatus.FAIL,
-        error: new Error('Genres should be selected from the list of valid genres')
-      }
+        error: new Error('Genres should be selected from the list of valid genres'),
+      };
     }
     return { status: VerifyStatus.OK };
   }
@@ -61,6 +65,6 @@ export class SetAttributesCommand extends BaseCommand {
       owners: audioNFT.owners,
       creatorAddress: audioNFT.creatorAddress,
     };
-    await audioSubStore.set(context,  params.audioID, updatedObject);
+    await audioSubStore.set(context, params.audioID, updatedObject);
   }
 }

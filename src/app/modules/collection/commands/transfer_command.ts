@@ -16,7 +16,9 @@ export class TransferCommand extends BaseCommand {
   public schema = transferCommandParamsSchema;
 
   // eslint-disable-next-line @typescript-eslint/require-await
-  public async verify(_context: CommandVerifyContext<TransferCommandParams>): Promise<VerificationResult> {
+  public async verify(
+    _context: CommandVerifyContext<TransferCommandParams>,
+  ): Promise<VerificationResult> {
     return { status: VerifyStatus.OK };
   }
 
@@ -38,11 +40,16 @@ export class TransferCommand extends BaseCommand {
       throw new Error('You are not the owner of this collection.');
     }
 
-    const collectionAccount = await collectionAccountSubStore.get(context, collectionNFT.creatorAddress);
+    const collectionAccount = await collectionAccountSubStore.get(
+      context,
+      collectionNFT.creatorAddress,
+    );
     const recipientExists = await collectionAccountSubStore.has(context, address);
 
     // Find and remove the collectionID from the owner account
-    const collectionIndex = collectionAccount.collection.collections.findIndex(id => id.equals(collectionID));
+    const collectionIndex = collectionAccount.collection.collections.findIndex(id =>
+      id.equals(collectionID),
+    );
     if (collectionIndex === -1) {
       throw new Error('Collection not found in the sender account.');
     }
@@ -58,13 +65,17 @@ export class TransferCommand extends BaseCommand {
       const recipientAccount: CollectionAccount = {
         collection: {
           collections: [collectionID],
-        }
+        },
       };
       await collectionAccountSubStore.set(context, address, recipientAccount);
     }
 
     // Update the sender account on the blockchain
-    await collectionAccountSubStore.set(context, context.transaction.senderAddress, collectionAccount);
+    await collectionAccountSubStore.set(
+      context,
+      context.transaction.senderAddress,
+      collectionAccount,
+    );
     // Update the NFT token on the blockchain
     await collectionSubStore.set(context, collectionID, collectionNFT);
   }

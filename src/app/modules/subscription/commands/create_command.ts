@@ -16,18 +16,20 @@ export class CreateCommand extends BaseCommand {
   public schema = createCommandParamsSchema;
 
   // eslint-disable-next-line @typescript-eslint/require-await
-  public async verify(context: CommandVerifyContext<CreateCommandParams>): Promise<VerificationResult> {
+  public async verify(
+    context: CommandVerifyContext<CreateCommandParams>,
+  ): Promise<VerificationResult> {
     if (!context.transaction.senderAddress.equals(DEV_ADDRESS)) {
       return {
         status: VerifyStatus.FAIL,
         error: new Error('You are not authorized to create a subscription.'),
-      }
+      };
     }
     if (context.params.maxMembers === 0 || context.params.maxMembers > 5) {
       return {
         status: VerifyStatus.FAIL,
         error: new Error('Max members of the subscription should be a number between 1 to 5.'),
-      }
+      };
     }
     return { status: VerifyStatus.OK };
   }

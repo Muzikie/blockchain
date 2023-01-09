@@ -22,7 +22,9 @@ export class StreamCommand extends BaseCommand {
   }
 
   // eslint-disable-next-line @typescript-eslint/require-await
-  public async verify(_context: CommandVerifyContext<StreamCommandParams>): Promise<VerificationResult> {
+  public async verify(
+    _context: CommandVerifyContext<StreamCommandParams>,
+  ): Promise<VerificationResult> {
     return { status: VerifyStatus.OK };
   }
 
@@ -43,10 +45,10 @@ export class StreamCommand extends BaseCommand {
 
     // Throw an error if the sender is not a member of an existing subscription
     context.logger.info(':: subscriptionID ::  ... ');
-    const {
-      data: subscription,
-      subscriptionID,
-    } = await this._subscriptionMethod.getByAddress(methodContext, senderAddress);
+    const { data: subscription, subscriptionID } = await this._subscriptionMethod.getByAddress(
+      methodContext,
+      senderAddress,
+    );
 
     // Increment the corresponding subscription streams count
     subscription.streams += BigInt(1);
@@ -60,7 +62,7 @@ export class StreamCommand extends BaseCommand {
     audio.owners = audio.owners.map((owner, index) => ({
       address: owner.address,
       shares: owner.shares,
-      income: audio.owners[index].income + (STREAM_COST * BigInt(owner.shares) / BigInt(100)),
+      income: audio.owners[index].income + (STREAM_COST * BigInt(owner.shares)) / BigInt(100),
     }));
 
     // Store stream object in the streams store
