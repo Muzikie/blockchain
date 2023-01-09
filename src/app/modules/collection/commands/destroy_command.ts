@@ -16,7 +16,9 @@ export class DestroyCommand extends BaseCommand {
   public schema = destroyCommandParamsSchema;
 
   // eslint-disable-next-line @typescript-eslint/require-await
-  public async verify(_context: CommandVerifyContext<DestroyCommandParams>): Promise<VerificationResult> {
+  public async verify(
+    _context: CommandVerifyContext<DestroyCommandParams>,
+  ): Promise<VerificationResult> {
     return { status: VerifyStatus.OK };
   }
 
@@ -47,8 +49,13 @@ export class DestroyCommand extends BaseCommand {
     await collectionSubStore.del(context, params.collectionID);
 
     // Delete the collection ID from the sender account
-    const collectionAccount = await collectionAccountSubStore.get(context, transaction.senderAddress);
-    const collectionIndex = collectionAccount.collection.collections.findIndex((id) => id.equals(params.collectionID));
+    const collectionAccount = await collectionAccountSubStore.get(
+      context,
+      transaction.senderAddress,
+    );
+    const collectionIndex = collectionAccount.collection.collections.findIndex(id =>
+      id.equals(params.collectionID),
+    );
     collectionAccount.collection.collections.splice(collectionIndex, 1);
     await collectionAccountSubStore.set(context, transaction.senderAddress, collectionAccount);
   }

@@ -16,20 +16,24 @@ export class SetAttributesCommand extends BaseCommand {
   public schema = setAttributesCommandParamsSchema;
 
   // eslint-disable-next-line @typescript-eslint/require-await
-  public async verify(context: CommandVerifyContext<SetAttributesCommandParams>): Promise<VerificationResult> {
+  public async verify(
+    context: CommandVerifyContext<SetAttributesCommandParams>,
+  ): Promise<VerificationResult> {
     const thisYear = new Date().getFullYear();
     const numericYear = Number(context.params.releaseYear);
     if (numericYear < MIN_RELEASE_YEAR || numericYear > thisYear) {
       return {
         status: VerifyStatus.FAIL,
-        error: new Error(`Release year must be a number between ${MIN_RELEASE_YEAR} and ${thisYear}`)
-      }
+        error: new Error(
+          `Release year must be a number between ${MIN_RELEASE_YEAR} and ${thisYear}`,
+        ),
+      };
     }
     if (!validCollectionTypes.includes(context.params.collectionType)) {
       return {
         status: VerifyStatus.FAIL,
-        error: new Error('Type should be selected from the list of valid types')
-      }
+        error: new Error('Type should be selected from the list of valid types'),
+      };
     }
     return { status: VerifyStatus.OK };
   }
@@ -63,6 +67,6 @@ export class SetAttributesCommand extends BaseCommand {
       audios: collectionNFT.audios,
       creatorAddress: collectionNFT.creatorAddress,
     };
-    await collectionSubStore.set(context,  params.collectionID, updatedObject);
+    await collectionSubStore.set(context, params.collectionID, updatedObject);
   }
 }

@@ -15,13 +15,13 @@ import {
 } from 'lisk-sdk';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { TokenMethod, VerifyStatus } from 'lisk-framework';
-import { CreateCommand } from "./commands/create_command";
-import { DestroyCommand } from "./commands/destroy_command";
-import { TransferCommand } from "./commands/transfer_command";
-import { StreamCommand } from "./commands/stream_command";
-import { ReclaimCommand } from "./commands/reclaim_command";
-import { SetAttributesCommand } from "./commands/set_attributes_command";
-import { CreateEvent } from "./events/create";
+import { CreateCommand } from './commands/create_command';
+import { DestroyCommand } from './commands/destroy_command';
+import { TransferCommand } from './commands/transfer_command';
+import { StreamCommand } from './commands/stream_command';
+import { ReclaimCommand } from './commands/reclaim_command';
+import { SetAttributesCommand } from './commands/set_attributes_command';
+import { CreateEvent } from './events/create';
 import { AudioEndpoint } from './endpoint';
 import { AudioMethod } from './method';
 import { AudioAccountStore } from './stores/audioAccount';
@@ -31,125 +31,131 @@ import { SubscriptionMethod } from '../subscription/method';
 import { COMMANDS, MODULES } from '../../constants';
 
 export class AudioModule extends BaseModule {
-    public endpoint = new AudioEndpoint(this.stores, this.offchainStores);
-    public method = new AudioMethod(this.stores, this.events);
+  public endpoint = new AudioEndpoint(this.stores, this.offchainStores);
+  public method = new AudioMethod(this.stores, this.events);
 
-    private readonly _createCommand = new CreateCommand(this.stores, this.events);
-    private readonly _destroyCommand = new DestroyCommand(this.stores, this.events);
-    private readonly _transferCommand = new TransferCommand(this.stores, this.events);
-    private readonly _setAttributesCommand = new SetAttributesCommand(this.stores, this.events);
-    private readonly _streamCommands = new StreamCommand(this.stores, this.events);
-    private readonly _reclaimCommands = new ReclaimCommand(this.stores, this.events);
+  private readonly _createCommand = new CreateCommand(this.stores, this.events);
+  private readonly _destroyCommand = new DestroyCommand(this.stores, this.events);
+  private readonly _transferCommand = new TransferCommand(this.stores, this.events);
+  private readonly _setAttributesCommand = new SetAttributesCommand(this.stores, this.events);
+  private readonly _streamCommands = new StreamCommand(this.stores, this.events);
+  private readonly _reclaimCommands = new ReclaimCommand(this.stores, this.events);
 
-    // eslint-disable-next-line @typescript-eslint/member-ordering
-    public commands = [
-      this._createCommand,
-      this._destroyCommand,
-      this._transferCommand,
-      this._setAttributesCommand,
-      this._streamCommands,
-      this._reclaimCommands,
-    ];
+  // eslint-disable-next-line @typescript-eslint/member-ordering
+  public commands = [
+    this._createCommand,
+    this._destroyCommand,
+    this._transferCommand,
+    this._setAttributesCommand,
+    this._streamCommands,
+    this._reclaimCommands,
+  ];
 
-    private _collectionMethod!: CollectionMethod;
-    private _subscriptionMethod!: SubscriptionMethod;
-    private _tokenMethod!: TokenMethod;
+  private _collectionMethod!: CollectionMethod;
+  private _subscriptionMethod!: SubscriptionMethod;
+  private _tokenMethod!: TokenMethod;
 
-    public constructor() {
-      super();
-      this.stores.register(AudioAccountStore, new AudioAccountStore(this.name));
-      this.stores.register(AudioStore, new AudioStore(this.name));
-      this.events.register(CreateEvent, new CreateEvent(this.name));
-    }
+  public constructor() {
+    super();
+    this.stores.register(AudioAccountStore, new AudioAccountStore(this.name));
+    this.stores.register(AudioStore, new AudioStore(this.name));
+    this.events.register(CreateEvent, new CreateEvent(this.name));
+  }
 
-    public addDependencies(
-      collectionMethod: CollectionMethod,
-      subscriptionMethod: SubscriptionMethod,
-      tokenMethod: TokenMethod,
-    ): void {
-      this._collectionMethod = collectionMethod;
-      this._subscriptionMethod = subscriptionMethod;
-      this._tokenMethod = tokenMethod;
+  public addDependencies(
+    collectionMethod: CollectionMethod,
+    subscriptionMethod: SubscriptionMethod,
+    tokenMethod: TokenMethod,
+  ): void {
+    this._collectionMethod = collectionMethod;
+    this._subscriptionMethod = subscriptionMethod;
+    this._tokenMethod = tokenMethod;
 
-      this._streamCommands.addDependencies(this._subscriptionMethod);
-      this._reclaimCommands.addDependencies(this._tokenMethod);
-    }
+    this._streamCommands.addDependencies(this._subscriptionMethod);
+    this._reclaimCommands.addDependencies(this._tokenMethod);
+  }
 
-    public metadata(): ModuleMetadata {
-      return {
-        name: '',
-        endpoints: [],
-        commands: this.commands.map(command => ({
-          name: command.name,
-          params: command.schema,
-        })),
-        events: this.events.values().map(v => ({
-          name: v.name,
-          data: v.schema,
-        })),
-        assets: [],
-      };
-    }
+  public metadata(): ModuleMetadata {
+    return {
+      name: '',
+      endpoints: [],
+      commands: this.commands.map(command => ({
+        name: command.name,
+        params: command.schema,
+      })),
+      events: this.events.values().map(v => ({
+        name: v.name,
+        data: v.schema,
+      })),
+      assets: [],
+    };
+  }
 
-    // Lifecycle hooks
-    public async init(_args: ModuleInitArgs): Promise<void> {
-      // initialize this module when starting a node
-    }
+  // Lifecycle hooks
+  public async init(_args: ModuleInitArgs): Promise<void> {
+    // initialize this module when starting a node
+  }
 
-    public async insertAssets(_context: InsertAssetContext) {
-      // initialize block generation, add asset
-    }
+  public async insertAssets(_context: InsertAssetContext) {
+    // initialize block generation, add asset
+  }
 
-    public async verifyAssets(_context: BlockVerifyContext): Promise<void> {
-      // verify block
-    }
+  public async verifyAssets(_context: BlockVerifyContext): Promise<void> {
+    // verify block
+  }
 
-    // Lifecycle hooks
-    // eslint-disable-next-line @typescript-eslint/require-await
-    public async verifyTransaction(_context: TransactionVerifyContext): Promise<VerificationResult> {
-      // verify transaction will be called multiple times in the transaction pool
-      return {
-        status: VerifyStatus.OK,
-      };
-    }
+  // Lifecycle hooks
+  // eslint-disable-next-line @typescript-eslint/require-await
+  public async verifyTransaction(_context: TransactionVerifyContext): Promise<VerificationResult> {
+    // verify transaction will be called multiple times in the transaction pool
+    return {
+      status: VerifyStatus.OK,
+    };
+  }
 
-    public async beforeCommandExecute(context: TransactionExecuteContext): Promise<void> {
-      const audioAccountSubStore = this.stores.get(AudioAccountStore);
-      const audioSubStore = this.stores.get(AudioStore);
+  public async beforeCommandExecute(context: TransactionExecuteContext): Promise<void> {
+    const audioAccountSubStore = this.stores.get(AudioAccountStore);
+    const audioSubStore = this.stores.get(AudioStore);
 
-      if (context.transaction.command === COMMANDS.DESTROY && context.transaction.module === MODULES.AUDIO) {
-        const account = await audioAccountSubStore.get(context, context.transaction.senderAddress);
-        const audioID = account.audio.audios[account.audio.audios.length -1];
-        if (audioID) {
-          const { collectionID } = await audioSubStore.get(context, audioID);
-          await this._collectionMethod.removeAudio(
-            context.getMethodContext(),
-            audioID,
-            collectionID,
-            context.transaction.senderAddress,
-          );
-        }
+    if (
+      context.transaction.command === COMMANDS.DESTROY &&
+      context.transaction.module === MODULES.AUDIO
+    ) {
+      const account = await audioAccountSubStore.get(context, context.transaction.senderAddress);
+      const audioID = account.audio.audios[account.audio.audios.length - 1];
+      if (audioID) {
+        const { collectionID } = await audioSubStore.get(context, audioID);
+        await this._collectionMethod.removeAudio(
+          context.getMethodContext(),
+          audioID,
+          collectionID,
+          context.transaction.senderAddress,
+        );
       }
     }
+  }
 
-    public async afterCommandExecute(context: TransactionExecuteContext): Promise<void> {
-      const audioAccountSubStore = this.stores.get(AudioAccountStore);
-      const audioSubStore = this.stores.get(AudioStore);
+  public async afterCommandExecute(context: TransactionExecuteContext): Promise<void> {
+    const audioAccountSubStore = this.stores.get(AudioAccountStore);
+    const audioSubStore = this.stores.get(AudioStore);
 
-      if (context.transaction.command === COMMANDS.CREATE && context.transaction.module === MODULES.AUDIO) {
-        const account = await audioAccountSubStore.get(context, context.transaction.senderAddress);
-        const audioID = account.audio.audios[account.audio.audios.length -1];
-        if (audioID) {
-          const { collectionID } = await audioSubStore.get(context, audioID);
-          await this._collectionMethod.addAudio(
-            context.getMethodContext(),
-            audioID,
-            collectionID,
-            context.transaction.senderAddress,
-          );
-        }
+    if (
+      context.transaction.command === COMMANDS.CREATE &&
+      context.transaction.module === MODULES.AUDIO
+    ) {
+      const account = await audioAccountSubStore.get(context, context.transaction.senderAddress);
+      const audioID = account.audio.audios[account.audio.audios.length - 1];
+      if (audioID) {
+        const { collectionID } = await audioSubStore.get(context, audioID);
+        await this._collectionMethod.addAudio(
+          context.getMethodContext(),
+          audioID,
+          collectionID,
+          context.transaction.senderAddress,
+        );
       }
     }
+  }
 
   // public async initGenesisState(_context: GenesisBlockExecuteContext): Promise<void> {}
 

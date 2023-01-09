@@ -2,14 +2,7 @@ import { codec } from 'lisk-sdk';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ModuleEndpointContext } from 'lisk-framework';
 import { address as cryptoAddress } from '@liskhq/lisk-cryptography';
-import {
-  AudioAccountJSON,
-  AudioJSON,
-  Audio,
-  Store,
-  AudioAccount,
-  Genre,
-} from '../types';
+import { AudioAccountJSON, AudioJSON, Audio, Store, AudioAccount, Genre } from '../types';
 import { accountStoreSchema, audioStoreSchema } from '../schemas';
 import { VALID_GENRES } from '../constants';
 
@@ -30,22 +23,16 @@ export const getAccount = async (
 
   const addressBuffer = cryptoAddress.getAddressFromLisk32Address(address);
 
-  const accountExists = await audioAccountSubStore.has(
-    context,
-    addressBuffer,
-  );
+  const accountExists = await audioAccountSubStore.has(context, addressBuffer);
 
   if (!accountExists) {
     throw new Error(`No account with address ${address} found.`);
   }
 
-  const accountData = await audioAccountSubStore.get(
-    context,
-    addressBuffer,
-  );
+  const accountData = await audioAccountSubStore.get(context, addressBuffer);
   const accountJSON: AudioAccountJSON = codec.toJSON(accountStoreSchema, accountData);
   return accountJSON;
-}
+};
 
 export const getAudio = async (
   context: ModuleEndpointContext,
@@ -63,21 +50,15 @@ export const getAudio = async (
     throw new Error('Parameter audioID must be a string or a buffer.');
   }
 
-  const audioExists = await audioSubStore.has(
-    context,
-    query,
-  );
+  const audioExists = await audioSubStore.has(context, query);
 
   if (!audioExists) {
     throw new Error(`No audio with id ${query.toString('hex')} found.`);
   }
 
-  const audioData = await audioSubStore.get(
-    context,
-    query,
-  );
+  const audioData = await audioSubStore.get(context, query);
   const audioJSON: AudioJSON = codec.toJSON(audioStoreSchema, audioData);
   return audioJSON;
-}
+};
 
 export const getGenres = (): Genre[] => VALID_GENRES;

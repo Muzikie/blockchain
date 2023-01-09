@@ -1,5 +1,5 @@
 {
-	"name": "mzchain",
+	"name": "muzikie",
 	"cwd": ".",
 	"script": "./bin/run start --api-ipc --api-ws",
 	"env": {}

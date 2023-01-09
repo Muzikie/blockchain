@@ -16,12 +16,14 @@ export class UpdateMembersCommand extends BaseCommand {
   public schema = updateMembersCommandParamsSchema;
 
   // eslint-disable-next-line @typescript-eslint/require-await
-  public async verify(context: CommandVerifyContext<UpdateMembersCommandParams>): Promise<VerificationResult> {
+  public async verify(
+    context: CommandVerifyContext<UpdateMembersCommandParams>,
+  ): Promise<VerificationResult> {
     if (context.params.members?.length === 0) {
       return {
         status: VerifyStatus.FAIL,
-        error: new Error('Define at least one member')
-      }
+        error: new Error('Define at least one member'),
+      };
     }
     return { status: VerifyStatus.OK };
   }

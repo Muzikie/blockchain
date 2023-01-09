@@ -1,4 +1,4 @@
-export const subscriptionStoreSchema =  {
+export const subscriptionStoreSchema = {
   $id: 'subscription/subscription',
   type: 'object',
   required: ['price', 'consumable', 'streams', 'members', 'maxMembers', 'creatorAddress'],
@@ -20,7 +20,7 @@ export const subscriptionStoreSchema =  {
       fieldNumber: 4,
       items: {
         dataType: 'bytes',
-      }
+      },
     },
     maxMembers: {
       dataType: 'uint32',
@@ -53,8 +53,8 @@ export const accountStoreSchema = {
         shared: {
           fieldNumber: 2,
           dataType: 'bytes',
-        }
-      }
+        },
+      },
     },
   },
 };
@@ -63,10 +63,7 @@ export const createCommandParamsSchema = {
   $id: 'subscription/create',
   title: 'CreateAsset transaction asset for subscription module',
   type: 'object',
-  required: [
-    'maxMembers',
-    'price',
-  ],
+  required: ['maxMembers', 'price'],
   properties: {
     maxMembers: {
       dataType: 'uint32',
@@ -83,10 +80,7 @@ export const purchaseCommandParamsSchema = {
   $id: 'subscription/purchase',
   title: 'PurchaseAsset transaction asset for subscription module',
   type: 'object',
-  required: [
-    'subscriptionID',
-    'members',
-  ],
+  required: ['subscriptionID', 'members'],
   properties: {
     subscriptionID: {
       dataType: 'bytes',
@@ -107,10 +101,7 @@ export const updateMembersCommandParamsSchema = {
   $id: 'subscription/updateMembers',
   title: 'UpdateMembersAsset transaction asset for subscription module',
   type: 'object',
-  required: [
-    'subscriptionID',
-    'members',
-  ],
+  required: ['subscriptionID', 'members'],
   properties: {
     subscriptionID: {
       dataType: 'bytes',

@@ -28,19 +28,13 @@ export const getAccount = async (
 
   const addressBuffer = cryptoAddress.getAddressFromLisk32Address(address);
 
-  const accountExists = await collectionAccountSubStore.has(
-    context,
-    addressBuffer,
-  );
+  const accountExists = await collectionAccountSubStore.has(context, addressBuffer);
 
   if (!accountExists) {
     throw new Error(`No account with address ${address} found.`);
   }
 
-  const accountData = await collectionAccountSubStore.get(
-    context,
-    addressBuffer,
-  );
+  const accountData = await collectionAccountSubStore.get(context, addressBuffer);
   const accountJSON: CollectionAccountJSON = codec.toJSON(accountStoreSchema, accountData);
   return accountJSON;
 };
@@ -62,19 +56,13 @@ export const getCollection = async (
     throw new Error('Parameter collectionID must be a string or a buffer.');
   }
 
-  const collectionExists = await collectionSubStore.has(
-    context,
-    query,
-  );
+  const collectionExists = await collectionSubStore.has(context, query);
 
   if (!collectionExists) {
     throw new Error(`No collection with id ${query.toString('hex')} found.`);
   }
 
-  const collectionData = await collectionSubStore.get(
-    context,
-    query,
-  );
+  const collectionData = await collectionSubStore.get(context, query);
   const collectionJSON: CollectionJSON = codec.toJSON(collectionStoreSchema, collectionData);
   return collectionJSON;
 };
