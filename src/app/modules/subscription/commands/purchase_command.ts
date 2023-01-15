@@ -68,8 +68,13 @@ export class PurchaseCommand extends BaseCommand {
     const devCosts = (subscriptionNFT.price * BigInt(2)) / BigInt(10);
     const consumable = subscriptionNFT.price - devCosts;
 
-    await this._tokenMethod.transfer(methodContext, senderAddress, DEV_ADDRESS, tokenID, devCosts);
-
+    await this._tokenMethod.transfer(
+      methodContext,
+      senderAddress,
+      DEV_ADDRESS,
+      tokenID,
+      devCosts,
+    );
     await this._tokenMethod.transfer(
       methodContext,
       senderAddress,
@@ -107,12 +112,16 @@ export class PurchaseCommand extends BaseCommand {
 
     // Remove subscription from the dev account
     const devAccount = await subscriptionAccountStore.get(context, DEV_ADDRESS);
-    await subscriptionAccountStore.set(context, DEV_ADDRESS, {
-      subscription: {
-        owned: devAccount.subscription.owned.filter(item => !item.equals(subscriptionID)),
-        shared: Buffer.alloc(0),
+    await subscriptionAccountStore.set(
+      context,
+      DEV_ADDRESS,
+      {
+        subscription: {
+          owned: devAccount.subscription.owned.filter(item => !item.equals(subscriptionID)),
+          shared: Buffer.alloc(0),
+        },
       },
-    });
+    );
 
     // Save the subscription on the members accounts
     for (const member of members) {

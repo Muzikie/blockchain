@@ -76,7 +76,7 @@ export class ReclaimCommand extends BaseCommand {
       // Update audio on the blockchain
       await audioStore.set(context, audioID, audioNFT);
     }
-    // @todo Transfer the total income from treasury account to the senderAddress
+    // Transfer the total income from treasury account to the senderAddress
     await this._tokenMethod.transfer(
       methodContext,
       TREASURY_ADDRESS,

@@ -44,7 +44,6 @@ export class StreamCommand extends BaseCommand {
     const audio = await audioSubStore.get(context, audioID);
 
     // Throw an error if the sender is not a member of an existing subscription
-    context.logger.info(':: subscriptionID ::  ... ');
     const { data: subscription, subscriptionID } = await this._subscriptionMethod.getByAddress(
       methodContext,
       senderAddress,
