@@ -1,10 +1,12 @@
 import { CreateCommand } from '../../../../../src/app/modules/user/commands/create_command';
+import { UserModule } from '../../../../../src/app/modules/user/module';
 
 describe('CreateCommand', () => {
   let command: CreateCommand;
+  const module = new UserModule();
 
   beforeEach(() => {
-    command = new CreateCommand();
+    command = new CreateCommand(module.stores, module.events);
   });
 
   describe('constructor', () => {
