@@ -20,7 +20,19 @@ export interface User {
   bannerSignature: Buffer;
   creatorAddress: Buffer;
 }
+
 export interface UserAccount {
   userID: Buffer;
+}
+
+export interface CreateCommandParams {
+  name: string;
+  nickName: string;
+  description: string;
+  socialAccounts: SocialAccount[];
+  avatarHash: Buffer;
+  avatarSignature: Buffer;
+  bannerHash: Buffer;
+  bannerSignature: Buffer;
 }
 
