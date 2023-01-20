@@ -2,7 +2,7 @@
 
 exports[`CreateCommand constructor should have valid schema 1`] = `
 Object {
-  "$id": "user/create",
+  "$id": "profile/create",
   "properties": Object {
     "avatarHash": Object {
       "dataType": "bytes",
@@ -35,7 +35,7 @@ Object {
     "socialAccounts": Object {
       "fieldNumber": 4,
       "items": Object {
-        "$id": "user/user/socialAccounts",
+        "$id": "profile/profile/socialAccounts",
         "properties": Object {
           "platform": Object {
             "dataType": "uint32",
@@ -65,7 +65,7 @@ Object {
     "bannerHash",
     "bannerSignature",
   ],
-  "title": "CreateAsset transaction asset for user module",
+  "title": "CreateAsset transaction asset for profile module",
   "type": "object",
 }
 `;
