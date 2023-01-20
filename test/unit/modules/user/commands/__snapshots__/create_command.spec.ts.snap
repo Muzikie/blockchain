@@ -37,7 +37,7 @@ Object {
       "items": Object {
         "$id": "user/user/socialAccounts",
         "properties": Object {
-          "type": Object {
+          "platform": Object {
             "dataType": "uint32",
             "fieldNumber": 2,
           },
@@ -48,7 +48,7 @@ Object {
         },
         "required": Array [
           "username",
-          "type",
+          "platform",
         ],
         "type": "object",
       },
