@@ -31,13 +31,13 @@ export const userStoreSchema = {
       items: {
         $id: 'user/user/socialAccounts',
         type: 'object',
-        required: ['username', 'type'],
+        required: ['username', 'platform'],
         properties: {
           username: {
             dataType: 'string',
             fieldNumber: 1,
           },
-          type: {
+          platform: {
             dataType: 'uint32',
             fieldNumber: 2,
           },
@@ -73,7 +73,7 @@ export const accountStoreSchema = {
   required: ['userID'],
   properties: {
     userID: {
-      type: 'buffer',
+      dataType: 'bytes',
       fieldNumber: 1,
     },
   },
@@ -112,13 +112,13 @@ export const createCommandParamsSchema = {
       items: {
         $id: 'user/user/socialAccounts',
         type: 'object',
-        required: ['username', 'type'],
+        required: ['username', 'platform'],
         properties: {
           username: {
             dataType: 'string',
             fieldNumber: 1,
           },
-          type: {
+          platform: {
             dataType: 'uint32',
             fieldNumber: 2,
           },
