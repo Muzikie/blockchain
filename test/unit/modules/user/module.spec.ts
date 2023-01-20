@@ -17,10 +17,10 @@ describe('UserModule', () => {
   describe('afterCommandExecute', () => {
     it.todo('should execute after transaction execute');
   });
-  describe('beforeTransactionsExecute', () => {
+  describe('beforeBlockExecute', () => {
     it.todo('should execute after genesis execute');
   });
-  describe('afterTransactionsExecute', () => {
+  describe('afterBlockExecute', () => {
     it.todo('should execute after genesis execute');
   });
 });

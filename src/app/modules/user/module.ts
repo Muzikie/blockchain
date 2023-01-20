@@ -5,13 +5,13 @@ import {
   ModuleInitArgs,
   InsertAssetContext,
   BlockVerifyContext,
-  TransactionVerifyContext,
-  VerificationResult,
-  TransactionExecuteContext,
-  GenesisBlockExecuteContext,
   ModuleMetadata,
-  BlockExecuteContext,
-  BlockAfterExecuteContext,
+  // TransactionVerifyContext,
+  // VerificationResult,
+  // TransactionExecuteContext,
+  // GenesisBlockExecuteContext,
+  // BlockExecuteContext,
+  // BlockAfterExecuteContext,
 } from 'lisk-sdk';
 import { UserAccountStore } from './stores/userAccount';
 import { UserStore } from './stores/user';
@@ -59,19 +59,19 @@ export class UserModule extends BaseModule {
   }
 
   // Lifecycle hooks
-  public async verifyTransaction(_context: TransactionVerifyContext): Promise<VerificationResult> {
-    // verify transaction will be called multiple times in the transaction pool
-  }
+  // public async verifyTransaction(_context: TransactionVerifyContext): Promise<VerificationResult> {
+  // verify transaction will be called multiple times in the transaction pool
+  // }
 
-  public async beforeCommandExecute(_context: TransactionExecuteContext): Promise<void> {}
+  // public async beforeCommandExecute(_context: TransactionExecuteContext): Promise<void> {}
 
-  public async afterCommandExecute(_context: TransactionExecuteContext): Promise<void> {}
+  // public async afterCommandExecute(_context: TransactionExecuteContext): Promise<void> {}
 
-  public async initGenesisState(_context: GenesisBlockExecuteContext): Promise<void> {}
+  // public async initGenesisState(_context: GenesisBlockExecuteContext): Promise<void> {}
 
-  public async finalizeGenesisState(_context: GenesisBlockExecuteContext): Promise<void> {}
+  // public async finalizeGenesisState(_context: GenesisBlockExecuteContext): Promise<void> {}
 
-  public async beforeTransactionsExecute(_context: BlockExecuteContext): Promise<void> {}
+  // public async beforeTransactionsExecute(_context: BlockExecuteContext): Promise<void> {}
 
-  public async afterTransactionsExecute(_context: BlockAfterExecuteContext): Promise<void> {}
+  // public async afterTransactionsExecute(_context: BlockAfterExecuteContext): Promise<void> {}
 }
