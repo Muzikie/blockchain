@@ -13,6 +13,8 @@ import {
   BlockExecuteContext,
   BlockAfterExecuteContext,
 } from 'lisk-sdk';
+import { UserAccountStore } from './stores/userAccount';
+import { UserStore } from './stores/user';
 import { UserEndpoint } from './endpoint';
 import { UserMethod } from './method';
 
@@ -23,7 +25,8 @@ export class UserModule extends BaseModule {
 
   public constructor() {
     super();
-    // registeration of stores and events
+    this.stores.register(UserAccountStore, new UserAccountStore(this.name));
+    this.stores.register(UserStore, new UserStore(this.name));
   }
 
   public metadata(): ModuleMetadata {
