@@ -1,9 +1,9 @@
-import { CreateCommand } from '../../../../../src/app/modules/user/commands/create_command';
-import { UserModule } from '../../../../../src/app/modules/user/module';
+import { CreateCommand } from '../../../../../src/app/modules/profile/commands/create_command';
+import { ProfileModule } from '../../../../../src/app/modules/profile/module';
 
 describe('CreateCommand', () => {
   let command: CreateCommand;
-  const module = new UserModule();
+  const module = new ProfileModule();
 
   beforeEach(() => {
     command = new CreateCommand(module.stores, module.events);
