@@ -15,13 +15,16 @@ import {
 } from 'lisk-sdk';
 import { UserAccountStore } from './stores/userAccount';
 import { UserStore } from './stores/user';
+import { CreateCommand } from "./commands/create_command";
 import { UserEndpoint } from './endpoint';
 import { UserMethod } from './method';
 
 export class UserModule extends BaseModule {
   public endpoint = new UserEndpoint(this.stores, this.offchainStores);
   public method = new UserMethod(this.stores, this.events);
-  public commands = [];
+  public commands = [
+    new CreateCommand(this.stores, this.events)
+  ];
 
   public constructor() {
     super();
