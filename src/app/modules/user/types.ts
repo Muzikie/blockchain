@@ -20,4 +20,7 @@ export interface User {
   bannerSignature: Buffer;
   creatorAddress: Buffer;
 }
+export interface UserAccount {
+  userID: Buffer;
+}
 

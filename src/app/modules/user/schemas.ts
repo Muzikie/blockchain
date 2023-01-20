@@ -66,3 +66,15 @@ export const userStoreSchema = {
     },
   },
 };
+
+export const accountStoreSchema = {
+  $id: 'user/account',
+  type: 'object',
+  required: ['userID'],
+  properties: {
+    userID: {
+      type: 'buffer',
+      fieldNumber: 1,
+    },
+  },
+};
