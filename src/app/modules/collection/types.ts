@@ -8,8 +8,8 @@ export interface Collection {
   coArtists: string[];
   collectionType: number;
   audios: Buffer[];
-  hash: Buffer;
-  meta: Buffer;
+  coverSignature: Buffer;
+  coverHash: Buffer;
   creatorAddress: Buffer;
 }
 
@@ -20,8 +20,8 @@ export interface CollectionJSON {
   coArtists: string[];
   collectionType: number;
   audios: string[];
-  hash: string;
-  meta: string;
+  coverSignature: string;
+  coverHash: string;
   creatorAddress: string;
 }
 
@@ -43,8 +43,8 @@ export interface CreateCommandParams {
   artistName: string;
   coArtists: string[];
   collectionType: number;
-  hash: Buffer;
-  meta: Buffer;
+  coverSignature: Buffer;
+  coverHash: Buffer;
 }
 
 export interface DestroyCommandParams {
