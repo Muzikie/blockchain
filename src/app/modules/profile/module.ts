@@ -13,23 +13,23 @@ import {
   // BlockExecuteContext,
   // BlockAfterExecuteContext,
 } from 'lisk-sdk';
-import { UserAccountStore } from './stores/userAccount';
-import { UserStore } from './stores/user';
+import { ProfileAccountStore } from './stores/profileAccount';
+import { ProfileStore } from './stores/profile';
 import { CreateCommand } from "./commands/create_command";
-import { UserEndpoint } from './endpoint';
-import { UserMethod } from './method';
+import { ProfileEndpoint } from './endpoint';
+import { ProfileMethod } from './method';
 
-export class UserModule extends BaseModule {
-  public endpoint = new UserEndpoint(this.stores, this.offchainStores);
-  public method = new UserMethod(this.stores, this.events);
+export class ProfileModule extends BaseModule {
+  public endpoint = new ProfileEndpoint(this.stores, this.offchainStores);
+  public method = new ProfileMethod(this.stores, this.events);
   public commands = [
     new CreateCommand(this.stores, this.events)
   ];
 
   public constructor() {
     super();
-    this.stores.register(UserAccountStore, new UserAccountStore(this.name));
-    this.stores.register(UserStore, new UserStore(this.name));
+    this.stores.register(ProfileAccountStore, new ProfileAccountStore(this.name));
+    this.stores.register(ProfileStore, new ProfileStore(this.name));
   }
 
   public metadata(): ModuleMetadata {

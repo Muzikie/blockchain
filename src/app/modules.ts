@@ -5,13 +5,13 @@ import { TokenMethod } from 'lisk-framework';
 import { AudioModule } from './modules/audio/module';
 import { CollectionModule } from './modules/collection/module';
 import { SubscriptionModule } from './modules/subscription/module';
-import { UserModule } from "./modules/user/module";
+import { ProfileModule } from "./modules/profile/module";
 
 export const registerModules = (app: Application, token: TokenMethod): void => {
   const audioModule = new AudioModule();
   const collectionModule = new CollectionModule();
   const subscriptionModule = new SubscriptionModule();
-  const userModule = new UserModule();
+  const profileModule = new ProfileModule();
 
   audioModule.addDependencies(
     collectionModule.method,
@@ -23,5 +23,5 @@ export const registerModules = (app: Application, token: TokenMethod): void => {
   app.registerModule(audioModule);
   app.registerModule(collectionModule);
   app.registerModule(subscriptionModule);
-  app.registerModule(userModule);
+  app.registerModule(profileModule);
 };

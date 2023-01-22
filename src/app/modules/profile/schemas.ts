@@ -1,5 +1,5 @@
-export const userStoreSchema = {
-  $id: 'user/user',
+export const profileStoreSchema = {
+  $id: 'profile/profile',
   type: 'object',
   required: [
     'name',
@@ -29,7 +29,7 @@ export const userStoreSchema = {
       type: 'array',
       fieldNumber: 4,
       items: {
-        $id: 'user/user/socialAccounts',
+        $id: 'profile/profile/socialAccounts',
         type: 'object',
         required: ['username', 'platform'],
         properties: {
@@ -68,11 +68,11 @@ export const userStoreSchema = {
 };
 
 export const accountStoreSchema = {
-  $id: 'user/account',
+  $id: 'profile/account',
   type: 'object',
-  required: ['userID'],
+  required: ['profileID'],
   properties: {
-    userID: {
+    profileID: {
       dataType: 'bytes',
       fieldNumber: 1,
     },
@@ -80,8 +80,8 @@ export const accountStoreSchema = {
 };
 
 export const createCommandParamsSchema = {
-  $id: 'user/create',
-  title: 'CreateAsset transaction asset for user module',
+  $id: 'profile/create',
+  title: 'CreateAsset transaction asset for profile module',
   type: 'object',
   required: [
     'name',
@@ -110,7 +110,7 @@ export const createCommandParamsSchema = {
       type: 'array',
       fieldNumber: 4,
       items: {
-        $id: 'user/user/socialAccounts',
+        $id: 'profile/profile/socialAccounts',
         type: 'object',
         required: ['username', 'platform'],
         properties: {

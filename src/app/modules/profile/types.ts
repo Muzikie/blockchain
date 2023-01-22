@@ -12,7 +12,7 @@ interface SocialAccount {
   platform: SocialAccountPlatform;
 }
 
-export interface User {
+export interface Profile {
   name: string;
   nickName: string;
   description: string;
@@ -24,7 +24,7 @@ export interface User {
   creatorAddress: Buffer;
 }
 
-export interface UserJSON {
+export interface ProfileJSON {
   name: string;
   nickName: string;
   description: string;
@@ -36,12 +36,12 @@ export interface UserJSON {
   creatorAddress: string;
 }
 
-export interface UserAccount {
-  userID: Buffer;
+export interface ProfileAccount {
+  profileID: Buffer;
 }
 
-export interface UserAccountJSON {
-  userID: string;
+export interface ProfileAccountJSON {
+  profileID: string;
 }
 
 export interface CreateCommandParams {

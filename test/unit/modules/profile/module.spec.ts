@@ -1,6 +1,6 @@
-// import * as modules from '../../../src/app/modules/user'
+// import * as modules from '../../../src/app/modules/profile'
 
-describe('UserModule', () => {
+describe('ProfileModule', () => {
   describe('constructor', () => {
     it.todo('should have valid name');
   });

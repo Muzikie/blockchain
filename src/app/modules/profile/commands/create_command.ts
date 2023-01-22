@@ -7,10 +7,10 @@ import {
   VerificationResult,
   VerifyStatus,
 } from 'lisk-sdk';
-import { UserStore } from '../stores/user';
-import { UserAccountStore } from '../stores/userAccount';
+import { ProfileStore } from '../stores/profile';
+import { ProfileAccountStore } from '../stores/profileAccount';
 import { createCommandParamsSchema } from '../schemas';
-import { CreateCommandParams, User } from '../types';
+import { CreateCommandParams, Profile } from '../types';
 import { getNodeForName, verifyHash } from '../utils';
 
 export class CreateCommand extends BaseCommand {
@@ -48,28 +48,28 @@ export class CreateCommand extends BaseCommand {
   public async execute(context: CommandExecuteContext<CreateCommandParams>): Promise<void> {
     const { params, transaction } = context;
 
-    const userAccountStore = this.stores.get(UserAccountStore);
-    const userStore = this.stores.get(UserStore);
+    const profileAccountStore = this.stores.get(ProfileAccountStore);
+    const profileStore = this.stores.get(ProfileStore);
 
     // The name should not be already registered
-    const userAccountExists = await userAccountStore.has(context, transaction.senderAddress);
-    if (userAccountExists) {
-      throw new Error('You have already created a user for this account.');
+    const profileAccountExists = await profileAccountStore.has(context, transaction.senderAddress);
+    if (profileAccountExists) {
+      throw new Error('You have already created a profile for this account.');
     }
 
-    // Get namehash output of the user NFT
+    // Get namehash output of the profile NFT
     const key = getNodeForName(params);
 
-    // Create the user account object
-    const userObject: User = {
+    // Create the profile account object
+    const profileObject: Profile = {
       ...params,
       creatorAddress: transaction.senderAddress,
     };
-    // Save the user account object in account store
-    await userAccountStore.set(context, transaction.senderAddress, {
-      userID: key,
+    // Save the profile account object in account store
+    await profileAccountStore.set(context, transaction.senderAddress, {
+      profileID: key,
     });
-    // Save the user object in user store
-    await userStore.set(context, key, userObject);
+    // Save the profile object in profile store
+    await profileStore.set(context, key, profileObject);
   }
 }
