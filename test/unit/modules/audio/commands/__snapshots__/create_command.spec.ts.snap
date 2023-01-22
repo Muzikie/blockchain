@@ -10,6 +10,14 @@ Object {
       "maxLength": 40,
       "minLength": 3,
     },
+    "audioHash": Object {
+      "dataType": "bytes",
+      "fieldNumber": 8,
+    },
+    "audioSignature": Object {
+      "dataType": "bytes",
+      "fieldNumber": 7,
+    },
     "collectionID": Object {
       "dataType": "bytes",
       "fieldNumber": 5,
@@ -20,14 +28,6 @@ Object {
         "dataType": "uint32",
       },
       "type": "array",
-    },
-    "hash": Object {
-      "dataType": "bytes",
-      "fieldNumber": 7,
-    },
-    "meta": Object {
-      "dataType": "bytes",
-      "fieldNumber": 8,
     },
     "name": Object {
       "dataType": "string",
@@ -69,8 +69,8 @@ Object {
     "genre",
     "collectionID",
     "owners",
-    "hash",
-    "meta",
+    "audioSignature",
+    "audioHash",
   ],
   "title": "CreateAsset transaction asset for audio module",
   "type": "object",
