@@ -21,13 +21,13 @@ Object {
       "dataType": "uint32",
       "fieldNumber": 5,
     },
-    "hash": Object {
-      "dataType": "bytes",
-      "fieldNumber": 6,
-    },
-    "meta": Object {
+    "coverHash": Object {
       "dataType": "bytes",
       "fieldNumber": 7,
+    },
+    "coverSignature": Object {
+      "dataType": "bytes",
+      "fieldNumber": 6,
     },
     "name": Object {
       "dataType": "string",
@@ -46,8 +46,8 @@ Object {
     "artistName",
     "coArtists",
     "collectionType",
-    "hash",
-    "meta",
+    "coverSignature",
+    "coverHash",
   ],
   "title": "CreateAsset transaction asset for collection module",
   "type": "object",

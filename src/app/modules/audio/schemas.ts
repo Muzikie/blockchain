@@ -8,8 +8,8 @@ export const audioStoreSchema = {
     'genre',
     'collectionID',
     'owners',
-    'hash',
-    'meta',
+    'audioSignature',
+    'audioHash',
     'creatorAddress',
   ],
   properties: {
@@ -59,11 +59,11 @@ export const audioStoreSchema = {
         },
       },
     },
-    hash: {
+    audioSignature: {
       dataType: 'bytes',
       fieldNumber: 7,
     },
-    meta: {
+    audioHash: {
       dataType: 'bytes',
       fieldNumber: 8,
     },
@@ -107,8 +107,8 @@ export const createCommandParamsSchema = {
     'genre',
     'collectionID',
     'owners',
-    'hash',
-    'meta',
+    'audioSignature',
+    'audioHash',
   ],
   properties: {
     name: {
@@ -157,11 +157,11 @@ export const createCommandParamsSchema = {
         },
       },
     },
-    hash: {
+    audioSignature: {
       dataType: 'bytes',
       fieldNumber: 7,
     },
-    meta: {
+    audioHash: {
       dataType: 'bytes',
       fieldNumber: 8,
     },
