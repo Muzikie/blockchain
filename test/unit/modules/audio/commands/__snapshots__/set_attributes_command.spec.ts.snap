@@ -4,12 +4,6 @@ exports[`SetAttributeCommand constructor should have valid schema 1`] = `
 Object {
   "$id": "audio/setAttributes",
   "properties": Object {
-    "artistName": Object {
-      "dataType": "string",
-      "fieldNumber": 3,
-      "maxLength": 40,
-      "minLength": 3,
-    },
     "audioID": Object {
       "dataType": "bytes",
       "fieldNumber": 6,
@@ -18,8 +12,16 @@ Object {
       "dataType": "bytes",
       "fieldNumber": 5,
     },
-    "genre": Object {
+    "fit": Object {
       "fieldNumber": 4,
+      "items": Object {
+        "dataType": "bytes",
+        "format": "lisk32",
+      },
+      "type": "array",
+    },
+    "genre": Object {
+      "fieldNumber": 3,
       "items": Object {
         "dataType": "uint32",
       },
@@ -39,8 +41,8 @@ Object {
   "required": Array [
     "name",
     "releaseYear",
-    "artistName",
     "genre",
+    "fit",
     "collectionID",
     "audioID",
   ],
