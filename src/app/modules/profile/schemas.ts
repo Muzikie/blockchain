@@ -62,6 +62,7 @@ export const profileStoreSchema = {
     },
     creatorAddress: {
       dataType: 'bytes',
+      format: 'lisk32',
       fieldNumber: 9,
     },
   },

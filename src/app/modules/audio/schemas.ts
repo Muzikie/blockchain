@@ -4,12 +4,12 @@ export const audioStoreSchema = {
   required: [
     'name',
     'releaseYear',
-    'artistName',
     'genre',
     'collectionID',
     'owners',
     'audioSignature',
     'audioHash',
+    'fit',
     'creatorAddress',
   ],
   properties: {
@@ -21,24 +21,20 @@ export const audioStoreSchema = {
       dataType: 'string',
       fieldNumber: 2,
     },
-    artistName: {
-      dataType: 'string',
-      fieldNumber: 3,
-    },
     genre: {
       type: 'array',
-      fieldNumber: 4,
+      fieldNumber: 3,
       items: {
         dataType: 'uint32',
       },
     },
     collectionID: {
       dataType: 'bytes',
-      fieldNumber: 5,
+      fieldNumber: 4,
     },
     owners: {
       type: 'array',
-      fieldNumber: 6,
+      fieldNumber: 5,
       items: {
         $id: 'audio/audio/owners',
         type: 'object',
@@ -61,14 +57,23 @@ export const audioStoreSchema = {
     },
     audioSignature: {
       dataType: 'bytes',
-      fieldNumber: 7,
+      fieldNumber: 6,
     },
     audioHash: {
       dataType: 'bytes',
+      fieldNumber: 7,
+    },
+    fit: {
+      type: 'array',
       fieldNumber: 8,
+      items: {
+        dataType: 'bytes',
+        format: 'lisk32',
+      },
     },
     creatorAddress: {
       dataType: 'bytes',
+      format: 'lisk32',
       fieldNumber: 9,
     },
   },
@@ -103,12 +108,12 @@ export const createCommandParamsSchema = {
   required: [
     'name',
     'releaseYear',
-    'artistName',
     'genre',
     'collectionID',
     'owners',
     'audioSignature',
     'audioHash',
+    'fit',
   ],
   properties: {
     name: {
@@ -121,26 +126,20 @@ export const createCommandParamsSchema = {
       dataType: 'string',
       fieldNumber: 2,
     },
-    artistName: {
-      dataType: 'string',
-      fieldNumber: 3,
-      minLength: 3,
-      maxLength: 40,
-    },
     genre: {
       type: 'array',
-      fieldNumber: 4,
+      fieldNumber: 3,
       items: {
         dataType: 'uint32',
       },
     },
     collectionID: {
       dataType: 'bytes',
-      fieldNumber: 5,
+      fieldNumber: 4,
     },
     owners: {
       type: 'array',
-      fieldNumber: 6,
+      fieldNumber: 5,
       items: {
         $id: 'audio/create/owners',
         type: 'object',
@@ -159,11 +158,19 @@ export const createCommandParamsSchema = {
     },
     audioSignature: {
       dataType: 'bytes',
-      fieldNumber: 7,
+      fieldNumber: 6,
     },
     audioHash: {
       dataType: 'bytes',
+      fieldNumber: 7,
+    },
+    fit: {
+      type: 'array',
       fieldNumber: 8,
+      items: {
+        dataType: 'bytes',
+        format: 'lisk32',
+      },
     },
   },
 };
@@ -207,7 +214,7 @@ export const setAttributesCommandParamsSchema = {
   $id: 'audio/setAttributes',
   title: 'SetAttributesAsset transaction asset for audio module',
   type: 'object',
-  required: ['name', 'releaseYear', 'artistName', 'genre', 'collectionID', 'audioID'],
+  required: ['name', 'releaseYear', 'genre', 'fit', 'collectionID', 'audioID'],
   properties: {
     name: {
       dataType: 'string',
@@ -219,17 +226,19 @@ export const setAttributesCommandParamsSchema = {
       dataType: 'string',
       fieldNumber: 2,
     },
-    artistName: {
-      dataType: 'string',
-      fieldNumber: 3,
-      minLength: 3,
-      maxLength: 40,
-    },
     genre: {
+      type: 'array',
+      fieldNumber: 3,
+      items: {
+        dataType: 'uint32',
+      },
+    },
+    fit: {
       type: 'array',
       fieldNumber: 4,
       items: {
-        dataType: 'uint32',
+        dataType: 'bytes',
+        format: 'lisk32',
       },
     },
     collectionID: {
