@@ -11,7 +11,7 @@ import { CollectionAccountStore } from '../stores/collectionAccount';
 import { CreateCommandParams, Collection, CollectionAccount } from '../types';
 import { createCommandParamsSchema } from '../schemas';
 import { validCollectionTypes, MIN_RELEASE_YEAR } from '../constants';
-import { getNodeForName, verifyHash } from '../../../utils';
+import { getEntityID, verifyHash } from '../../../utils';
 
 export class CreateCommand extends BaseCommand {
   public schema = createCommandParamsSchema;
@@ -51,7 +51,7 @@ export class CreateCommand extends BaseCommand {
   public async execute(context: CommandExecuteContext<CreateCommandParams>): Promise<void> {
     const { params, transaction } = context;
     // Get namehash output of the audio file
-    const collectionID = getNodeForName(context.transaction);
+    const collectionID = getEntityID(context.transaction);
 
     const collectionAccountSubStore = this.stores.get(CollectionAccountStore);
     const collectionSubStore = this.stores.get(CollectionStore);

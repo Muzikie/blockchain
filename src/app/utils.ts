@@ -4,7 +4,7 @@ import { codec } from '@liskhq/lisk-codec';
 import { Transaction } from './types';
 import { baseTransactionSchema } from './schemas';
 
-export const getNodeForName = <T>(transaction: Transaction<T>): Buffer => {
+export const getEntityID = <T>(transaction: Transaction<T>): Buffer => {
   const txBytes = codec.encode(baseTransactionSchema, transaction);
   const content = txBytes.toString('hex');
   return createHash('md5').update(content).digest();

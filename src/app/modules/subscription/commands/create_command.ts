@@ -11,7 +11,7 @@ import { SubscriptionAccountStore } from '../stores/subscriptionAccount';
 import { CreateCommandParams, Subscription, SubscriptionAccount } from '../types';
 import { createCommandParamsSchema } from '../schemas';
 import { DEV_ADDRESS } from '../constants';
-import { getNodeForName } from '../../../utils';
+import { getEntityID } from '../../../utils';
 
 export class CreateCommand extends BaseCommand {
   public schema = createCommandParamsSchema;
@@ -44,7 +44,7 @@ export class CreateCommand extends BaseCommand {
     const subscriptionStore = this.stores.get(SubscriptionStore);
 
     // Create subscription ID
-    const id = getNodeForName(context.transaction);
+    const id = getEntityID(context.transaction);
     // Create subscription object
     const subscription: Subscription = {
       price,
