@@ -4,8 +4,6 @@ import { ModuleEndpointContext } from 'lisk-framework';
 export interface Collection {
   name: string;
   releaseYear: string;
-  artistName: string;
-  coArtists: string[];
   collectionType: number;
   audios: Buffer[];
   coverSignature: Buffer;
@@ -16,8 +14,6 @@ export interface Collection {
 export interface CollectionJSON {
   name: string;
   releaseYear: string;
-  artistName: string;
-  coArtists: string[];
   collectionType: number;
   audios: string[];
   coverSignature: string;
@@ -40,8 +36,6 @@ export interface CollectionAccountJSON {
 export interface CreateCommandParams {
   name: string;
   releaseYear: string;
-  artistName: string;
-  coArtists: string[];
   collectionType: number;
   coverSignature: Buffer;
   coverHash: Buffer;
@@ -59,8 +53,6 @@ export interface TransferCommandParams {
 export interface SetAttributesCommandParams {
   name: string;
   releaseYear: string;
-  artistName: string;
-  coArtists: string[];
   collectionType: number;
   collectionID: Buffer;
 }
