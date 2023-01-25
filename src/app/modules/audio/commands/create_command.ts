@@ -11,7 +11,7 @@ import { AudioAccountStore } from '../stores/audioAccount';
 import { CreateCommandParams, Audio, AudioAccount } from '../types';
 import { createCommandParamsSchema } from '../schemas';
 import { VALID_GENRES, MIN_RELEASE_YEAR } from '../constants';
-import { getNodeForName, verifyHash } from '../utils';
+import { getEntityID, verifyHash } from '../../../utils';
 
 export class CreateCommand extends BaseCommand {
   public schema = createCommandParamsSchema;
@@ -64,13 +64,13 @@ export class CreateCommand extends BaseCommand {
   public async execute(context: CommandExecuteContext<CreateCommandParams>): Promise<void> {
     const { params, transaction } = context;
     // Get namehash output of the audio file
-    const key = getNodeForName(params);
+    const audioID = getEntityID(context.transaction);
 
     const audioAccountSubStore = this.stores.get(AudioAccountStore);
     const audioSubStore = this.stores.get(AudioStore);
 
     // Check uniqueness of the NFT
-    const audioExists = await audioSubStore.has(context, key);
+    const audioExists = await audioSubStore.has(context, audioID);
     if (audioExists) {
       throw new Error('You have already created this audio.');
     }
@@ -94,18 +94,18 @@ export class CreateCommand extends BaseCommand {
         context,
         transaction.senderAddress,
       );
-      senderAccount.audio.audios = [...senderAccount.audio.audios, key];
+      senderAccount.audio.audios = [...senderAccount.audio.audios, audioID];
       await audioAccountSubStore.set(context, transaction.senderAddress, senderAccount);
     } else {
       await audioAccountSubStore.set(context, context.transaction.senderAddress, {
         audio: {
-          audios: [key],
+          audios: [audioID],
         },
       });
     }
 
     // @todo Here we should check if the Audio is already uploaded using steganography methods
     // Store the audio object in the blockchain
-    await audioSubStore.set(context, key, audioObject);
+    await audioSubStore.set(context, audioID, audioObject);
   }
 }

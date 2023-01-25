@@ -11,7 +11,7 @@ import { ProfileStore } from '../stores/profile';
 import { ProfileAccountStore } from '../stores/profileAccount';
 import { createCommandParamsSchema } from '../schemas';
 import { CreateCommandParams, Profile } from '../types';
-import { getNodeForName, verifyHash } from '../utils';
+import { getEntityID, verifyHash } from '../../../utils';
 
 export class CreateCommand extends BaseCommand {
   public schema = createCommandParamsSchema;
@@ -58,7 +58,7 @@ export class CreateCommand extends BaseCommand {
     }
 
     // Get namehash output of the profile NFT
-    const key = getNodeForName(params);
+    const profileID = getEntityID(context.transaction);
 
     // Create the profile account object
     const profileObject: Profile = {
@@ -67,9 +67,9 @@ export class CreateCommand extends BaseCommand {
     };
     // Save the profile account object in account store
     await profileAccountStore.set(context, transaction.senderAddress, {
-      profileID: key,
+      profileID,
     });
     // Save the profile object in profile store
-    await profileStore.set(context, key, profileObject);
+    await profileStore.set(context, profileID, profileObject);
   }
 }

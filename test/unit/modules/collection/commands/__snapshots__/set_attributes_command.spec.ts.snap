@@ -4,26 +4,13 @@ exports[`SetAttributesCommand constructor should have valid schema 1`] = `
 Object {
   "$id": "collection/setAttributes",
   "properties": Object {
-    "artistName": Object {
-      "dataType": "string",
-      "fieldNumber": 3,
-      "maxLength": 40,
-      "minLength": 3,
-    },
-    "coArtists": Object {
-      "fieldNumber": 4,
-      "items": Object {
-        "dataType": "string",
-      },
-      "type": "array",
-    },
     "collectionID": Object {
       "dataType": "bytes",
-      "fieldNumber": 6,
+      "fieldNumber": 4,
     },
     "collectionType": Object {
       "dataType": "uint32",
-      "fieldNumber": 5,
+      "fieldNumber": 3,
     },
     "name": Object {
       "dataType": "string",
@@ -39,8 +26,6 @@ Object {
   "required": Array [
     "name",
     "releaseYear",
-    "artistName",
-    "coArtists",
     "collectionType",
     "collectionID",
   ],

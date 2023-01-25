@@ -11,7 +11,7 @@ import { CollectionAccountStore } from '../stores/collectionAccount';
 import { CreateCommandParams, Collection, CollectionAccount } from '../types';
 import { createCommandParamsSchema } from '../schemas';
 import { validCollectionTypes, MIN_RELEASE_YEAR } from '../constants';
-import { getNodeForName, verifyHash } from '../utils';
+import { getEntityID, verifyHash } from '../../../utils';
 
 export class CreateCommand extends BaseCommand {
   public schema = createCommandParamsSchema;
@@ -51,13 +51,13 @@ export class CreateCommand extends BaseCommand {
   public async execute(context: CommandExecuteContext<CreateCommandParams>): Promise<void> {
     const { params, transaction } = context;
     // Get namehash output of the audio file
-    const key = getNodeForName(params);
+    const collectionID = getEntityID(context.transaction);
 
     const collectionAccountSubStore = this.stores.get(CollectionAccountStore);
     const collectionSubStore = this.stores.get(CollectionStore);
 
     // Check uniqueness of the NFT
-    const collectionExists = await collectionSubStore.has(context, key);
+    const collectionExists = await collectionSubStore.has(context, collectionID);
     if (collectionExists) {
       throw new Error('You have already created this audio.');
     }
@@ -77,17 +77,17 @@ export class CreateCommand extends BaseCommand {
         context,
         transaction.senderAddress,
       );
-      senderAccount.collection.collections = [...senderAccount.collection.collections, key];
+      senderAccount.collection.collections = [...senderAccount.collection.collections, collectionID];
       await collectionAccountSubStore.set(context, transaction.senderAddress, senderAccount);
     } else {
       await collectionAccountSubStore.set(context, context.transaction.senderAddress, {
         collection: {
-          collections: [key],
+          collections: [collectionID],
         },
       });
     }
 
     // Store the collection object in the blockchain
-    await collectionSubStore.set(context, key, audioObject);
+    await collectionSubStore.set(context, collectionID, audioObject);
   }
 }

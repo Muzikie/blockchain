@@ -11,6 +11,7 @@ import { SubscriptionAccountStore } from '../stores/subscriptionAccount';
 import { CreateCommandParams, Subscription, SubscriptionAccount } from '../types';
 import { createCommandParamsSchema } from '../schemas';
 import { DEV_ADDRESS } from '../constants';
+import { getEntityID } from '../../../utils';
 
 export class CreateCommand extends BaseCommand {
   public schema = createCommandParamsSchema;
@@ -37,13 +38,13 @@ export class CreateCommand extends BaseCommand {
   public async execute(context: CommandExecuteContext<CreateCommandParams>): Promise<void> {
     const {
       params: { price, maxMembers },
-      transaction: { nonce, senderAddress },
+      transaction: { senderAddress },
     } = context;
     const subscriptionAccountStore = this.stores.get(SubscriptionAccountStore);
     const subscriptionStore = this.stores.get(SubscriptionStore);
 
     // Create subscription ID
-    const id = Buffer.from(`subscription-${nonce}${maxMembers}${price}`, 'utf8');
+    const id = getEntityID(context.transaction);
     // Create subscription object
     const subscription: Subscription = {
       price,

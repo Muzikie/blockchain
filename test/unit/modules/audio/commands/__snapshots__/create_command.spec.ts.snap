@@ -4,26 +4,28 @@ exports[`CreateCommand constructor should have valid schema 1`] = `
 Object {
   "$id": "audio/create",
   "properties": Object {
-    "artistName": Object {
-      "dataType": "string",
-      "fieldNumber": 3,
-      "maxLength": 40,
-      "minLength": 3,
-    },
     "audioHash": Object {
-      "dataType": "bytes",
-      "fieldNumber": 8,
-    },
-    "audioSignature": Object {
       "dataType": "bytes",
       "fieldNumber": 7,
     },
+    "audioSignature": Object {
+      "dataType": "bytes",
+      "fieldNumber": 6,
+    },
     "collectionID": Object {
       "dataType": "bytes",
-      "fieldNumber": 5,
+      "fieldNumber": 4,
+    },
+    "fit": Object {
+      "fieldNumber": 8,
+      "items": Object {
+        "dataType": "bytes",
+        "format": "lisk32",
+      },
+      "type": "array",
     },
     "genre": Object {
-      "fieldNumber": 4,
+      "fieldNumber": 3,
       "items": Object {
         "dataType": "uint32",
       },
@@ -36,7 +38,7 @@ Object {
       "minLength": 3,
     },
     "owners": Object {
-      "fieldNumber": 6,
+      "fieldNumber": 5,
       "items": Object {
         "$id": "audio/create/owners",
         "properties": Object {
@@ -65,12 +67,12 @@ Object {
   "required": Array [
     "name",
     "releaseYear",
-    "artistName",
     "genre",
     "collectionID",
     "owners",
     "audioSignature",
     "audioHash",
+    "fit",
   ],
   "title": "CreateAsset transaction asset for audio module",
   "type": "object",
