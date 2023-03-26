@@ -147,6 +147,7 @@ export const createCommandParamsSchema = {
         properties: {
           address: {
             dataType: 'bytes',
+            format: 'lisk32',
             fieldNumber: 1,
           },
           shares: {

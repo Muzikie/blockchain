@@ -6,8 +6,7 @@ import { baseTransactionSchema } from './schemas';
 
 export const getEntityID = <T>(transaction: Transaction<T>): Buffer => {
   const txBytes = codec.encode(baseTransactionSchema, transaction);
-  const content = txBytes.toString('hex');
-  return createHash('md5').update(content).digest();
+  return createHash('md5').update(txBytes).digest();
 };
 
 export const verifyHash = (signature: Buffer, message: Buffer, publicKey: Buffer) => {
