@@ -4,12 +4,10 @@ export const collectionStoreSchema = {
   required: [
     'name',
     'releaseYear',
-    'artistName',
-    'coArtists',
     'collectionType',
     'audios',
-    'hash',
-    'meta',
+    'coverSignature',
+    'coverHash',
     'creatorAddress',
   ],
   properties: {
@@ -21,39 +19,28 @@ export const collectionStoreSchema = {
       dataType: 'string',
       fieldNumber: 2,
     },
-    artistName: {
-      dataType: 'string',
-      fieldNumber: 3,
-    },
-    coArtists: {
-      type: 'array',
-      fieldNumber: 4,
-      items: {
-        dataType: 'string',
-      },
-    },
     collectionType: {
       dataType: 'uint32',
-      fieldNumber: 5,
+      fieldNumber: 3,
     },
     audios: {
       type: 'array',
-      fieldNumber: 6,
+      fieldNumber: 4,
       items: {
         dataType: 'bytes',
       },
     },
-    hash: {
+    coverSignature: {
       dataType: 'bytes',
-      fieldNumber: 7,
+      fieldNumber: 5,
     },
-    meta: {
+    coverHash: {
       dataType: 'bytes',
-      fieldNumber: 8,
+      fieldNumber: 6,
     },
     creatorAddress: {
       dataType: 'bytes',
-      fieldNumber: 9,
+      fieldNumber: 7,
     },
   },
 };
@@ -84,7 +71,7 @@ export const createCommandParamsSchema = {
   $id: 'collection/create',
   title: 'CreateAsset transaction asset for collection module',
   type: 'object',
-  required: ['name', 'releaseYear', 'artistName', 'coArtists', 'collectionType', 'hash', 'meta'],
+  required: ['name', 'releaseYear', 'collectionType', 'coverSignature', 'coverHash'],
   properties: {
     name: {
       dataType: 'string',
@@ -96,30 +83,17 @@ export const createCommandParamsSchema = {
       dataType: 'string',
       fieldNumber: 2,
     },
-    artistName: {
-      dataType: 'string',
-      fieldNumber: 3,
-      minLength: 3,
-      maxLength: 40,
-    },
-    coArtists: {
-      type: 'array',
-      fieldNumber: 4,
-      items: {
-        dataType: 'string',
-      },
-    },
     collectionType: {
       dataType: 'uint32',
+      fieldNumber: 3,
+    },
+    coverSignature: {
+      dataType: 'bytes',
+      fieldNumber: 4,
+    },
+    coverHash: {
+      dataType: 'bytes',
       fieldNumber: 5,
-    },
-    hash: {
-      dataType: 'bytes',
-      fieldNumber: 6,
-    },
-    meta: {
-      dataType: 'bytes',
-      fieldNumber: 7,
     },
   },
 };
@@ -159,7 +133,7 @@ export const setAttributesCommandParamsSchema = {
   $id: 'collection/setAttributes',
   title: 'SetAttributesAsset transaction asset for collection module',
   type: 'object',
-  required: ['name', 'releaseYear', 'artistName', 'coArtists', 'collectionType', 'collectionID'],
+  required: ['name', 'releaseYear', 'collectionType', 'collectionID'],
   properties: {
     name: {
       dataType: 'string',
@@ -171,26 +145,13 @@ export const setAttributesCommandParamsSchema = {
       dataType: 'string',
       fieldNumber: 2,
     },
-    artistName: {
-      dataType: 'string',
-      fieldNumber: 3,
-      minLength: 3,
-      maxLength: 40,
-    },
-    coArtists: {
-      type: 'array',
-      fieldNumber: 4,
-      items: {
-        dataType: 'string',
-      },
-    },
     collectionType: {
       dataType: 'uint32',
-      fieldNumber: 5,
+      fieldNumber: 3,
     },
     collectionID: {
       dataType: 'bytes',
-      fieldNumber: 6,
+      fieldNumber: 4,
     },
   },
 };

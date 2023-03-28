@@ -16,25 +16,25 @@ export interface LoyaltyOwnerJSON {
 export interface Audio {
   name: string;
   releaseYear: string;
-  artistName: string;
   genre: number[];
   collectionID: Buffer;
   creatorAddress: Buffer;
   owners: LoyaltyOwner[];
-  hash: Buffer;
-  meta: Buffer;
+  audioSignature: Buffer;
+  audioHash: Buffer;
+  fit: Buffer[];
 }
 
 export interface AudioJSON {
   creatorAddress: string;
   name: string;
   releaseYear: number;
-  artistName: string;
   genre: number[];
   collectionID: string;
   owners: LoyaltyOwnerJSON[];
-  hash: string;
-  meta: string;
+  audioSignature: string;
+  audioHash: string;
+  fit: string[];
 }
 
 export interface AudioAccount {
@@ -52,12 +52,12 @@ export interface AudioAccountJSON {
 export interface CreateCommandParams {
   name: string;
   releaseYear: string;
-  artistName: string;
   genre: number[];
   collectionID: Buffer;
   owners: Omit<LoyaltyOwner, 'income'>[];
-  hash: Buffer;
-  meta: Buffer;
+  audioSignature: Buffer;
+  audioHash: Buffer;
+  fit: Buffer[];
 }
 
 export interface DestroyCommandParams {
@@ -73,10 +73,10 @@ export interface TransferCommandParams {
 export interface SetAttributesCommandParams {
   name: string;
   releaseYear: string;
-  artistName: string;
   genre: number[];
   collectionID: Buffer;
   audioID: Buffer;
+  fit: Buffer[];
 }
 
 export interface StreamCommandParams {

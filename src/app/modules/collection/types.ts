@@ -1,27 +1,28 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ModuleEndpointContext } from 'lisk-framework';
 
+export enum CollectionTpe {
+  ALBUM = 1,
+  PODCAST_SERIES = 2,
+}
+
 export interface Collection {
   name: string;
   releaseYear: string;
-  artistName: string;
-  coArtists: string[];
-  collectionType: number;
+  collectionType: CollectionTpe;
   audios: Buffer[];
-  hash: Buffer;
-  meta: Buffer;
+  coverSignature: Buffer;
+  coverHash: Buffer;
   creatorAddress: Buffer;
 }
 
 export interface CollectionJSON {
   name: string;
   releaseYear: string;
-  artistName: string;
-  coArtists: string[];
-  collectionType: number;
+  collectionType: CollectionTpe;
   audios: string[];
-  hash: string;
-  meta: string;
+  coverSignature: string;
+  coverHash: string;
   creatorAddress: string;
 }
 
@@ -40,11 +41,9 @@ export interface CollectionAccountJSON {
 export interface CreateCommandParams {
   name: string;
   releaseYear: string;
-  artistName: string;
-  coArtists: string[];
-  collectionType: number;
-  hash: Buffer;
-  meta: Buffer;
+  collectionType: CollectionTpe;
+  coverSignature: Buffer;
+  coverHash: Buffer;
 }
 
 export interface DestroyCommandParams {
@@ -59,9 +58,7 @@ export interface TransferCommandParams {
 export interface SetAttributesCommandParams {
   name: string;
   releaseYear: string;
-  artistName: string;
-  coArtists: string[];
-  collectionType: number;
+  collectionType: CollectionTpe;
   collectionID: Buffer;
 }
 
