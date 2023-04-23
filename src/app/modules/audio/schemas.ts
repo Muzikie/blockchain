@@ -295,3 +295,27 @@ export const creationEventSchema = {
     },
   },
 };
+
+export const addressRequestSchema = {
+  $id: '/audio/addressRequest',
+  type: 'object',
+  properties: {
+    address: {
+      type: 'string',
+      format: 'lisk32',
+    },
+  },
+  required: ['address'],
+};
+
+export const idRequestSchema = {
+  $id: '/audio/idRequest',
+  type: 'object',
+  properties: {
+    audioID: {
+      type: 'string',
+      format: 'hex',
+    },
+  },
+  required: ['audioID'],
+};

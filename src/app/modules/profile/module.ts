@@ -18,6 +18,12 @@ import { ProfileStore } from './stores/profile';
 import { CreateCommand } from "./commands/create_command";
 import { ProfileEndpoint } from './endpoint';
 import { ProfileMethod } from './method';
+import {
+  profileStoreSchema,
+  accountStoreSchema,
+  addressRequestSchema,
+  idRequestSchema,
+} from './schemas';
 
 export class ProfileModule extends BaseModule {
   public endpoint = new ProfileEndpoint(this.stores, this.offchainStores);
@@ -28,14 +34,25 @@ export class ProfileModule extends BaseModule {
 
   public constructor() {
     super();
-    this.stores.register(ProfileAccountStore, new ProfileAccountStore(this.name));
-    this.stores.register(ProfileStore, new ProfileStore(this.name));
+    this.stores.register(ProfileAccountStore, new ProfileAccountStore(this.name, 0));
+    this.stores.register(ProfileStore, new ProfileStore(this.name, 1));
   }
 
   public metadata(): ModuleMetadata {
     return {
-      name: '',
-      endpoints: [],
+      stores: [],
+      endpoints: [
+        {
+          name: this.endpoint.getAccount.name,
+          request: addressRequestSchema,
+          response: accountStoreSchema,
+        },
+        {
+          name: this.endpoint.getProfile.name,
+          request: idRequestSchema,
+          response: profileStoreSchema,
+        },
+      ],
       commands: this.commands.map(command => ({
         name: command.name,
         params: command.schema,

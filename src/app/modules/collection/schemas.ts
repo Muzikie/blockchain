@@ -155,3 +155,27 @@ export const setAttributesCommandParamsSchema = {
     },
   },
 };
+
+export const addressRequestSchema = {
+  $id: '/collection/addressRequest',
+  type: 'object',
+  properties: {
+    address: {
+      type: 'string',
+      format: 'lisk32',
+    },
+  },
+  required: ['address'],
+};
+
+export const idRequestSchema = {
+  $id: '/collection/idRequest',
+  type: 'object',
+  properties: {
+    collectionID: {
+      type: 'string',
+      format: 'hex',
+    },
+  },
+  required: ['collectionID'],
+};

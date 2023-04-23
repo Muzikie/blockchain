@@ -144,3 +144,27 @@ export const createCommandParamsSchema = {
     },
   },
 };
+
+export const addressRequestSchema = {
+  $id: '/profile/addressRequest',
+  type: 'object',
+  properties: {
+    address: {
+      type: 'string',
+      format: 'lisk32',
+    },
+  },
+  required: ['address'],
+};
+
+export const idRequestSchema = {
+  $id: '/profile/idRequest',
+  type: 'object',
+  properties: {
+    profileID: {
+      type: 'string',
+      format: 'hex',
+    },
+  },
+  required: ['profileID'],
+};

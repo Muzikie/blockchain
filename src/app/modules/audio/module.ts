@@ -23,6 +23,12 @@ import { ReclaimCommand } from './commands/reclaim_command';
 import { SetAttributesCommand } from './commands/set_attributes_command';
 import { CreateEvent } from './events/create';
 import { AudioEndpoint } from './endpoint';
+import {
+  accountStoreSchema,
+  audioStoreSchema,
+  idRequestSchema,
+  addressRequestSchema,
+} from './schemas';
 import { AudioMethod } from './method';
 import { AudioAccountStore } from './stores/audioAccount';
 import { AudioStore } from './stores/audio';
@@ -57,8 +63,8 @@ export class AudioModule extends BaseModule {
 
   public constructor() {
     super();
-    this.stores.register(AudioAccountStore, new AudioAccountStore(this.name));
-    this.stores.register(AudioStore, new AudioStore(this.name));
+    this.stores.register(AudioAccountStore, new AudioAccountStore(this.name, 0));
+    this.stores.register(AudioStore, new AudioStore(this.name, 1));
     this.events.register(CreateEvent, new CreateEvent(this.name));
   }
 
@@ -77,8 +83,19 @@ export class AudioModule extends BaseModule {
 
   public metadata(): ModuleMetadata {
     return {
-      name: '',
-      endpoints: [],
+      stores: [],
+      endpoints: [
+        {
+          name: this.endpoint.getAccount.name,
+          request: addressRequestSchema,
+          response: accountStoreSchema,
+        },
+        {
+          name: this.endpoint.getAudio.name,
+          request: idRequestSchema,
+          response: audioStoreSchema,
+        },
+      ],
       commands: this.commands.map(command => ({
         name: command.name,
         params: command.schema,

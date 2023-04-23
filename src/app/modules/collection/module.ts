@@ -17,6 +17,12 @@ import {
 import { VerifyStatus } from 'lisk-framework';
 import { CollectionEndpoint } from './endpoint';
 import { CollectionMethod } from './method';
+import {
+  collectionStoreSchema,
+  accountStoreSchema,
+  addressRequestSchema,
+  idRequestSchema,
+} from './schemas';
 import { CollectionAccountStore } from './stores/collectionAccount';
 import { DestroyCommand } from './commands/destroy_command';
 import { TransferCommand } from './commands/transfer_command';
@@ -36,14 +42,25 @@ export class CollectionModule extends BaseModule {
 
   public constructor() {
     super();
-    this.stores.register(CollectionAccountStore, new CollectionAccountStore(this.name));
-    this.stores.register(CollectionStore, new CollectionStore(this.name));
+    this.stores.register(CollectionAccountStore, new CollectionAccountStore(this.name, 0));
+    this.stores.register(CollectionStore, new CollectionStore(this.name, 1));
   }
 
   public metadata(): ModuleMetadata {
     return {
-      name: '',
-      endpoints: [],
+      stores: [],
+      endpoints: [
+        {
+          name: this.endpoint.getAccount.name,
+          request: addressRequestSchema,
+          response: accountStoreSchema,
+        },
+        {
+          name: this.endpoint.getCollection.name,
+          request: idRequestSchema,
+          response: collectionStoreSchema,
+        },
+      ],
       commands: this.commands.map(command => ({
         name: command.name,
         params: command.schema,

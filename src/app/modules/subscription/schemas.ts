@@ -118,3 +118,41 @@ export const updateMembersCommandParamsSchema = {
     },
   },
 };
+
+export const addressRequestSchema = {
+  $id: '/subscription/addressRequest',
+  type: 'object',
+  properties: {
+    address: {
+      type: 'string',
+      format: 'lisk32',
+    },
+  },
+  required: ['address'],
+};
+
+export const idRequestSchema = {
+  $id: '/subscription/idRequest',
+  type: 'object',
+  properties: {
+    subscriptionID: {
+      type: 'string',
+      format: 'hex',
+    },
+  },
+  required: ['subscriptionID'],
+};
+
+export const hasSubscriptionResponse = {
+  $id: '/subscription/hasSubscriptionResponse',
+  type: 'object',
+  properties: {
+    success: {
+      type: 'boolean',
+    },
+    message: {
+      type: 'string',
+    }
+  },
+  required: ['success', 'message'],
+};
