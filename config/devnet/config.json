@@ -2,7 +2,8 @@
 	"system": {
 		"dataPath": "/Users/reyraa/.lisk/beta-sdk-app",
 		"keepEventsForHeights": 300,
-		"logLevel": "info"
+		"logLevel": "info",
+		"enableMetrics": true
 	},
 	"rpc": {
 		"modes": ["ipc"],
@@ -11,7 +12,12 @@
 	},
 	"network": {
 		"version": "1.0",
-		"seedPeers": [],
+		"seedPeers": [
+			{
+				"ip": "127.0.0.1",
+				"port": 7667
+			}
+		],
 		"port": 7667
 	},
 	"transactionPool": {
@@ -28,7 +34,7 @@
 		"blockTime": 10,
 		"bftBatchSize": 103,
 		"maxTransactionsSize": 15360,
-		"chainID": "00100000"
+		"chainID": "04000000"
 	},
 	"generator": {
 		"keys": {
@@ -37,17 +43,21 @@
 	},
 	"modules": {
 		"fee": {
-			"feeTokenID": "0010000000000000"
+			"feeTokenID": "0400000000000000"
 		},
 		"reward": {
-			"tokenID": "0010000000000000",
+			"tokenID": "0400000000000000",
 			"offset": 2160,
 			"distance": 3000000,
 			"brackets": ["500000000", "400000000", "300000000", "200000000", "100000000"]
 		},
 		"token": {
-			"feeTokenID": "0010000000000000"
+			"feeTokenID": "0400000000000000"
 		}
 	},
-	"plugins": {}
+	"plugins": {
+		"reportMisbehavior": {
+			"encryptedPassphrase": "iterations=10&cipherText=5dea8b928a3ea2481ebc02499ae77679b7552189181ff189d4aa1f8d89e8d07bf31f7ebd1c66b620769f878629e1b90499506a6f752bf3323799e3a54600f8db02f504c44d&iv=37e0b1753b76a90ed0b8c319&salt=963c5b91d3f7ba02a9d001eed49b5836&tag=c3e30e8f3440ba3f5b6d9fbaccc8918d&version=1"
+		}
+	}
 }
