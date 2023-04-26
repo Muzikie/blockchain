@@ -106,7 +106,7 @@
 		}
 	},
 	"dependencies": {
-		"@liskhq/lisk-codec": "*",
+		"@liskhq/lisk-codec": "0.3.0-beta.0",
 		"@liskhq/lisk-cryptography": "=4.0.0-beta.0",
 		"@liskhq/lisk-framework-dashboard-plugin": "=0.2.0-beta.0",
 		"@liskhq/lisk-framework-faucet-plugin": "=0.2.0-beta.0",
