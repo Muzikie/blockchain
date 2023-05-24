@@ -21,7 +21,7 @@ import { TransferCommand } from './commands/transfer_command';
 import { StreamCommand } from './commands/stream_command';
 import { ReclaimCommand } from './commands/reclaim_command';
 import { SetAttributesCommand } from './commands/set_attributes_command';
-import { AudioCreated } from './events/create';
+import { AudioCreated } from './events/audioCreated';
 import { AudioEndpoint } from './endpoint';
 import {
   accountStoreSchema,

@@ -68,7 +68,9 @@ export enum CreateEventResult {
   FAILED = 'failed',
 }
 
-export interface CreateEventData {
-  senderAddress: Buffer;
+export interface SubscriptionCreatedEventData {
+  creatorAddress: Buffer;
   subscriptionID: Buffer;
+  consumable: bigint;
+  streams: bigint;
 }

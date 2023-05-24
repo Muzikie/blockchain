@@ -279,12 +279,12 @@ export const reclaimCommandParamsSchema = {
   },
 };
 
-export const creationEventSchema = {
-  $id: '/audio/events/creation',
+export const audioCreatedEventDataSchema = {
+  $id: '/audio/events/audioCreatedData',
   type: 'object',
-  required: ['senderAddress', 'audioID'],
+  required: ['creatorAddress', 'audioID'],
   properties: {
-    senderAddress: {
+    creatorAddress: {
       dataType: 'bytes',
       format: 'lisk32',
       fieldNumber: 1,

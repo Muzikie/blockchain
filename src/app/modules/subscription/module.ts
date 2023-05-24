@@ -27,7 +27,7 @@ import { SubscriptionEndpoint } from './endpoint';
 import { SubscriptionMethod } from './method';
 import { SubscriptionStore } from './stores/subscription';
 import { SubscriptionAccountStore } from './stores/subscriptionAccount';
-import { SubscriptionCreated } from './events/create';
+import { SubscriptionCreated } from './events/subscriptionCreated';
 import { CreateCommand } from './commands/create_command';
 import { PurchaseCommand } from './commands/purchase_command';
 import { UpdateMembersCommand } from './commands/update_members_command';

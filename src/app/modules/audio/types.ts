@@ -97,8 +97,8 @@ export enum CreateEventResult {
   FAILED = 'failed',
 }
 
-export interface CreateEventData {
-  senderAddress: Buffer;
+export interface AudioCreatedEventData {
+  creatorAddress: Buffer;
   audioID: Buffer;
 }
 
