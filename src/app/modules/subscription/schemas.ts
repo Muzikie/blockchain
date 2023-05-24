@@ -156,3 +156,20 @@ export const hasSubscriptionResponse = {
   },
   required: ['success', 'message'],
 };
+
+export const creationEventSchema = {
+  $id: '/subscription/events/creation',
+  type: 'object',
+  required: ['senderAddress', 'subscriptionID'],
+  properties: {
+    senderAddress: {
+      dataType: 'bytes',
+      format: 'lisk32',
+      fieldNumber: 1,
+    },
+    subscriptionID: {
+      dataType: 'bytes',
+      fieldNumber: 2,
+    },
+  },
+};

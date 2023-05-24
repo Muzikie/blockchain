@@ -62,3 +62,13 @@ export interface hasSubscriptionResponse {
   success: boolean;
   message?: string;
 }
+
+export enum CreateEventResult {
+  SUCCESSFUL = 'successful',
+  FAILED = 'failed',
+}
+
+export interface CreateEventData {
+  senderAddress: Buffer;
+  subscriptionID: Buffer;
+}

@@ -27,6 +27,7 @@ import { SubscriptionEndpoint } from './endpoint';
 import { SubscriptionMethod } from './method';
 import { SubscriptionStore } from './stores/subscription';
 import { SubscriptionAccountStore } from './stores/subscriptionAccount';
+import { SubscriptionCreated } from './events/create';
 import { CreateCommand } from './commands/create_command';
 import { PurchaseCommand } from './commands/purchase_command';
 import { UpdateMembersCommand } from './commands/update_members_command';
@@ -48,6 +49,7 @@ export class SubscriptionModule extends BaseModule {
     super();
     this.stores.register(SubscriptionAccountStore, new SubscriptionAccountStore(this.name, 0));
     this.stores.register(SubscriptionStore, new SubscriptionStore(this.name, 1));
+    this.events.register(SubscriptionCreated, new SubscriptionCreated(this.name));
   }
 
   public addDependencies(tokenMethod: TokenMethod): void {

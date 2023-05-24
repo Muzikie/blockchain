@@ -291,7 +291,7 @@ export const creationEventSchema = {
     },
     audioID: {
       dataType: 'bytes',
-      fieldNumber: 3,
+      fieldNumber: 2,
     },
   },
 };
