@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ModuleEndpointContext } from 'lisk-framework';
 
-export enum CollectionTpe {
+export enum CollectionType {
   ALBUM = 1,
   PODCAST_SERIES = 2,
 }
@@ -9,7 +9,7 @@ export enum CollectionTpe {
 export interface Collection {
   name: string;
   releaseYear: string;
-  collectionType: CollectionTpe;
+  collectionType: CollectionType;
   audios: Buffer[];
   coverSignature: Buffer;
   coverHash: Buffer;
@@ -19,7 +19,7 @@ export interface Collection {
 export interface CollectionJSON {
   name: string;
   releaseYear: string;
-  collectionType: CollectionTpe;
+  collectionType: CollectionType;
   audios: string[];
   coverSignature: string;
   coverHash: string;
@@ -41,7 +41,7 @@ export interface CollectionAccountJSON {
 export interface CreateCommandParams {
   name: string;
   releaseYear: string;
-  collectionType: CollectionTpe;
+  collectionType: CollectionType;
   coverSignature: Buffer;
   coverHash: Buffer;
 }
@@ -58,7 +58,7 @@ export interface TransferCommandParams {
 export interface SetAttributesCommandParams {
   name: string;
   releaseYear: string;
-  collectionType: CollectionTpe;
+  collectionType: CollectionType;
   collectionID: Buffer;
 }
 
@@ -66,3 +66,11 @@ export interface Store<Entity> {
   get: (context: ModuleEndpointContext, key: Buffer) => Promise<Entity>;
   has: (context: ModuleEndpointContext, key: Buffer) => Promise<boolean>;
 }
+
+export interface CollectionCreatedEventData {
+	name: string;
+	creatorAddress: Buffer;
+	collectionID: Buffer;
+	releaseYear: string;
+	collectionType: CollectionType;
+  }

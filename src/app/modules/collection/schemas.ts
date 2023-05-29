@@ -179,3 +179,35 @@ export const idRequestSchema = {
   },
   required: ['collectionID'],
 };
+
+
+export const collectionCreatedEventDataSchema = {
+  $id: '/collection/events/collectionCreatedEventData',
+  type: 'object',
+  required: ['creatorAddress', 'collectionID'],
+  properties: {
+     name: {
+       dataType: 'string',
+       fieldNumber: 1,
+       minLength: 3,
+       maxLength: 40,
+    },
+    creatorAddress: {
+      dataType: 'bytes',
+      format: 'lisk32',
+	  fieldNumber: 1,
+     },
+    collectionID: {
+     dataType: 'bytes',
+     fieldNumber: 2,
+     },
+      releaseYear: {
+     dataType: 'string',
+     fieldNumber: 2,
+     },
+      collectionType: {
+     dataType: 'uint32',
+     fieldNumber: 3,
+     },
+  },
+   };

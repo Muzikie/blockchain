@@ -12,6 +12,7 @@ import { CreateCommandParams, Collection, CollectionAccount } from '../types';
 import { createCommandParamsSchema } from '../schemas';
 import { validCollectionTypes, MIN_RELEASE_YEAR } from '../constants';
 import { getEntityID, verifyHash } from '../../../utils';
+import { CollectionCreated } from '../events/collectionCreated'
 
 export class CreateCommand extends BaseCommand {
   public schema = createCommandParamsSchema;
@@ -51,13 +52,13 @@ export class CreateCommand extends BaseCommand {
   public async execute(context: CommandExecuteContext<CreateCommandParams>): Promise<void> {
     const { params, transaction } = context;
     // Get namehash output of the audio file
-    const collectionID = getEntityID(context.transaction);
+    const id = getEntityID(context.transaction);
 
     const collectionAccountSubStore = this.stores.get(CollectionAccountStore);
     const collectionSubStore = this.stores.get(CollectionStore);
 
     // Check uniqueness of the NFT
-    const collectionExists = await collectionSubStore.has(context, collectionID);
+    const collectionExists = await collectionSubStore.has(context, id);
     if (collectionExists) {
       throw new Error('You have already created this audio.');
     }
@@ -77,17 +78,27 @@ export class CreateCommand extends BaseCommand {
         context,
         transaction.senderAddress,
       );
-      senderAccount.collection.collections = [...senderAccount.collection.collections, collectionID];
+      senderAccount.collection.collections = [...senderAccount.collection.collections, id];
       await collectionAccountSubStore.set(context, transaction.senderAddress, senderAccount);
     } else {
       await collectionAccountSubStore.set(context, context.transaction.senderAddress, {
         collection: {
-          collections: [collectionID],
+          collections: [id],
         },
       });
     }
 
     // Store the collection object in the blockchain
-    await collectionSubStore.set(context, collectionID, audioObject);
+    await collectionSubStore.set(context, id, audioObject);
+
+	// 7. Emit a "New collection" event
+    const collectionCreated = this.events.get(CollectionCreated);
+    collectionCreated.add(context, {
+      creatorAddress: context.transaction.senderAddress,
+      collectionID: id,
+      name: params.name,
+	  releaseYear: params.releaseYear,
+	  collectionType: params.collectionType,
+    }, [context.transaction.senderAddress]);
   }
 }
