@@ -45,7 +45,7 @@ export class CollectionModule extends BaseModule {
     super();
     this.stores.register(CollectionAccountStore, new CollectionAccountStore(this.name, 0));
     this.stores.register(CollectionStore, new CollectionStore(this.name, 1));
-	this.events.register(CollectionCreated, new CollectionCreated(this.name));
+    this.events.register(CollectionCreated, new CollectionCreated(this.name));
   }
 
   public metadata(): ModuleMetadata {

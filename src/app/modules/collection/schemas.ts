@@ -195,7 +195,7 @@ export const collectionCreatedEventDataSchema = {
     creatorAddress: {
       dataType: 'bytes',
       format: 'lisk32',
-	  fieldNumber: 1,
+      fieldNumber: 1,
      },
     collectionID: {
      dataType: 'bytes',

@@ -68,9 +68,9 @@ export interface Store<Entity> {
 }
 
 export interface CollectionCreatedEventData {
-	name: string;
-	creatorAddress: Buffer;
-	collectionID: Buffer;
-	releaseYear: string;
-	collectionType: CollectionType;
+  name: string;
+  creatorAddress: Buffer;
+  collectionID: Buffer;
+  releaseYear: string;
+  collectionType: CollectionType;
   }

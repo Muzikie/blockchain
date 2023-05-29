@@ -91,14 +91,14 @@ export class CreateCommand extends BaseCommand {
     // Store the collection object in the blockchain
     await collectionSubStore.set(context, id, audioObject);
 
-	// 7. Emit a "New collection" event
+    // 7. Emit a "New collection" event
     const collectionCreated = this.events.get(CollectionCreated);
     collectionCreated.add(context, {
       creatorAddress: context.transaction.senderAddress,
       collectionID: id,
       name: params.name,
-	  releaseYear: params.releaseYear,
-	  collectionType: params.collectionType,
+      releaseYear: params.releaseYear,
+      collectionType: params.collectionType,
     }, [context.transaction.senderAddress]);
   }
 }
