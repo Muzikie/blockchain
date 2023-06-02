@@ -11,6 +11,7 @@ import { CollectionStore } from '../stores/collection';
 import { setAttributesCommandParamsSchema } from '../schemas';
 import { SetAttributesCommandParams, Collection } from '../types';
 import { validCollectionTypes, MIN_RELEASE_YEAR } from '../constants';
+import { CollectionAttributeSet } from '../events/collectionAttributeSet'
 
 export class SetAttributesCommand extends BaseCommand {
   public schema = setAttributesCommandParamsSchema;
@@ -68,5 +69,11 @@ export class SetAttributesCommand extends BaseCommand {
       creatorAddress: collectionNFT.creatorAddress,
     };
     await collectionSubStore.set(context, params.collectionID, updatedObject);
+
+    const collectionAttributeSet = this.events.get(CollectionAttributeSet);
+    collectionAttributeSet.add(context, {
+      creatorAddress: context.transaction.senderAddress,
+      collectionID: params.collectionID,
+    }, [context.transaction.senderAddress]);
   }
 }
