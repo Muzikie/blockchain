@@ -102,6 +102,11 @@ export interface AudioCreatedEventData {
   audioID: Buffer;
 }
 
+export interface AudioSetAttributeEventData {
+  creatorAddress: Buffer;
+  audioID: Buffer;
+}
+
 export interface Genre {
   name: string;
   id: number;

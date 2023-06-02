@@ -71,3 +71,8 @@ export interface CollectionCreatedEventData {
   creatorAddress: Buffer;
   collectionID: Buffer;
 }
+
+export interface CollectionAttributeSetEventData {
+  creatorAddress: Buffer;
+  collectionID: Buffer;
+}

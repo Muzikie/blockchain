@@ -30,6 +30,7 @@ import { SetAttributesCommand } from './commands/set_attributes_command';
 import { CollectionStore } from './stores/collection';
 import { CreateCommand } from './commands/create_command';
 import { CollectionCreated } from './events/collectionCreated'
+import { CollectionAttributeSet } from './events/collectionAttributeSet'
 
 export class CollectionModule extends BaseModule {
   public endpoint = new CollectionEndpoint(this.stores, this.offchainStores);
@@ -46,6 +47,7 @@ export class CollectionModule extends BaseModule {
     this.stores.register(CollectionAccountStore, new CollectionAccountStore(this.name, 0));
     this.stores.register(CollectionStore, new CollectionStore(this.name, 1));
     this.events.register(CollectionCreated, new CollectionCreated(this.name));
+    this.events.register(CollectionAttributeSet, new CollectionAttributeSet(this.name));
   }
 
   public metadata(): ModuleMetadata {
