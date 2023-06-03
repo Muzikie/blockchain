@@ -198,7 +198,7 @@ export const collectionCreatedEventDataSchema = {
 };
 
 export const collectionAttributeSetEventDataSchema = {
-  $id: '/collection/events/collectionCreatedEventData',
+  $id: '/collection/events/collectionAttributeSetEventData',
   type: 'object',
   required: ['creatorAddress', 'collectionID'],
   properties: {
