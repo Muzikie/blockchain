@@ -70,6 +70,7 @@ export interface TransferCommandParams {
   shares: number;
 }
 
+// @todo do we need the collectionID? Do we intend to change it?
 export interface SetAttributesCommandParams {
   name: string;
   releaseYear: string;
