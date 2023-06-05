@@ -9,7 +9,7 @@ export const audioStoreSchema = {
     'owners',
     'audioSignature',
     'audioHash',
-    'fit',
+    'feat',
     'creatorAddress',
   ],
   properties: {
@@ -63,7 +63,7 @@ export const audioStoreSchema = {
       dataType: 'bytes',
       fieldNumber: 7,
     },
-    fit: {
+    feat: {
       type: 'array',
       fieldNumber: 8,
       items: {
@@ -113,7 +113,7 @@ export const createCommandParamsSchema = {
     'owners',
     'audioSignature',
     'audioHash',
-    'fit',
+    'feat',
   ],
   properties: {
     name: {
@@ -165,7 +165,7 @@ export const createCommandParamsSchema = {
       dataType: 'bytes',
       fieldNumber: 7,
     },
-    fit: {
+    feat: {
       type: 'array',
       fieldNumber: 8,
       items: {
@@ -215,7 +215,7 @@ export const setAttributesCommandParamsSchema = {
   $id: 'audio/setAttributes',
   title: 'SetAttributesAsset transaction asset for audio module',
   type: 'object',
-  required: ['name', 'releaseYear', 'genre', 'fit', 'collectionID', 'audioID'],
+  required: ['name', 'releaseYear', 'genre', 'feat', 'collectionID', 'audioID'],
   properties: {
     name: {
       dataType: 'string',
@@ -234,7 +234,7 @@ export const setAttributesCommandParamsSchema = {
         dataType: 'uint32',
       },
     },
-    fit: {
+    feat: {
       type: 'array',
       fieldNumber: 4,
       items: {

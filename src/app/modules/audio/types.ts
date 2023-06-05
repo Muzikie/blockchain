@@ -22,7 +22,7 @@ export interface Audio {
   owners: LoyaltyOwner[];
   audioSignature: Buffer;
   audioHash: Buffer;
-  fit: Buffer[];
+  feat: Buffer[];
 }
 
 export interface AudioJSON {
@@ -34,7 +34,7 @@ export interface AudioJSON {
   owners: LoyaltyOwnerJSON[];
   audioSignature: string;
   audioHash: string;
-  fit: string[];
+  feat: string[];
 }
 
 export interface AudioAccount {
@@ -57,7 +57,7 @@ export interface CreateCommandParams {
   owners: Omit<LoyaltyOwner, 'income'>[];
   audioSignature: Buffer;
   audioHash: Buffer;
-  fit: Buffer[];
+  feat: Buffer[];
 }
 
 export interface DestroyCommandParams {
@@ -76,7 +76,7 @@ export interface SetAttributesCommandParams {
   genre: number[];
   collectionID: Buffer;
   audioID: Buffer;
-  fit: Buffer[];
+  feat: Buffer[];
 }
 
 export interface StreamCommandParams {
