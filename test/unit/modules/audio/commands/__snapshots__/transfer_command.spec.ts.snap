@@ -21,6 +21,7 @@ Object {
   "required": Array [
     "audioID",
     "address",
+    "shares",
   ],
   "title": "TransferAsset transaction asset for audio module",
   "type": "object",
