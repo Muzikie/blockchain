@@ -22,6 +22,7 @@ import { StreamCommand } from './commands/stream_command';
 import { ReclaimCommand } from './commands/reclaim_command';
 import { SetAttributesCommand } from './commands/set_attributes_command';
 import { AudioCreated } from './events/audioCreated';
+import { AudioStreamed } from './events/audioStreamed';
 import { AudioEndpoint } from './endpoint';
 import {
   accountStoreSchema,
@@ -66,6 +67,7 @@ export class AudioModule extends BaseModule {
     this.stores.register(AudioAccountStore, new AudioAccountStore(this.name, 0));
     this.stores.register(AudioStore, new AudioStore(this.name, 1));
     this.events.register(AudioCreated, new AudioCreated(this.name));
+    this.events.register(AudioStreamed, new AudioStreamed(this.name));
   }
 
   public addDependencies(

@@ -38,7 +38,7 @@ export const audioStoreSchema = {
       items: {
         $id: 'audio/audio/owners',
         type: 'object',
-        required: ['address', 'shares'],
+        required: ['address', 'shares', 'income'],
         properties: {
           address: {
             dataType: 'bytes',
@@ -193,7 +193,7 @@ export const transferCommandParamsSchema = {
   $id: 'audio/transfer',
   title: 'TransferAsset transaction asset for audio module',
   type: 'object',
-  required: ['audioID', 'address'],
+  required: ['audioID', 'address', 'shares'],
   properties: {
     audioID: {
       dataType: 'bytes',
@@ -292,6 +292,42 @@ export const audioCreatedEventDataSchema = {
     audioID: {
       dataType: 'bytes',
       fieldNumber: 2,
+    },
+  },
+};
+
+export const audioStreamedEventDataSchema = {
+  $id: '/audio/events/audioStreamedData',
+  type: 'object',
+  required: ['address', 'owners'],
+  properties: {
+    address: {
+      dataType: 'bytes',
+      format: 'lisk32',
+      fieldNumber: 1,
+    },
+    owners: {
+      type: 'array',
+      fieldNumber: 2,
+      items: {
+        $id: 'audio/events/audioStreamedData/owners',
+        type: 'object',
+        required: ['address', 'income', 'shares'],
+        properties: {
+          address: {
+            dataType: 'bytes',
+            fieldNumber: 1,
+          },
+          income: {
+            dataType: 'uint64',
+            fieldNumber: 2,
+          },
+          shares: {
+            dataType: 'uint32',
+            fieldNumber: 3,
+          },
+        },
+      },
     },
   },
 };

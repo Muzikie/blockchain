@@ -103,6 +103,11 @@ export interface AudioCreatedEventData {
   audioID: Buffer;
 }
 
+export interface AudioStreamedEventData {
+  address: Buffer;
+  owners: LoyaltyOwner[];
+}
+
 export interface AudioSetAttributeEventData {
   creatorAddress: Buffer;
   audioID: Buffer;

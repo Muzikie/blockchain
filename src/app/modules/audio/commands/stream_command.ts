@@ -12,6 +12,7 @@ import { streamCommandParamsSchema } from '../schemas';
 import { StreamCommandParams } from '../types';
 import { STREAM_COST } from '../constants';
 import { SubscriptionMethod } from '../../subscription/method';
+import { AudioStreamed } from '../events/audioStreamed';
 
 export class StreamCommand extends BaseCommand {
   public schema = streamCommandParamsSchema;
@@ -44,10 +45,22 @@ export class StreamCommand extends BaseCommand {
     const audio = await audioSubStore.get(context, audioID);
 
     // Throw an error if the sender is not a member of an existing subscription
-    const { data: subscription, subscriptionID } = await this._subscriptionMethod.getByAddress(
-      methodContext,
-      senderAddress,
-    );
+    let subscription = {
+      streams: BigInt(0),
+      consumable: BigInt(0),
+    };
+    let subscriptionID;
+    try {
+      const result = await this._subscriptionMethod.getByAddress(
+        methodContext,
+        senderAddress,
+      );
+      subscription = result.data;
+      subscriptionID = result.subscriptionID;
+    } catch (e) {
+      throw new Error('Account is not a member of an existing subscription.');
+    }
+
 
     // Increment the corresponding subscription streams count
     subscription.streams += BigInt(1);
@@ -69,5 +82,12 @@ export class StreamCommand extends BaseCommand {
 
     // Store subscription object in the subscriptions store
     await this._subscriptionMethod.consume(methodContext, subscriptionID, senderAddress);
+
+    // Emit a "New collection" event
+    const audioStreamed = this.events.get(AudioStreamed);
+    audioStreamed.add(context, {
+      address: context.transaction.senderAddress,
+      owners: audio.owners,
+    }, [context.transaction.senderAddress]);
   }
 }
