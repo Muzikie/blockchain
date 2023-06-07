@@ -26,15 +26,7 @@ export class ReclaimCommand extends BaseCommand {
   public async verify(
     _context: CommandVerifyContext<ReclaimCommandParams>,
   ): Promise<VerificationResult> {
-    // const { transaction } = context;
-
-    // if (transaction.params.length !== 0) {
-    //   return {
-    //     status: VerifyStatus.FAIL,
-    //     error: new Error('Reclaim transaction params must be empty.'),
-    //   };
-    // }
-
+    // @todo should we validate that the params are empty?
     return { status: VerifyStatus.OK };
   }
 

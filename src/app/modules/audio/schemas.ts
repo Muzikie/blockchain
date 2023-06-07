@@ -316,6 +316,44 @@ export const audioStreamedEventDataSchema = {
         properties: {
           address: {
             dataType: 'bytes',
+            format: 'lisk32',
+            fieldNumber: 1,
+          },
+          income: {
+            dataType: 'uint64',
+            fieldNumber: 2,
+          },
+          shares: {
+            dataType: 'uint32',
+            fieldNumber: 3,
+          },
+        },
+      },
+    },
+  },
+};
+
+export const AudioIncomeReclaimedEventDataSchema = {
+  $id: '/audio/events/audioIncomeReclaimedData',
+  type: 'object',
+  required: ['address', 'owners'],
+  properties: {
+    address: {
+      dataType: 'bytes',
+      format: 'lisk32',
+      fieldNumber: 1,
+    },
+    owners: {
+      type: 'array',
+      fieldNumber: 2,
+      items: {
+        $id: 'audio/events/audioIncomeReclaimedData/owners',
+        type: 'object',
+        required: ['address', 'income', 'shares'],
+        properties: {
+          address: {
+            dataType: 'bytes',
+            format: 'lisk32',
             fieldNumber: 1,
           },
           income: {
