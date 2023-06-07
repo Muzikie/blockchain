@@ -24,6 +24,7 @@ import {
   addressRequestSchema,
   idRequestSchema,
 } from './schemas';
+import { ProfileCreated } from './events/profileCreated'
 
 export class ProfileModule extends BaseModule {
   public endpoint = new ProfileEndpoint(this.stores, this.offchainStores);
@@ -36,6 +37,7 @@ export class ProfileModule extends BaseModule {
     super();
     this.stores.register(ProfileAccountStore, new ProfileAccountStore(this.name, 0));
     this.stores.register(ProfileStore, new ProfileStore(this.name, 1));
+    this.events.register(ProfileCreated, new ProfileCreated(this.name));
   }
 
   public metadata(): ModuleMetadata {

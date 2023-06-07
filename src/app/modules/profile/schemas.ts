@@ -168,3 +168,20 @@ export const idRequestSchema = {
   },
   required: ['profileID'],
 };
+
+export const profileCreatedEventDataSchema = {
+  $id: '/profile/events/profileCreatedData',
+  type: 'object',
+  required: ['creatorAddress', 'profileID'],
+  properties: {
+    creatorAddress: {
+      dataType: 'bytes',
+      format: 'lisk32',
+      fieldNumber: 1,
+    },
+    profileID: {
+      dataType: 'bytes',
+      fieldNumber: 2,
+    },
+  },
+};

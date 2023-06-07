@@ -60,3 +60,7 @@ export interface Store<Entity> {
   has: (context: ModuleEndpointContext, key: Buffer) => Promise<boolean>;
 }
 
+export interface ProfileCreatedEventData {
+  creatorAddress: Buffer;
+  profileID: Buffer;
+}
