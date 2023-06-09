@@ -42,10 +42,9 @@ export class TransferCommand extends BaseCommand {
     }
 
     if (senderShare.shares < shares) {
-      throw new Error(`You may only transfer 1-${senderShare.shares} shares (your shares)`);
+      throw new Error(`You may only transfer ${senderShare.shares} shares (your shares)`);
     }
 
-    const audioCreator = await audioAccountSubStore.get(context, audioNFT.creatorAddress);
     const recipientExists = await audioAccountSubStore.has(context, address);
     let oldIncome = BigInt(0);
 
@@ -65,9 +64,13 @@ export class TransferCommand extends BaseCommand {
       .filter(item => item.shares > 0);
 
     // if old owner shares = 0, remove audio ID from old owner's ownedAudio array
+    const senderAccount = await audioAccountSubStore.get(context, senderAddress);
     if (senderShare.shares === shares) {
-      audioCreator.audio.audios = audioCreator.audio.audios.filter(item => !item.equals(audioID));
+      senderAccount.audio.audios = senderAccount.audio.audios.filter(item => !item.equals(audioID));
+      // update audio account in audioAccountSubStore
+      await audioAccountSubStore.set(context, senderAddress, senderAccount);
     }
+
     // set new owner shares = context.params.shares
     let recipientAccount: AudioAccount;
     if (recipientExists) {
@@ -90,7 +93,7 @@ export class TransferCommand extends BaseCommand {
       audioNFT.owners.push({
         address,
         shares,
-        income: senderShare.shares === shares ? BigInt(0) : oldIncome, // income is 0 for new owners
+        income: senderShare.shares === shares ? oldIncome : BigInt(0), // income is 0 for new owners
       });
     } else {
       // if recipient exists, add new owner shares to recipient shares
@@ -99,7 +102,5 @@ export class TransferCommand extends BaseCommand {
 
     // update audio NFT in audioSubStore
     await audioSubStore.set(context, audioID, audioNFT);
-    // update audio account in audioAccountSubStore
-    await audioAccountSubStore.set(context, senderAddress, audioCreator);
   }
 }
