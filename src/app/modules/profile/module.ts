@@ -16,6 +16,7 @@ import {
 import { ProfileAccountStore } from './stores/profileAccount';
 import { ProfileStore } from './stores/profile';
 import { CreateCommand } from "./commands/create_command";
+import { SetAttributesCommand } from "./commands/setAttribute_command";
 import { ProfileEndpoint } from './endpoint';
 import { ProfileMethod } from './method';
 import {
@@ -24,13 +25,14 @@ import {
   addressRequestSchema,
   idRequestSchema,
 } from './schemas';
-import { ProfileCreated } from './events/profileCreated'
+import { ProfileCreated } from './events/profileCreated';
 
 export class ProfileModule extends BaseModule {
   public endpoint = new ProfileEndpoint(this.stores, this.offchainStores);
   public method = new ProfileMethod(this.stores, this.events);
   public commands = [
-    new CreateCommand(this.stores, this.events)
+    new CreateCommand(this.stores, this.events),
+    new SetAttributesCommand(this.stores, this.events),
   ];
 
   public constructor() {

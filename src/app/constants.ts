@@ -8,4 +8,5 @@ export const COMMANDS = {
 export const MODULES = {
   AUDIO: 'audio',
   COLLECTION: 'collection',
+  PROFILE: 'profile',
 };

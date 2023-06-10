@@ -54,6 +54,17 @@ export interface CreateCommandParams {
   bannerHash: Buffer;
   bannerSignature: Buffer;
 }
+export interface SetAttributesCommandParams {
+  profileID: Buffer;
+  name: string;
+  nickName: string;
+  description: string;
+  socialAccounts: SocialAccount[];
+  avatarHash: Buffer;
+  avatarSignature: Buffer;
+  bannerHash: Buffer;
+  bannerSignature: Buffer;
+}
 
 export interface Store<Entity> {
   get: (context: ModuleEndpointContext, key: Buffer) => Promise<Entity>;
