@@ -108,9 +108,14 @@ export interface AudioStreamedEventData {
   owners: LoyaltyOwner[];
 }
 
+export interface ClaimData {
+  audioIDs: Buffer[];
+  totalClaimed: bigint;
+};
+
 export interface AudioIncomeReclaimedEventData {
   address: Buffer;
-  owners: LoyaltyOwner[];
+  claimData: ClaimData;
 }
 
 export interface AudioSetAttributeEventData {

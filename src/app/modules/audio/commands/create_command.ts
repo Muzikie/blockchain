@@ -12,7 +12,7 @@ import { CreateCommandParams, Audio, AudioAccount } from '../types';
 import { createCommandParamsSchema } from '../schemas';
 import { VALID_GENRES, MIN_RELEASE_YEAR } from '../constants';
 import { getEntityID, verifyHash } from '../../../utils';
-import { AudioCreated } from '../events/audioCreated'
+import { AudioCreated } from '../events/audioCreated';
 
 export class CreateCommand extends BaseCommand {
   public schema = createCommandParamsSchema;

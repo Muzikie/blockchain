@@ -67,9 +67,6 @@ export class StreamCommand extends BaseCommand {
     // Decrement the corresponding subscription consumable
     subscription.consumable -= STREAM_COST; // @todo include fee
 
-    // @todo Increment the corresponding audio streams count
-    // audio.streams += BigInt(1);
-
     // Increment the corresponding audio income value for each owner based on their shares %
     audio.owners = audio.owners.map((owner, index) => ({
       address: owner.address,
