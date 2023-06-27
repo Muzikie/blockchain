@@ -45,10 +45,7 @@ export class StreamCommand extends BaseCommand {
     const audio = await audioSubStore.get(context, audioID);
 
     // Throw an error if the sender is not a member of an existing subscription
-    let subscription = {
-      streams: BigInt(0),
-      consumable: BigInt(0),
-    };
+    let subscription;
     let subscriptionID;
     try {
       const result = await this._subscriptionMethod.getByAddress(
