@@ -10,6 +10,7 @@ import {
 import { AudioStore } from '../stores/audio';
 import { streamCommandParamsSchema } from '../schemas';
 import { StreamCommandParams } from '../types';
+import { Subscription } from '../../subscription/types'
 import { STREAM_COST } from '../constants';
 import { SubscriptionMethod } from '../../subscription/method';
 import { AudioStreamed } from '../events/audioStreamed';
@@ -45,7 +46,7 @@ export class StreamCommand extends BaseCommand {
     const audio = await audioSubStore.get(context, audioID);
 
     // Throw an error if the sender is not a member of an existing subscription
-    let subscription;
+    let subscription: Subscription;
     let subscriptionID;
     try {
       const result = await this._subscriptionMethod.getByAddress(
