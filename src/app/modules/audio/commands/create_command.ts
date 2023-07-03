@@ -12,6 +12,7 @@ import { CreateCommandParams, Audio, AudioAccount } from '../types';
 import { createCommandParamsSchema } from '../schemas';
 import { VALID_GENRES, MIN_RELEASE_YEAR } from '../constants';
 import { getEntityID, verifyHash } from '../../../utils';
+import { AudioCreated } from '../events/audioCreated';
 
 export class CreateCommand extends BaseCommand {
   public schema = createCommandParamsSchema;
@@ -81,6 +82,7 @@ export class CreateCommand extends BaseCommand {
       shares: owner.shares,
       income: BigInt(0),
     }));
+
     const audioObject: Audio = {
       ...params,
       owners,
@@ -107,5 +109,12 @@ export class CreateCommand extends BaseCommand {
     // @todo Here we should check if the Audio is already uploaded using steganography methods
     // Store the audio object in the blockchain
     await audioSubStore.set(context, audioID, audioObject);
+
+    // Emit a "New collection" event
+    const audioCreated = this.events.get(AudioCreated);
+    audioCreated.add(context, {
+      creatorAddress: context.transaction.senderAddress,
+      audioID,
+    }, [context.transaction.senderAddress]);
   }
 }

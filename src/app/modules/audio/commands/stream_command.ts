@@ -10,8 +10,10 @@ import {
 import { AudioStore } from '../stores/audio';
 import { streamCommandParamsSchema } from '../schemas';
 import { StreamCommandParams } from '../types';
+import { Subscription } from '../../subscription/types'
 import { STREAM_COST } from '../constants';
 import { SubscriptionMethod } from '../../subscription/method';
+import { AudioStreamed } from '../events/audioStreamed';
 
 export class StreamCommand extends BaseCommand {
   public schema = streamCommandParamsSchema;
@@ -44,18 +46,24 @@ export class StreamCommand extends BaseCommand {
     const audio = await audioSubStore.get(context, audioID);
 
     // Throw an error if the sender is not a member of an existing subscription
-    const { data: subscription, subscriptionID } = await this._subscriptionMethod.getByAddress(
-      methodContext,
-      senderAddress,
-    );
+    let subscription: Subscription;
+    let subscriptionID;
+    try {
+      const result = await this._subscriptionMethod.getByAddress(
+        methodContext,
+        senderAddress,
+      );
+      subscription = result.data;
+      subscriptionID = result.subscriptionID;
+    } catch (e) {
+      throw new Error('Account is not a member of an existing subscription.');
+    }
+
 
     // Increment the corresponding subscription streams count
     subscription.streams += BigInt(1);
     // Decrement the corresponding subscription consumable
     subscription.consumable -= STREAM_COST; // @todo include fee
-
-    // @todo Increment the corresponding audio streams count
-    // audio.streams += BigInt(1);
 
     // Increment the corresponding audio income value for each owner based on their shares %
     audio.owners = audio.owners.map((owner, index) => ({
@@ -69,5 +77,12 @@ export class StreamCommand extends BaseCommand {
 
     // Store subscription object in the subscriptions store
     await this._subscriptionMethod.consume(methodContext, subscriptionID, senderAddress);
+
+    // Emit a "New collection" event
+    const audioStreamed = this.events.get(AudioStreamed);
+    audioStreamed.add(context, {
+      address: context.transaction.senderAddress,
+      owners: audio.owners,
+    }, [context.transaction.senderAddress]);
   }
 }

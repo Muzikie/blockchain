@@ -22,7 +22,7 @@ export interface Audio {
   owners: LoyaltyOwner[];
   audioSignature: Buffer;
   audioHash: Buffer;
-  fit: Buffer[];
+  feat: Buffer[];
 }
 
 export interface AudioJSON {
@@ -34,7 +34,7 @@ export interface AudioJSON {
   owners: LoyaltyOwnerJSON[];
   audioSignature: string;
   audioHash: string;
-  fit: string[];
+  feat: string[];
 }
 
 export interface AudioAccount {
@@ -57,7 +57,7 @@ export interface CreateCommandParams {
   owners: Omit<LoyaltyOwner, 'income'>[];
   audioSignature: Buffer;
   audioHash: Buffer;
-  fit: Buffer[];
+  feat: Buffer[];
 }
 
 export interface DestroyCommandParams {
@@ -70,13 +70,14 @@ export interface TransferCommandParams {
   shares: number;
 }
 
+// @todo do we need the collectionID? Do we intend to change it?
 export interface SetAttributesCommandParams {
   name: string;
   releaseYear: string;
   genre: number[];
   collectionID: Buffer;
   audioID: Buffer;
-  fit: Buffer[];
+  feat: Buffer[];
 }
 
 export interface StreamCommandParams {
@@ -97,8 +98,28 @@ export enum CreateEventResult {
   FAILED = 'failed',
 }
 
-export interface CreateEventData {
-  senderAddress: Buffer;
+export interface AudioCreatedEventData {
+  creatorAddress: Buffer;
+  audioID: Buffer;
+}
+
+export interface AudioStreamedEventData {
+  address: Buffer;
+  owners: LoyaltyOwner[];
+}
+
+export interface ClaimData {
+  audioIDs: Buffer[];
+  totalClaimed: bigint;
+};
+
+export interface AudioIncomeReclaimedEventData {
+  address: Buffer;
+  claimData: ClaimData;
+}
+
+export interface AudioSetAttributeEventData {
+  creatorAddress: Buffer;
   audioID: Buffer;
 }
 

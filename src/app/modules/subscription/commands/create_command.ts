@@ -8,6 +8,7 @@ import {
 } from 'lisk-sdk';
 import { SubscriptionStore } from '../stores/subscription';
 import { SubscriptionAccountStore } from '../stores/subscriptionAccount';
+import { SubscriptionCreated } from '../events/subscriptionCreated';
 import { CreateCommandParams, Subscription, SubscriptionAccount } from '../types';
 import { createCommandParamsSchema } from '../schemas';
 import { DEV_ADDRESS } from '../constants';
@@ -80,5 +81,13 @@ export class CreateCommand extends BaseCommand {
 
     // Store the account object in the blockchain
     await subscriptionAccountStore.set(context, senderAddress, senderAccount);
+
+    const subscriptionCreated = this.events.get(SubscriptionCreated);
+    subscriptionCreated.add(context, {
+      creatorAddress: context.transaction.senderAddress,
+      subscriptionID: id,
+      consumable: price,
+      streams: BigInt(0),
+    }, [context.transaction.senderAddress]);
   }
 }

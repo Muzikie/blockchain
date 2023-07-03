@@ -12,7 +12,7 @@ Object {
       "dataType": "bytes",
       "fieldNumber": 5,
     },
-    "fit": Object {
+    "feat": Object {
       "fieldNumber": 4,
       "items": Object {
         "dataType": "bytes",
@@ -42,7 +42,7 @@ Object {
     "name",
     "releaseYear",
     "genre",
-    "fit",
+    "feat",
     "collectionID",
     "audioID",
   ],

@@ -75,6 +75,7 @@ export class UpdateMembersCommand extends BaseCommand {
       }
     }
 
+    // Add subscription ID to the new member accounts
     for (const member of addedMembers) {
       const memberExist = await subscriptionAccountStore.has(context, member);
       let memberAccount: SubscriptionAccount;
