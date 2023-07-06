@@ -16,7 +16,7 @@ import {
 import { ProfileAccountStore } from './stores/profileAccount';
 import { ProfileStore } from './stores/profile';
 import { CreateCommand } from "./commands/create_command";
-import { SetAttributesCommand } from "./commands/setAttribute_command";
+import { SetAttributesCommand } from "./commands/setAttributes_command";
 import { ProfileEndpoint } from './endpoint';
 import { ProfileMethod } from './method';
 import {

@@ -215,7 +215,6 @@ export const setAttributesCommandParamsSchema = {
   },
 };
 
-
 export const addressRequestSchema = {
   $id: '/profile/addressRequest',
   type: 'object',
