@@ -16,7 +16,7 @@ Object {
       "dataType": "bytes",
       "fieldNumber": 4,
     },
-    "fit": Object {
+    "feat": Object {
       "fieldNumber": 8,
       "items": Object {
         "dataType": "bytes",
@@ -73,7 +73,7 @@ Object {
     "owners",
     "audioSignature",
     "audioHash",
-    "fit",
+    "feat",
   ],
   "title": "CreateAsset transaction asset for audio module",
   "type": "object",

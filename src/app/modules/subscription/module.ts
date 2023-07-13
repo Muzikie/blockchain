@@ -16,10 +16,18 @@ import {
 } from 'lisk-sdk';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { VerifyStatus } from 'lisk-framework';
+import {
+  accountStoreSchema,
+  addressRequestSchema,
+  idRequestSchema,
+  subscriptionStoreSchema,
+  hasSubscriptionResponse,
+} from './schemas';
 import { SubscriptionEndpoint } from './endpoint';
 import { SubscriptionMethod } from './method';
 import { SubscriptionStore } from './stores/subscription';
 import { SubscriptionAccountStore } from './stores/subscriptionAccount';
+import { SubscriptionCreated } from './events/subscriptionCreated';
 import { CreateCommand } from './commands/create_command';
 import { PurchaseCommand } from './commands/purchase_command';
 import { UpdateMembersCommand } from './commands/update_members_command';
@@ -39,8 +47,9 @@ export class SubscriptionModule extends BaseModule {
 
   public constructor() {
     super();
-    this.stores.register(SubscriptionAccountStore, new SubscriptionAccountStore(this.name));
-    this.stores.register(SubscriptionStore, new SubscriptionStore(this.name));
+    this.stores.register(SubscriptionAccountStore, new SubscriptionAccountStore(this.name, 0));
+    this.stores.register(SubscriptionStore, new SubscriptionStore(this.name, 1));
+    this.events.register(SubscriptionCreated, new SubscriptionCreated(this.name));
   }
 
   public addDependencies(tokenMethod: TokenMethod): void {
@@ -51,8 +60,24 @@ export class SubscriptionModule extends BaseModule {
 
   public metadata(): ModuleMetadata {
     return {
-      name: '',
-      endpoints: [],
+      stores: [],
+      endpoints: [
+        {
+          name: this.endpoint.getAccount.name,
+          request: addressRequestSchema,
+          response: accountStoreSchema,
+        },
+        {
+          name: this.endpoint.getSubscription.name,
+          request: idRequestSchema,
+          response: subscriptionStoreSchema,
+        },
+        {
+          name: this.endpoint.hasSubscription.name,
+          request: addressRequestSchema,
+          response: hasSubscriptionResponse,
+        },
+      ],
       commands: this.commands.map(command => ({
         name: command.name,
         params: command.schema,

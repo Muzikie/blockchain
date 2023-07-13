@@ -16,26 +16,47 @@ import {
 import { ProfileAccountStore } from './stores/profileAccount';
 import { ProfileStore } from './stores/profile';
 import { CreateCommand } from "./commands/create_command";
+import { SetAttributesCommand } from "./commands/setAttribute_command";
 import { ProfileEndpoint } from './endpoint';
 import { ProfileMethod } from './method';
+import {
+  profileStoreSchema,
+  accountStoreSchema,
+  addressRequestSchema,
+  idRequestSchema,
+} from './schemas';
+import { ProfileCreated } from './events/profileCreated';
 
 export class ProfileModule extends BaseModule {
   public endpoint = new ProfileEndpoint(this.stores, this.offchainStores);
   public method = new ProfileMethod(this.stores, this.events);
   public commands = [
-    new CreateCommand(this.stores, this.events)
+    new CreateCommand(this.stores, this.events),
+    new SetAttributesCommand(this.stores, this.events),
   ];
 
   public constructor() {
     super();
-    this.stores.register(ProfileAccountStore, new ProfileAccountStore(this.name));
-    this.stores.register(ProfileStore, new ProfileStore(this.name));
+    this.stores.register(ProfileAccountStore, new ProfileAccountStore(this.name, 0));
+    this.stores.register(ProfileStore, new ProfileStore(this.name, 1));
+    this.events.register(ProfileCreated, new ProfileCreated(this.name));
   }
 
   public metadata(): ModuleMetadata {
     return {
-      name: '',
-      endpoints: [],
+      stores: [],
+      endpoints: [
+        {
+          name: this.endpoint.getAccount.name,
+          request: addressRequestSchema,
+          response: accountStoreSchema,
+        },
+        {
+          name: this.endpoint.getProfile.name,
+          request: idRequestSchema,
+          response: profileStoreSchema,
+        },
+      ],
       commands: this.commands.map(command => ({
         name: command.name,
         params: command.schema,

@@ -12,7 +12,8 @@ import { TREASURY_ADDRESS } from '../../subscription/constants';
 import { AudioStore } from '../stores/audio';
 import { AudioAccountStore } from '../stores/audioAccount';
 import { reclaimCommandParamsSchema } from '../schemas';
-import { LoyaltyOwner, ReclaimCommandParams } from '../types';
+import { LoyaltyOwner, ReclaimCommandParams, ClaimData } from '../types';
+import { AudioIncomeReclaimed } from '../events/audioIncomeReclaimed';
 
 export class ReclaimCommand extends BaseCommand {
   public schema = reclaimCommandParamsSchema;
@@ -26,15 +27,7 @@ export class ReclaimCommand extends BaseCommand {
   public async verify(
     _context: CommandVerifyContext<ReclaimCommandParams>,
   ): Promise<VerificationResult> {
-    // const { transaction } = context;
-
-    // if (transaction.params.length !== 0) {
-    //   return {
-    //     status: VerifyStatus.FAIL,
-    //     error: new Error('Reclaim transaction params must be empty.'),
-    //   };
-    // }
-
+    // @todo should we validate that the params are empty?
     return { status: VerifyStatus.OK };
   }
 
@@ -49,30 +42,35 @@ export class ReclaimCommand extends BaseCommand {
     const audioStore = this.stores.get(AudioStore);
     const audioAccountStore = this.stores.get(AudioAccountStore);
 
-    let totalIncome = BigInt(0);
-
     // Get account
     const senderAccount = await audioAccountStore.get(context, senderAddress);
     if (senderAccount.audio.audios.length === 0) {
       throw new Error('You do not own any audio.');
     }
 
-    const collectIncome = (item: LoyaltyOwner) => {
-      if (item.address.equals(senderAddress)) {
-        totalIncome += item.income;
-        return {
-          ...item,
-          income: BigInt(0),
-        };
-      }
-      return item;
-    };
+    const claimData: ClaimData = {
+      audioIDs: [],
+      totalClaimed: BigInt(0),
+    }
 
     // For each audio, add the income to the total income,
     // and set the income to 0 for the owner = senderAddress
     for (const audioID of senderAccount.audio.audios) {
       const audioNFT = await audioStore.get(context, audioID);
-      audioNFT.owners = audioNFT.owners.map(collectIncome);
+      const newOwnersList: LoyaltyOwner[] = [];
+      audioNFT.owners.forEach((ownerInfo) => {
+        if (ownerInfo.address.equals(senderAddress)) {
+          claimData.audioIDs.push(audioID);
+          claimData.totalClaimed += ownerInfo.income;
+          newOwnersList.push({
+            ...ownerInfo,
+            income: BigInt(0),
+          });
+        } else {
+          newOwnersList.push(ownerInfo);
+        }
+      });
+      audioNFT.owners = newOwnersList;
       // Update audio on the blockchain
       await audioStore.set(context, audioID, audioNFT);
     }
@@ -82,7 +80,13 @@ export class ReclaimCommand extends BaseCommand {
       TREASURY_ADDRESS,
       senderAddress,
       tokenID,
-      totalIncome,
+      claimData.totalClaimed,
     );
+    // Emit a "Income Reclaimed" event
+    const audioIncomeReclaimed = this.events.get(AudioIncomeReclaimed);
+    audioIncomeReclaimed.add(context, {
+      address: context.transaction.senderAddress,
+      claimData,
+    }, [context.transaction.senderAddress]);
   }
 }

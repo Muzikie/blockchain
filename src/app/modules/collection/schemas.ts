@@ -155,3 +155,61 @@ export const setAttributesCommandParamsSchema = {
     },
   },
 };
+
+export const addressRequestSchema = {
+  $id: '/collection/addressRequest',
+  type: 'object',
+  properties: {
+    address: {
+      type: 'string',
+      format: 'lisk32',
+    },
+  },
+  required: ['address'],
+};
+
+export const idRequestSchema = {
+  $id: '/collection/idRequest',
+  type: 'object',
+  properties: {
+    collectionID: {
+      type: 'string',
+      format: 'hex',
+    },
+  },
+  required: ['collectionID'],
+};
+
+export const collectionCreatedEventDataSchema = {
+  $id: '/collection/events/collectionCreatedEventData',
+  type: 'object',
+  required: ['creatorAddress', 'collectionID'],
+  properties: {
+    creatorAddress: {
+      dataType: 'bytes',
+      format: 'lisk32',
+      fieldNumber: 1,
+    },
+    collectionID: {
+      dataType: 'bytes',
+      fieldNumber: 2,
+    },
+  },
+};
+
+export const collectionAttributeSetEventDataSchema = {
+  $id: '/collection/events/collectionAttributeSetEventData',
+  type: 'object',
+  required: ['creatorAddress', 'collectionID'],
+  properties: {
+    creatorAddress: {
+      dataType: 'bytes',
+      format: 'lisk32',
+      fieldNumber: 1,
+    },
+    collectionID: {
+      dataType: 'bytes',
+      fieldNumber: 2,
+    },
+  },
+};

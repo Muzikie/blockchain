@@ -9,7 +9,7 @@ export const audioStoreSchema = {
     'owners',
     'audioSignature',
     'audioHash',
-    'fit',
+    'feat',
     'creatorAddress',
   ],
   properties: {
@@ -38,7 +38,7 @@ export const audioStoreSchema = {
       items: {
         $id: 'audio/audio/owners',
         type: 'object',
-        required: ['address', 'shares'],
+        required: ['address', 'shares', 'income'],
         properties: {
           address: {
             dataType: 'bytes',
@@ -63,7 +63,7 @@ export const audioStoreSchema = {
       dataType: 'bytes',
       fieldNumber: 7,
     },
-    fit: {
+    feat: {
       type: 'array',
       fieldNumber: 8,
       items: {
@@ -113,7 +113,7 @@ export const createCommandParamsSchema = {
     'owners',
     'audioSignature',
     'audioHash',
-    'fit',
+    'feat',
   ],
   properties: {
     name: {
@@ -165,7 +165,7 @@ export const createCommandParamsSchema = {
       dataType: 'bytes',
       fieldNumber: 7,
     },
-    fit: {
+    feat: {
       type: 'array',
       fieldNumber: 8,
       items: {
@@ -193,7 +193,7 @@ export const transferCommandParamsSchema = {
   $id: 'audio/transfer',
   title: 'TransferAsset transaction asset for audio module',
   type: 'object',
-  required: ['audioID', 'address'],
+  required: ['audioID', 'address', 'shares'],
   properties: {
     audioID: {
       dataType: 'bytes',
@@ -215,7 +215,7 @@ export const setAttributesCommandParamsSchema = {
   $id: 'audio/setAttributes',
   title: 'SetAttributesAsset transaction asset for audio module',
   type: 'object',
-  required: ['name', 'releaseYear', 'genre', 'fit', 'collectionID', 'audioID'],
+  required: ['name', 'releaseYear', 'genre', 'feat', 'collectionID', 'audioID'],
   properties: {
     name: {
       dataType: 'string',
@@ -234,7 +234,7 @@ export const setAttributesCommandParamsSchema = {
         dataType: 'uint32',
       },
     },
-    fit: {
+    feat: {
       type: 'array',
       fieldNumber: 4,
       items: {
@@ -279,19 +279,112 @@ export const reclaimCommandParamsSchema = {
   },
 };
 
-export const creationEventSchema = {
-  $id: '/audio/events/creation',
+export const audioCreatedEventDataSchema = {
+  $id: '/audio/events/audioCreatedData',
   type: 'object',
-  required: ['senderAddress', 'audioID'],
+  required: ['creatorAddress', 'audioID'],
   properties: {
-    senderAddress: {
+    creatorAddress: {
       dataType: 'bytes',
       format: 'lisk32',
       fieldNumber: 1,
     },
     audioID: {
       dataType: 'bytes',
-      fieldNumber: 3,
+      fieldNumber: 2,
     },
   },
+};
+
+export const audioStreamedEventDataSchema = {
+  $id: '/audio/events/audioStreamedData',
+  type: 'object',
+  required: ['address', 'owners'],
+  properties: {
+    address: {
+      dataType: 'bytes',
+      format: 'lisk32',
+      fieldNumber: 1,
+    },
+    owners: {
+      type: 'array',
+      fieldNumber: 2,
+      items: {
+        $id: 'audio/events/audioStreamedData/owners',
+        type: 'object',
+        required: ['address', 'income', 'shares'],
+        properties: {
+          address: {
+            dataType: 'bytes',
+            format: 'lisk32',
+            fieldNumber: 1,
+          },
+          income: {
+            dataType: 'uint64',
+            fieldNumber: 2,
+          },
+          shares: {
+            dataType: 'uint32',
+            fieldNumber: 3,
+          },
+        },
+      },
+    },
+  },
+};
+
+export const AudioIncomeReclaimedEventDataSchema = {
+  $id: '/audio/events/audioIncomeReclaimedData',
+  type: 'object',
+  required: ['address', 'claimData'],
+  properties: {
+    address: {
+      dataType: 'bytes',
+      format: 'lisk32',
+      fieldNumber: 1,
+    },
+    claimData: {
+      $id: 'audio/events/audioIncomeReclaimedData/claimData',
+      type: 'object',
+      fieldNumber: 2,
+      required: ['audioIDs', 'totalClaimed'],
+      properties: {
+        audioIDs: {
+          type: 'array',
+          fieldNumber: 1,
+          items: {
+            dataType: 'bytes',
+          }
+        },
+        totalClaimed: {
+          dataType: 'uint64',
+          fieldNumber: 2,
+        },
+      },
+    },
+  },
+};
+
+export const addressRequestSchema = {
+  $id: '/audio/addressRequest',
+  type: 'object',
+  properties: {
+    address: {
+      type: 'string',
+      format: 'lisk32',
+    },
+  },
+  required: ['address'],
+};
+
+export const idRequestSchema = {
+  $id: '/audio/idRequest',
+  type: 'object',
+  properties: {
+    audioID: {
+      type: 'string',
+      format: 'hex',
+    },
+  },
+  required: ['audioID'],
 };

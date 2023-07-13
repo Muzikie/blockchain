@@ -36,12 +36,15 @@ export class DestroyCommand extends BaseCommand {
     const audio = await audioSubStore.get(context, params.audioID);
 
     // Check if the sender owns loyalty rights of the audio
-    const senderShare = audio.owners.find(item => item.address.equals(transaction.senderAddress));
-    if (senderShare?.shares !== 100) {
+    const sender = audio.owners.find(item => item.address.equals(transaction.senderAddress));
+    if (sender?.shares !== 100) {
       throw new Error('You can only destroy an audio if you own 100% of the shares.');
     }
 
     // Throw an error if the audio has non-zero income
+    if (sender?.income !== BigInt(0)) {
+      throw new Error('Claim the income before destroying the audio.');
+    }
 
     // Delete the audio object from the blockchain
     await audioSubStore.del(context, params.audioID);

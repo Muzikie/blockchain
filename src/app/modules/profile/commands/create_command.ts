@@ -12,6 +12,7 @@ import { ProfileAccountStore } from '../stores/profileAccount';
 import { createCommandParamsSchema } from '../schemas';
 import { CreateCommandParams, Profile } from '../types';
 import { getEntityID, verifyHash } from '../../../utils';
+import { ProfileCreated } from '../events/profileCreated'
 
 export class CreateCommand extends BaseCommand {
   public schema = createCommandParamsSchema;
@@ -71,5 +72,12 @@ export class CreateCommand extends BaseCommand {
     });
     // Save the profile object in profile store
     await profileStore.set(context, profileID, profileObject);
+
+    // Emit a "New collection" event
+    const profileCreated = this.events.get(ProfileCreated);
+    profileCreated.add(context, {
+      creatorAddress: context.transaction.senderAddress,
+      profileID,
+    }, [context.transaction.senderAddress]);
   }
 }
