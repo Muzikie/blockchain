@@ -37,9 +37,7 @@
 		"chainID": "02000003"
 	},
 	"generator": {
-		"keys": {
-			"fromFile": "./config/dev-validators.json"
-		}
+		"keys": {}
 	},
 	"modules": {
 		"fee": {
