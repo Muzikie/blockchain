@@ -1,6 +1,6 @@
 {
 	"system": {
-		"dataPath": "~/.lisk/beta-sdk-app",
+		"dataPath": "~/.lisk/muzikie",
 		"keepEventsForHeights": 300,
 		"logLevel": "info"
 	},
