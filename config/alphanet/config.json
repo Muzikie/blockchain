@@ -1,6 +1,6 @@
 {
 	"system": {
-		"dataPath": "/Users/reyraa/.lisk/beta-sdk-app",
+		"dataPath": "~/.lisk/beta-sdk-app",
 		"keepEventsForHeights": 300,
 		"logLevel": "info"
 	},
@@ -28,7 +28,7 @@
 		"blockTime": 10,
 		"bftBatchSize": 103,
 		"maxTransactionsSize": 15360,
-		"chainID": "00200000"
+		"chainID": "03000003"
 	},
 	"generator": {
 		"keys": {
@@ -37,16 +37,16 @@
 	},
 	"modules": {
 		"fee": {
-			"feeTokenID": "0020000000000000"
+			"feeTokenID": "0300000300000000"
 		},
 		"reward": {
-			"tokenID": "0020000000000000",
+			"tokenID": "0300000300000000",
 			"offset": 2160,
 			"distance": 3000000,
 			"brackets": ["500000000", "400000000", "300000000", "200000000", "100000000"]
 		},
 		"token": {
-			"feeTokenID": "0020000000000000"
+			"feeTokenID": "0300000300000000"
 		}
 	},
 	"plugins": {}
