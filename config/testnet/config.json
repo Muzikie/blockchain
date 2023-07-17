@@ -16,6 +16,10 @@
 			{
 				"ip": "testnet-seed-01.muzikie.com",
 				"port": 7667
+			},
+			{
+				"ip": "testnet-seed-02.muzikie.com",
+				"port": 7667
 			}
 		],
 		"port": 7667
