@@ -14,13 +14,17 @@
 		"version": "1.0",
 		"seedPeers": [
 			{
-				"ip": "testnet-seed-01.muzikie.com",
-				"port": 7667
-			},
-			{
-				"ip": "testnet-seed-02.muzikie.com",
-				"port": 7667
-			}
+                                "ip": "testnet-seed-00.muzikie.com",
+                                "port": 7667
+                        },
+                        {
+                                "ip": "testnet-seed-01.muzikie.com",
+                                "port": 7667
+                        },
+                        {
+                                "ip": "testnet-seed-02.muzikie.com",
+                                "port": 7667
+                        }
 		],
 		"port": 7667
 	},
