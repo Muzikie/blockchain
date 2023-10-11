@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/member-ordering */
 /* eslint-disable class-methods-use-this */
 import {
   BaseCommand,

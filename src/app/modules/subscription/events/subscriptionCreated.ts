@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/member-ordering */
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { BaseEvent, EventQueuer } from 'lisk-framework';
 import { SubscriptionCreatedEventData } from '../types';
