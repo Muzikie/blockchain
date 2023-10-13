@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/member-ordering */
 /* eslint-disable class-methods-use-this */
 
 import {
@@ -44,7 +45,7 @@ export class ProfileModule extends BaseModule {
 
   public metadata(): ModuleMetadata {
     return {
-      stores: [],
+      ...this.baseMetadata(),
       endpoints: [
         {
           name: this.endpoint.getAccount.name,
@@ -57,14 +58,6 @@ export class ProfileModule extends BaseModule {
           response: profileStoreSchema,
         },
       ],
-      commands: this.commands.map(command => ({
-        name: command.name,
-        params: command.schema,
-      })),
-      events: this.events.values().map(v => ({
-        name: v.name,
-        data: v.schema,
-      })),
       assets: [],
     };
   }

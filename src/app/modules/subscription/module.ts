@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/member-ordering */
 /* eslint-disable class-methods-use-this */
 
 import {
@@ -60,7 +61,7 @@ export class SubscriptionModule extends BaseModule {
 
   public metadata(): ModuleMetadata {
     return {
-      stores: [],
+      ...this.baseMetadata(),
       endpoints: [
         {
           name: this.endpoint.getAccount.name,
@@ -78,14 +79,6 @@ export class SubscriptionModule extends BaseModule {
           response: hasSubscriptionResponse,
         },
       ],
-      commands: this.commands.map(command => ({
-        name: command.name,
-        params: command.schema,
-      })),
-      events: this.events.values().map(v => ({
-        name: v.name,
-        data: v.schema,
-      })),
       assets: [],
     };
   }
