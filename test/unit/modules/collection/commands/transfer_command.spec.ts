@@ -11,7 +11,7 @@ describe('TransferCommand', () => {
 
   describe('constructor', () => {
     it('should have valid name', () => {
-      expect(command.name).toEqual('transfer');
+      expect(command.name).toBe('transfer');
     });
 
     it('should have valid schema', () => {

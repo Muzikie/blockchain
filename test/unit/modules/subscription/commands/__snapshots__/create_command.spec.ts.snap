@@ -1,19 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CreateCommand constructor should have valid schema 1`] = `
-Object {
+{
   "$id": "subscription/create",
-  "properties": Object {
-    "maxMembers": Object {
+  "properties": {
+    "maxMembers": {
       "dataType": "uint32",
       "fieldNumber": 1,
     },
-    "price": Object {
+    "price": {
       "dataType": "uint64",
       "fieldNumber": 2,
     },
   },
-  "required": Array [
+  "required": [
     "maxMembers",
     "price",
   ],
