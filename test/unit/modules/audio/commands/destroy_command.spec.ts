@@ -11,7 +11,7 @@ describe('DestroyCommand', () => {
 
   describe('constructor', () => {
     it('should have valid name', () => {
-      expect(command.name).toEqual('destroy');
+      expect(command.name).toBe('destroy');
     });
 
     it('should have valid schema', () => {

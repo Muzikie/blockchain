@@ -1,44 +1,44 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SetAttributeCommand constructor should have valid schema 1`] = `
-Object {
+{
   "$id": "audio/setAttributes",
-  "properties": Object {
-    "audioID": Object {
+  "properties": {
+    "audioID": {
       "dataType": "bytes",
       "fieldNumber": 6,
     },
-    "collectionID": Object {
+    "collectionID": {
       "dataType": "bytes",
       "fieldNumber": 5,
     },
-    "feat": Object {
+    "feat": {
       "fieldNumber": 4,
-      "items": Object {
+      "items": {
         "dataType": "bytes",
         "format": "lisk32",
       },
       "type": "array",
     },
-    "genre": Object {
+    "genre": {
       "fieldNumber": 3,
-      "items": Object {
+      "items": {
         "dataType": "uint32",
       },
       "type": "array",
     },
-    "name": Object {
+    "name": {
       "dataType": "string",
       "fieldNumber": 1,
       "maxLength": 40,
       "minLength": 3,
     },
-    "releaseYear": Object {
+    "releaseYear": {
       "dataType": "string",
       "fieldNumber": 2,
     },
   },
-  "required": Array [
+  "required": [
     "name",
     "releaseYear",
     "genre",

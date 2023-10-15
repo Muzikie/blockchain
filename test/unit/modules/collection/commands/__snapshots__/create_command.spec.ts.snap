@@ -1,33 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CreateCommand constructor should have valid schema 1`] = `
-Object {
+{
   "$id": "collection/create",
-  "properties": Object {
-    "collectionType": Object {
+  "properties": {
+    "collectionType": {
       "dataType": "uint32",
       "fieldNumber": 3,
     },
-    "coverHash": Object {
+    "coverHash": {
       "dataType": "bytes",
       "fieldNumber": 5,
     },
-    "coverSignature": Object {
+    "coverSignature": {
       "dataType": "bytes",
       "fieldNumber": 4,
     },
-    "name": Object {
+    "name": {
       "dataType": "string",
       "fieldNumber": 1,
       "maxLength": 40,
       "minLength": 3,
     },
-    "releaseYear": Object {
+    "releaseYear": {
       "dataType": "string",
       "fieldNumber": 2,
     },
   },
-  "required": Array [
+  "required": [
     "name",
     "releaseYear",
     "collectionType",

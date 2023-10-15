@@ -1,6 +1,6 @@
 export interface Transaction<T> {
-  nonce: BigInt;
-  fee: BigInt;
+  nonce: bigint;
+  fee: bigint;
   senderPublicKey: Buffer;
   params: T;
   id: Buffer;

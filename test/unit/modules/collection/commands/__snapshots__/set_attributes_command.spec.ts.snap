@@ -1,29 +1,29 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SetAttributesCommand constructor should have valid schema 1`] = `
-Object {
+{
   "$id": "collection/setAttributes",
-  "properties": Object {
-    "collectionID": Object {
+  "properties": {
+    "collectionID": {
       "dataType": "bytes",
       "fieldNumber": 4,
     },
-    "collectionType": Object {
+    "collectionType": {
       "dataType": "uint32",
       "fieldNumber": 3,
     },
-    "name": Object {
+    "name": {
       "dataType": "string",
       "fieldNumber": 1,
       "maxLength": 40,
       "minLength": 3,
     },
-    "releaseYear": Object {
+    "releaseYear": {
       "dataType": "string",
       "fieldNumber": 2,
     },
   },
-  "required": Array [
+  "required": [
     "name",
     "releaseYear",
     "collectionType",

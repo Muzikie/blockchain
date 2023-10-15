@@ -1,15 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DestroyCommand constructor should have valid schema 1`] = `
-Object {
+{
   "$id": "collection/destroy",
-  "properties": Object {
-    "collectionID": Object {
+  "properties": {
+    "collectionID": {
       "dataType": "bytes",
       "fieldNumber": 1,
     },
   },
-  "required": Array [
+  "required": [
     "collectionID",
   ],
   "title": "DestroyAsset transaction asset for collection module",

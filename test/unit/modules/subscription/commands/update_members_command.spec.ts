@@ -11,7 +11,7 @@ describe('UpdateMembersCommand', () => {
 
   describe('constructor', () => {
     it('should have valid name', () => {
-      expect(command.name).toEqual('updateMembers');
+      expect(command.name).toBe('updateMembers');
     });
 
     it('should have valid schema', () => {

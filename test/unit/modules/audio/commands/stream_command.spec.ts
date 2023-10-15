@@ -11,7 +11,7 @@ describe('StreamCommand', () => {
 
   describe('constructor', () => {
     it('should have valid name', () => {
-      expect(command.name).toEqual('stream');
+      expect(command.name).toBe('stream');
     });
 
     it('should have valid schema', () => {

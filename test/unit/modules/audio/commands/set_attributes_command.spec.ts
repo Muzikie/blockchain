@@ -11,7 +11,7 @@ describe('SetAttributeCommand', () => {
 
   describe('constructor', () => {
     it('should have valid name', () => {
-      expect(command.name).toEqual('setAttributes');
+      expect(command.name).toBe('setAttributes');
     });
 
     it('should have valid schema', () => {

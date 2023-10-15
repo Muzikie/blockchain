@@ -1,24 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TransferCommand constructor should have valid schema 1`] = `
-Object {
+{
   "$id": "audio/transfer",
-  "properties": Object {
-    "address": Object {
+  "properties": {
+    "address": {
       "dataType": "bytes",
       "fieldNumber": 2,
       "format": "lisk32",
     },
-    "audioID": Object {
+    "audioID": {
       "dataType": "bytes",
       "fieldNumber": 1,
     },
-    "shares": Object {
+    "shares": {
       "dataType": "uint32",
       "fieldNumber": 3,
     },
   },
-  "required": Array [
+  "required": [
     "audioID",
     "address",
     "shares",

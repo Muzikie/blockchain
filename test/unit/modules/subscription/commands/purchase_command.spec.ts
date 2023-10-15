@@ -11,7 +11,7 @@ describe('PurchaseCommand', () => {
 
   describe('constructor', () => {
     it('should have valid name', () => {
-      expect(command.name).toEqual('purchase');
+      expect(command.name).toBe('purchase');
     });
 
     it('should have valid schema', () => {

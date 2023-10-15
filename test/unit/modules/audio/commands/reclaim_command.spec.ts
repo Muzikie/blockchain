@@ -11,7 +11,7 @@ describe('ReclaimCommand', () => {
 
   describe('constructor', () => {
     it('should have valid name', () => {
-      expect(command.name).toEqual('reclaim');
+      expect(command.name).toBe('reclaim');
     });
 
     it('should have valid schema', () => {

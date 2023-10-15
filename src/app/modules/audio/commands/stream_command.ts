@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/member-ordering */
 /* eslint-disable class-methods-use-this */
 
 import {
@@ -47,7 +48,7 @@ export class StreamCommand extends BaseCommand {
 
     // Throw an error if the sender is not a member of an existing subscription
     let subscription: Subscription;
-    let subscriptionID;
+    let subscriptionID: Buffer;
     try {
       const result = await this._subscriptionMethod.getByAddress(
         methodContext,

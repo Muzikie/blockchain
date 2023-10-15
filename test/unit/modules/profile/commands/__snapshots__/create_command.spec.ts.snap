@@ -1,52 +1,52 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CreateCommand constructor should have valid schema 1`] = `
-Object {
+{
   "$id": "profile/create",
-  "properties": Object {
-    "avatarHash": Object {
+  "properties": {
+    "avatarHash": {
       "dataType": "bytes",
       "fieldNumber": 5,
     },
-    "avatarSignature": Object {
+    "avatarSignature": {
       "dataType": "bytes",
       "fieldNumber": 6,
     },
-    "bannerHash": Object {
+    "bannerHash": {
       "dataType": "bytes",
       "fieldNumber": 7,
     },
-    "bannerSignature": Object {
+    "bannerSignature": {
       "dataType": "bytes",
       "fieldNumber": 8,
     },
-    "description": Object {
+    "description": {
       "dataType": "string",
       "fieldNumber": 3,
     },
-    "name": Object {
+    "name": {
       "dataType": "string",
       "fieldNumber": 1,
     },
-    "nickName": Object {
+    "nickName": {
       "dataType": "string",
       "fieldNumber": 2,
     },
-    "socialAccounts": Object {
+    "socialAccounts": {
       "fieldNumber": 4,
-      "items": Object {
+      "items": {
         "$id": "profile/profile/socialAccounts",
-        "properties": Object {
-          "platform": Object {
+        "properties": {
+          "platform": {
             "dataType": "uint32",
             "fieldNumber": 2,
           },
-          "username": Object {
+          "username": {
             "dataType": "string",
             "fieldNumber": 1,
           },
         },
-        "required": Array [
+        "required": [
           "username",
           "platform",
         ],
@@ -55,7 +55,7 @@ Object {
       "type": "array",
     },
   },
-  "required": Array [
+  "required": [
     "name",
     "nickName",
     "description",

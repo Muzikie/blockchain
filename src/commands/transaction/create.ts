@@ -5,18 +5,18 @@ import { Application, PartialApplicationConfig } from 'lisk-sdk';
 import { getApplication } from '../../app/app';
 
 type CreateFlags = typeof TransactionCreateCommand.flags & {
-  [key: string]: Record<string, unknown>;
+	[key: string]: Record<string, unknown>;
 };
 
 export class CreateCommand extends TransactionCreateCommand {
+  public getApplication(config: PartialApplicationConfig): Application {
+    const app = getApplication(config);
+    return app;
+  }
+
   static flags: CreateFlags = {
     ...TransactionCreateCommand.flags,
   };
 
   static args = [...TransactionCreateCommand.args];
-
-  public getApplication(config: PartialApplicationConfig): Application {
-    const app = getApplication(config);
-    return app;
-  }
 }
