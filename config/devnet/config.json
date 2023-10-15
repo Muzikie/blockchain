@@ -1,6 +1,6 @@
 {
 	"system": {
-		"dataPath": "~/.lisk/beta-sdk-app",
+		"dataPath": "~/.lisk/muzikie",
 		"keepEventsForHeights": 300,
 		"logLevel": "info",
 		"enableMetrics": true
@@ -8,7 +8,8 @@
 	"rpc": {
 		"modes": ["ipc", "ws"],
 		"port": 7887,
-		"host": "127.0.0.1"
+		"host": "127.0.0.1",
+		"allowedMethods": ["*"]
 	},
 	"network": {
 		"version": "1.0",
