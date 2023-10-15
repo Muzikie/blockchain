@@ -2,50 +2,71 @@
 import { ModuleEndpointContext } from 'lisk-framework';
 
 export interface Anchor {
-  price: bigint;
-  consumable: bigint;
-  streams: bigint;
-  members: Buffer[];
-  maxMembers: number;
-  creatorAddress: Buffer;
+  spotifyId?: string;
+  appleMusicId?: string;
+  name: string;
+  album: string;
+  artists: string[];
+  images: {
+    url: string;
+    height: number;
+    width: number;
+  }[];
+  submitter: Buffer;
+  createdAt: string;
+  votes: Buffer[];
+  id: Buffer;
 }
 
 export interface AnchorJSON {
-  price: string;
-  consumable: string;
-  streams: string;
-  members: string[];
-  maxMembers: number;
-  creatorAddress: string;
+  spotifyId?: string;
+  appleMusicId?: string;
+  name: string;
+  album: string;
+  artists: string[];
+  images: {
+    url: string;
+    height: number;
+    width: number;
+  }[];
+  submitter: string;
+  createdAt: string;
+  id: string;
 }
 
 export interface AnchorAccount {
-  anchor: {
-    owned: Buffer[];
-    shared: Buffer;
-  };
+  anchors: Buffer[];
+  votes: Buffer[];
 }
 
 export interface AnchorAccountJSON {
-  anchor: {
-    owned: string[];
-    shared: string;
-  };
+  anchor: string[];
+  votes: string[];
 }
 
 export interface CreateCommandParams {
-  maxMembers: number;
-  price: bigint;
+  spotifyId: string;
+  appleMusicId?: string;
+  name: string;
+  album: string;
+  artists: string[];
+  images: {
+    url: string;
+    height: number;
+    width: number;
+  }[];
+  atLeastOneId: {
+    spotifyId?: string;
+  } | {
+    appleMusicId?: string;
+  } | {
+    spotifyId?: string;
+    appleMusicId?: string;
+  };
 }
 
-export interface PurchaseCommandParams {
+export interface VoteCommandParams {
   anchorID: Buffer;
-  members: Buffer[];
-}
-
-export interface UpdateMembersCommandParams {
-  anchorID: Buffer;
-  members: Buffer[];
 }
 
 export interface Store<Entity> {
@@ -69,8 +90,7 @@ export enum CreateEventResult {
 }
 
 export interface AnchorCreatedEventData {
-  creatorAddress: Buffer;
+  submitter: Buffer;
   anchorID: Buffer;
-  consumable: bigint;
-  streams: bigint;
+  createdAt: string;
 }

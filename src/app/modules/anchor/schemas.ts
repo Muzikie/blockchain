@@ -1,35 +1,71 @@
 export const anchorStoreSchema = {
   $id: 'anchor/anchor',
   type: 'object',
-  required: ['price', 'consumable', 'streams', 'members', 'maxMembers', 'creatorAddress'],
+  required: ['spotifyId', 'appleMusicId', 'name', 'album', 'artists', 'images', 'createdAt', 'submitter', 'id'],
   properties: {
-    price: {
-      dataType: 'uint64',
+    spotifyId: {
+      dataType: 'string',
       fieldNumber: 1,
     },
-    consumable: {
-      dataType: 'uint64',
+    appleMusicId: {
+      dataType: 'string',
       fieldNumber: 2,
     },
-    streams: {
-      dataType: 'uint64',
+    name: {
+      dataType: 'string',
       fieldNumber: 3,
     },
-    members: {
-      type: 'array',
+    album: {
+      dataType: 'string',
       fieldNumber: 4,
+    },
+    artists: {
+      type: 'array',
+      fieldNumber: 5,
       items: {
-        dataType: 'bytes',
+        dataType: 'string',
       },
     },
-    maxMembers: {
-      dataType: 'uint32',
-      fieldNumber: 5,
+    images: {
+      type: 'array',
+      fieldNumber: 6,
+      items: {
+        dataType: 'object',
+        required: ['url', 'height', 'width'],
+        url: {
+          dataType: 'string',
+          fieldNumber: 1,
+        },
+        height: {
+          dataType: 'uint32',
+          fieldNumber: 2,
+        },
+        width: {
+          dataType: 'uint32',
+          fieldNumber: 3,
+        },
+      },
     },
-    creatorAddress: {
+    submitter: {
       dataType: 'bytes',
       format: 'lisk32',
-      fieldNumber: 6,
+      fieldNumber: 7,
+    },
+    createdAt: {
+      dataType: 'string',
+      fieldNumber: 8,
+    },
+    votes: {
+      type: 'array',
+      fieldNumber: 9,
+      items: {
+        dataType: 'bytes',
+        format: 'lisk32',
+      },
+    },
+    id: {
+      dataType: 'bytes',
+      fieldNumber: 10,
     },
   },
 };
@@ -37,24 +73,20 @@ export const anchorStoreSchema = {
 export const accountStoreSchema = {
   $id: 'anchor/account',
   type: 'object',
-  required: ['anchor'],
+  required: ['anchors', 'votes'],
   properties: {
-    anchor: {
-      type: 'object',
-      required: ['owned', 'shared'],
+    anchors: {
+      type: 'array',
       fieldNumber: 1,
-      properties: {
-        owned: {
-          type: 'array',
-          fieldNumber: 1,
-          items: {
-            dataType: 'bytes',
-          },
-        },
-        shared: {
-          fieldNumber: 2,
-          dataType: 'bytes',
-        },
+      items: {
+        dataType: 'bytes',
+      },
+    },
+    votes: {
+      type: 'array',
+      fieldNumber: 2,
+      items: {
+        dataType: 'bytes',
       },
     },
   },
@@ -64,57 +96,63 @@ export const createCommandParamsSchema = {
   $id: 'anchor/create',
   title: 'CreateAsset transaction asset for anchor module',
   type: 'object',
-  required: ['maxMembers', 'price'],
+  required: ['spotifyId', 'appleMusicId', 'name', 'album', 'artists', 'images'],
   properties: {
-    maxMembers: {
-      dataType: 'uint32',
+    spotifyId: {
+      dataType: 'string',
       fieldNumber: 1,
     },
-    price: {
-      dataType: 'uint64',
+    appleMusicId: {
+      dataType: 'string',
       fieldNumber: 2,
     },
-  },
-};
-
-export const purchaseCommandParamsSchema = {
-  $id: 'anchor/purchase',
-  title: 'PurchaseAsset transaction asset for anchor module',
-  type: 'object',
-  required: ['anchorID', 'members'],
-  properties: {
-    anchorID: {
-      dataType: 'bytes',
-      fieldNumber: 1,
+    name: {
+      dataType: 'string',
+      fieldNumber: 3,
     },
-    members: {
+    album: {
+      dataType: 'string',
+      fieldNumber: 4,
+    },
+    artists: {
       type: 'array',
-      fieldNumber: 2,
+      fieldNumber: 5,
       items: {
-        dataType: 'bytes',
-        format: 'lisk32',
+        dataType: 'string',
+      },
+    },
+    images: {
+      type: 'array',
+      fieldNumber: 6,
+      items: {
+        dataType: 'object',
+        required: ['url', 'height', 'width'],
+        url: {
+          dataType: 'string',
+          fieldNumber: 1,
+        },
+        height: {
+          dataType: 'uint32',
+          fieldNumber: 2,
+        },
+        width: {
+          dataType: 'uint32',
+          fieldNumber: 3,
+        },
       },
     },
   },
 };
 
-export const updateMembersCommandParamsSchema = {
-  $id: 'anchor/updateMembers',
-  title: 'UpdateMembersAsset transaction asset for anchor module',
+export const voteCommandParamsSchema = {
+  $id: 'anchor/vote',
+  title: 'VoteAsset transaction asset for anchor module',
   type: 'object',
-  required: ['anchorID', 'members'],
+  required: ['anchorID'],
   properties: {
     anchorID: {
       dataType: 'bytes',
       fieldNumber: 1,
-    },
-    members: {
-      type: 'array',
-      fieldNumber: 2,
-      items: {
-        dataType: 'bytes',
-        format: 'lisk32',
-      },
     },
   },
 };

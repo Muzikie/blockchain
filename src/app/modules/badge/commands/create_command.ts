@@ -11,7 +11,7 @@ import { BadgeStore } from '../stores/badge';
 import { BadgeAccountStore } from '../stores/badgeAccount';
 import { CreateCommandParams, Badge, BadgeAccount } from '../types';
 import { createCommandParamsSchema } from '../schemas';
-import { VALID_GENRES, MIN_RELEASE_YEAR } from '../constants';
+import { VALID_GENRES, MIN_RELEASE_YEAR, DEV_ADDRESS } from '../constants';
 import { getEntityID, verifyHash } from '../../../utils';
 import { BadgeCreated } from '../events/badgeCreated';
 
@@ -23,6 +23,14 @@ export class CreateCommand extends BaseCommand {
     context: CommandVerifyContext<CreateCommandParams>,
   ): Promise<VerificationResult> {
     const { params, transaction } = context;
+
+    if (!context.transaction.senderAddress.equals(DEV_ADDRESS)) {
+      return {
+        status: VerifyStatus.FAIL,
+        error: new Error('You are not authorized to create a anchor.'),
+      };
+    }
+
     const thisYear = new Date().getFullYear();
     const numericYear = Number(params.releaseYear);
     if (numericYear < MIN_RELEASE_YEAR || numericYear > thisYear) {

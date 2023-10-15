@@ -30,19 +30,17 @@ import { AnchorStore } from './stores/anchor';
 import { AnchorAccountStore } from './stores/anchorAccount';
 import { AnchorCreated } from './events/anchorCreated';
 import { CreateCommand } from './commands/create_command';
-import { PurchaseCommand } from './commands/purchase_command';
-import { UpdateMembersCommand } from './commands/update_members_command';
+import { VoteCommand } from './commands/vote_command';
 
 export class AnchorModule extends BaseModule {
   public endpoint = new AnchorEndpoint(this.stores, this.offchainStores);
   public method = new AnchorMethod(this.stores, this.events);
 
   private readonly _createCommand = new CreateCommand(this.stores, this.events);
-  private readonly _purchaseCommand = new PurchaseCommand(this.stores, this.events);
-  private readonly _updateMembersCommand = new UpdateMembersCommand(this.stores, this.events);
+  private readonly _purchaseCommand = new VoteCommand(this.stores, this.events);
 
   // eslint-disable-next-line @typescript-eslint/member-ordering
-  public commands = [this._createCommand, this._purchaseCommand, this._updateMembersCommand];
+  public commands = [this._createCommand, this._purchaseCommand];
 
   private _tokenMethod!: TokenMethod;
 

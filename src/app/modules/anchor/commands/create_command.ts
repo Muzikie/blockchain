@@ -12,8 +12,17 @@ import { AnchorAccountStore } from '../stores/anchorAccount';
 import { AnchorCreated } from '../events/anchorCreated';
 import { CreateCommandParams, Anchor, AnchorAccount } from '../types';
 import { createCommandParamsSchema } from '../schemas';
-import { DEV_ADDRESS } from '../constants';
-import { getEntityID } from '../../../utils';
+
+const getAnchorID = (params: CreateCommandParams): Buffer =>
+  Buffer.concat([Buffer.from(params.spotifyId, 'utf8')]);
+
+const getCreatedAt = (timestamp: number): string => {
+  const date = new Date(timestamp);
+  const year = date.getFullYear();
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  return `${year}-${month}-${day}`;
+};
 
 export class CreateCommand extends BaseCommand {
   public schema = createCommandParamsSchema;
@@ -22,61 +31,54 @@ export class CreateCommand extends BaseCommand {
   public async verify(
     context: CommandVerifyContext<CreateCommandParams>,
   ): Promise<VerificationResult> {
-    if (!context.transaction.senderAddress.equals(DEV_ADDRESS)) {
-      return {
-        status: VerifyStatus.FAIL,
-        error: new Error('You are not authorized to create a anchor.'),
-      };
+    const anchorStore = this.stores.get(AnchorStore);
+    const anchorID = getAnchorID(context.params);
+    const anchorExists = await anchorStore.has(context, anchorID);
+    if (anchorExists) {
+      throw new Error('This anchor already exist.');
     }
-    if (context.params.maxMembers === 0 || context.params.maxMembers > 5) {
-      return {
-        status: VerifyStatus.FAIL,
-        error: new Error('Max members of the anchor should be a number between 1 to 5.'),
-      };
-    }
+
+    // @todo Add submission rate limit
+
     return { status: VerifyStatus.OK };
   }
 
   public async execute(context: CommandExecuteContext<CreateCommandParams>): Promise<void> {
     const {
-      params: { price, maxMembers },
+      params,
       transaction: { senderAddress },
     } = context;
     const anchorAccountStore = this.stores.get(AnchorAccountStore);
     const anchorStore = this.stores.get(AnchorStore);
 
     // Create anchor ID
-    const id = getEntityID(context.transaction);
+    const anchorID = getAnchorID(context.params);
+    const createdAt = getCreatedAt(new Date().getTime());
     // Create anchor object
     const anchor: Anchor = {
-      price,
-      consumable: price,
-      streams: BigInt(0),
-      members: [],
-      maxMembers,
-      creatorAddress: senderAddress,
+      ...params,
+      id: anchorID,
+      createdAt,
+      votes: [],
+      submitter: senderAddress,
     };
 
     // Store the anchor object in the blockchain
-    await anchorStore.set(context, id, anchor);
+    await anchorStore.set(context, anchorID, anchor);
 
     // Get the sender account from the blockchain
     const senderExists = await anchorAccountStore.has(context, senderAddress);
     let senderAccount: AnchorAccount;
     if (!senderExists) {
       senderAccount = {
-        anchor: {
-          owned: [id],
-          shared: Buffer.alloc(0),
-        },
+        anchors: [anchorID],
+        votes: [],
       };
     } else {
       const retrievedAccount = await anchorAccountStore.get(context, senderAddress);
       senderAccount = {
-        anchor: {
-          owned: [...retrievedAccount.anchor.owned, id],
-          shared: retrievedAccount.anchor.shared,
-        },
+        anchors: [...retrievedAccount.anchors, anchorID],
+        votes: retrievedAccount.votes
       };
     }
 
@@ -85,10 +87,9 @@ export class CreateCommand extends BaseCommand {
 
     const anchorCreated = this.events.get(AnchorCreated);
     anchorCreated.add(context, {
-      creatorAddress: context.transaction.senderAddress,
-      anchorID: id,
-      consumable: price,
-      streams: BigInt(0),
+      submitter: context.transaction.senderAddress,
+      anchorID,
+      createdAt,
     }, [context.transaction.senderAddress]);
   }
 }

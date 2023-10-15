@@ -8,6 +8,6 @@ export class AnchorCreated extends BaseEvent<AnchorCreatedEventData> {
   public schema = anchorCreatedEventDataSchema;
 
   public log(ctx: EventQueuer, data: AnchorCreatedEventData): void {
-    this.add(ctx, data, [ data.creatorAddress ]);
+    this.add(ctx, data, [ data.submitter ]);
   }
 }

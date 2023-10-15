@@ -5,3 +5,5 @@ const lisk32Treasury = 'lskyg9ujmpkbn7ex96ejedhfrkj6avryn5nwgngbp';
 
 export const DEV_ADDRESS = cryptoAddress.getAddressFromLisk32Address(lisk32DevAddress);
 export const TREASURY_ADDRESS = cryptoAddress.getAddressFromLisk32Address(lisk32Treasury);
+
+export const CONTRIBUTION_FEE = BigInt(10000000);
