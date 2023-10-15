@@ -1,7 +1,7 @@
 export const anchorStoreSchema = {
   $id: 'anchor/anchor',
   type: 'object',
-  required: ['spotifyId', 'appleMusicId', 'name', 'album', 'artists', 'images', 'createdAt', 'submitter', 'id'],
+  required: ['spotifyId', 'appleMusicId', 'name', 'album', 'artists', 'createdAt', 'submitter', 'id'],
   properties: {
     spotifyId: {
       dataType: 'string',
@@ -26,38 +26,18 @@ export const anchorStoreSchema = {
         dataType: 'string',
       },
     },
-    images: {
-      type: 'array',
-      fieldNumber: 6,
-      items: {
-        dataType: 'object',
-        required: ['url', 'height', 'width'],
-        url: {
-          dataType: 'string',
-          fieldNumber: 1,
-        },
-        height: {
-          dataType: 'uint32',
-          fieldNumber: 2,
-        },
-        width: {
-          dataType: 'uint32',
-          fieldNumber: 3,
-        },
-      },
-    },
     submitter: {
       dataType: 'bytes',
       format: 'lisk32',
-      fieldNumber: 7,
+      fieldNumber: 6,
     },
     createdAt: {
       dataType: 'string',
-      fieldNumber: 8,
+      fieldNumber: 7,
     },
     votes: {
       type: 'array',
-      fieldNumber: 9,
+      fieldNumber: 8,
       items: {
         dataType: 'bytes',
         format: 'lisk32',
@@ -65,7 +45,7 @@ export const anchorStoreSchema = {
     },
     id: {
       dataType: 'bytes',
-      fieldNumber: 10,
+      fieldNumber: 9,
     },
   },
 };
@@ -96,7 +76,7 @@ export const createCommandParamsSchema = {
   $id: 'anchor/create',
   title: 'CreateAsset transaction asset for anchor module',
   type: 'object',
-  required: ['spotifyId', 'appleMusicId', 'name', 'album', 'artists', 'images'],
+  required: ['spotifyId', 'appleMusicId', 'name', 'album', 'artists'],
   properties: {
     spotifyId: {
       dataType: 'string',
@@ -119,26 +99,6 @@ export const createCommandParamsSchema = {
       fieldNumber: 5,
       items: {
         dataType: 'string',
-      },
-    },
-    images: {
-      type: 'array',
-      fieldNumber: 6,
-      items: {
-        dataType: 'object',
-        required: ['url', 'height', 'width'],
-        url: {
-          dataType: 'string',
-          fieldNumber: 1,
-        },
-        height: {
-          dataType: 'uint32',
-          fieldNumber: 2,
-        },
-        width: {
-          dataType: 'uint32',
-          fieldNumber: 3,
-        },
       },
     },
   },

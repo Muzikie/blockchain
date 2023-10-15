@@ -1,63 +1,49 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ModuleEndpointContext } from 'lisk-framework';
 
-export interface LoyaltyOwner {
-  address: Buffer;
-  shares: number;
-  income: bigint;
-}
-
-export interface LoyaltyOwnerJSON {
-  address: string;
-  shares: number;
-  income: string;
+export enum Badges {
+  AOTD = 'anchor_of_the_day',
+  AOTW = 'anchor_of_the_week',
+  AOTM = 'anchor_of_the_month',
 }
 
 export interface Badge {
-  name: string;
-  releaseYear: string;
-  genre: number[];
-  collectionID: Buffer;
-  creatorAddress: Buffer;
-  owners: LoyaltyOwner[];
-  badgeSignature: Buffer;
-  badgeHash: Buffer;
-  feat: Buffer[];
+  badgeID: Buffer;
+  anchorID: Buffer;
+  awardedTo: Buffer;
+  type: Badges;
+  awardDate: string;
+  rank: number;
+  prize: bigint;
+  claimed: boolean;
 }
 
 export interface BadgeJSON {
-  creatorAddress: string;
-  name: string;
-  releaseYear: number;
-  genre: number[];
-  collectionID: string;
-  owners: LoyaltyOwnerJSON[];
-  badgeSignature: string;
-  badgeHash: string;
-  feat: string[];
+  badgeID: string;
+  anchorID: string;
+  awardedTo: string;
+  type: Badges;
+  awardDate: string;
+  rank: number;
+  prize: string;
+  claimed: boolean;
 }
 
 export interface BadgeAccount {
-  badge: {
-    badges: Buffer[];
-  };
+  badges: Buffer[];
 }
 
 export interface BadgeAccountJSON {
-  badge: {
-    badges: string[];
-  };
+  badge: string[];
 }
 
 export interface CreateCommandParams {
-  name: string;
-  releaseYear: string;
-  genre: number[];
-  collectionID: Buffer;
-  owners: Omit<LoyaltyOwner, 'income'>[];
-  badgeSignature: Buffer;
-  badgeHash: Buffer;
-  feat: Buffer[];
+  anchorID: Buffer;
+  awardedTo: Buffer;
+  type: Badges;
+  awardDate: string;
+  rank: number;
+  prize: bigint;
 }
 
 export interface DestroyCommandParams {
@@ -70,22 +56,8 @@ export interface TransferCommandParams {
   shares: number;
 }
 
-// @todo do we need the collectionID? Do we intend to change it?
-export interface SetAttributesCommandParams {
-  name: string;
-  releaseYear: string;
-  genre: number[];
-  collectionID: Buffer;
+export interface ClaimCommandParams {
   badgeID: Buffer;
-  feat: Buffer[];
-}
-
-export interface StreamCommandParams {
-  badgeID: Buffer;
-}
-
-export interface ReclaimCommandParams {
-  id: Buffer;
 }
 
 export interface Store<Entity> {
@@ -103,29 +75,14 @@ export interface BadgeCreatedEventData {
   badgeID: Buffer;
 }
 
-export interface BadgeStreamedEventData {
-  address: Buffer;
-  owners: LoyaltyOwner[];
-}
-
 export interface ClaimData {
-  badgeIDs: Buffer[];
-  totalClaimed: bigint;
+  badgeID: Buffer;
+  prize: bigint;
 };
 
-export interface BadgeIncomeReclaimedEventData {
+export interface BadgeClaimedEventData {
   address: Buffer;
   claimData: ClaimData;
-}
-
-export interface BadgeSetAttributeEventData {
-  creatorAddress: Buffer;
-  badgeID: Buffer;
-}
-
-export interface Genre {
-  name: string;
-  id: number;
 }
 
 export interface Success {

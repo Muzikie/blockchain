@@ -13,7 +13,8 @@ import { AnchorStore } from '../stores/anchor';
 import { AnchorAccountStore } from '../stores/anchorAccount';
 import { VoteCommandParams, AnchorAccount } from '../types';
 import { voteCommandParamsSchema } from '../schemas';
-import { DEV_ADDRESS, TREASURY_ADDRESS, CONTRIBUTION_FEE } from '../constants';
+import { CONTRIBUTION_FEE } from '../constants';
+import { TREASURY_ADDRESS } from '../../../constants';
 
 export class VoteCommand extends BaseCommand {
   public schema = voteCommandParamsSchema;
@@ -62,7 +63,7 @@ export class VoteCommand extends BaseCommand {
     await this._tokenMethod.transfer(
       methodContext,
       senderAddress,
-      DEV_ADDRESS,
+      TREASURY_ADDRESS,
       tokenID,
       CONTRIBUTION_FEE,
     );

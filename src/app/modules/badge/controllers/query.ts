@@ -2,9 +2,8 @@ import { codec } from 'lisk-sdk';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ModuleEndpointContext } from 'lisk-framework';
 import { address as cryptoAddress } from '@liskhq/lisk-cryptography';
-import { BadgeAccountJSON, BadgeJSON, Badge, Store, BadgeAccount, Genre } from '../types';
+import { BadgeAccountJSON, BadgeJSON, Badge, Store, BadgeAccount } from '../types';
 import { accountStoreSchema, badgeStoreSchema } from '../schemas';
-import { VALID_GENRES } from '../constants';
 
 export const getAccount = async (
   context: ModuleEndpointContext,
@@ -60,5 +59,3 @@ export const getBadge = async (
   const badgeJSON: BadgeJSON = codec.toJSON(badgeStoreSchema, badgeData);
   return badgeJSON;
 };
-
-export const getGenres = (): Genre[] => VALID_GENRES;

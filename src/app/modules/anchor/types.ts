@@ -7,11 +7,6 @@ export interface Anchor {
   name: string;
   album: string;
   artists: string[];
-  images: {
-    url: string;
-    height: number;
-    width: number;
-  }[];
   submitter: Buffer;
   createdAt: string;
   votes: Buffer[];
@@ -24,11 +19,6 @@ export interface AnchorJSON {
   name: string;
   album: string;
   artists: string[];
-  images: {
-    url: string;
-    height: number;
-    width: number;
-  }[];
   submitter: string;
   createdAt: string;
   id: string;
@@ -50,19 +40,6 @@ export interface CreateCommandParams {
   name: string;
   album: string;
   artists: string[];
-  images: {
-    url: string;
-    height: number;
-    width: number;
-  }[];
-  atLeastOneId: {
-    spotifyId?: string;
-  } | {
-    appleMusicId?: string;
-  } | {
-    spotifyId?: string;
-    appleMusicId?: string;
-  };
 }
 
 export interface VoteCommandParams {
@@ -72,11 +49,6 @@ export interface VoteCommandParams {
 export interface Store<Entity> {
   get: (context: ModuleEndpointContext, key: Buffer) => Promise<Entity>;
   has: (context: ModuleEndpointContext, key: Buffer) => Promise<boolean>;
-}
-
-export interface GetByAddressResult {
-  anchorID: Buffer;
-  data: Anchor;
 }
 
 export interface hasAnchorResponse {

@@ -91,7 +91,7 @@ export const hasAnchor = async (
   }
 
   const account = await anchorAccountStore.get(context, queryAddress);
-  if (!account.anchor.shared) {
+  if (!account.anchors.length) {
     return {
       success: false,
       message: 'Account has no valid anchor.',

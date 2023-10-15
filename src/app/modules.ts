@@ -9,7 +9,7 @@ export const registerModules = (app: Application, token: TokenMethod): void => {
   const badgeModule = new BadgeModule();
   const anchorModule = new AnchorModule();
 
-  badgeModule.addDependencies(anchorModule.method, token);
+  badgeModule.addDependencies(token);
   anchorModule.addDependencies(token);
 
   app.registerModule(badgeModule);

@@ -2,79 +2,43 @@ export const badgeStoreSchema = {
   $id: 'badge/badge',
   type: 'object',
   required: [
-    'name',
-    'releaseYear',
-    'genre',
-    'collectionID',
-    'owners',
-    'badgeSignature',
-    'badgeHash',
-    'feat',
-    'creatorAddress',
+    'anchorID',
+    'awardedTo',
+    'type',
+    'awardDate',
+    'rank',
+    'prize',
+    'claimed',
   ],
   properties: {
-    name: {
-      dataType: 'string',
+    anchorID: {
+      dataType: 'bytes',
       fieldNumber: 1,
     },
-    releaseYear: {
-      dataType: 'string',
-      fieldNumber: 2,
-    },
-    genre: {
-      type: 'array',
-      fieldNumber: 3,
-      items: {
-        dataType: 'uint32',
-      },
-    },
-    collectionID: {
-      dataType: 'bytes',
-      fieldNumber: 4,
-    },
-    owners: {
-      type: 'array',
-      fieldNumber: 5,
-      items: {
-        $id: 'badge/badge/owners',
-        type: 'object',
-        required: ['address', 'shares', 'income'],
-        properties: {
-          address: {
-            dataType: 'bytes',
-            fieldNumber: 1,
-          },
-          shares: {
-            dataType: 'uint32',
-            fieldNumber: 2,
-          },
-          income: {
-            dataType: 'uint64',
-            fieldNumber: 3,
-          },
-        },
-      },
-    },
-    badgeSignature: {
-      dataType: 'bytes',
-      fieldNumber: 6,
-    },
-    badgeHash: {
-      dataType: 'bytes',
-      fieldNumber: 7,
-    },
-    feat: {
-      type: 'array',
-      fieldNumber: 8,
-      items: {
-        dataType: 'bytes',
-        format: 'lisk32',
-      },
-    },
-    creatorAddress: {
+    anchorTo: {
       dataType: 'bytes',
       format: 'lisk32',
-      fieldNumber: 9,
+      fieldNumber: 2,
+    },
+    type: {
+      dataType: 'string',
+      fieldNumber: 3,
+    },
+    awardDate: {
+      dataType: 'string',
+      fieldNumber: 4,
+    },
+    rank: {
+      dataType: 'uint32',
+      fieldNumber: 5,
+    },
+    prize: {
+      dataType: 'uint64',
+      fieldNumber: 6,
+    },
+    claimed: {
+      dataType: 'boolean',
+      fieldNumber: 7,
     },
   },
 };
@@ -82,20 +46,13 @@ export const badgeStoreSchema = {
 export const accountStoreSchema = {
   $id: 'badge/account',
   type: 'object',
-  required: ['badge'],
+  required: ['badges'],
   properties: {
-    badge: {
-      type: 'object',
-      required: ['badges'],
+    badges: {
+      type: 'array',
       fieldNumber: 1,
-      properties: {
-        badges: {
-          type: 'array',
-          fieldNumber: 1,
-          items: {
-            dataType: 'bytes',
-          },
-        },
+      items: {
+        dataType: 'bytes',
       },
     },
   },
@@ -106,72 +63,33 @@ export const createCommandParamsSchema = {
   title: 'CreateAsset transaction asset for badge module',
   type: 'object',
   required: [
-    'name',
-    'releaseYear',
-    'genre',
-    'collectionID',
-    'owners',
-    'badgeSignature',
-    'badgeHash',
-    'feat',
+    'anchorID',
+    'awardedTo',
+    'type',
+    'awardDate',
+    'rank',
   ],
   properties: {
-    name: {
-      dataType: 'string',
+    anchorID: {
+      dataType: 'bytes',
       fieldNumber: 1,
-      minLength: 3,
-      maxLength: 40,
     },
-    releaseYear: {
-      dataType: 'string',
+    awardedTo: {
+      dataType: 'bytes',
+      format: 'lisk32',
       fieldNumber: 2,
     },
-    genre: {
-      type: 'array',
+    type: {
+      dataType: 'string',
       fieldNumber: 3,
-      items: {
-        dataType: 'uint32',
-      },
     },
-    collectionID: {
-      dataType: 'bytes',
+    awardDate: {
+      dataType: 'string',
       fieldNumber: 4,
     },
-    owners: {
-      type: 'array',
+    rank: {
+      dataType: 'uint32',
       fieldNumber: 5,
-      items: {
-        $id: 'badge/create/owners',
-        type: 'object',
-        required: ['address', 'shares'],
-        properties: {
-          address: {
-            dataType: 'bytes',
-            format: 'lisk32',
-            fieldNumber: 1,
-          },
-          shares: {
-            dataType: 'uint32',
-            fieldNumber: 2,
-          },
-        },
-      },
-    },
-    badgeSignature: {
-      dataType: 'bytes',
-      fieldNumber: 6,
-    },
-    badgeHash: {
-      dataType: 'bytes',
-      fieldNumber: 7,
-    },
-    feat: {
-      type: 'array',
-      fieldNumber: 8,
-      items: {
-        dataType: 'bytes',
-        format: 'lisk32',
-      },
     },
   },
 };
@@ -189,73 +107,9 @@ export const destroyCommandParamsSchema = {
   },
 };
 
-export const transferCommandParamsSchema = {
-  $id: 'badge/transfer',
-  title: 'TransferAsset transaction asset for badge module',
-  type: 'object',
-  required: ['badgeID', 'address', 'shares'],
-  properties: {
-    badgeID: {
-      dataType: 'bytes',
-      fieldNumber: 1,
-    },
-    address: {
-      dataType: 'bytes',
-      format: 'lisk32',
-      fieldNumber: 2,
-    },
-    shares: {
-      dataType: 'uint32',
-      fieldNumber: 3,
-    },
-  },
-};
-
-export const setAttributesCommandParamsSchema = {
-  $id: 'badge/setAttributes',
-  title: 'SetAttributesAsset transaction asset for badge module',
-  type: 'object',
-  required: ['name', 'releaseYear', 'genre', 'feat', 'collectionID', 'badgeID'],
-  properties: {
-    name: {
-      dataType: 'string',
-      fieldNumber: 1,
-      minLength: 3,
-      maxLength: 40,
-    },
-    releaseYear: {
-      dataType: 'string',
-      fieldNumber: 2,
-    },
-    genre: {
-      type: 'array',
-      fieldNumber: 3,
-      items: {
-        dataType: 'uint32',
-      },
-    },
-    feat: {
-      type: 'array',
-      fieldNumber: 4,
-      items: {
-        dataType: 'bytes',
-        format: 'lisk32',
-      },
-    },
-    collectionID: {
-      dataType: 'bytes',
-      fieldNumber: 5,
-    },
-    badgeID: {
-      dataType: 'bytes',
-      fieldNumber: 6,
-    },
-  },
-};
-
-export const streamCommandParamsSchema = {
-  $id: 'badge/stream',
-  title: 'StreamAsset transaction asset for badge module',
+export const claimCommandParamsSchema = {
+  $id: 'badge/reclaim',
+  title: 'ClaimAsset transaction asset for badge module',
   type: 'object',
   required: ['badgeID'],
   properties: {
@@ -266,23 +120,10 @@ export const streamCommandParamsSchema = {
   },
 };
 
-export const reclaimCommandParamsSchema = {
-  $id: 'badge/reclaim',
-  title: 'ReclaimAsset transaction asset for badge module',
-  type: 'object',
-  required: ['id'],
-  properties: {
-    id: {
-      dataType: 'bytes',
-      fieldNumber: 1,
-    },
-  },
-};
-
 export const badgeCreatedEventDataSchema = {
   $id: '/badge/events/badgeCreatedData',
   type: 'object',
-  required: ['creatorAddress', 'badgeID'],
+  required: ['creatorAddress', 'badgeID', 'prize'],
   properties: {
     creatorAddress: {
       dataType: 'bytes',
@@ -293,48 +134,15 @@ export const badgeCreatedEventDataSchema = {
       dataType: 'bytes',
       fieldNumber: 2,
     },
-  },
-};
-
-export const badgeStreamedEventDataSchema = {
-  $id: '/badge/events/badgeStreamedData',
-  type: 'object',
-  required: ['address', 'owners'],
-  properties: {
-    address: {
-      dataType: 'bytes',
-      format: 'lisk32',
-      fieldNumber: 1,
-    },
-    owners: {
-      type: 'array',
-      fieldNumber: 2,
-      items: {
-        $id: 'badge/events/badgeStreamedData/owners',
-        type: 'object',
-        required: ['address', 'income', 'shares'],
-        properties: {
-          address: {
-            dataType: 'bytes',
-            format: 'lisk32',
-            fieldNumber: 1,
-          },
-          income: {
-            dataType: 'uint64',
-            fieldNumber: 2,
-          },
-          shares: {
-            dataType: 'uint32',
-            fieldNumber: 3,
-          },
-        },
-      },
+    prize: {
+      dataType: 'uint64',
+      fieldNumber: 3,
     },
   },
 };
 
-export const BadgeIncomeReclaimedEventDataSchema = {
-  $id: '/badge/events/badgeIncomeReclaimedData',
+export const BadgeClaimedEventDataSchema = {
+  $id: '/badge/events/badgeClaimedData',
   type: 'object',
   required: ['address', 'claimData'],
   properties: {
@@ -344,19 +152,16 @@ export const BadgeIncomeReclaimedEventDataSchema = {
       fieldNumber: 1,
     },
     claimData: {
-      $id: 'badge/events/badgeIncomeReclaimedData/claimData',
+      $id: 'badge/events/badgeClaimedData/claimData',
       type: 'object',
       fieldNumber: 2,
-      required: ['badgeIDs', 'totalClaimed'],
+      required: ['badgeID', 'prize'],
       properties: {
-        badgeIDs: {
-          type: 'array',
+        badgeID: {
+          dataType: 'bytes',
           fieldNumber: 1,
-          items: {
-            dataType: 'bytes',
-          }
         },
-        totalClaimed: {
+        prize: {
           dataType: 'uint64',
           fieldNumber: 2,
         },
