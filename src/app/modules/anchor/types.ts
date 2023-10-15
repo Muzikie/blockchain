@@ -7,6 +7,11 @@ export interface Anchor {
   name: string;
   album: string;
   artists: string[];
+  images: {
+    url: string;
+    height: number;
+    width: number;
+  }[];
   submitter: Buffer;
   createdAt: string;
   votes: Buffer[];
@@ -19,6 +24,11 @@ export interface AnchorJSON {
   name: string;
   album: string;
   artists: string[];
+  images: {
+    url: string;
+    height: number;
+    width: number;
+  }[];
   submitter: string;
   createdAt: string;
   id: string;
@@ -40,6 +50,11 @@ export interface CreateCommandParams {
   name: string;
   album: string;
   artists: string[];
+  images: {
+    url: string;
+    height: number;
+    width: number;
+  }[];
 }
 
 export interface VoteCommandParams {
