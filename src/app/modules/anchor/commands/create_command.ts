@@ -32,13 +32,29 @@ export class CreateCommand extends BaseCommand {
     context: CommandVerifyContext<CreateCommandParams>,
   ): Promise<VerificationResult> {
     const anchorStore = this.stores.get(AnchorStore);
-    const anchorID = getAnchorID(context.params);
-    const anchorExists = await anchorStore.has(context, anchorID);
+    const { senderAddress } = context.transaction;
+    const anchorAccountStore = this.stores.get(AnchorAccountStore);
+    const anchorId = getAnchorID(context.params);
+
+    const anchorExists = await anchorStore.has(context, anchorId);
     if (anchorExists) {
       throw new Error('This anchor already exist.');
     }
 
-    // @todo Add submission rate limit
+    // Add submission rate limit
+    const senderExists = await anchorAccountStore.has(context, senderAddress);
+    if(senderExists) {
+      const senderAccount = await anchorAccountStore.get(context, senderAddress);
+      const IDS = senderAccount.anchors.slice(senderAccount.anchors.length - 11);
+
+      if(IDS.length >= 10) {
+        const anchor = await anchorStore.get(context, IDS[0]);
+        
+        if ( anchor.createdAt === getCreatedAt(Math.floor(((new Date()).getTime())))) {
+          throw new Error('You have exceeded the 10 anchor submissions within the last 24 hours limit.');
+        }
+      }
+    }
 
     return { status: VerifyStatus.OK };
   }
