@@ -30,19 +30,22 @@ export const anchorStoreSchema = {
       type: 'array',
       fieldNumber: 6,
       items: {
-        dataType: 'object',
+        $id: 'anchor/create/images',
+        type: 'object',
         required: ['url', 'height', 'width'],
-        url: {
-          dataType: 'string',
-          fieldNumber: 1,
-        },
-        height: {
-          dataType: 'uint32',
-          fieldNumber: 2,
-        },
-        width: {
-          dataType: 'uint32',
-          fieldNumber: 3,
+        properties: {
+          url: {
+            dataType: 'string',
+            fieldNumber: 1,
+          },
+          height: {
+            dataType: 'uint32',
+            fieldNumber: 2,
+          },
+          width: {
+            dataType: 'uint32',
+            fieldNumber: 3,
+          },
         },
       },
     },
@@ -122,28 +125,30 @@ export const createCommandParamsSchema = {
       },
     },
     images: {
-      $id: 'anchor/create/images',
       type: 'array',
       fieldNumber: 6,
       items: {
+        $id: 'anchor/create/images',
         type: 'object',
         required: ['url', 'height', 'width'],
-        url: {
-          dataType: 'string',
-          fieldNumber: 1,
-        },
-        height: {
-          dataType: 'uint32',
-          fieldNumber: 2,
-        },
-        width: {
-          dataType: 'uint32',
-          fieldNumber: 3,
+        properties: {
+          url: {
+            dataType: 'string',
+            fieldNumber: 1,
+          },
+          height: {
+            dataType: 'uint32',
+            fieldNumber: 2,
+          },
+          width: {
+            dataType: 'uint32',
+            fieldNumber: 3,
+          },
         },
       },
     },
   },
-};
+}
 
 export const voteCommandParamsSchema = {
   $id: 'anchor/vote',
