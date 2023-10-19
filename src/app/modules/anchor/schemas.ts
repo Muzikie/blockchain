@@ -20,11 +20,8 @@ export const anchorStoreSchema = {
       fieldNumber: 4,
     },
     artists: {
-      type: 'array',
+      dataType: 'string',
       fieldNumber: 5,
-      items: {
-        dataType: 'string',
-      },
     },
     images: {
       type: 'array',
@@ -118,11 +115,8 @@ export const createCommandParamsSchema = {
       fieldNumber: 4,
     },
     artists: {
-      type: 'array',
+      dataType: 'string',
       fieldNumber: 5,
-      items: {
-        dataType: 'string',
-      },
     },
     images: {
       type: 'array',
@@ -204,9 +198,9 @@ export const hasAnchorResponse = {
 export const anchorCreatedEventDataSchema = {
   $id: '/anchor/events/anchorCreatedEventData',
   type: 'object',
-  required: ['creatorAddress', 'anchorID'],
+  required: ['submitter', 'anchorID', 'createdAt'],
   properties: {
-    creatorAddress: {
+    submitter: {
       dataType: 'bytes',
       format: 'lisk32',
       fieldNumber: 1,
@@ -215,13 +209,9 @@ export const anchorCreatedEventDataSchema = {
       dataType: 'bytes',
       fieldNumber: 2,
     },
-    consumable: {
+    createdAt: {
       dataType: 'uint64',
       fieldNumber: 3,
-    },
-    streams: {
-      dataType: 'uint64',
-      fieldNumber: 4,
     },
   },
 };

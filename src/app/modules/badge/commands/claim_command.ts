@@ -11,8 +11,7 @@ import {
 } from 'lisk-sdk';
 import { BadgeStore } from '../stores/badge';
 import { claimCommandParamsSchema } from '../schemas';
-import { ClaimCommandParams, ClaimData } from '../types';
-import { BadgeClaimed } from '../events/badgeClaimed';
+import { ClaimCommandParams } from '../types';
 import { TREASURY_ADDRESS } from '../../../constants';
 
 export class ClaimCommand extends BaseCommand {
@@ -65,17 +64,5 @@ export class ClaimCommand extends BaseCommand {
       tokenID,
       badgeNFT.prize,
     );
-
-    // Emit a "BadgeClaimed" event
-    const claimData: ClaimData = {
-      badgeID,
-      prize: badgeNFT.prize,
-    }
-
-    const badgeClaimed = this.events.get(BadgeClaimed);
-    badgeClaimed.add(context, {
-      address: context.transaction.senderAddress,
-      claimData,
-    }, [context.transaction.senderAddress]);
   }
 }

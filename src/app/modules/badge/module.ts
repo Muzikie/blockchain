@@ -20,7 +20,6 @@ import { CreateCommand } from './commands/create_command';
 import { DestroyCommand } from './commands/destroy_command';
 import { ClaimCommand } from './commands/claim_command';
 import { BadgeCreated } from './events/badgeCreated';
-import { BadgeClaimed } from './events/badgeClaimed';
 import { BadgeEndpoint } from './endpoint';
 import {
   accountStoreSchema,
@@ -54,7 +53,6 @@ public constructor() {
   this.stores.register(BadgeAccountStore, new BadgeAccountStore(this.name, 0));
   this.stores.register(BadgeStore, new BadgeStore(this.name, 1));
   this.events.register(BadgeCreated, new BadgeCreated(this.name));
-  this.events.register(BadgeClaimed, new BadgeClaimed(this.name));
 }
 
 public addDependencies(

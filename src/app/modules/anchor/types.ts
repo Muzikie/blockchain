@@ -6,7 +6,7 @@ export interface Anchor {
   appleMusicId?: string;
   name: string;
   album: string;
-  artists: string[];
+  artists: string;
   images: {
     url: string;
     height: number;
@@ -23,7 +23,7 @@ export interface AnchorJSON {
   appleMusicId?: string;
   name: string;
   album: string;
-  artists: string[];
+  artists: string;
   images: {
     url: string;
     height: number;
@@ -49,7 +49,7 @@ export interface CreateCommandParams {
   appleMusicId?: string;
   name: string;
   album: string;
-  artists: string[];
+  artists: string;
   images: {
     url: string;
     height: number;

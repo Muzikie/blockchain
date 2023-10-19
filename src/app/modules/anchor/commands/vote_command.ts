@@ -11,7 +11,7 @@ import {
 } from 'lisk-sdk';
 import { AnchorStore } from '../stores/anchor';
 import { AnchorAccountStore } from '../stores/anchorAccount';
-import { VoteCommandParams, AnchorAccount } from '../types';
+import { VoteCommandParams, AnchorAccount, Anchor } from '../types';
 import { voteCommandParamsSchema } from '../schemas';
 import { CONTRIBUTION_FEE } from '../constants';
 import { TREASURY_ADDRESS } from '../../../constants';
@@ -57,7 +57,7 @@ export class VoteCommand extends BaseCommand {
     const anchorStore = this.stores.get(AnchorStore);
 
     // Get anchor from the blockchain and add the sender address to the votes
-    const anchorNFT = await anchorStore.get(context, anchorID);
+    const anchorNFT: Anchor = await anchorStore.get(context, anchorID);
 
     // Collect the contribution fee
     await this._tokenMethod.transfer(

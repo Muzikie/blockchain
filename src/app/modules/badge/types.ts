@@ -71,18 +71,8 @@ export enum CreateEventResult {
 }
 
 export interface BadgeCreatedEventData {
-  creatorAddress: Buffer;
-  badgeID: Buffer;
-}
-
-export interface ClaimData {
   badgeID: Buffer;
   prize: bigint;
-};
-
-export interface BadgeClaimedEventData {
-  address: Buffer;
-  claimData: ClaimData;
 }
 
 export interface Success {

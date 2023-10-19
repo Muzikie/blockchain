@@ -8,9 +8,6 @@ export class BadgeCreated extends BaseEvent<BadgeCreatedEventData> {
   public schema = badgeCreatedEventDataSchema;
 
   public log(ctx: EventQueuer, data: BadgeCreatedEventData): void {
-    this.add(ctx, data, [
-      data.creatorAddress,
-      data.badgeID,
-    ]);
+    this.add(ctx, data, []);
   }
 }

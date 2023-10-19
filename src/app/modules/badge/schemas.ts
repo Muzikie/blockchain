@@ -2,6 +2,7 @@ export const badgeStoreSchema = {
   $id: 'badge/badge',
   type: 'object',
   required: [
+    'badgeID',
     'anchorID',
     'awardedTo',
     'type',
@@ -11,34 +12,38 @@ export const badgeStoreSchema = {
     'claimed',
   ],
   properties: {
-    anchorID: {
+    badgeID: {
       dataType: 'bytes',
       fieldNumber: 1,
     },
-    anchorTo: {
+    anchorID: {
+      dataType: 'bytes',
+      fieldNumber: 2,
+    },
+    awardedTo: {
       dataType: 'bytes',
       format: 'lisk32',
-      fieldNumber: 2,
+      fieldNumber: 3,
     },
     type: {
       dataType: 'string',
-      fieldNumber: 3,
+      fieldNumber: 4,
     },
     awardDate: {
       dataType: 'string',
-      fieldNumber: 4,
+      fieldNumber: 5,
     },
     rank: {
       dataType: 'uint32',
-      fieldNumber: 5,
+      fieldNumber: 6,
     },
     prize: {
       dataType: 'uint64',
-      fieldNumber: 6,
+      fieldNumber: 7,
     },
     claimed: {
       dataType: 'boolean',
-      fieldNumber: 7,
+      fieldNumber: 8,
     },
   },
 };
@@ -121,22 +126,17 @@ export const claimCommandParamsSchema = {
 };
 
 export const badgeCreatedEventDataSchema = {
-  $id: '/badge/events/badgeCreatedData',
+  $id: '/badge/events/badgeCreatedEventData',
   type: 'object',
-  required: ['creatorAddress', 'badgeID', 'prize'],
+  required: ['badgeID', 'prize'],
   properties: {
-    creatorAddress: {
-      dataType: 'bytes',
-      format: 'lisk32',
-      fieldNumber: 1,
-    },
     badgeID: {
       dataType: 'bytes',
-      fieldNumber: 2,
+      fieldNumber: 1,
     },
     prize: {
       dataType: 'uint64',
-      fieldNumber: 3,
+      fieldNumber: 2,
     },
   },
 };

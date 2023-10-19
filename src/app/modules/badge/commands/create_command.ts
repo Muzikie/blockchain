@@ -86,8 +86,8 @@ export class CreateCommand extends BaseCommand {
     // Emit a "New collection" event
     const badgeCreated = this.events.get(BadgeCreated);
     badgeCreated.add(context, {
-      creatorAddress: context.transaction.senderAddress,
       badgeID,
+      prize: BigInt(0),
     }, [context.transaction.senderAddress]);
   }
 }
