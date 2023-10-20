@@ -2,17 +2,17 @@
 
 exports[`DestroyCommand constructor should have valid schema 1`] = `
 {
-  "$id": "collection/destroy",
+  "$id": "badge/destroy",
   "properties": {
-    "collectionID": {
+    "badgeID": {
       "dataType": "bytes",
       "fieldNumber": 1,
     },
   },
   "required": [
-    "collectionID",
+    "badgeID",
   ],
-  "title": "DestroyAsset transaction asset for collection module",
+  "title": "DestroyAsset transaction asset for badge module",
   "type": "object",
 }
 `;

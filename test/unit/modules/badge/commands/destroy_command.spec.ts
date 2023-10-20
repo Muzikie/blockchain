@@ -1,17 +1,17 @@
-import { StreamCommand } from '../../../../../src/app/modules/audio/commands/stream_command';
-import { AudioModule } from '../../../../../src/app/modules/audio/module';
+import { DestroyCommand } from '../../../../../src/app/modules/badge/commands/destroy_command';
+import { BadgeModule } from '../../../../../src/app/modules/badge/module';
 
-describe('StreamCommand', () => {
-  let command: StreamCommand;
-  const module = new AudioModule();
+describe('DestroyCommand', () => {
+  let command: DestroyCommand;
+  const module = new BadgeModule();
 
   beforeEach(() => {
-    command = new StreamCommand(module.stores, module.events);
+    command = new DestroyCommand(module.stores, module.events);
   });
 
   describe('constructor', () => {
     it('should have valid name', () => {
-      expect(command.name).toBe('stream');
+      expect(command.name).toBe('destroy');
     });
 
     it('should have valid schema', () => {

@@ -1,9 +1,9 @@
-import { CreateCommand } from '../../../../../src/app/modules/audio/commands/create_command';
-import { AudioModule } from '../../../../../src/app/modules/audio/module';
+import { CreateCommand } from '../../../../../src/app/modules/anchor/commands/create_command';
+import { AnchorModule } from '../../../../../src/app/modules/anchor/module';
 
 describe('CreateCommand', () => {
   let command: CreateCommand;
-  const module = new AudioModule();
+  const module = new AnchorModule();
 
   beforeEach(() => {
     command = new CreateCommand(module.stores, module.events);

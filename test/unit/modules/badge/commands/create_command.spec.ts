@@ -1,17 +1,17 @@
-import { TransferCommand } from '../../../../../src/app/modules/collection/commands/transfer_command';
-import { CollectionModule } from '../../../../../src/app/modules/collection/module';
+import { CreateCommand } from '../../../../../src/app/modules/badge/commands/create_command';
+import { BadgeModule } from '../../../../../src/app/modules/badge/module';
 
-describe('TransferCommand', () => {
-  let command: TransferCommand;
-  const module = new CollectionModule();
+describe('CreateCommand', () => {
+  let command: CreateCommand;
+  const module = new BadgeModule();
 
   beforeEach(() => {
-    command = new TransferCommand(module.stores, module.events);
+    command = new CreateCommand(module.stores, module.events);
   });
 
   describe('constructor', () => {
     it('should have valid name', () => {
-      expect(command.name).toBe('transfer');
+      expect(command.name).toBe('create');
     });
 
     it('should have valid schema', () => {

@@ -1,17 +1,17 @@
-import { SetAttributesCommand } from '../../../../../src/app/modules/collection/commands/set_attributes_command';
-import { CollectionModule } from '../../../../../src/app/modules/collection/module';
+import { ClaimCommand } from '../../../../../src/app/modules/badge/commands/claim_command';
+import { BadgeModule } from '../../../../../src/app/modules/badge/module';
 
-describe('SetAttributesCommand', () => {
-  let command: SetAttributesCommand;
-  const module = new CollectionModule();
+describe('ClaimCommand', () => {
+  let command: ClaimCommand;
+  const module = new BadgeModule();
 
   beforeEach(() => {
-    command = new SetAttributesCommand(module.stores, module.events);
+    command = new ClaimCommand(module.stores, module.events);
   });
 
   describe('constructor', () => {
     it('should have valid name', () => {
-      expect(command.name).toBe('setAttributes');
+      expect(command.name).toBe('claim');
     });
 
     it('should have valid schema', () => {

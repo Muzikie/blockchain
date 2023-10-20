@@ -1,6 +1,6 @@
-// import * as modules from '../../../src/app/modules/profile'
+// import { BadgeModule } from '../../../../src/app/modules/badge/module'
 
-describe('ProfileModule', () => {
+describe('BadgeModule', () => {
   describe('constructor', () => {
     it.todo('should have valid name');
   });
@@ -16,11 +16,5 @@ describe('ProfileModule', () => {
   });
   describe('afterCommandExecute', () => {
     it.todo('should execute after transaction execute');
-  });
-  describe('beforeBlockExecute', () => {
-    it.todo('should execute after genesis execute');
-  });
-  describe('afterBlockExecute', () => {
-    it.todo('should execute after genesis execute');
   });
 });

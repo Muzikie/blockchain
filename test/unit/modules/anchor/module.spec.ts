@@ -1,6 +1,6 @@
-// import { AudioModule } from '../../../../src/app/modules/audio/module'
+// import * as modules from '../../../src/app/modules/anchor'
 
-describe('AudioModule', () => {
+describe('AnchorModule', () => {
   describe('constructor', () => {
     it.todo('should have valid name');
   });
@@ -16,5 +16,11 @@ describe('AudioModule', () => {
   });
   describe('afterCommandExecute', () => {
     it.todo('should execute after transaction execute');
+  });
+  describe('beforeTransactionsExecute Block', () => {
+    it.todo('should execute after genesis execute');
+  });
+  describe('afterTransactionsExecute Block', () => {
+    it.todo('should execute after genesis execute');
   });
 });

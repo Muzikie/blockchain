@@ -113,7 +113,7 @@ export const destroyCommandParamsSchema = {
 };
 
 export const claimCommandParamsSchema = {
-  $id: 'badge/reclaim',
+  $id: 'badge/claim',
   title: 'ClaimAsset transaction asset for badge module',
   type: 'object',
   required: ['badgeID'],

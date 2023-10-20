@@ -1,17 +1,17 @@
-import { CreateCommand } from '../../../../../src/app/modules/subscription/commands/create_command';
-import { SubscriptionModule } from '../../../../../src/app/modules/subscription/module';
+import { VoteCommand } from '../../../../../src/app/modules/anchor/commands/vote_command';
+import { AnchorModule } from '../../../../../src/app/modules/anchor/module';
 
-describe('CreateCommand', () => {
-  let command: CreateCommand;
-  const module = new SubscriptionModule();
+describe('VoteCommand', () => {
+  let command: VoteCommand;
+  const module = new AnchorModule();
 
   beforeEach(() => {
-    command = new CreateCommand(module.stores, module.events);
+    command = new VoteCommand(module.stores, module.events);
   });
 
   describe('constructor', () => {
     it('should have valid name', () => {
-      expect(command.name).toBe('create');
+      expect(command.name).toBe('vote');
     });
 
     it('should have valid schema', () => {
