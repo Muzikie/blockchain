@@ -101,6 +101,8 @@ export class CreateCommand extends BaseCommand {
     // Store the account object in the blockchain
     await anchorAccountStore.set(context, senderAddress, senderAccount);
 
+    await createBadgesForDay(createdAt);
+
     const anchorCreated = this.events.get(AnchorCreated);
     anchorCreated.add(context, {
       submitter: context.transaction.senderAddress,

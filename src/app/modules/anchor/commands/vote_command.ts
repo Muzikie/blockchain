@@ -88,7 +88,20 @@ export class VoteCommand extends BaseCommand {
         votes: [anchorID],
       };
     }
-
     await anchorAccountStore.set(context, senderAddress, senderAccount);
+
+    // Determine which badge the sender should be assigned to.
+    const currentDate = new Date().toISOString().substring(0, 10); // Get today's date
+    const winningIDs = await getWinningAnchorsForDate(currentDate); // YYYY-MM-DD
+
+    // get anchors for winningIDs
+    const winningAnchors = await Promise.all(
+      winningIDs.map((anchorID) => anchorStore.get(context, anchorID)),
+    );
+
+    // Compare votes and place updatedAnchor in correct position
+    const updatedWinningIDs = [...winningAnchors, updatedAnchor].sort((a, b) => a.votes.length - b.votes.length).slice(-3)[Symbol].map(item => ({anchorID: item.anchorID, awardedTo: item.submitter})));
+
+    await updateBadgesForDate(currentDate, updatedWinningAnchors);
   }
 }
