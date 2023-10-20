@@ -1,13 +1,13 @@
 import { codec } from 'lisk-sdk';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { ModuleEndpointContext } from 'lisk-framework';
+import { ModuleEndpointContext, BaseStore } from 'lisk-framework';
 import { address as cryptoAddress } from '@liskhq/lisk-cryptography';
-import { BadgeAccountJSON, BadgeJSON, Badge, Store, BadgeAccount } from '../types';
+import { BadgeAccountJSON, BadgeJSON, Badge, BadgeAccount, Badges } from '../types';
 import { accountStoreSchema, badgeStoreSchema } from '../schemas';
 
 export const getAccount = async (
   context: ModuleEndpointContext,
-  badgeAccountSubStore: Store<BadgeAccount>,
+  badgeAccountSubStore: BaseStore<BadgeAccount>,
 ): Promise<BadgeAccountJSON> => {
   const { address } = context.params;
 
@@ -35,7 +35,7 @@ export const getAccount = async (
 
 export const getBadge = async (
   context: ModuleEndpointContext,
-  badgeSubStore: Store<Badge>,
+  badgeSubStore: BaseStore<Badge>,
 ): Promise<BadgeJSON> => {
   const { badgeID } = context.params;
 
@@ -59,3 +59,19 @@ export const getBadge = async (
   const badgeJSON: BadgeJSON = codec.toJSON(badgeStoreSchema, badgeData);
   return badgeJSON;
 };
+
+export const getWinningAnchorsForDate = async (
+  context: ModuleEndpointContext,
+  badgeStore: BaseStore<Badge>,
+): Promise<Buffer[]> => {
+  const date = context.params.date as string;
+  const badgeIDs = [1, 2, 3]
+    .map((rank) => `${date}-${rank}-${Badges.AOTD}`)
+    .map(id => Buffer.from(id, 'utf8'));
+
+  const badges = await Promise.all(
+    badgeIDs.map(async badgeID => badgeStore.get(context, badgeID)),
+  );
+
+  return badges.map((badge: Badge) => badge.anchorID);
+}

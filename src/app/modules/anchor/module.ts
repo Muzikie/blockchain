@@ -55,7 +55,7 @@ export class AnchorModule extends BaseModule {
     this._tokenMethod = tokenMethod;
 
     this._purchaseCommand.addDependencies(this._tokenMethod);
-  }
+g  }
 
   public metadata(): ModuleMetadata {
     return {
