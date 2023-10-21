@@ -68,37 +68,3 @@ export const getAnchor = async (
   );
   return anchorJSON;
 };
-
-export const hasAnchor = async (
-  context: ModuleEndpointContext,
-  anchorAccountStore: Store<AnchorAccount>,
-) => {
-  if (typeof context.params.address !== 'string') {
-    return {
-      success: false,
-      message: 'Parameter address must be a string.',
-    };
-  }
-
-  const queryAddress = cryptoAddress.getAddressFromLisk32Address(context.params.address);
-  const accountExists = await anchorAccountStore.has(context, queryAddress);
-
-  if (!accountExists) {
-    return {
-      success: false,
-      message: 'Account has no valid anchor.',
-    };
-  }
-
-  const account = await anchorAccountStore.get(context, queryAddress);
-  if (!account.anchors.length) {
-    return {
-      success: false,
-      message: 'Account has no valid anchor.',
-    };
-  }
-
-  return {
-    success: true,
-  };
-};

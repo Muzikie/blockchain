@@ -22,7 +22,6 @@ import {
   addressRequestSchema,
   idRequestSchema,
   anchorStoreSchema,
-  hasAnchorResponse,
 } from './schemas';
 import { AnchorEndpoint } from './endpoint';
 import { AnchorMethod } from './method';
@@ -74,11 +73,6 @@ export class AnchorModule extends BaseModule {
           name: this.endpoint.getAnchor.name,
           request: idRequestSchema,
           response: anchorStoreSchema,
-        },
-        {
-          name: this.endpoint.hasAnchor.name,
-          request: addressRequestSchema,
-          response: hasAnchorResponse,
         },
       ],
       assets: [],

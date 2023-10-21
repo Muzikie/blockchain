@@ -1,16 +1,10 @@
 import { BaseMethod } from 'lisk-sdk';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ModuleEndpointContext } from 'lisk-framework';
-import {
-  AnchorAccountJSON,
-  AnchorJSON,
-  hasAnchorResponse,
-  AnchorAccount,
-  Store,
-} from './types';
+import { AnchorAccountJSON, AnchorJSON } from './types';
 import { AnchorAccountStore } from './stores/anchorAccount';
 import { AnchorStore } from './stores/anchor';
-import { getAccount, getAnchor, hasAnchor } from './controllers';
+import { getAccount, getAnchor } from './controllers';
 
 export class AnchorMethod extends BaseMethod {
   // Get account by address
@@ -23,10 +17,5 @@ export class AnchorMethod extends BaseMethod {
   public async getAnchor(context: ModuleEndpointContext): Promise<AnchorJSON> {
     const anchorStore = this.stores.get(AnchorStore);
     return getAnchor(context, anchorStore);
-  }
-
-  public async hasAnchor(context: ModuleEndpointContext): Promise<hasAnchorResponse> {
-    const anchorAccountStore = this.stores.get(AnchorAccountStore);
-    return hasAnchor(context, anchorAccountStore as Store<AnchorAccount>);
   }
 }

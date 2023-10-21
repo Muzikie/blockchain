@@ -2,7 +2,6 @@ import { BaseEndpoint } from 'lisk-sdk';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ModuleEndpointContext } from 'lisk-framework';
 import {
-  hasAnchorResponse,
   AnchorAccountJSON,
   AnchorJSON,
   Anchor,
@@ -11,7 +10,7 @@ import {
 } from './types';
 import { AnchorAccountStore } from './stores/anchorAccount';
 import { AnchorStore } from './stores/anchor';
-import { getAccount, getAnchor, hasAnchor } from './controllers';
+import { getAccount, getAnchor } from './controllers';
 
 export class AnchorEndpoint extends BaseEndpoint {
   public async getAccount(context: ModuleEndpointContext): Promise<AnchorAccountJSON> {
@@ -22,10 +21,5 @@ export class AnchorEndpoint extends BaseEndpoint {
   public async getAnchor(context: ModuleEndpointContext): Promise<AnchorJSON> {
     const anchorStore = this.stores.get(AnchorStore);
     return getAnchor(context, anchorStore as Store<Anchor>);
-  }
-
-  public async hasAnchor(context: ModuleEndpointContext): Promise<hasAnchorResponse> {
-    const anchorAccountStore = this.stores.get(AnchorAccountStore);
-    return hasAnchor(context, anchorAccountStore as Store<AnchorAccount>);
   }
 }

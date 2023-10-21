@@ -66,11 +66,6 @@ export interface Store<Entity> {
   has: (context: ModuleEndpointContext, key: Buffer) => Promise<boolean>;
 }
 
-export interface hasAnchorResponse {
-  success: boolean;
-  message?: string;
-}
-
 export enum CreateEventResult {
   SUCCESSFUL = 'successful',
   FAILED = 'failed',

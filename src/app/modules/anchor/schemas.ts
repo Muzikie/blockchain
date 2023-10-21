@@ -181,20 +181,6 @@ export const idRequestSchema = {
   required: ['anchorID'],
 };
 
-export const hasAnchorResponse = {
-  $id: '/anchor/hasAnchorResponse',
-  type: 'object',
-  properties: {
-    success: {
-      type: 'boolean',
-    },
-    message: {
-      type: 'string',
-    }
-  },
-  required: ['success', 'message'],
-};
-
 export const anchorCreatedEventDataSchema = {
   $id: '/anchor/events/anchorCreatedEventData',
   type: 'object',
