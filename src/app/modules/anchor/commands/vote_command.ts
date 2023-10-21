@@ -20,6 +20,7 @@ import { getCreatedAt } from '../utils';
 import { TREASURY_ADDRESS } from '../../../constants';
 import { BadgeMethod } from '../../badge/method';
 import { UpdatedWinningAnchor } from '../../badge/types';
+import { AnchorStatsStore } from '../stores/anchorStats';
 
 export class VoteCommand extends BaseCommand {
   public schema = voteCommandParamsSchema;
@@ -81,6 +82,7 @@ export class VoteCommand extends BaseCommand {
     const methodContext = context.getMethodContext();
     const anchorAccountStore = this.stores.get(AnchorAccountStore);
     const anchorStore = this.stores.get(AnchorStore);
+    const anchorStatsStore = this.stores.get(AnchorStatsStore);
 
     // Get anchor from the blockchain and add the sender address to the votes
     const anchorNFT: Anchor = await anchorStore.get(context, anchorID);
@@ -101,6 +103,11 @@ export class VoteCommand extends BaseCommand {
     };
     // Save anchor object on the blockchain
     await anchorStore.set(context, anchorID, updatedAnchor);
+    
+    const anchorStats = await anchorStatsStore.get(context, Buffer.from(anchorNFT.createdAt));
+    anchorStats.votesCount += 1;
+    await anchorStatsStore.set(context, Buffer.from(anchorNFT.createdAt), anchorStats);
+    context.logger.info(`Votes count for ${anchorNFT.createdAt}: ${anchorStats.votesCount} ${anchorStats.anchorsCount}`);
 
     // Add owned anchor and save the anchor on the sender account
     const senderExist = await anchorAccountStore.has(context, senderAddress);

@@ -31,6 +31,7 @@ import { AnchorCreated } from './events/anchorCreated';
 import { CreateCommand } from './commands/create_command';
 import { VoteCommand } from './commands/vote_command';
 import { BadgeMethod } from '../badge/method';
+import { AnchorStatsStore } from './stores/anchorStats';
 
 export class AnchorModule extends BaseModule {
   public endpoint = new AnchorEndpoint(this.stores, this.offchainStores);
@@ -49,6 +50,7 @@ export class AnchorModule extends BaseModule {
     super();
     this.stores.register(AnchorAccountStore, new AnchorAccountStore(this.name, 0));
     this.stores.register(AnchorStore, new AnchorStore(this.name, 1));
+    this.stores.register(AnchorStatsStore, new AnchorStatsStore(this.name, 2));
     this.events.register(AnchorCreated, new AnchorCreated(this.name));
   }
 

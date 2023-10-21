@@ -92,6 +92,26 @@ export const accountStoreSchema = {
   },
 };
 
+export const anchorStatsSchema = {
+  $id: 'anchor/anchorStats',
+  type: 'object',
+  required: ['date', 'anchorsCount', 'votesCount'],
+  properties: {
+    date: {
+      dataType: 'string',
+      fieldNumber: 1,
+    },
+    anchorsCount: {
+      dataType: 'uint32',
+      fieldNumber: 2,
+    },
+    votesCount: {
+      dataType: 'uint32',
+      fieldNumber: 3,
+    },
+  },
+};
+
 export const createCommandParamsSchema = {
   $id: 'anchor/create',
   title: 'CreateAsset transaction asset for anchor module',

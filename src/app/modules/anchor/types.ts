@@ -39,6 +39,12 @@ export interface AnchorAccount {
   votes: Buffer[];
 }
 
+export interface AnchorStats {
+    date: string;
+    anchorsCount: number;
+    votesCount: number ;
+}
+
 export interface AnchorAccountJSON {
   anchor: string[];
   votes: string[];

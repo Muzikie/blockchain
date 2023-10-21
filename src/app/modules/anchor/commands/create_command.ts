@@ -17,6 +17,7 @@ import { VOTE_RATE_LIMIT } from '../constants';
 import { BadgeMethod } from '../../badge/method';
 import { Badges } from '../../badge/types';
 import { getBadgeID } from '../../badge/utils';
+import { AnchorStatsStore } from '../stores/anchorStats';
 
 export class CreateCommand extends BaseCommand {
   public schema = createCommandParamsSchema;
@@ -65,6 +66,7 @@ export class CreateCommand extends BaseCommand {
     } = context;
     const anchorAccountStore = this.stores.get(AnchorAccountStore);
     const anchorStore = this.stores.get(AnchorStore);
+    const anchorStatsStore = this.stores.get(AnchorStatsStore);
     const methodContext = context.getMethodContext();
 
     // Create anchor ID
@@ -84,6 +86,23 @@ export class CreateCommand extends BaseCommand {
     context.logger.info(badgeIDs.map((idd) => idd.toString('hex')));
     // Store the anchor object in the blockchain
     await anchorStore.set(context, anchorID, anchor);
+
+    const StatsExist = await anchorStatsStore.has(context, Buffer.from(createdAt));
+  
+    if (!StatsExist) {
+      const newAnchorStats = {
+        date: createdAt,
+        anchorsCount: 1,
+        votesCount: 0,
+      };
+      await anchorStatsStore.set(context, Buffer.from(createdAt), newAnchorStats);
+      context.logger.info(`Anchors count for ${createdAt}: 1`);
+    } else {
+      const anchorStats = await anchorStatsStore.get(context, Buffer.from(createdAt));
+      anchorStats.anchorsCount += 1;
+      await anchorStatsStore.set(context, Buffer.from(createdAt), anchorStats);
+      context.logger.info(`Anchors count2SS for ${createdAt}: ${anchorStats.anchorsCount}`);
+    }
 
     // Get the sender account from the blockchain
     const senderExists = await anchorAccountStore.has(context, senderAddress);
