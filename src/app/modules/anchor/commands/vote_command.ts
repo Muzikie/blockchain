@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable @typescript-eslint/member-ordering */
 /* eslint-disable class-methods-use-this */
 
@@ -9,6 +10,7 @@ import {
   VerifyStatus,
   TokenMethod,
 } from 'lisk-sdk';
+import { ModuleEndpointContext } from 'lisk-framework';
 import { AnchorStore } from '../stores/anchor';
 import { AnchorAccountStore } from '../stores/anchorAccount';
 import { VoteCommandParams, AnchorAccount, Anchor } from '../types';
@@ -115,7 +117,7 @@ export class VoteCommand extends BaseCommand {
     await anchorAccountStore.set(context, senderAddress, senderAccount);
 
     // Determine which badge the sender should be assigned to.
-    const winningIDs = await this._badgeMethod.getWinningAnchorsForDate(methodContext, anchorNFT.createdAt);
+    const winningIDs = await this._badgeMethod.getWinningAnchorsForDate(methodContext as unknown as ModuleEndpointContext, anchorNFT.createdAt);
 
     // get anchors for winningIDs
     const winningAnchors: Anchor[] = await Promise.all(

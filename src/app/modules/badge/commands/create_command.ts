@@ -11,15 +11,9 @@ import { BadgeStore } from '../stores/badge';
 import { BadgeAccountStore } from '../stores/badgeAccount';
 import { CreateCommandParams, Badge, BadgeAccount } from '../types';
 import { createCommandParamsSchema } from '../schemas';
+import { getBadgeID } from '../utils';
 import { TREASURY_ADDRESS } from '../../../constants';
 import { BadgeCreated } from '../events/badgeCreated';
-
-const getBadgeID = (params: CreateCommandParams) =>
-  Buffer.concat([
-    Buffer.from(params.type, 'utf8'),
-    Buffer.from(params.rank.toString(), 'utf8'),
-    Buffer.from(params.awardDate, 'utf8')],
-  );
 
 export class CreateCommand extends BaseCommand {
   public schema = createCommandParamsSchema;
@@ -40,7 +34,7 @@ export class CreateCommand extends BaseCommand {
     }
 
     // Ensure that there's only one badge (of each type) per day
-    const badgeID = getBadgeID(params);
+    const badgeID = getBadgeID(params.awardDate, params.rank, params.type);
     const badgeExists = await badgeSubStore.has(context, badgeID);
     if (badgeExists) {
       throw new Error('You have already created this badge.');
@@ -52,7 +46,7 @@ export class CreateCommand extends BaseCommand {
   public async execute(context: CommandExecuteContext<CreateCommandParams>): Promise<void> {
     const { params, transaction } = context;
     // Get namehash output of the badge file
-    const badgeID = getBadgeID(params);
+    const badgeID = getBadgeID(params.awardDate, params.rank, params.type);
 
     const badgeAccountSubStore = this.stores.get(BadgeAccountStore);
     const badgeSubStore = this.stores.get(BadgeStore);

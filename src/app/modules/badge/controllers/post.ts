@@ -2,6 +2,7 @@
 import { BaseStore, MethodContext } from 'lisk-framework';
 import { Badge, Badges, UpdatedWinningAnchor } from '../types';
 import { DATE_REG } from '../constants';
+import { getBadgeID } from '../utils';
 
 export const createBadgesForDay = async (
   context: MethodContext,
@@ -12,10 +13,8 @@ export const createBadgesForDay = async (
     throw new Error('Parameter date must be a string in YYYY-MM-DD format.');
   }
 
-  const badgeIDs = [1,2,3]
-    .map((rank) => `${awardDate}-${rank}-${Badges.AOTD}`)
-    .map(str => Buffer.from(str, 'utf8'));
-
+  const badgeIDs = [1, 2, 3]
+    .map((rank) => getBadgeID(awardDate, rank, Badges.AOTD));
   const badgeExists = await badgeStore.has(context, badgeIDs[0]);
 
   if (badgeExists) {
@@ -23,12 +22,12 @@ export const createBadgesForDay = async (
   }
 
   await Promise.all(
-    badgeIDs.map(async (badgeID, rank) => {
+    badgeIDs.map(async (badgeID, index) => {
       const badge = {
         badgeID,
         anchorID: Buffer.from(''),
         awardedTo: Buffer.from(''),
-        rank,
+        rank: index + 1,
         type: Badges.AOTD,
         awardDate,
         prize: BigInt(0),
@@ -48,9 +47,8 @@ export const updateBadgesForDate = async (
   date: string,
   updatedWinningAnchors: UpdatedWinningAnchor[],
 ): Promise<boolean> => {
-  const badgeIDs = [1,2,3]
-    .map((rank) => `${date}-${rank}-${Badges.AOTD}`)
-    .map(id => Buffer.from(id, 'utf8'));
+  const badgeIDs = [1, 2, 3]
+    .map((rank) => getBadgeID(date, rank, Badges.AOTD))
 
   const badges = await Promise.all(
     badgeIDs.map(async (badgeID) => badgeStore.get(context,  badgeID)),

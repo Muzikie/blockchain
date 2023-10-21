@@ -15,6 +15,8 @@ import { createCommandParamsSchema } from '../schemas';
 import { getCreatedAt, getAnchorID } from '../utils';
 import { VOTE_RATE_LIMIT } from '../constants';
 import { BadgeMethod } from '../../badge/method';
+import { Badges } from '../../badge/types';
+import { getBadgeID } from '../../badge/utils';
 
 export class CreateCommand extends BaseCommand {
   public schema = createCommandParamsSchema;
@@ -77,6 +79,9 @@ export class CreateCommand extends BaseCommand {
       submitter: senderAddress,
     };
 
+    const badgeIDs = [1, 2, 3]
+      .map((rank) => getBadgeID(createdAt, rank, Badges.AOTD));
+    context.logger.info(badgeIDs.map((idd) => idd.toString('hex')));
     // Store the anchor object in the blockchain
     await anchorStore.set(context, anchorID, anchor);
 
