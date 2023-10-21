@@ -12,18 +12,9 @@ import { AnchorAccountStore } from '../stores/anchorAccount';
 import { AnchorCreated } from '../events/anchorCreated';
 import { CreateCommandParams, Anchor, AnchorAccount } from '../types';
 import { createCommandParamsSchema } from '../schemas';
+import { getCreatedAt, getAnchorID } from '../utils';
+import { VOTE_RATE_LIMIT } from '../constants';
 import { BadgeMethod } from '../../badge/method';
-
-const getAnchorID = (params: CreateCommandParams): Buffer =>
-  Buffer.concat([Buffer.from(params.spotifyId, 'utf8')]);
-
-const getCreatedAt = (timestamp: number): string => {
-  const date = new Date(timestamp);
-  const year = date.getFullYear();
-  const month = date.getMonth() + 1;
-  const day = date.getDate();
-  return `${year}-${month}-${day}`;
-};
 
 export class CreateCommand extends BaseCommand {
   public schema = createCommandParamsSchema;
@@ -51,13 +42,13 @@ export class CreateCommand extends BaseCommand {
     const senderExists = await anchorAccountStore.has(context, senderAddress);
     if(senderExists) {
       const senderAccount = await anchorAccountStore.get(context, senderAddress);
-      const IDS = senderAccount.anchors.slice(senderAccount.anchors.length - 11);
+      const IDS = senderAccount.anchors.slice(-1 * VOTE_RATE_LIMIT);
 
-      if(IDS.length >= 10) {
+      if(IDS.length >= VOTE_RATE_LIMIT) {
         const anchor = await anchorStore.get(context, IDS[0]);
-        
-        if ( anchor.createdAt === getCreatedAt(Math.floor(((new Date()).getTime())))) {
-          throw new Error('You have exceeded the 10 anchor submissions within the last 24 hours limit.');
+
+        if (anchor.createdAt === getCreatedAt(Math.floor(((new Date()).getTime())))) {
+          throw new Error(`You have exceeded the ${VOTE_RATE_LIMIT} anchor submissions daily limit.`);
         }
       }
     }

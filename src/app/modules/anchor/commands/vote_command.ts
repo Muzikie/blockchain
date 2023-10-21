@@ -13,7 +13,8 @@ import { AnchorStore } from '../stores/anchor';
 import { AnchorAccountStore } from '../stores/anchorAccount';
 import { VoteCommandParams, AnchorAccount, Anchor } from '../types';
 import { voteCommandParamsSchema } from '../schemas';
-import { CONTRIBUTION_FEE } from '../constants';
+import { CONTRIBUTION_FEE, VOTE_RATE_LIMIT } from '../constants';
+import { getCreatedAt } from '../utils';
 import { TREASURY_ADDRESS } from '../../../constants';
 import { BadgeMethod } from '../../badge/method';
 import { UpdatedWinningAnchor } from '../../badge/types';
@@ -34,17 +35,36 @@ export class VoteCommand extends BaseCommand {
   ): Promise<VerificationResult> {
     const {
       params: { anchorID },
+      transaction: { senderAddress },
     } = context;
     const anchorStore = this.stores.get(AnchorStore);
+    const anchorAccountStore = this.stores.get(AnchorAccountStore);
     // Throw if anchor didn't exist
     const anchorExists = await anchorStore.has(context, anchorID);
     if (!anchorExists) {
       throw new Error(`Anchor with ID ${anchorID.toString('hex')} does not exist`);
     }
 
-    // @todo Throw error if already voted
+    // Throw error if already voted
+    const anchor = await anchorStore.get(context, anchorID);
+    if (anchor.votes.includes(senderAddress)) {
+      throw new Error(`You have already voted for anchor with ID ${anchorID.toString('hex')}`);
+    }
 
-    // @todo Add vote rate limit
+    // Add vote rate limit
+    const senderExists = await anchorAccountStore.has(context, senderAddress);
+    if(senderExists) {
+      const senderAccount = await anchorAccountStore.get(context, senderAddress);
+      const IDS = senderAccount.votes.slice(-1 * VOTE_RATE_LIMIT);
+
+      if(IDS.length >= VOTE_RATE_LIMIT) {
+        const thresholdAnchor = await anchorStore.get(context, IDS[0]);
+
+        if (thresholdAnchor.createdAt === getCreatedAt(Math.floor(((new Date()).getTime())))) {
+          throw new Error(`You have exceeded the ${VOTE_RATE_LIMIT} vote submissions daily limit.`);
+        }
+      }
+    }
 
     return { status: VerifyStatus.OK };
   }
