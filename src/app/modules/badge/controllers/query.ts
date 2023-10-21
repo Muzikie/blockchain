@@ -63,8 +63,8 @@ export const getBadge = async (
 export const getWinningAnchorsForDate = async (
   context: ModuleEndpointContext,
   badgeStore: BaseStore<Badge>,
+  date: string,
 ): Promise<Buffer[]> => {
-  const date = context.params.date as string;
   const badgeIDs = [1, 2, 3]
     .map((rank) => `${date}-${rank}-${Badges.AOTD}`)
     .map(id => Buffer.from(id, 'utf8'));

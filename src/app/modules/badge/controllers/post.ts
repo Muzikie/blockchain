@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { BaseStore, MethodContext } from 'lisk-framework';
-import { Badge, Badges } from '../types';
+import { Badge, Badges, UpdatedWinningAnchor } from '../types';
 import { DATE_REG } from '../constants';
 
 export const createBadgesForDay = async (
@@ -46,7 +46,7 @@ export const updateBadgesForDate = async (
   context: MethodContext,
   badgeStore: BaseStore<Badge>,
   date: string,
-  updatedWinningAnchors: Buffer[],
+  updatedWinningAnchors: UpdatedWinningAnchor[],
 ): Promise<boolean> => {
   const badgeIDs = [1,2,3]
     .map((rank) => `${date}-${rank}-${Badges.AOTD}`)

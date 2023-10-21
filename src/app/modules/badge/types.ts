@@ -78,3 +78,8 @@ export interface BadgeCreatedEventData {
 export interface Success {
   success: boolean;
 }
+
+export interface UpdatedWinningAnchor {
+  awardedTo: Buffer;
+  anchorID: Buffer;
+}

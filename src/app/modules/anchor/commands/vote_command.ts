@@ -15,13 +15,17 @@ import { VoteCommandParams, AnchorAccount, Anchor } from '../types';
 import { voteCommandParamsSchema } from '../schemas';
 import { CONTRIBUTION_FEE } from '../constants';
 import { TREASURY_ADDRESS } from '../../../constants';
+import { BadgeMethod } from '../../badge/method';
+import { UpdatedWinningAnchor } from '../../badge/types';
 
 export class VoteCommand extends BaseCommand {
   public schema = voteCommandParamsSchema;
   private _tokenMethod!: TokenMethod;
+  private _badgeMethod!: BadgeMethod;
 
-  public addDependencies(tokenMethod: TokenMethod) {
+  public addDependencies(tokenMethod: TokenMethod, badgeMethod: BadgeMethod) {
     this._tokenMethod = tokenMethod;
+    this._badgeMethod = badgeMethod;
   }
 
   // eslint-disable-next-line @typescript-eslint/require-await
@@ -91,17 +95,22 @@ export class VoteCommand extends BaseCommand {
     await anchorAccountStore.set(context, senderAddress, senderAccount);
 
     // Determine which badge the sender should be assigned to.
-    const currentDate = new Date().toISOString().substring(0, 10); // Get today's date
-    const winningIDs = await getWinningAnchorsForDate(currentDate); // YYYY-MM-DD
+    const winningIDs = await this._badgeMethod.getWinningAnchorsForDate(methodContext, anchorNFT.createdAt);
 
     // get anchors for winningIDs
-    const winningAnchors = await Promise.all(
-      winningIDs.map((anchorID) => anchorStore.get(context, anchorID)),
+    const winningAnchors: Anchor[] = await Promise.all(
+      winningIDs.map(async (id) => anchorStore.get(context, id)),
     );
 
     // Compare votes and place updatedAnchor in correct position
-    const updatedWinningIDs = [...winningAnchors, updatedAnchor].sort((a, b) => a.votes.length - b.votes.length).slice(-3)[Symbol].map(item => ({anchorID: item.anchorID, awardedTo: item.submitter})));
+    const updatedWinningIDs: UpdatedWinningAnchor[] = [...winningAnchors, updatedAnchor]
+      .sort((a, b) => a.votes.length - b.votes.length)
+      .slice(-3)
+      .map(item => ({
+        anchorID: item.id,
+        awardedTo: item.submitter
+      }));
 
-    await updateBadgesForDate(currentDate, updatedWinningAnchors);
+    await this._badgeMethod.updateBadgesForDate(methodContext, anchorNFT.createdAt, updatedWinningIDs);
   }
 }

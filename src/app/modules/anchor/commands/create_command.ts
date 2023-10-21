@@ -12,6 +12,7 @@ import { AnchorAccountStore } from '../stores/anchorAccount';
 import { AnchorCreated } from '../events/anchorCreated';
 import { CreateCommandParams, Anchor, AnchorAccount } from '../types';
 import { createCommandParamsSchema } from '../schemas';
+import { BadgeMethod } from '../../badge/method';
 
 const getAnchorID = (params: CreateCommandParams): Buffer =>
   Buffer.concat([Buffer.from(params.spotifyId, 'utf8')]);
@@ -26,6 +27,11 @@ const getCreatedAt = (timestamp: number): string => {
 
 export class CreateCommand extends BaseCommand {
   public schema = createCommandParamsSchema;
+  private _badgeMethod!: BadgeMethod;
+
+  public addDependencies(badgeMethod: BadgeMethod) {
+    this._badgeMethod = badgeMethod;
+  }
 
   // eslint-disable-next-line @typescript-eslint/require-await
   public async verify(
@@ -66,6 +72,7 @@ export class CreateCommand extends BaseCommand {
     } = context;
     const anchorAccountStore = this.stores.get(AnchorAccountStore);
     const anchorStore = this.stores.get(AnchorStore);
+    const methodContext = context.getMethodContext();
 
     // Create anchor ID
     const anchorID = getAnchorID(context.params);
@@ -101,7 +108,7 @@ export class CreateCommand extends BaseCommand {
     // Store the account object in the blockchain
     await anchorAccountStore.set(context, senderAddress, senderAccount);
 
-    await createBadgesForDay(createdAt);
+    await this._badgeMethod.createBadgesForDay(methodContext, createdAt);
 
     const anchorCreated = this.events.get(AnchorCreated);
     anchorCreated.add(context, {

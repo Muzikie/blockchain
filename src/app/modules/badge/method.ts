@@ -1,7 +1,7 @@
 import { BaseMethod } from 'lisk-sdk';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { ModuleEndpointContext, MethodContext } from 'lisk-framework';
-import { BadgeAccountJSON, BadgeJSON} from './types';
+import { BadgeAccountJSON, BadgeJSON, UpdatedWinningAnchor } from './types';
 import { BadgeAccountStore } from './stores/badgeAccount';
 import { BadgeStore } from './stores/badge';
 import { getAccount, getBadge, getWinningAnchorsForDate } from './controllers/query';
@@ -23,12 +23,12 @@ export class BadgeMethod extends BaseMethod {
     return createBadgesForDay(context, badgeSubStore, awardDate);
   }
 
-  public async getWinningAnchorsForDate(context: ModuleEndpointContext): Promise<Buffer[]> {
+  public async getWinningAnchorsForDate(context: ModuleEndpointContext, date: string): Promise<Buffer[]> {
     const badgeSubStore = this.stores.get(BadgeStore);
-    return getWinningAnchorsForDate(context, badgeSubStore);
+    return getWinningAnchorsForDate(context, badgeSubStore, date);
   }
 
-  public async updateBadgesForDate(context: MethodContext, date: string, updatedWinningAnchors: Buffer[]): Promise<boolean> {
+  public async updateBadgesForDate(context: MethodContext, date: string, updatedWinningAnchors: UpdatedWinningAnchor[]): Promise<boolean> {
     const badgeSubStore = this.stores.get(BadgeStore);
     return updateBadgesForDate(context, badgeSubStore, date, updatedWinningAnchors);
   }

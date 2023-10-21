@@ -31,18 +31,20 @@ import { AnchorAccountStore } from './stores/anchorAccount';
 import { AnchorCreated } from './events/anchorCreated';
 import { CreateCommand } from './commands/create_command';
 import { VoteCommand } from './commands/vote_command';
+import { BadgeMethod } from '../badge/method';
 
 export class AnchorModule extends BaseModule {
   public endpoint = new AnchorEndpoint(this.stores, this.offchainStores);
   public method = new AnchorMethod(this.stores, this.events);
 
   private readonly _createCommand = new CreateCommand(this.stores, this.events);
-  private readonly _purchaseCommand = new VoteCommand(this.stores, this.events);
+  private readonly _voteCommand = new VoteCommand(this.stores, this.events);
 
   // eslint-disable-next-line @typescript-eslint/member-ordering
-  public commands = [this._createCommand, this._purchaseCommand];
+  public commands = [this._createCommand, this._voteCommand];
 
   private _tokenMethod!: TokenMethod;
+  private _badgeMethod!: BadgeMethod;
 
   public constructor() {
     super();
@@ -51,11 +53,13 @@ export class AnchorModule extends BaseModule {
     this.events.register(AnchorCreated, new AnchorCreated(this.name));
   }
 
-  public addDependencies(tokenMethod: TokenMethod): void {
+  public addDependencies(tokenMethod: TokenMethod, badgeMethod: BadgeMethod): void {
     this._tokenMethod = tokenMethod;
+    this._badgeMethod = badgeMethod;
 
-    this._purchaseCommand.addDependencies(this._tokenMethod);
-g  }
+    this._createCommand.addDependencies(this._badgeMethod);
+    this._voteCommand.addDependencies(this._tokenMethod, this._badgeMethod);
+  }
 
   public metadata(): ModuleMetadata {
     return {
