@@ -18,7 +18,6 @@ import { CONTRIBUTION_FEE, VOTE_RATE_LIMIT } from '../constants';
 import { getCreatedAt } from '../utils';
 import { TREASURY_ADDRESS } from '../../../constants';
 import { BadgeMethod } from '../../badge/method';
-import { UpdatedWinningAnchor } from '../../badge/types';
 import { AnchorStatsStore } from '../stores/anchorStats';
 
 export class VoteCommand extends BaseCommand {

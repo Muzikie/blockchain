@@ -1,10 +1,11 @@
 import { BaseMethod } from 'lisk-sdk';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { ModuleEndpointContext } from 'lisk-framework';
+import { ModuleEndpointContext, MethodContext } from 'lisk-framework';
 import { AnchorAccountJSON, AnchorJSON } from './types';
 import { AnchorAccountStore } from './stores/anchorAccount';
 import { AnchorStore } from './stores/anchor';
-import { getAccount, getAnchor } from './controllers';
+import { AnchorStatsStore } from './stores/anchorStats';
+import { getAccount, getAnchor, getVoteCounts } from './controllers';
 
 export class AnchorMethod extends BaseMethod {
   // Get account by address
@@ -18,4 +19,11 @@ export class AnchorMethod extends BaseMethod {
     const anchorStore = this.stores.get(AnchorStore);
     return getAnchor(context, anchorStore);
   }
+  
+  // Get VotesCount by date
+  public async getVoteCounts(context: MethodContext, date: string): Promise<number> {
+    const anchorStatsStore = this.stores.get(AnchorStatsStore);
+    return getVoteCounts(context, date, anchorStatsStore);
+  }
 }
+

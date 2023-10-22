@@ -13,13 +13,18 @@ import { BadgeStore } from '../stores/badge';
 import { claimCommandParamsSchema } from '../schemas';
 import { ClaimCommandParams } from '../types';
 import { TREASURY_ADDRESS } from '../../../constants';
+import { CONTRIBUTION_FEE } from '../../anchor/constants';
+import { BADGE_PRIZE_PERCENTAGE } from '../constants';
+import { AnchorMethod } from '../../anchor/method';
 
 export class ClaimCommand extends BaseCommand {
   public schema = claimCommandParamsSchema;
   private _tokenMethod!: TokenMethod;
+  private _anchorMethod!: AnchorMethod;
 
-  public addDependencies(tokenMethod: TokenMethod) {
+  public addDependencies(tokenMethod: TokenMethod, anchorMethod: AnchorMethod) {
     this._tokenMethod = tokenMethod;
+    this._anchorMethod = anchorMethod;
   }
 
   // eslint-disable-next-line @typescript-eslint/require-await
@@ -51,10 +56,20 @@ export class ClaimCommand extends BaseCommand {
     const methodContext = getMethodContext();
     const badgeStore = this.stores.get(BadgeStore);
 
-    // Set the claimed flag to true
+    // calculate the prize based on the anchor's contribution and the badge rank
     const badgeNFT = await badgeStore.get(context, badgeID);
-    badgeNFT.claimed = true;
-    await badgeStore.set(context, badgeID, badgeNFT);
+    
+    const votesCount = await this._anchorMethod.getVoteCounts(methodContext, badgeNFT.awardDate);
+    
+    const prize = (BigInt(votesCount) * CONTRIBUTION_FEE * BADGE_PRIZE_PERCENTAGE[badgeNFT.rank - 1]) / BigInt(100);
+    // update prize and set claimed to true
+    const updateBadge  = {
+      ...badgeNFT,
+      prize,
+      claimed: true,
+    }; 
+
+    await badgeStore.set(context, badgeID, updateBadge);
 
     // Transfer the prize
     await this._tokenMethod.transfer(
@@ -62,7 +77,7 @@ export class ClaimCommand extends BaseCommand {
       TREASURY_ADDRESS,
       senderAddress,
       tokenID,
-      badgeNFT.prize,
+      prize,
     );
   }
 }

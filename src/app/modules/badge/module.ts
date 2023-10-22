@@ -30,6 +30,7 @@ import {
 import { BadgeMethod } from './method';
 import { BadgeAccountStore } from './stores/badgeAccount';
 import { BadgeStore } from './stores/badge';
+import { AnchorMethod } from '../anchor/method';
 
 export class BadgeModule extends BaseModule {
 public endpoint = new BadgeEndpoint(this.stores, this.offchainStores);
@@ -47,6 +48,7 @@ public commands = [
 ];
 
 private _tokenMethod!: TokenMethod;
+private _anchorMethod!: AnchorMethod;
 
 public constructor() {
   super();
@@ -57,11 +59,13 @@ public constructor() {
 
 public addDependencies(
   tokenMethod: TokenMethod,
+  anchorMethod: AnchorMethod,
 ): void {
   this._tokenMethod = tokenMethod;
-
+  this._anchorMethod = anchorMethod;
+  
   // eslint-disable-next-line @typescript-eslint/no-unsafe-call
-  this._claimCommands.addDependencies(this._tokenMethod);
+  this._claimCommands.addDependencies(this._tokenMethod, this._anchorMethod);
 }
 
 public metadata(): ModuleMetadata {

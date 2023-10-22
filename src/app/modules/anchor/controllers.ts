@@ -1,6 +1,6 @@
 import { codec } from 'lisk-sdk';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { ModuleEndpointContext } from 'lisk-framework';
+import { ModuleEndpointContext, MethodContext , BaseStore } from 'lisk-framework';
 import { address as cryptoAddress } from '@liskhq/lisk-cryptography';
 import {
   AnchorAccountJSON,
@@ -8,6 +8,7 @@ import {
   Anchor,
   AnchorAccount,
   Store,
+  AnchorStats,
 } from './types';
 import { accountStoreSchema, anchorStoreSchema } from './schemas';
 
@@ -67,4 +68,14 @@ export const getAnchor = async (
     anchorData,
   );
   return anchorJSON;
+};
+
+export const getVoteCounts = async (
+  context: MethodContext,
+  date: string,
+  anchorStatsStore: BaseStore<AnchorStats>
+): Promise<number> => {
+  const anchorStats = await anchorStatsStore.get(context, Buffer.from(date));
+  const votes = anchorStats.votesCount
+  return votes
 };
