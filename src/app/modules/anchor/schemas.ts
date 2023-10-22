@@ -1,7 +1,17 @@
 export const anchorStoreSchema = {
   $id: 'anchor/anchor',
   type: 'object',
-  required: ['spotifyId', 'appleMusicId', 'name', 'album', 'artists', 'images', 'createdAt', 'submitter', 'id'],
+  required: [
+    'spotifyId',
+    'appleMusicId',
+    'name',
+    'album',
+    'artists',
+    'images',
+    'createdAt',
+    'submitter',
+    'id',
+  ],
   properties: {
     spotifyId: {
       dataType: 'string',
@@ -162,7 +172,7 @@ export const createCommandParamsSchema = {
       },
     },
   },
-}
+};
 
 export const voteCommandParamsSchema = {
   $id: 'anchor/vote',

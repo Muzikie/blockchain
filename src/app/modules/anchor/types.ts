@@ -40,9 +40,9 @@ export interface AnchorAccount {
 }
 
 export interface AnchorStats {
-    date: string;
-    anchorsCount: number;
-    votesCount: number ;
+  date: string;
+  anchorsCount: number;
+  votesCount: number;
 }
 
 export interface AnchorAccountJSON {

@@ -4,5 +4,5 @@ import { AnchorStats } from '../types';
 import { anchorStatsSchema } from '../schemas';
 
 export class AnchorStatsStore extends BaseStore<AnchorStats> {
-    public schema = anchorStatsSchema;
+  public schema = anchorStatsSchema;
 }

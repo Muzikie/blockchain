@@ -55,14 +55,14 @@ export class VoteCommand extends BaseCommand {
 
     // Add vote rate limit
     const senderExists = await anchorAccountStore.has(context, senderAddress);
-    if(senderExists) {
+    if (senderExists) {
       const senderAccount = await anchorAccountStore.get(context, senderAddress);
       const IDS = senderAccount.votes.slice(-1 * VOTE_RATE_LIMIT);
 
-      if(IDS.length >= VOTE_RATE_LIMIT) {
+      if (IDS.length >= VOTE_RATE_LIMIT) {
         const thresholdAnchor = await anchorStore.get(context, IDS[0]);
 
-        if (thresholdAnchor.createdAt === getCreatedAt(Math.floor(((new Date()).getTime())))) {
+        if (thresholdAnchor.createdAt === getCreatedAt(Math.floor(new Date().getTime()))) {
           throw new Error(`You have exceeded the ${VOTE_RATE_LIMIT} vote submissions daily limit.`);
         }
       }
@@ -106,7 +106,9 @@ export class VoteCommand extends BaseCommand {
     const anchorStats = await anchorStatsStore.get(context, Buffer.from(anchorNFT.createdAt));
     anchorStats.votesCount += 1;
     await anchorStatsStore.set(context, Buffer.from(anchorNFT.createdAt), anchorStats);
-    context.logger.info(`Votes count for ${anchorNFT.createdAt}: ${anchorStats.votesCount} ${anchorStats.anchorsCount}`);
+    context.logger.info(
+      `Votes count for ${anchorNFT.createdAt}: ${anchorStats.votesCount} ${anchorStats.anchorsCount}`,
+    );
 
     // Add owned anchor and save the anchor on the sender account
     const senderExist = await anchorAccountStore.has(context, senderAddress);
@@ -128,7 +130,7 @@ export class VoteCommand extends BaseCommand {
       if (winningIDs[i].length === 0) {
         winningIDs[i] = updatedAnchor.id;
         break;
-      }       
+      }
     }
     // Get anchors for winningIDs
     const winningAnchors = await Promise.all(
@@ -145,9 +147,13 @@ export class VoteCommand extends BaseCommand {
       .slice(-3)
       .map(item => ({
         anchorID: item.id,
-        awardedTo: item.submitter
+        awardedTo: item.submitter,
       }));
 
-    await this._badgeMethod.updateBadgesForDate(methodContext, anchorNFT.createdAt, updatedWinningIDs);
+    await this._badgeMethod.updateBadgesForDate(
+      methodContext,
+      anchorNFT.createdAt,
+      updatedWinningIDs,
+    );
   }
 }

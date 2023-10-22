@@ -43,15 +43,17 @@ export class CreateCommand extends BaseCommand {
 
     // Add submission rate limit
     const senderExists = await anchorAccountStore.has(context, senderAddress);
-    if(senderExists) {
+    if (senderExists) {
       const senderAccount = await anchorAccountStore.get(context, senderAddress);
       const IDS = senderAccount.anchors.slice(-1 * VOTE_RATE_LIMIT);
 
-      if(IDS.length >= VOTE_RATE_LIMIT) {
+      if (IDS.length >= VOTE_RATE_LIMIT) {
         const anchor = await anchorStore.get(context, IDS[0]);
 
-        if (anchor.createdAt === getCreatedAt(Math.floor(((new Date()).getTime())))) {
-          throw new Error(`You have exceeded the ${VOTE_RATE_LIMIT} anchor submissions daily limit.`);
+        if (anchor.createdAt === getCreatedAt(Math.floor(new Date().getTime()))) {
+          throw new Error(
+            `You have exceeded the ${VOTE_RATE_LIMIT} anchor submissions daily limit.`,
+          );
         }
       }
     }
@@ -81,15 +83,14 @@ export class CreateCommand extends BaseCommand {
       submitter: senderAddress,
     };
 
-    const badgeIDs = [1, 2, 3]
-      .map((rank) => getBadgeID(createdAt, rank, Badges.AOTD));
-    context.logger.info(badgeIDs.map((idd) => idd.toString('hex')));
+    const badgeIDs = [1, 2, 3].map(rank => getBadgeID(createdAt, rank, Badges.AOTD));
+    context.logger.info(badgeIDs.map(idd => idd.toString('hex')));
     // Store the anchor object in the blockchain
     await anchorStore.set(context, anchorID, anchor);
 
-    const StatsExist = await anchorStatsStore.has(context, Buffer.from(createdAt));
-  
-    if (!StatsExist) {
+    const statsExist = await anchorStatsStore.has(context, Buffer.from(createdAt));
+
+    if (!statsExist) {
       const newAnchorStats = {
         date: createdAt,
         anchorsCount: 1,
@@ -101,7 +102,7 @@ export class CreateCommand extends BaseCommand {
       const anchorStats = await anchorStatsStore.get(context, Buffer.from(createdAt));
       anchorStats.anchorsCount += 1;
       await anchorStatsStore.set(context, Buffer.from(createdAt), anchorStats);
-      context.logger.info(`Anchors count2SS for ${createdAt}: ${anchorStats.anchorsCount}`);
+      context.logger.info(`Anchors count for ${createdAt}: ${anchorStats.anchorsCount}`);
     }
 
     // Get the sender account from the blockchain
@@ -116,7 +117,7 @@ export class CreateCommand extends BaseCommand {
       const retrievedAccount = await anchorAccountStore.get(context, senderAddress);
       senderAccount = {
         anchors: [...retrievedAccount.anchors, anchorID],
-        votes: retrievedAccount.votes
+        votes: retrievedAccount.votes,
       };
     }
 
@@ -126,10 +127,14 @@ export class CreateCommand extends BaseCommand {
     await this._badgeMethod.createBadgesForDay(methodContext, createdAt);
 
     const anchorCreated = this.events.get(AnchorCreated);
-    anchorCreated.add(context, {
-      submitter: context.transaction.senderAddress,
-      anchorID,
-      createdAt,
-    }, [context.transaction.senderAddress]);
+    anchorCreated.add(
+      context,
+      {
+        submitter: context.transaction.senderAddress,
+        anchorID,
+        createdAt,
+      },
+      [context.transaction.senderAddress],
+    );
   }
 }
