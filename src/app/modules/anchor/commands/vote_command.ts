@@ -10,7 +10,6 @@ import {
   VerifyStatus,
   TokenMethod,
 } from 'lisk-sdk';
-import { ModuleEndpointContext } from 'lisk-framework';
 import { AnchorStore } from '../stores/anchor';
 import { AnchorAccountStore } from '../stores/anchorAccount';
 import { VoteCommandParams, AnchorAccount, Anchor } from '../types';
@@ -103,7 +102,7 @@ export class VoteCommand extends BaseCommand {
     };
     // Save anchor object on the blockchain
     await anchorStore.set(context, anchorID, updatedAnchor);
-    
+
     const anchorStats = await anchorStatsStore.get(context, Buffer.from(anchorNFT.createdAt));
     anchorStats.votesCount += 1;
     await anchorStatsStore.set(context, Buffer.from(anchorNFT.createdAt), anchorStats);
@@ -122,18 +121,27 @@ export class VoteCommand extends BaseCommand {
       };
     }
     await anchorAccountStore.set(context, senderAddress, senderAccount);
-
+    
     // Determine which badge the sender should be assigned to.
-    const winningIDs = await this._badgeMethod.getWinningAnchorsForDate(methodContext as unknown as ModuleEndpointContext, anchorNFT.createdAt);
-
-    // get anchors for winningIDs
-    const winningAnchors: Anchor[] = await Promise.all(
-      winningIDs.map(async (id) => anchorStore.get(context, id)),
+    const winningIDs = await this._badgeMethod.getWinningAnchorsForDate(methodContext, anchorNFT.createdAt);
+    for (let i = 0; i < 3; i+=1) {
+      if (winningIDs[i].length === 0) {
+        winningIDs[i] = updatedAnchor.id;
+        break;
+      }       
+    }
+    // Get anchors for winningIDs
+    const winningAnchors = await Promise.all(
+      winningIDs.map(async (id) => anchorStore.get(context, id))
     );
+    // Check if winningAnchors contains updatedAnchor
+    const updatedWinning = winningAnchors.some(item => item.id.equals(updatedAnchor.id)) ?
+      [...winningAnchors] :
+      [...winningAnchors, updatedAnchor];
+      
 
     // Compare votes and place updatedAnchor in correct position
-    const updatedWinningIDs: UpdatedWinningAnchor[] = [...winningAnchors, updatedAnchor]
-      .sort((a, b) => a.votes.length - b.votes.length)
+    const updatedWinningIDs: UpdatedWinningAnchor[] = updatedWinning.sort((a, b) => a.votes.length - b.votes.length)
       .slice(-3)
       .map(item => ({
         anchorID: item.id,

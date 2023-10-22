@@ -23,7 +23,7 @@ export class BadgeMethod extends BaseMethod {
     return createBadgesForDay(context, badgeSubStore, awardDate);
   }
 
-  public async getWinningAnchorsForDate(context: ModuleEndpointContext, date: string): Promise<Buffer[]> {
+  public async getWinningAnchorsForDate(context: MethodContext, date: string): Promise<Buffer[]> {
     const badgeSubStore = this.stores.get(BadgeStore);
     return getWinningAnchorsForDate(context, badgeSubStore, date);
   }

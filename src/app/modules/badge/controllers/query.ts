@@ -1,6 +1,6 @@
 import { codec } from 'lisk-sdk';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { ModuleEndpointContext, BaseStore } from 'lisk-framework';
+import { ModuleEndpointContext, BaseStore, MethodContext } from 'lisk-framework';
 import { address as cryptoAddress } from '@liskhq/lisk-cryptography';
 import { BadgeAccountJSON, BadgeJSON, Badge, BadgeAccount, Badges } from '../types';
 import { accountStoreSchema, badgeStoreSchema } from '../schemas';
@@ -62,7 +62,7 @@ export const getBadge = async (
 };
 
 export const getWinningAnchorsForDate = async (
-  context: ModuleEndpointContext,
+  context: MethodContext,
   badgeStore: BaseStore<Badge>,
   date: string,
 ): Promise<Buffer[]> => {
