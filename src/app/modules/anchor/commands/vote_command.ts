@@ -125,35 +125,33 @@ export class VoteCommand extends BaseCommand {
     await anchorAccountStore.set(context, senderAddress, senderAccount);
     
     // Determine which badge the sender should be assigned to.
-    const winningIDs = await this._badgeMethod.getWinningAnchorsForDate(methodContext, anchorNFT.createdAt);
-    for (let i = 0; i < 3; i+=1) {
-      if (winningIDs[i].length === 0) {
-        winningIDs[i] = updatedAnchor.id;
-        break;
-      }
-    }
-    // Get anchors for winningIDs
-    const winningAnchors = await Promise.all(
-      winningIDs.map(async (id) => anchorStore.get(context, id))
-    );
-    // Check if winningAnchors contains updatedAnchor
-    const updatedWinning = winningAnchors.some(item => item.id.equals(updatedAnchor.id)) ?
-      [...winningAnchors] :
-      [...winningAnchors, updatedAnchor];
-      
+    const winners = await this._badgeMethod.getWinningAnchorsForDate(methodContext, anchorNFT.createdAt);
+    const blankSpot = winners.findIndex(item => !item.anchorID.length);
+    let updatedWinners = winners;
 
-    // Compare votes and place updatedAnchor in correct position
-    const updatedWinningIDs: UpdatedWinningAnchor[] = updatedWinning.sort((a, b) => a.votes.length - b.votes.length)
-      .slice(-3)
-      .map(item => ({
-        anchorID: item.id,
-        awardedTo: item.submitter,
-      }));
+    if (blankSpot > -1) {
+      updatedWinners[blankSpot] = {
+        anchorID,
+        awardedTo: senderAddress,
+      };
+    } else {
+      // Get anchors for winningIDs
+      const winningAnchors = await Promise.all(
+        winners.map(async(winner) => anchorStore.get(context, winner.anchorID))
+      );
+      // Compare votes and place updatedAnchor in correct position
+      updatedWinners = [...winningAnchors, updatedAnchor].sort((a, b) => a.votes.length - b.votes.length)
+        .slice(-3)
+        .map(item => ({
+          anchorID: item.id,
+          awardedTo: item.submitter,
+        }));
+    }
 
     await this._badgeMethod.updateBadgesForDate(
       methodContext,
       anchorNFT.createdAt,
-      updatedWinningIDs,
+      updatedWinners,
     );
   }
 }

@@ -65,7 +65,7 @@ export const getWinningAnchorsForDate = async (
   context: MethodContext,
   badgeStore: BaseStore<Badge>,
   date: string,
-): Promise<Buffer[]> => {
+): Promise<Pick<Badge, 'anchorID' | 'awardedTo'>[]> => {
   const badgeIDs = [1, 2, 3]
     .map((rank) => getBadgeID(date, rank, Badges.AOTD));
 
@@ -73,5 +73,8 @@ export const getWinningAnchorsForDate = async (
     badgeIDs.map(async badgeID => badgeStore.get(context, badgeID)),
   );
 
-  return badges.map((badge: Badge) => badge.anchorID);
+  return badges.map((badge: Badge) => ({
+    anchorID: badge.anchorID,
+    awardedTo: badge.awardedTo,
+  }));
 }
