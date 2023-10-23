@@ -60,7 +60,7 @@ export const updateBadgesForDate = async (
       ...badge,
       ...newAwardee,
     }
-    await badgeStore.set(context, badge.anchorID, updatedBadge);
+    await badgeStore.set(context, badge.badgeID, updatedBadge);
   }
 
   return true;
