@@ -129,20 +129,26 @@ export class VoteCommand extends BaseCommand {
     const winners = await this._badgeMethod.getWinningAnchorsForDate(methodContext, anchorNFT.createdAt);
     const blankSpot = winners.findIndex(item => !item.anchorID.length);
     let updatedWinners = winners;
+    const anchorExists = updatedWinners.some(winner => winner.anchorID.equals(anchorID));
 
-    if (blankSpot > -1) {
-      updatedWinners[blankSpot] = {
+
+    if (blankSpot > -1 && !anchorExists) {
+      updatedWinners[blankSpot] = { 
         anchorID,
-        awardedTo: senderAddress,
+        awardedTo: senderAddress ,
       };
     } else {
       // Get anchors for winningIDs
       const winningAnchors = await Promise.all(
         winners.map(async(winner) => anchorStore.get(context, winner.anchorID))
       );
+      if (!anchorExists) {
+        winningAnchors.push(updatedAnchor);
+      }
       // Compare votes and place updatedAnchor in correct position
-      updatedWinners = [...winningAnchors, updatedAnchor].sort((a, b) => a.votes.length - b.votes.length)
-        .slice(-3)
+      updatedWinners = winningAnchors
+        .sort((a, b) => b.votes.length - a.votes.length)
+        .slice(0,3)
         .map(item => ({
           anchorID: item.id,
           awardedTo: item.submitter,
