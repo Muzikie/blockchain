@@ -23,7 +23,8 @@ export class AnchorMethod extends BaseMethod {
   // Get VotesCount by date
   public async getVoteCounts(context: MethodContext, date: string): Promise<number> {
     const anchorStatsStore = this.stores.get(AnchorStatsStore);
-    return getVoteCounts(context, date, anchorStatsStore);
+    const response = await getVoteCounts(context, date, anchorStatsStore);
+    return response;
   }
 }
 

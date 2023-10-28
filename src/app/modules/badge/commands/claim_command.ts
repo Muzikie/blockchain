@@ -42,6 +42,26 @@ export class ClaimCommand extends BaseCommand {
         error: new Error('You are not authorized to claim this badge.'),
       };
     }
+    // Only claim unclaimed badges
+    if (badgeNFT.claimed) {
+      return {
+        status: VerifyStatus.FAIL,
+        error: new Error('This badge has already been claimed.'),
+      };
+    }
+
+    // Only claim badges of 3 dys ago
+    const awardDate = new Date(badgeNFT.awardDate);
+
+    const threeDaysAgo = new Date();
+    threeDaysAgo.setDate(threeDaysAgo.getDate() - 3);
+
+    if (awardDate > threeDaysAgo) {
+      return {
+        status: VerifyStatus.FAIL,
+        error: new Error('This badge cannot be claimed yet.'),
+      };
+    }
     return { status: VerifyStatus.OK };
   }
 

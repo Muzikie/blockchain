@@ -12,7 +12,8 @@ import { AnchorAccountStore } from '../stores/anchorAccount';
 import { AnchorCreated } from '../events/anchorCreated';
 import { CreateCommandParams, Anchor, AnchorAccount } from '../types';
 import { createCommandParamsSchema } from '../schemas';
-import { getCreatedAt, getAnchorID } from '../utils';
+import { getAnchorID } from '../utils';
+import { getCreatedAt } from '../../../utils';
 import { VOTE_RATE_LIMIT } from '../constants';
 import { BadgeMethod } from '../../badge/method';
 import { Badges } from '../../badge/types';
@@ -50,7 +51,7 @@ export class CreateCommand extends BaseCommand {
       if (IDS.length >= VOTE_RATE_LIMIT) {
         const anchor = await anchorStore.get(context, IDS[0]);
 
-        if (anchor.createdAt === getCreatedAt(Math.floor(new Date().getTime()))) {
+        if (anchor.createdAt === getCreatedAt(new Date())) {
           throw new Error(
             `You have exceeded the ${VOTE_RATE_LIMIT} anchor submissions daily limit.`,
           );
@@ -73,7 +74,7 @@ export class CreateCommand extends BaseCommand {
 
     // Create anchor ID
     const anchorID = getAnchorID(context.params);
-    const createdAt = getCreatedAt(new Date().getTime());
+    const createdAt = getCreatedAt(new Date());
     // Create anchor object
     const anchor: Anchor = {
       ...params,

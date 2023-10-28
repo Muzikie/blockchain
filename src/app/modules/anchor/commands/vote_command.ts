@@ -15,7 +15,7 @@ import { AnchorAccountStore } from '../stores/anchorAccount';
 import { VoteCommandParams, AnchorAccount, Anchor } from '../types';
 import { voteCommandParamsSchema } from '../schemas';
 import { CONTRIBUTION_FEE, VOTE_RATE_LIMIT } from '../constants';
-import { getCreatedAt } from '../utils';
+import { getCreatedAt } from '../../../utils';
 import { TREASURY_ADDRESS } from '../../../constants';
 import { BadgeMethod } from '../../badge/method';
 import { AnchorStatsStore } from '../stores/anchorStats';
@@ -62,7 +62,7 @@ export class VoteCommand extends BaseCommand {
       if (IDS.length >= VOTE_RATE_LIMIT) {
         const thresholdAnchor = await anchorStore.get(context, IDS[0]);
 
-        if (thresholdAnchor.createdAt === getCreatedAt(Math.floor(new Date().getTime()))) {
+        if (thresholdAnchor.createdAt === getCreatedAt(new Date())) {
           throw new Error(`You have exceeded the ${VOTE_RATE_LIMIT} vote submissions daily limit.`);
         }
       }
