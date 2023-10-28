@@ -8,7 +8,7 @@ export const createBadgesForDay = async (
   context: MethodContext,
   badgeStore: BaseStore<Badge>,
   awardDate: string,
-): Promise<boolean> => {
+): Promise<Buffer[]> => {
   if (!DATE_REG.test(awardDate)) {
     throw new Error('Parameter date must be a string in YYYY-MM-DD format.');
   }
@@ -17,28 +17,26 @@ export const createBadgesForDay = async (
     .map((rank) => getBadgeID(awardDate, rank, Badges.AOTD));
   const badgeExists = await badgeStore.has(context, badgeIDs[0]);
 
-  if (badgeExists) {
-    return false;
+  if (!badgeExists) {
+    await Promise.all(
+      badgeIDs.map(async (badgeID, index) => {
+        const badge = {
+          badgeID,
+          anchorID: Buffer.from(''),
+          awardedTo: Buffer.from(''),
+          rank: index + 1,
+          type: Badges.AOTD,
+          awardDate,
+          prize: BigInt(0),
+          claimed: false,
+        };
+  
+        await badgeStore.set(context, badgeID, badge);
+      }),
+    );
   }
 
-  await Promise.all(
-    badgeIDs.map(async (badgeID, index) => {
-      const badge = {
-        badgeID,
-        anchorID: Buffer.from(''),
-        awardedTo: Buffer.from(''),
-        rank: index + 1,
-        type: Badges.AOTD,
-        awardDate,
-        prize: BigInt(0),
-        claimed: false,
-      };
-
-      await badgeStore.set(context, badgeID, badge);
-    }),
-  );
-
-  return true;
+  return badgeIDs;
 };
 
 export const updateBadgesForDate = async (
@@ -54,13 +52,15 @@ export const updateBadgesForDate = async (
     badgeIDs.map(async (badgeID) => badgeStore.get(context,  badgeID)),
   );
 
+  let index = 0;
   for (const badge of badges) {
-    const newAwardee  = updatedWinningAnchors.shift();
+    const newAwardee  = updatedWinningAnchors[index];
     const updatedBadge = {
       ...badge,
       ...newAwardee,
     }
     await badgeStore.set(context, badge.badgeID, updatedBadge);
+    index += 1;
   }
 
   return true;

@@ -8,6 +8,6 @@ export class AnchorVoted extends BaseEvent<AnchorVotedEventData> {
   public schema = anchorVotedEventDataSchema;
 
   public log(ctx: EventQueuer, data: AnchorVotedEventData): void {
-    this.add(ctx, data, [ ]);
+    this.add(ctx, data, []);
   }
 }

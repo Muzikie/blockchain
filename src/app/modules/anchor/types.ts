@@ -84,6 +84,12 @@ export interface AnchorCreatedEventData {
   badgeIDs: Buffer[];
 }
 
-// Modify the AnchorVotedEventData type to represent an array directly
-export type AnchorVotedEventData = Array<{ anchorID: Buffer; awardedTo: Buffer }>;
+export interface EventWinnerData {
+  anchorID: Buffer;
+  awardedTo: string;
+};
+
+export type AnchorVotedEventData = {
+  updatedWinners: EventWinnerData[];
+};
 

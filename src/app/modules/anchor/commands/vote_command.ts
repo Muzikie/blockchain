@@ -10,9 +10,10 @@ import {
   VerifyStatus,
   TokenMethod,
 } from 'lisk-sdk';
+import { address } from '@liskhq/lisk-cryptography';
 import { AnchorStore } from '../stores/anchor';
 import { AnchorAccountStore } from '../stores/anchorAccount';
-import { VoteCommandParams, AnchorAccount, Anchor } from '../types';
+import { VoteCommandParams, AnchorAccount, Anchor, EventWinnerData } from '../types';
 import { voteCommandParamsSchema } from '../schemas';
 import { CONTRIBUTION_FEE, VOTE_RATE_LIMIT } from '../constants';
 import { getCreatedAt } from '../../../utils';
@@ -154,10 +155,15 @@ export class VoteCommand extends BaseCommand {
       updatedWinners,
     );
 
+    const eventDate: EventWinnerData[] = updatedWinners.map((item) => ({
+      anchorID: item.anchorID,
+      awardedTo: address.getLisk32AddressFromAddress(item.awardedTo),
+    }))
+
     const anchorVoted = this.events.get(AnchorVoted);
     anchorVoted.add(
       context,
-      updatedWinners,
+      { updatedWinners: eventDate },
       [context.transaction.senderAddress],
     );
   }

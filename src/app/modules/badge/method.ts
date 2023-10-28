@@ -18,7 +18,7 @@ export class BadgeMethod extends BaseMethod {
     return getBadge(context, badgeStore);
   }
 
-  public async createBadgesForDay(context: MethodContext, awardDate: string): Promise<boolean> {
+  public async createBadgesForDay(context: MethodContext, awardDate: string): Promise<Buffer[]> {
     const badgeSubStore = this.stores.get(BadgeStore);
     return createBadgesForDay(context, badgeSubStore, awardDate);
   }

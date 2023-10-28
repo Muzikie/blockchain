@@ -16,8 +16,6 @@ import { getAnchorID } from '../utils';
 import { getCreatedAt } from '../../../utils';
 import { VOTE_RATE_LIMIT } from '../constants';
 import { BadgeMethod } from '../../badge/method';
-import { Badges } from '../../badge/types';
-import { getBadgeID } from '../../badge/utils';
 import { AnchorStatsStore } from '../stores/anchorStats';
 
 export class CreateCommand extends BaseCommand {
@@ -84,8 +82,6 @@ export class CreateCommand extends BaseCommand {
       submitter: senderAddress,
     };
 
-    const badgeIDs = [1, 2, 3].map(rank => getBadgeID(createdAt, rank, Badges.AOTD));
-    context.logger.info(badgeIDs.map(idd => idd.toString('hex')));
     // Store the anchor object in the blockchain
     await anchorStore.set(context, anchorID, anchor);
 
@@ -125,7 +121,7 @@ export class CreateCommand extends BaseCommand {
     // Store the account object in the blockchain
     await anchorAccountStore.set(context, senderAddress, senderAccount);
 
-    await this._badgeMethod.createBadgesForDay(methodContext, createdAt);
+    const badgeIDs = await this._badgeMethod.createBadgesForDay(methodContext, createdAt);
 
     const anchorCreated = this.events.get(AnchorCreated);
     anchorCreated.add(
@@ -134,6 +130,7 @@ export class CreateCommand extends BaseCommand {
         submitter: context.transaction.senderAddress,
         anchorID,
         createdAt,
+        badgeIDs,
       },
       [context.transaction.senderAddress],
     );

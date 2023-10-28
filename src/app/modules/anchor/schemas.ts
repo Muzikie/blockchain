@@ -226,29 +226,42 @@ export const anchorCreatedEventDataSchema = {
       fieldNumber: 2,
     },
     createdAt: {
-      dataType: 'uint64',
+      dataType: 'string',
       fieldNumber: 3,
     },
     badgeIDs: {
-      dataType: 'bytes',
+      type: 'array',
       fieldNumber: 4,
+      items: {
+        dataType: 'bytes',
+      },
     },
   },
 };
 
 export const anchorVotedEventDataSchema = {
-  $id: '/anchor/events/anchorCreatedEventData',
-  type: 'array',
-  required: ['anchorID', 'awardedTo'],
+  $id: '/anchor/events/anchorVotedEventData',
+  type: 'object',
+  required: ['updatedWinners'],
   properties: {
-    anchorID: {
-      dataType: 'bytes',
+    updatedWinners: {
+      type: 'array',
       fieldNumber: 1,
-    },
-    awardedTo: {
-      dataType: 'bytes',
-      format: 'lisk32',
-      fieldNumber: 2,
+      items: {
+        $id: '/anchor/events/anchorVotedEventData/items',
+        type: 'object',
+        required: ['anchorID', 'awardedTo'],
+        properties: {
+          anchorID: {
+            dataType: 'bytes',
+            fieldNumber: 1,
+          },
+          awardedTo: {
+            dataType: 'string',
+            fieldNumber: 2,
+          },
+        },
+      },
     },
   },
 };
