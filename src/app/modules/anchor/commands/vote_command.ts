@@ -19,6 +19,7 @@ import { getCreatedAt } from '../utils';
 import { TREASURY_ADDRESS } from '../../../constants';
 import { BadgeMethod } from '../../badge/method';
 import { AnchorStatsStore } from '../stores/anchorStats';
+import { AnchorVoted } from '../events/anchorVoted';
 
 export class VoteCommand extends BaseCommand {
   public schema = voteCommandParamsSchema;
@@ -151,6 +152,13 @@ export class VoteCommand extends BaseCommand {
       methodContext,
       anchorNFT.createdAt,
       updatedWinners,
+    );
+
+    const anchorVoted = this.events.get(AnchorVoted);
+    anchorVoted.add(
+      context,
+      updatedWinners,
+      [context.transaction.senderAddress],
     );
   }
 }

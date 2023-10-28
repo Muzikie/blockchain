@@ -229,5 +229,26 @@ export const anchorCreatedEventDataSchema = {
       dataType: 'uint64',
       fieldNumber: 3,
     },
+    badgeIDs: {
+      dataType: 'bytes',
+      fieldNumber: 4,
+    },
+  },
+};
+
+export const anchorVotedEventDataSchema = {
+  $id: '/anchor/events/anchorCreatedEventData',
+  type: 'array',
+  required: ['anchorID', 'awardedTo'],
+  properties: {
+    anchorID: {
+      dataType: 'bytes',
+      fieldNumber: 1,
+    },
+    awardedTo: {
+      dataType: 'bytes',
+      format: 'lisk32',
+      fieldNumber: 2,
+    },
   },
 };
