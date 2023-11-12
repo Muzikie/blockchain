@@ -21,6 +21,7 @@ import { TREASURY_ADDRESS } from '../../../constants';
 import { BadgeMethod } from '../../badge/method';
 import { AnchorStatsStore } from '../stores/anchorStats';
 import { AnchorVoted } from '../events/anchorVoted';
+import { BADGE_PRIZE_PERCENTAGE } from '../../badge/constants';
 
 export class VoteCommand extends BaseCommand {
   public schema = voteCommandParamsSchema;
@@ -161,9 +162,10 @@ export class VoteCommand extends BaseCommand {
       updatedWinners,
     );
 
-    const eventDate: EventWinnerData[] = updatedWinners.map((item) => ({
+    const eventDate: EventWinnerData[] = updatedWinners.map((item, index) => ({
       anchorID: item.anchorID,
       awardedTo: address.getLisk32AddressFromAddress(item.awardedTo),
+      prize: (BigInt(anchorStats.votesCount) * CONTRIBUTION_FEE * BADGE_PRIZE_PERCENTAGE[index]) / BigInt(100),
     }))
 
     const anchorVoted = this.events.get(AnchorVoted);

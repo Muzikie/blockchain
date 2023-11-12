@@ -87,6 +87,7 @@ export interface AnchorCreatedEventData {
 export interface EventWinnerData {
   anchorID: Buffer;
   awardedTo: string;
+  prize: bigint;
 };
 
 export type AnchorVotedEventData = {

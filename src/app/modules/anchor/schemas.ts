@@ -250,7 +250,7 @@ export const anchorVotedEventDataSchema = {
       items: {
         $id: '/anchor/events/anchorVotedEventData/items',
         type: 'object',
-        required: ['anchorID', 'awardedTo'],
+        required: ['anchorID', 'awardedTo', 'prize'],
         properties: {
           anchorID: {
             dataType: 'bytes',
@@ -259,6 +259,10 @@ export const anchorVotedEventDataSchema = {
           awardedTo: {
             dataType: 'string',
             fieldNumber: 2,
+          },
+          prize: {
+            dataType: 'uint64',
+            fieldNumber: 3,
           },
         },
       },
