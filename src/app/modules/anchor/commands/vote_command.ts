@@ -98,7 +98,7 @@ export class VoteCommand extends BaseCommand {
     );
 
     // Create anchor object
-    const updatedAnchor = {
+    const updatedAnchor: Anchor = {
       ...anchorNFT,
       votes: [...anchorNFT.votes, senderAddress],
     };
@@ -108,9 +108,6 @@ export class VoteCommand extends BaseCommand {
     const anchorStats = await anchorStatsStore.get(context, Buffer.from(anchorNFT.createdAt));
     anchorStats.votesCount += 1;
     await anchorStatsStore.set(context, Buffer.from(anchorNFT.createdAt), anchorStats);
-    context.logger.info(
-      `Votes count for ${anchorNFT.createdAt}: ${anchorStats.votesCount} ${anchorStats.anchorsCount}`,
-    );
 
     // Add owned anchor and save the anchor on the sender account
     const senderExist = await anchorAccountStore.has(context, senderAddress);
@@ -125,13 +122,11 @@ export class VoteCommand extends BaseCommand {
       };
     }
     await anchorAccountStore.set(context, senderAddress, senderAccount);
-    
     // Determine which badge the sender should be assigned to.
     const winners = await this._badgeMethod.getWinningAnchorsForDate(methodContext, anchorNFT.createdAt);
     const blankSpot = winners.findIndex(item => !item.anchorID.length);
     let updatedWinners = winners;
     const anchorExists = updatedWinners.some(winner => winner.anchorID.equals(anchorID));
-
 
     if (blankSpot > -1 && !anchorExists) {
       updatedWinners[blankSpot] = { 
@@ -141,18 +136,18 @@ export class VoteCommand extends BaseCommand {
     } else {
       // Get anchors for winningIDs
       const winningAnchors = await Promise.all(
-        winners.map(async(winner) => anchorStore.get(context, winner.anchorID))
+        winners.map(async(winner) => winner.anchorID.length ? anchorStore.get(context, winner.anchorID) : null)
       );
       if (!anchorExists) {
         winningAnchors.push(updatedAnchor);
       }
       // Compare votes and place updatedAnchor in correct position
       updatedWinners = winningAnchors
-        .sort((a, b) => b.votes.length - a.votes.length)
+        .sort((a, b) => (b?.votes?.length ?? 0) - (a?.votes?.length ?? 0))
         .slice(0,3)
         .map(item => ({
-          anchorID: item.id,
-          awardedTo: item.submitter,
+          anchorID: item?.id ?? Buffer.from(''),
+          awardedTo: item?.submitter ?? Buffer.from(''),
         }));
     }
 
