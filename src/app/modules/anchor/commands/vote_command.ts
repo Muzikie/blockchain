@@ -49,8 +49,13 @@ export class VoteCommand extends BaseCommand {
       throw new Error(`Anchor with ID ${anchorID.toString('hex')} does not exist`);
     }
 
-    // Throw error if already voted
     const anchor = await anchorStore.get(context, anchorID);
+    // Cant vote for your own anchor
+    if (Buffer.compare(anchor.submitter, senderAddress) === 0) {
+      throw new Error(`You can't vote for your own anchor,anchor creator: ${anchor.submitter.toString('hex')}`);
+    }
+
+    // Throw error if already voted
     if (anchor.votes.includes(senderAddress)) {
       throw new Error(`You have already voted for anchor with ID ${anchorID.toString('hex')}`);
     }
@@ -131,7 +136,7 @@ export class VoteCommand extends BaseCommand {
     if (blankSpot > -1 && !anchorExists) {
       updatedWinners[blankSpot] = { 
         anchorID,
-        awardedTo: senderAddress ,
+        awardedTo: anchorNFT.submitter ,
       };
     } else {
       // Get anchors for winningIDs
