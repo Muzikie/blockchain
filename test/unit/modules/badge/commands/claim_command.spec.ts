@@ -1,17 +1,17 @@
-import { CreateCommand } from '../../../../../src/app/modules/badge/commands/create_command';
+import { ClaimCommand } from '../../../../../src/app/modules/badge/commands/claim_command';
 import { BadgeModule } from '../../../../../src/app/modules/badge/module';
 
-describe('CreateCommand', () => {
-	let command: CreateCommand;
+describe('ClaimCommand', () => {
+	let command: ClaimCommand;
 	const module = new BadgeModule();
 
 	beforeEach(() => {
-		command = new CreateCommand(module.stores, module.events);
+		command = new ClaimCommand(module.stores, module.events);
 	});
 
 	describe('constructor', () => {
 		it('should have valid name', () => {
-			expect(command.name).toBe('create');
+			expect(command.name).toBe('claim');
 		});
 
 		it('should have valid schema', () => {

@@ -6,3 +6,7 @@ jest.config.js
 coverage
 benchmark
 dist
+tmp
+build
+scripts
+config
