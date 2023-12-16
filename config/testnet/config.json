@@ -12,17 +12,17 @@
 		"version": "1.0",
 		"seedPeers": [
 			{
-                                "ip": "testnet-seed-00.muzikie.com",
-                                "port": 7667
-                        },
-                        {
-                                "ip": "testnet-seed-01.muzikie.com",
-                                "port": 7667
-                        },
-                        {
-                                "ip": "testnet-seed-02.muzikie.com",
-                                "port": 7667
-                        }
+				"ip": "testnet-seed-00.muzikie.com",
+				"port": 7667
+			},
+			{
+				"ip": "testnet-seed-01.muzikie.com",
+				"port": 7667
+			},
+			{
+				"ip": "testnet-seed-02.muzikie.com",
+				"port": 7667
+			}
 		],
 		"port": 7667
 	},
@@ -38,7 +38,7 @@
 			"fromFile": "./config/genesis_block.blob"
 		},
 		"blockTime": 10,
-		"bftBatchSize": 103,
+		"bftBatchSize": 21,
 		"maxTransactionsSize": 15360,
 		"chainID": "01000003"
 	},
