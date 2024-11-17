@@ -1,1 +1,1 @@
-export { ConsoleCommand } from 'lisk-commander';
+export { ConsoleCommand } from 'klayr-commander';

@@ -1,1 +1,1 @@
-export { InvokeCommand } from 'lisk-commander';
+export { InvokeCommand } from 'klayr-commander';

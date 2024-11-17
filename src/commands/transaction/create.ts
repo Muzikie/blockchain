@@ -1,8 +1,7 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable @typescript-eslint/explicit-member-accessibility */
-/* eslint-disable @typescript-eslint/member-ordering */
-import { TransactionCreateCommand } from 'lisk-commander';
-import { Application, PartialApplicationConfig } from 'lisk-sdk';
+import { TransactionCreateCommand } from 'klayr-commander';
+import { Application, Types } from 'klayr-sdk';
 import { getApplication } from '../../app/app';
 
 type CreateFlags = typeof TransactionCreateCommand.flags & {
@@ -16,7 +15,7 @@ export class CreateCommand extends TransactionCreateCommand {
 
 	static args = [...TransactionCreateCommand.args];
 
-	public getApplication(config: PartialApplicationConfig): Application {
+	public getApplication(config: Types.PartialApplicationConfig): Application {
 		const app = getApplication(config);
 		return app;
 	}

@@ -1,1 +1,1 @@
-export { MessageDecryptCommand } from 'lisk-commander';
+export { MessageDecryptCommand } from 'klayr-commander';

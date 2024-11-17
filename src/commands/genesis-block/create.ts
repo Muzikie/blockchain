@@ -1,10 +1,10 @@
-import { BaseGenesisBlockCommand } from 'lisk-commander';
-import { Application, PartialApplicationConfig } from 'lisk-sdk';
+import { BaseGenesisBlockCommand } from 'klayr-commander';
+import { Application, Types } from 'klayr-sdk';
 import { join } from 'path';
 import { getApplication } from '../../app/app';
 
 export class GenesisBlockCommand extends BaseGenesisBlockCommand {
-	public getApplication(config: PartialApplicationConfig): Application {
+	public getApplication(config: Types.PartialApplicationConfig): Application {
 		const app = getApplication(config);
 		return app;
 	}

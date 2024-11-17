@@ -1,1 +1,1 @@
-export { NodeInfoCommand } from 'lisk-commander';
+export { NodeInfoCommand } from 'klayr-commander';
