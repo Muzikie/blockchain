@@ -3,12 +3,13 @@
 import { Modules } from 'klayr-sdk';
 import { AddTierCommand } from './commands/add_tier_command';
 import { CreateCommand } from './commands/create_command';
-import { CampaignEndpoint } from './endpoint';
+import { PublishCommand } from './commands/publish_command';
 import { CampaignCreated } from './events/campaign_created';
 import { ContributionTierAdded } from './events/contribution_tier_added';
-import { CampaignMethod } from './method';
-import { CampaignStore } from './stores/campaign';
 import { CampaignAccountStore } from './stores/campaign_account';
+import { CampaignStore } from './stores/campaign';
+import { CampaignEndpoint } from './endpoint';
+import { CampaignMethod } from './method';
 
 export class CampaignModule extends Modules.BaseModule {
 	public endpoint = new CampaignEndpoint(this.stores, this.offchainStores);
@@ -16,6 +17,7 @@ export class CampaignModule extends Modules.BaseModule {
 	public commands = [
 		new CreateCommand(this.stores, this.events),
 		new AddTierCommand(this.stores, this.events),
+		new PublishCommand(this.stores, this.events),
 	];
 
 	public constructor() {

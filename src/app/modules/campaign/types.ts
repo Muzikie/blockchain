@@ -58,6 +58,10 @@ export interface AddTierCommandParams {
 	campaignId: string;
 }
 
+export interface PublishCommandParams {
+	campaignId: string;
+}
+
 export interface CreateCommandParams {
 	softGoal: string;
 	hardGoal: string;
@@ -81,6 +85,11 @@ export interface CampaignCreatedEventData {
 }
 
 export interface ContributionTierAddedEventData {
+	submitter: Buffer;
+	campaignId: Buffer;
+}
+
+export interface CampaignPublishedEventData {
 	submitter: Buffer;
 	campaignId: Buffer;
 }

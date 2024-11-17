@@ -122,6 +122,19 @@ export const addTierCommandParamsSchema = {
 	},
 };
 
+export const publishCommandParamsSchema = {
+	$id: 'campaign/publish',
+	title: 'Publish transaction asset for campaign module',
+	type: 'object',
+	required: ['campaignId'],
+	properties: {
+		campaignId: {
+			dataType: 'string',
+			fieldNumber: 1,
+		},
+	},
+};
+
 export const campaignCreatedEventDataSchema = {
 	$id: '/campaign/events/campaignCreatedEventData',
 	type: 'object',
@@ -141,6 +154,23 @@ export const campaignCreatedEventDataSchema = {
 
 export const contributionTierAddedEventDataSchema = {
 	$id: '/campaign/events/contributionTierAddedEventData',
+	type: 'object',
+	required: ['submitter', 'campaignId'],
+	properties: {
+		submitter: {
+			dataType: 'bytes',
+			format: 'lisk32',
+			fieldNumber: 1,
+		},
+		campaignId: {
+			dataType: 'bytes',
+			fieldNumber: 2,
+		},
+	},
+};
+
+export const campaignPublishedEventDataSchema = {
+	$id: '/campaign/events/campaignPublishedEventData',
 	type: 'object',
 	required: ['submitter', 'campaignId'],
 	properties: {
