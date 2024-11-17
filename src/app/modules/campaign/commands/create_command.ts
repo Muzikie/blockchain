@@ -5,16 +5,17 @@ import { CampaignAccountStore } from '../stores/campaign_account';
 import { CampaignCreated } from '../events/campaign_created';
 import { createCommandParamsSchema } from '../schemas';
 import { CreateCommandParams, Campaign, CampaignStatus, CampaignAccount } from '../types';
-import { getCampaignID } from '../utils';
+import { getCampaignId } from '../utils';
 
 export class CreateCommand extends Modules.BaseCommand {
 	public async verify(
 		context: StateMachine.CommandVerifyContext<CreateCommandParams>,
 	): Promise<StateMachine.VerificationResult> {
+		const { params } = context;
 		const campaignStore = this.stores.get(CampaignStore);
-		const campaignID = getCampaignID(context.params);
+		const campaignId = getCampaignId(params);
 
-		const campaignExists = await campaignStore.has(context, campaignID);
+		const campaignExists = await campaignStore.has(context, campaignId);
 		if (campaignExists) {
 			throw new Error('This campaign already exist.');
 		}
@@ -34,7 +35,7 @@ export class CreateCommand extends Modules.BaseCommand {
 		const campaignStore = this.stores.get(CampaignStore);
 
 		// Create campaign ID
-		const campaignID = getCampaignID(context.params);
+		const campaignId = getCampaignId(params);
 
 		// Create campaign object
 		const campaign: Campaign = {
@@ -44,24 +45,25 @@ export class CreateCommand extends Modules.BaseCommand {
 			status: CampaignStatus.Draft,
 			deadline: params.deadline,
 			apiId: params.apiId,
-			id: campaignID,
+			contributionTiers: [],
+			id: campaignId,
 			submitter: senderAddress,
 		};
 
 		// Store the campaign object in the blockchain
-		await campaignStore.set(context, campaignID, campaign);
+		await campaignStore.set(context, campaignId, campaign);
 
 		// Get the sender account from the blockchain
 		const senderExists = await campaignAccountStore.has(context, senderAddress);
 		let senderAccount: CampaignAccount;
 		if (!senderExists) {
 			senderAccount = {
-				campaigns: [campaignID],
+				campaigns: [campaignId],
 			};
 		} else {
 			const retrievedAccount = await campaignAccountStore.get(context, senderAddress);
 			senderAccount = {
-				campaigns: [...retrievedAccount.campaigns, campaignID],
+				campaigns: [...retrievedAccount.campaigns, campaignId],
 			};
 		}
 
@@ -72,10 +74,10 @@ export class CreateCommand extends Modules.BaseCommand {
 		campaignCreated.add(
 			context,
 			{
-				submitter: context.transaction.senderAddress,
-				campaignID,
+				submitter: senderAddress,
+				campaignId,
 			},
-			[context.transaction.senderAddress],
+			[senderAddress],
 		);
 	}
 

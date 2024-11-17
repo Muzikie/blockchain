@@ -1,23 +1,29 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable @typescript-eslint/member-ordering */
 import { Modules } from 'klayr-sdk';
+import { AddTierCommand } from './commands/add_tier_command';
+import { CreateCommand } from './commands/create_command';
 import { CampaignEndpoint } from './endpoint';
+import { CampaignCreated } from './events/campaign_created';
+import { ContributionTierAdded } from './events/contribution_tier_added';
 import { CampaignMethod } from './method';
 import { CampaignStore } from './stores/campaign';
 import { CampaignAccountStore } from './stores/campaign_account';
-import { CampaignCreated } from './events/campaign_created';
-import { CreateCommand } from './commands/create_command';
 
 export class CampaignModule extends Modules.BaseModule {
 	public endpoint = new CampaignEndpoint(this.stores, this.offchainStores);
 	public method = new CampaignMethod(this.stores, this.events);
-	public commands = [new CreateCommand(this.stores, this.events)];
+	public commands = [
+		new CreateCommand(this.stores, this.events),
+		new AddTierCommand(this.stores, this.events),
+	];
 
 	public constructor() {
 		super();
 		this.stores.register(CampaignAccountStore, new CampaignAccountStore(this.name, 0));
 		this.stores.register(CampaignStore, new CampaignStore(this.name, 1));
 		this.events.register(CampaignCreated, new CampaignCreated(this.name));
+		this.events.register(ContributionTierAdded, new ContributionTierAdded(this.name));
 	}
 
 	public metadata(): Modules.ModuleMetadata {

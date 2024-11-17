@@ -37,16 +37,16 @@ export const getCampaign = async (
 	context: Types.ModuleEndpointContext,
 	campaignStore: Store<Campaign>,
 ): Promise<CampaignJSON> => {
-	const { campaignID } = context.params;
+	const { campaignId } = context.params;
 
 	let query: Buffer;
 
-	if (Buffer.isBuffer(campaignID)) {
-		query = campaignID;
-	} else if (typeof campaignID === 'string') {
-		query = Buffer.from(campaignID, 'hex');
+	if (Buffer.isBuffer(campaignId)) {
+		query = campaignId;
+	} else if (typeof campaignId === 'string') {
+		query = Buffer.from(campaignId, 'hex');
 	} else {
-		throw new Error('Parameter campaignID must be a string or a buffer.');
+		throw new Error('Parameter campaignId must be a string or a buffer.');
 	}
 
 	const campaignExists = await campaignStore.has(context, query);

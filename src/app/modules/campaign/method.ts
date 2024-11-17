@@ -13,7 +13,7 @@ export class CampaignMethod extends Modules.BaseMethod {
 		return getAccount(context, campaignAccountStore);
 	}
 
-	// Get Campaign by campaignID
+	// Get Campaign by campaignId
 	public async getCampaign(context: Types.ModuleEndpointContext): Promise<CampaignJSON> {
 		const campaignStore = this.stores.get(CampaignStore);
 		return getCampaign(context, campaignStore);

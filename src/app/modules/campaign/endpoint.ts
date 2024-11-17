@@ -13,7 +13,7 @@ export class CampaignEndpoint extends Modules.BaseEndpoint {
 		return getAccount(context, campaignAccountStore as Store<CampaignAccount>);
 	}
 
-	// Get Campaign by campaignID
+	// Get Campaign by campaignId
 	public async getCampaign(context: Types.ModuleEndpointContext): Promise<CampaignJSON> {
 		const campaignStore = this.stores.get(CampaignStore);
 		return getCampaign(context, campaignStore as Store<Campaign>);

@@ -10,6 +10,16 @@ export enum CampaignStatus {
 	Failing = 'Failing',
 }
 
+export interface ContributionTier {
+	apiId: number;
+	amount: bigint;
+}
+
+export interface ContributionTierJSON {
+	apiId: number;
+	amount: string;
+}
+
 export interface Campaign {
 	softGoal: bigint;
 	hardGoal: bigint;
@@ -18,6 +28,7 @@ export interface Campaign {
 	deadline: string;
 	submitter: Buffer;
 	apiId: number;
+	contributionTiers: ContributionTier[];
 	id: Buffer;
 }
 
@@ -29,6 +40,7 @@ export interface CampaignJSON {
 	status: CampaignStatus;
 	submitter: string;
 	apiId: number;
+	contributionTiers: ContributionTierJSON[];
 	id: string;
 }
 
@@ -38,6 +50,12 @@ export interface CampaignAccount {
 
 export interface CampaignAccountJSON {
 	campaigns: string[];
+}
+
+export interface AddTierCommandParams {
+	amount: string;
+	apiId: number;
+	campaignId: string;
 }
 
 export interface CreateCommandParams {
@@ -53,11 +71,16 @@ export interface Store<Entity> {
 }
 
 export enum CreateEventResult {
-	SUCCESSFUL = 'successful',
-	FAILED = 'failed',
+	Successful = 'successful',
+	Failed = 'failed',
 }
 
 export interface CampaignCreatedEventData {
 	submitter: Buffer;
-	campaignID: Buffer;
+	campaignId: Buffer;
+}
+
+export interface ContributionTierAddedEventData {
+	submitter: Buffer;
+	campaignId: Buffer;
 }
