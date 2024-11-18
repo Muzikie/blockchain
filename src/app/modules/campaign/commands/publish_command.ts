@@ -1,5 +1,6 @@
 /* eslint-disable class-methods-use-this */
 import { Modules, StateMachine } from 'klayr-sdk';
+import { address as cryptoAddress } from '@klayr/cryptography';
 import { CampaignStore } from '../stores/campaign';
 import { CampaignPublished } from '../events/campaign_published';
 import { publishCommandParamsSchema } from '../schemas';
@@ -10,7 +11,10 @@ export class PublishCommand extends Modules.BaseCommand {
 	public async verify(
 		context: StateMachine.CommandVerifyContext<PublishCommandParams>,
 	): Promise<StateMachine.VerificationResult> {
-		const { params } = context;
+		const {
+			params,
+			transaction: { senderAddress },
+		} = context;
 		const campaignStore = this.stores.get(CampaignStore);
 		const campaignId = Buffer.from(params.campaignId, 'hex');
 
@@ -25,6 +29,18 @@ export class PublishCommand extends Modules.BaseCommand {
 		}
 		if (campaign.contributionTiers.length > 5) {
 			throw new Error('Campaigns may only have up to 5 contribution tiers.');
+		}
+		if (campaign.status === CampaignStatus.Draft) {
+			throw new Error(
+				`You can only publish a campaign in draft mode. Campaign current status: ${campaign.status}`,
+			);
+		}
+		if (Buffer.compare(campaign.submitter, senderAddress) !== 0) {
+			throw new Error(
+				`You can only publish your own campaign, campaign creator: ${cryptoAddress.getKlayr32AddressFromAddress(
+					campaign.submitter,
+				)}`,
+			);
 		}
 
 		return { status: StateMachine.VerifyStatus.OK };
