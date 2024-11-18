@@ -8,6 +8,7 @@ export enum CampaignStatus {
 	SoldOut = 'SoldOut',
 	Failed = 'Failed',
 	Failing = 'Failing',
+	Withdrawn = 'Withdrawn',
 }
 
 export interface ContributionTier {
@@ -76,6 +77,10 @@ export interface PublishCommandParams {
 	campaignId: string;
 }
 
+export interface PayoutCommandParams {
+	campaignId: string;
+}
+
 export interface CreateCommandParams {
 	softGoal: string;
 	hardGoal: string;
@@ -127,4 +132,10 @@ export interface ContributionProcessedEventData {
 	submitter: Buffer;
 	campaignId: Buffer;
 	updatedFunding: bigint;
+}
+
+export interface CampaignPayoutProcessedEventData {
+	submitter: Buffer;
+	campaignId: Buffer;
+	amount: bigint;
 }

@@ -4,7 +4,7 @@ import { CampaignStore } from '../stores/campaign';
 import { ContributionStore } from '../stores/contribution';
 import { ContributionProcessed } from '../events/contribution_processed';
 import { contributeCommandParamsSchema } from '../schemas';
-import { CONTRIBUTION_FEE, TREASURY_ADDRESS } from '../constants';
+import { TREASURY_ADDRESS } from '../constants';
 import { getContributionId } from '../utils';
 import {
 	Campaign,
@@ -99,7 +99,7 @@ export class ContributeCommand extends Modules.BaseCommand {
 			senderAddress,
 			TREASURY_ADDRESS,
 			tokenID,
-			CONTRIBUTION_FEE,
+			tier.amount,
 		);
 
 		const contributionProcessed = this.events.get(ContributionProcessed);

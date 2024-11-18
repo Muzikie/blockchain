@@ -162,6 +162,19 @@ export const publishCommandParamsSchema = {
 	},
 };
 
+export const payoutCommandParamsSchema = {
+	$id: 'campaign/payout',
+	title: 'Payout transaction asset for campaign module',
+	type: 'object',
+	required: ['campaignId'],
+	properties: {
+		campaignId: {
+			dataType: 'string',
+			fieldNumber: 1,
+		},
+	},
+};
+
 export const contributeCommandParamsSchema = {
 	$id: 'campaign/contribute',
 	title: 'Contribute transaction asset for campaign module',
@@ -246,6 +259,27 @@ export const contributionProcessedEventDataSchema = {
 			fieldNumber: 2,
 		},
 		updatedFunding: {
+			dataType: 'uint64',
+			fieldNumber: 3,
+		},
+	},
+};
+
+export const campaignPayoutProcessedEventDataSchema = {
+	$id: '/campaign/events/campaignPayoutProcessedEventData',
+	type: 'object',
+	required: ['submitter', 'campaignId', 'amount'],
+	properties: {
+		submitter: {
+			dataType: 'bytes',
+			format: 'klayr32',
+			fieldNumber: 1,
+		},
+		campaignId: {
+			dataType: 'bytes',
+			fieldNumber: 2,
+		},
+		amount: {
 			dataType: 'uint64',
 			fieldNumber: 3,
 		},
