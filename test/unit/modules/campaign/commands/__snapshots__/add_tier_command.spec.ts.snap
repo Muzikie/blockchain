@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddTierCommand constructor should have valid schema 1`] = `
+{
+  "$id": "campaign/addTier",
+  "properties": {
+    "amount": {
+      "dataType": "string",
+      "fieldNumber": 1,
+    },
+    "apiId": {
+      "dataType": "number",
+      "fieldNumber": 2,
+    },
+    "campaignId": {
+      "dataType": "string",
+      "fieldNumber": 3,
+    },
+  },
+  "required": [
+    "amount",
+    "apiId",
+    "campaignId",
+  ],
+  "title": "AddTier transaction asset for campaign module",
+  "type": "object",
+}
+`;
