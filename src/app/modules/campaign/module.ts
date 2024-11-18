@@ -29,6 +29,11 @@ import { CampaignMethod } from './method';
 export class CampaignModule extends Modules.BaseModule {
 	public endpoint = new CampaignEndpoint(this.stores, this.offchainStores);
 	public method = new CampaignMethod(this.stores, this.events);
+
+	private readonly _contributeCommand = new ContributeCommand(this.stores, this.events);
+	private readonly _payoutCommand = new PayoutCommand(this.stores, this.events);
+	private readonly _reimburseCommand = new ReimburseCommand(this.stores, this.events);
+
 	public commands = [
 		new CreateCommand(this.stores, this.events),
 		new AddTierCommand(this.stores, this.events),
@@ -37,6 +42,7 @@ export class CampaignModule extends Modules.BaseModule {
 		new PayoutCommand(this.stores, this.events),
 		new ReimburseCommand(this.stores, this.events),
 	];
+	private _tokenMethod!: Modules.Token.TokenMethod;
 
 	public constructor() {
 		super();
@@ -54,6 +60,14 @@ export class CampaignModule extends Modules.BaseModule {
 		this.events.register(CampaignPayoutProcessed, new CampaignPayoutProcessed(this.name));
 	}
 
+	public addDependencies(tokenMethod: Modules.Token.TokenMethod): void {
+		this._tokenMethod = tokenMethod;
+
+		this._contributeCommand.addDependencies(this._tokenMethod);
+		this._payoutCommand.addDependencies(this._tokenMethod);
+		this._reimburseCommand.addDependencies(this._tokenMethod);
+	}
+
 	public metadata(): Modules.ModuleMetadata {
 		return {
 			...this.baseMetadata(),
@@ -61,35 +75,4 @@ export class CampaignModule extends Modules.BaseModule {
 			assets: [],
 		};
 	}
-
-	// Lifecycle hooks
-	// public async init(_args: Modules.ModuleInitArgs): Promise<void> {
-	// 	// initialize this module when starting a node
-	// }
-
-	// public async insertAssets(_context: StateMachine.InsertAssetContext) {
-	// 	// initialize block generation, add asset
-	// }
-
-	// public async verifyAssets(_context: StateMachine.BlockVerifyContext): Promise<void> {
-	// 	// verify block
-	// }
-
-	// Lifecycle hooks
-	// public async verifyTransaction(_context: StateMachine.TransactionVerifyContext): Promise<StateMachine.VerificationResult> {
-	// verify transaction will be called multiple times in the transaction pool
-	// return { status: StateMachine.VerifyStatus.OK };
-	// }
-
-	// public async beforeCommandExecute(_context: StateMachine.TransactionExecuteContext): Promise<void> {}
-
-	// public async afterCommandExecute(_context: StateMachine.TransactionExecuteContext): Promise<void> {}
-
-	// public async initGenesisState(_context: StateMachine.GenesisBlockExecuteContext): Promise<void> {}
-
-	// public async finalizeGenesisState(_context: StateMachine.GenesisBlockExecuteContext): Promise<void> {}
-
-	// public async beforeTransactionsExecute(_context: StateMachine.BlockExecuteContext): Promise<void> {}
-
-	// public async afterTransactionsExecute(_context: StateMachine.BlockAfterExecuteContext): Promise<void> {
 }

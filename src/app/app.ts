@@ -3,9 +3,9 @@ import { registerModules } from './modules';
 import { registerPlugins } from './plugins';
 
 export const getApplication = (config: Types.PartialApplicationConfig): Application => {
-	const { app } = Application.defaultApplication(config);
+	const { app, method } = Application.defaultApplication(config);
 
-	registerModules(app);
+	registerModules(app, method.token);
 	registerPlugins(app);
 
 	return app;
