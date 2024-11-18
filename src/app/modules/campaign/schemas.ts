@@ -1,3 +1,4 @@
+// Stores
 export const campaignStoreSchema = {
 	$id: 'campaign/campaign',
 	type: 'object',
@@ -76,6 +77,32 @@ export const accountStoreSchema = {
 	},
 };
 
+export const contributionStoreSchema = {
+	$id: 'campaign/contribution',
+	type: 'object',
+	required: ['tierId', 'campaignId', 'amount', 'address'],
+	properties: {
+		tierId: {
+			dataType: 'number',
+			fieldNumber: 1,
+		},
+		campaignId: {
+			dataType: 'bytes',
+			fieldNumber: 2,
+		},
+		amount: {
+			dataType: 'uint64',
+			fieldNumber: 3,
+		},
+		address: {
+			dataType: 'bytes',
+			format: 'klayr32',
+			fieldNumber: 4,
+		},
+	},
+};
+
+// Commands
 export const createCommandParamsSchema = {
 	$id: 'campaign/create',
 	title: 'Create transaction asset for campaign module',
@@ -135,6 +162,24 @@ export const publishCommandParamsSchema = {
 	},
 };
 
+export const contributeCommandParamsSchema = {
+	$id: 'campaign/contribute',
+	title: 'Contribute transaction asset for campaign module',
+	type: 'object',
+	required: ['campaignId', 'tierId'],
+	properties: {
+		campaignId: {
+			dataType: 'string',
+			fieldNumber: 1,
+		},
+		tierId: {
+			dataType: 'number',
+			fieldNumber: 2,
+		},
+	},
+};
+
+// Events
 export const campaignCreatedEventDataSchema = {
 	$id: '/campaign/events/campaignCreatedEventData',
 	type: 'object',
@@ -142,7 +187,7 @@ export const campaignCreatedEventDataSchema = {
 	properties: {
 		submitter: {
 			dataType: 'bytes',
-			format: 'lisk32',
+			format: 'klayr32',
 			fieldNumber: 1,
 		},
 		campaignId: {
@@ -159,7 +204,7 @@ export const contributionTierAddedEventDataSchema = {
 	properties: {
 		submitter: {
 			dataType: 'bytes',
-			format: 'lisk32',
+			format: 'klayr32',
 			fieldNumber: 1,
 		},
 		campaignId: {
@@ -176,12 +221,33 @@ export const campaignPublishedEventDataSchema = {
 	properties: {
 		submitter: {
 			dataType: 'bytes',
-			format: 'lisk32',
+			format: 'klayr32',
 			fieldNumber: 1,
 		},
 		campaignId: {
 			dataType: 'bytes',
 			fieldNumber: 2,
+		},
+	},
+};
+
+export const contributionProcessedEventDataSchema = {
+	$id: '/campaign/events/contributionProcessedEventData',
+	type: 'object',
+	required: ['submitter', 'campaignId', 'updatedFunding'],
+	properties: {
+		submitter: {
+			dataType: 'bytes',
+			format: 'klayr32',
+			fieldNumber: 1,
+		},
+		campaignId: {
+			dataType: 'bytes',
+			fieldNumber: 2,
+		},
+		updatedFunding: {
+			dataType: 'uint64',
+			fieldNumber: 3,
 		},
 	},
 };

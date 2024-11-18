@@ -52,6 +52,20 @@ export interface CampaignAccountJSON {
 	campaigns: string[];
 }
 
+export interface Contribution {
+	tierId: number;
+	campaignId: Buffer;
+	amount: bigint;
+	address: Buffer;
+}
+
+export interface ContributionJSON {
+	tierId: number;
+	campaignId: number;
+	amount: string;
+	address: string;
+}
+
 export interface AddTierCommandParams {
 	amount: string;
 	apiId: number;
@@ -69,6 +83,11 @@ export interface CreateCommandParams {
 	apiId: number;
 }
 
+export interface ContributeCommandParams {
+	campaignId: string;
+	tierId: number;
+}
+
 export interface Store<Entity> {
 	get: (context: Types.ModuleEndpointContext, key: Buffer) => Promise<Entity>;
 	has: (context: Types.ModuleEndpointContext, key: Buffer) => Promise<boolean>;
@@ -77,6 +96,16 @@ export interface Store<Entity> {
 export enum CreateEventResult {
 	Successful = 'successful',
 	Failed = 'failed',
+}
+
+export interface getContributionIdProps {
+	campaignId: string;
+	tierId: number;
+	address: Buffer;
+}
+
+export interface getCampaignIdProps {
+	apiId: number;
 }
 
 export interface CampaignCreatedEventData {
@@ -92,4 +121,10 @@ export interface ContributionTierAddedEventData {
 export interface CampaignPublishedEventData {
 	submitter: Buffer;
 	campaignId: Buffer;
+}
+
+export interface ContributionProcessedEventData {
+	submitter: Buffer;
+	campaignId: Buffer;
+	updatedFunding: bigint;
 }

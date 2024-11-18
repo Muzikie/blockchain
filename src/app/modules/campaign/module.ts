@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/member-ordering */
 import { Modules } from 'klayr-sdk';
 import { AddTierCommand } from './commands/add_tier_command';
+import { ContributeCommand } from './commands/contribute_command';
 import { CreateCommand } from './commands/create_command';
 import { PublishCommand } from './commands/publish_command';
 import { CampaignCreated } from './events/campaign_created';
@@ -18,6 +19,7 @@ export class CampaignModule extends Modules.BaseModule {
 		new CreateCommand(this.stores, this.events),
 		new AddTierCommand(this.stores, this.events),
 		new PublishCommand(this.stores, this.events),
+		new ContributeCommand(this.stores, this.events),
 	];
 
 	public constructor() {
