@@ -1,17 +1,11 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
-import { Application } from 'lisk-sdk';
+import { Application } from 'klayr-sdk';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { TokenMethod } from 'lisk-framework';
-import { AnchorModule } from './modules/anchor/module';
-import { BadgeModule } from './modules/badge/module';
+import { Modules } from 'klayr-framework';
+import { CampaignModule } from './modules/campaign/module';
 
-export const registerModules = (app: Application, token: TokenMethod): void => {
-  const badgeModule = new BadgeModule();
-  const anchorModule = new AnchorModule();
-
-  badgeModule.addDependencies(token, anchorModule.method);
-  anchorModule.addDependencies(token, badgeModule.method);
-
-  app.registerModule(badgeModule);
-  app.registerModule(anchorModule);
+export const registerModules = (app: Application, token: Modules.Token.TokenMethod): void => {
+	const campaignModule = new CampaignModule();
+	campaignModule.addDependencies(token);
+	app.registerModule(campaignModule);
 };

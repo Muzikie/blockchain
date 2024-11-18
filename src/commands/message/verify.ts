@@ -1,1 +1,1 @@
-export { MessageVerifyCommand } from 'lisk-commander';
+export { MessageVerifyCommand } from 'klayr-commander';

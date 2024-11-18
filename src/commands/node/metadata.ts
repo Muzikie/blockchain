@@ -1,1 +1,1 @@
-export { NodeMetadataCommand } from 'lisk-commander';
+export { NodeMetadataCommand } from 'klayr-commander';

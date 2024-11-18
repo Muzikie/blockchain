@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CreateCommand constructor should have valid schema 1`] = `
+{
+  "$id": "campaign/create",
+  "properties": {
+    "apiId": {
+      "dataType": "uint32",
+      "fieldNumber": 4,
+    },
+    "deadline": {
+      "dataType": "string",
+      "fieldNumber": 3,
+    },
+    "hardGoal": {
+      "dataType": "string",
+      "fieldNumber": 2,
+    },
+    "softGoal": {
+      "dataType": "string",
+      "fieldNumber": 1,
+    },
+  },
+  "required": [
+    "softGoal",
+    "hardGoal",
+    "deadline",
+    "apiId",
+  ],
+  "title": "Create transaction asset for campaign module",
+  "type": "object",
+}
+`;

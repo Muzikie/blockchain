@@ -1,1 +1,1 @@
-export { KeysEncryptCommand } from 'lisk-commander';
+export { KeysEncryptCommand } from 'klayr-commander';

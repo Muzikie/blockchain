@@ -1,1 +1,1 @@
-export { BlockchainHashCommand } from 'lisk-commander';
+export { BlockchainHashCommand } from 'klayr-commander';

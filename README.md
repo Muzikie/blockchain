@@ -13,6 +13,8 @@ Muzikie is a decentralized music streaming platform, built with ❤️ using [Li
 
 #### Start a node
 
+The application comes with installed chain connector plugin. if you are not running the application as relay, make sure to remove it from the `plugins.ts` file.
+
 ```
 ./bin/run start
 ```

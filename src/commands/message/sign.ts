@@ -1,1 +1,1 @@
-export { MessageSignCommand } from 'lisk-commander';
+export { MessageSignCommand } from 'klayr-commander';
