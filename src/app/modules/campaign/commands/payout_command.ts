@@ -30,12 +30,12 @@ export class PayoutCommand extends Modules.BaseCommand {
 
 		const campaign = await campaignStore.get(context, campaignId);
 		const deadlineReached = new Date().getTime() >= new Date(campaign.deadline).getTime();
+
 		if (!deadlineReached) {
-			throw new Error(
-				`You can only withdraw funds of a campaign after the deadline. Campaign deadline: ${campaign.deadline}`,
-			);
-		}
-		if (
+			if (campaign.status !== CampaignStatus.SoldOut) {
+				throw new Error(`You can only withdraw funds of a soldout campaign before the deadline.`);
+			}
+		} else if (
 			campaign.status !== CampaignStatus.SoldOut &&
 			campaign.status !== CampaignStatus.Successful
 		) {
