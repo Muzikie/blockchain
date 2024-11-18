@@ -1,5 +1,6 @@
 docs/
 examples/
+src/commands/
 **/*.d.ts
 jest.config.js
 .eslintrc.js
