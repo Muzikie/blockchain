@@ -24,17 +24,13 @@ export class PayoutCommand extends Modules.BaseCommand {
 		const campaignId = Buffer.from(params.campaignId, 'hex');
 
 		const campaignExists = await campaignStore.has(context, campaignId);
-		if (campaignExists) {
+		if (!campaignExists) {
 			throw new Error('Campaign does not exist.');
 		}
 
 		const campaign = await campaignStore.get(context, campaignId);
 		const deadlineReached = new Date().getTime() >= new Date(campaign.deadline).getTime();
-		if (
-			campaign.status !== CampaignStatus.SoldOut &&
-			campaign.status !== CampaignStatus.Successful &&
-			deadlineReached
-		) {
+		if (!deadlineReached) {
 			throw new Error(
 				`You can only withdraw funds of a campaign after the deadline. Campaign deadline: ${campaign.deadline}`,
 			);
@@ -74,14 +70,6 @@ export class PayoutCommand extends Modules.BaseCommand {
 		const campaignId = Buffer.from(params.campaignId, 'hex');
 
 		const campaign = await campaignStore.get(context, campaignId);
-		// Create campaign object
-		const updatedCampaign: Campaign = {
-			...campaign,
-			status: CampaignStatus.Withdrawn,
-		};
-
-		// Store the campaign object in the blockchain
-		await campaignStore.set(context, campaignId, updatedCampaign);
 		const devShare = DEV_SHARE * campaign.currentFunding;
 		const ownerShare = campaign.currentFunding - devShare;
 
@@ -94,6 +82,16 @@ export class PayoutCommand extends Modules.BaseCommand {
 			tokenID,
 			ownerShare,
 		);
+
+		// Create campaign object
+		const updatedCampaign: Campaign = {
+			...campaign,
+			currentFunding: BigInt(0),
+			status: CampaignStatus.Withdrawn,
+		};
+
+		// Store the campaign object in the blockchain
+		await campaignStore.set(context, campaignId, updatedCampaign);
 
 		// Fire event
 		const payoutProcessed = this.events.get(CampaignPayoutProcessed);

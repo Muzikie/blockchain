@@ -27,7 +27,7 @@ export class AddTierCommand extends Modules.BaseCommand {
 		if (campaign.contributionTiers.length >= 5) {
 			throw new Error('Campaigns may only have up to 5 contribution tiers.');
 		}
-		if (campaign.status === CampaignStatus.Draft) {
+		if (campaign.status !== CampaignStatus.Draft) {
 			throw new Error(
 				`You can only update a campaign in draft mode. Campaign current status: ${campaign.status}`,
 			);

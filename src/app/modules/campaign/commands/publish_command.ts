@@ -19,7 +19,7 @@ export class PublishCommand extends Modules.BaseCommand {
 		const campaignId = Buffer.from(params.campaignId, 'hex');
 
 		const campaignExists = await campaignStore.has(context, campaignId);
-		if (campaignExists) {
+		if (!campaignExists) {
 			throw new Error('Campaign does not exist.');
 		}
 
@@ -27,10 +27,7 @@ export class PublishCommand extends Modules.BaseCommand {
 		if (campaign.contributionTiers.length === 0) {
 			throw new Error('Campaigns need at least one contribution tier.');
 		}
-		if (campaign.contributionTiers.length > 5) {
-			throw new Error('Campaigns may only have up to 5 contribution tiers.');
-		}
-		if (campaign.status === CampaignStatus.Draft) {
+		if (campaign.status !== CampaignStatus.Draft) {
 			throw new Error(
 				`You can only publish a campaign in draft mode. Campaign current status: ${campaign.status}`,
 			);

@@ -28,7 +28,7 @@ export class ContributeCommand extends Modules.BaseCommand {
 		const campaignId = Buffer.from(params.campaignId, 'hex');
 
 		const campaignExists = await campaignStore.has(context, campaignId);
-		if (campaignExists) {
+		if (!campaignExists) {
 			throw new Error('Campaign does not exist.');
 		}
 
@@ -71,11 +71,29 @@ export class ContributeCommand extends Modules.BaseCommand {
 			item => item.apiId === params.tierId,
 		) as ContributionTier;
 
+		// Collect the contribution amount
+		await this._tokenMethod.transfer(
+			methodContext,
+			senderAddress,
+			TREASURY_ADDRESS,
+			tokenID,
+			tier.amount,
+		);
+
 		// Update campaign object
 		const updatedFunding = campaign.currentFunding + tier.amount;
+		let newStatus = campaign.status;
+
+		if (updatedFunding > campaign.hardGoal) {
+			newStatus = CampaignStatus.SoldOut;
+		} else if (updatedFunding > campaign.softGoal) {
+			newStatus = CampaignStatus.Successful;
+		}
+
 		const updatedCampaign: Campaign = {
 			...campaign,
 			currentFunding: updatedFunding,
+			status: newStatus,
 		};
 		const contribution: Contribution = {
 			tierId: params.tierId,
@@ -92,15 +110,6 @@ export class ContributeCommand extends Modules.BaseCommand {
 		// Store the campaign object in the blockchain
 		await campaignStore.set(context, campaignId, updatedCampaign);
 		await contributionStore.set(context, contributionId, contribution);
-
-		// Collect the contribution fee
-		await this._tokenMethod.transfer(
-			methodContext,
-			senderAddress,
-			TREASURY_ADDRESS,
-			tokenID,
-			tier.amount,
-		);
 
 		const contributionProcessed = this.events.get(ContributionProcessed);
 		contributionProcessed.add(
