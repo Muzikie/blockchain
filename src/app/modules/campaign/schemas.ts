@@ -192,6 +192,19 @@ export const contributeCommandParamsSchema = {
 	},
 };
 
+export const reimburseCommandParamsSchema = {
+	$id: 'campaign/reimburse',
+	title: 'Reimburse transaction asset for campaign module',
+	type: 'object',
+	required: ['campaignId'],
+	properties: {
+		campaignId: {
+			dataType: 'string',
+			fieldNumber: 1,
+		},
+	},
+};
+
 // Events
 export const campaignCreatedEventDataSchema = {
 	$id: '/campaign/events/campaignCreatedEventData',
@@ -267,6 +280,27 @@ export const contributionProcessedEventDataSchema = {
 
 export const campaignPayoutProcessedEventDataSchema = {
 	$id: '/campaign/events/campaignPayoutProcessedEventData',
+	type: 'object',
+	required: ['submitter', 'campaignId', 'amount'],
+	properties: {
+		submitter: {
+			dataType: 'bytes',
+			format: 'klayr32',
+			fieldNumber: 1,
+		},
+		campaignId: {
+			dataType: 'bytes',
+			fieldNumber: 2,
+		},
+		amount: {
+			dataType: 'uint64',
+			fieldNumber: 3,
+		},
+	},
+};
+
+export const campaignReimbursementProcessedEventDataSchema = {
+	$id: '/campaign/events/campaignReimbursementProcessedEventDataSchema',
 	type: 'object',
 	required: ['submitter', 'campaignId', 'amount'],
 	properties: {

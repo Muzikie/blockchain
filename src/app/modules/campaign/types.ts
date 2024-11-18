@@ -81,6 +81,10 @@ export interface PayoutCommandParams {
 	campaignId: string;
 }
 
+export interface ReimburseCommandParams {
+	campaignId: string;
+}
+
 export interface CreateCommandParams {
 	softGoal: string;
 	hardGoal: string;
@@ -135,6 +139,12 @@ export interface ContributionProcessedEventData {
 }
 
 export interface CampaignPayoutProcessedEventData {
+	submitter: Buffer;
+	campaignId: Buffer;
+	amount: bigint;
+}
+
+export interface CampaignReimbursedEventData {
 	submitter: Buffer;
 	campaignId: Buffer;
 	amount: bigint;

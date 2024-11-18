@@ -8,6 +8,7 @@ import { ContributeCommand } from './commands/contribute_command';
 import { CreateCommand } from './commands/create_command';
 import { PublishCommand } from './commands/publish_command';
 import { PayoutCommand } from './commands/payout_command';
+import { ReimburseCommand } from './commands/reimburse_command';
 
 // Events
 import { CampaignCreated } from './events/campaign_created';
@@ -34,6 +35,7 @@ export class CampaignModule extends Modules.BaseModule {
 		new PublishCommand(this.stores, this.events),
 		new ContributeCommand(this.stores, this.events),
 		new PayoutCommand(this.stores, this.events),
+		new ReimburseCommand(this.stores, this.events),
 	];
 
 	public constructor() {
