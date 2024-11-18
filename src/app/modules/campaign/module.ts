@@ -1,4 +1,3 @@
-/* eslint-disable class-methods-use-this */
 /* eslint-disable @typescript-eslint/member-ordering */
 import { Modules } from 'klayr-sdk';
 
@@ -26,21 +25,32 @@ import { ContributionStore } from './stores/contribution';
 import { CampaignEndpoint } from './endpoint';
 import { CampaignMethod } from './method';
 
+// Schemas
+import {
+	accountStoreSchema,
+	campaignStoreSchema,
+	addressRequestSchema,
+	idRequestSchema,
+} from './schemas';
+
 export class CampaignModule extends Modules.BaseModule {
 	public endpoint = new CampaignEndpoint(this.stores, this.offchainStores);
 	public method = new CampaignMethod(this.stores, this.events);
 
+	private readonly _createCommand = new CreateCommand(this.stores, this.events);
+	private readonly _addTierCommand = new AddTierCommand(this.stores, this.events);
+	private readonly _publishCommand = new PublishCommand(this.stores, this.events);
 	private readonly _contributeCommand = new ContributeCommand(this.stores, this.events);
 	private readonly _payoutCommand = new PayoutCommand(this.stores, this.events);
 	private readonly _reimburseCommand = new ReimburseCommand(this.stores, this.events);
 
 	public commands = [
-		new CreateCommand(this.stores, this.events),
-		new AddTierCommand(this.stores, this.events),
-		new PublishCommand(this.stores, this.events),
-		new ContributeCommand(this.stores, this.events),
-		new PayoutCommand(this.stores, this.events),
-		new ReimburseCommand(this.stores, this.events),
+		this._createCommand,
+		this._addTierCommand,
+		this._publishCommand,
+		this._contributeCommand,
+		this._payoutCommand,
+		this._reimburseCommand,
 	];
 	private _tokenMethod!: Modules.Token.TokenMethod;
 
@@ -50,7 +60,7 @@ export class CampaignModule extends Modules.BaseModule {
 		// Stores
 		this.stores.register(CampaignAccountStore, new CampaignAccountStore(this.name, 0));
 		this.stores.register(CampaignStore, new CampaignStore(this.name, 1));
-		this.stores.register(ContributionStore, new ContributionStore(this.name, 1));
+		this.stores.register(ContributionStore, new ContributionStore(this.name, 2));
 
 		// Events
 		this.events.register(CampaignCreated, new CampaignCreated(this.name));
@@ -71,7 +81,18 @@ export class CampaignModule extends Modules.BaseModule {
 	public metadata(): Modules.ModuleMetadata {
 		return {
 			...this.baseMetadata(),
-			endpoints: [],
+			endpoints: [
+				{
+					name: this.endpoint.getAccount.name,
+					request: addressRequestSchema,
+					response: accountStoreSchema,
+				},
+				{
+					name: this.endpoint.getCampaign.name,
+					request: idRequestSchema,
+					response: campaignStoreSchema,
+				},
+			],
 			assets: [],
 		};
 	}

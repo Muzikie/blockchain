@@ -84,9 +84,9 @@ export class ContributeCommand extends Modules.BaseCommand {
 		const updatedFunding = campaign.currentFunding + tier.amount;
 		let newStatus = campaign.status;
 
-		if (updatedFunding > campaign.hardGoal) {
+		if (updatedFunding >= campaign.hardGoal) {
 			newStatus = CampaignStatus.SoldOut;
-		} else if (updatedFunding > campaign.softGoal) {
+		} else if (updatedFunding >= campaign.softGoal) {
 			newStatus = CampaignStatus.Successful;
 		}
 

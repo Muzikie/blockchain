@@ -11,9 +11,15 @@ export class CreateCommand extends Modules.BaseCommand {
 	public async verify(
 		context: StateMachine.CommandVerifyContext<CreateCommandParams>,
 	): Promise<StateMachine.VerificationResult> {
-		const { params } = context;
+		const {
+			params,
+			transaction: { senderAddress },
+		} = context;
 		const campaignStore = this.stores.get(CampaignStore);
-		const campaignId = getCampaignId(params);
+		const campaignId = getCampaignId({
+			apiId: params.apiId,
+			address: senderAddress,
+		});
 
 		const campaignExists = await campaignStore.has(context, campaignId);
 		if (campaignExists) {
@@ -35,7 +41,10 @@ export class CreateCommand extends Modules.BaseCommand {
 		const campaignStore = this.stores.get(CampaignStore);
 
 		// Create campaign ID
-		const campaignId = getCampaignId(params);
+		const campaignId = getCampaignId({
+			apiId: params.apiId,
+			address: senderAddress,
+		});
 
 		// Create campaign object
 		const campaign: Campaign = {

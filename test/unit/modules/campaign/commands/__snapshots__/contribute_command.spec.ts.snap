@@ -9,7 +9,7 @@ exports[`ContributeCommand constructor should have valid schema 1`] = `
       "fieldNumber": 1,
     },
     "tierId": {
-      "dataType": "number",
+      "dataType": "uint32",
       "fieldNumber": 2,
     },
   },

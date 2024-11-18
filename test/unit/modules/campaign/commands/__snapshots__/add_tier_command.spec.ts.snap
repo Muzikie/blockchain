@@ -9,7 +9,7 @@ exports[`AddTierCommand constructor should have valid schema 1`] = `
       "fieldNumber": 1,
     },
     "apiId": {
-      "dataType": "number",
+      "dataType": "uint32",
       "fieldNumber": 2,
     },
     "campaignId": {

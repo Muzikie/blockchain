@@ -115,6 +115,7 @@ export interface getContributionIdProps {
 
 export interface getCampaignIdProps {
 	apiId: number;
+	address: Buffer;
 }
 
 export interface CampaignCreatedEventData {

@@ -5,7 +5,7 @@ exports[`CreateCommand constructor should have valid schema 1`] = `
   "$id": "campaign/create",
   "properties": {
     "apiId": {
-      "dataType": "number",
+      "dataType": "uint32",
       "fieldNumber": 4,
     },
     "deadline": {

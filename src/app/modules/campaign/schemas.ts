@@ -10,6 +10,7 @@ export const campaignStoreSchema = {
 		'status',
 		'apiId',
 		'contributionTiers',
+		'submitter',
 		'id',
 	],
 	properties: {
@@ -55,9 +56,14 @@ export const campaignStoreSchema = {
 				},
 			},
 		},
+		submitter: {
+			dataType: 'bytes',
+			format: 'klayr32',
+			fieldNumber: 8,
+		},
 		id: {
 			dataType: 'bytes',
-			fieldNumber: 8,
+			fieldNumber: 9,
 		},
 	},
 };
@@ -83,7 +89,7 @@ export const contributionStoreSchema = {
 	required: ['tierId', 'campaignId', 'amount', 'address'],
 	properties: {
 		tierId: {
-			dataType: 'number',
+			dataType: 'uint32',
 			fieldNumber: 1,
 		},
 		campaignId: {
@@ -100,6 +106,30 @@ export const contributionStoreSchema = {
 			fieldNumber: 4,
 		},
 	},
+};
+
+export const addressRequestSchema = {
+	$id: '/campaign/addressRequest',
+	type: 'object',
+	properties: {
+		address: {
+			type: 'string',
+			format: 'lisk32',
+		},
+	},
+	required: ['address'],
+};
+
+export const idRequestSchema = {
+	$id: '/campaign/idRequest',
+	type: 'object',
+	properties: {
+		campaignId: {
+			type: 'string',
+			format: 'hex',
+		},
+	},
+	required: ['campaignId'],
 };
 
 // Commands
@@ -122,7 +152,7 @@ export const createCommandParamsSchema = {
 			fieldNumber: 3,
 		},
 		apiId: {
-			dataType: 'number',
+			dataType: 'uint32',
 			fieldNumber: 4,
 		},
 	},
@@ -139,7 +169,7 @@ export const addTierCommandParamsSchema = {
 			fieldNumber: 1,
 		},
 		apiId: {
-			dataType: 'number',
+			dataType: 'uint32',
 			fieldNumber: 2,
 		},
 		campaignId: {
@@ -186,7 +216,7 @@ export const contributeCommandParamsSchema = {
 			fieldNumber: 1,
 		},
 		tierId: {
-			dataType: 'number',
+			dataType: 'uint32',
 			fieldNumber: 2,
 		},
 	},
