@@ -1,1 +1,1 @@
-export { TransactionSendCommand } from 'lisk-commander';
+export { TransactionSendCommand } from 'klayr-commander';

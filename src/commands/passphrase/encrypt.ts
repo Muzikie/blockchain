@@ -1,1 +1,1 @@
-export { PassphraseEncryptCommand } from 'lisk-commander';
+export { PassphraseEncryptCommand } from 'klayr-commander';

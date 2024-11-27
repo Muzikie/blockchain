@@ -1,12 +1,12 @@
-import { Application, PartialApplicationConfig } from 'lisk-sdk';
+import { Application, Types } from 'klayr-sdk';
 import { registerModules } from './modules';
 import { registerPlugins } from './plugins';
 
-export const getApplication = (config: PartialApplicationConfig): Application => {
-  const { app, method } = Application.defaultApplication(config, true);
+export const getApplication = (config: Types.PartialApplicationConfig): Application => {
+	const { app, method } = Application.defaultApplication(config);
 
-  registerModules(app, method.token);
-  registerPlugins(app);
+	registerModules(app, method.token);
+	registerPlugins(app);
 
-  return app;
+	return app;
 };

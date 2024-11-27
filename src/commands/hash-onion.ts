@@ -1,1 +1,1 @@
-export { HashOnionCommand } from 'lisk-commander';
+export { HashOnionCommand } from 'klayr-commander';

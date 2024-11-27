@@ -1,1 +1,1 @@
-export { TransactionGetCommand } from 'lisk-commander';
+export { TransactionGetCommand } from 'klayr-commander';

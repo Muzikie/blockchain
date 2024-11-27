@@ -1,1 +1,1 @@
-export { BlockGetCommand } from 'lisk-commander';
+export { BlockGetCommand } from 'klayr-commander';

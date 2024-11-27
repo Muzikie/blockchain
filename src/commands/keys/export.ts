@@ -1,1 +1,1 @@
-export { KeysExportCommand } from 'lisk-commander';
+export { KeysExportCommand } from 'klayr-commander';

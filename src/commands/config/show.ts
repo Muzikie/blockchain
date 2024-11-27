@@ -1,1 +1,1 @@
-export { ConfigShowCommand } from 'lisk-commander';
+export { ConfigShowCommand } from 'klayr-commander';

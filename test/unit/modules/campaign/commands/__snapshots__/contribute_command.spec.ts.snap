@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContributeCommand constructor should have valid schema 1`] = `
+{
+  "$id": "campaign/contribute",
+  "properties": {
+    "campaignId": {
+      "dataType": "string",
+      "fieldNumber": 1,
+    },
+    "tierId": {
+      "dataType": "uint32",
+      "fieldNumber": 2,
+    },
+  },
+  "required": [
+    "campaignId",
+    "tierId",
+  ],
+  "title": "Contribute transaction asset for campaign module",
+  "type": "object",
+}
+`;

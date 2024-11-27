@@ -1,1 +1,1 @@
-export { GeneratorEnableCommand } from 'lisk-commander';
+export { GeneratorEnableCommand } from 'klayr-commander';
